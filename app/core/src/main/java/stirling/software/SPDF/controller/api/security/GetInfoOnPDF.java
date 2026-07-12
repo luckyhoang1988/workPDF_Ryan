@@ -307,7 +307,7 @@ public class GetInfoOnPDF {
 
     /**
      * Info-dictionary keys exposed above via typed getters; any other key in the dictionary is
-     * surfaced as custom metadata (e.g. the classification policy's StirlingPDFClassification
+     * surfaced as custom metadata (e.g. the classification policy's RyanPDFClassification
      * entry).
      */
     private static final java.util.Set<String> STANDARD_INFO_KEYS =
@@ -354,7 +354,7 @@ public class GetInfoOnPDF {
                 }
 
                 // Surface custom Info-dictionary entries (anything beyond the
-                // standard fields above) — e.g. StirlingPDFClassification
+                // standard fields above) — e.g. RyanPDFClassification
                 for (String key : info.getMetadataKeys()) {
                     if (STANDARD_INFO_KEYS.contains(key)) {
                         continue;

@@ -8,8 +8,8 @@
 import { loadPolicyCatalog } from "@app/services/policyCatalog";
 import type { PoliciesByCategory, PolicyState } from "@app/types/policies";
 
-const STORAGE_KEY = "stirling-policies-state";
-export const POLICIES_CHANGE_EVENT = "stirling:policies-changed";
+const STORAGE_KEY = "ryanpdf-policies-state";
+export const POLICIES_CHANGE_EVENT = "ryanpdf:policies-changed";
 
 function defaultState(): PolicyState {
   // Unconfigured by default. The backend is the source of truth for what's

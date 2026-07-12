@@ -63,7 +63,7 @@ export function ComponentCard({
           {formatPrice(component.pricing, t)}
         </span>
         <span className="portal-components__pkg">
-          @stirling/{component.package}
+          @ryanpdf/{component.package}
         </span>
       </div>
 

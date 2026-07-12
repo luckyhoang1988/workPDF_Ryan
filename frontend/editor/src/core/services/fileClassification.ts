@@ -1,6 +1,6 @@
 /**
  * Read a file's classification labels from the PDF metadata the classify policy
- * writes (the `StirlingPDFClassification` Info-dict key). Loading PDF bytes is
+ * writes (the `RyanPDFClassification` Info-dict key). Loading PDF bytes is
  * expensive, so callers read once and cache the result on the file's stub
  * (`classificationLabels`); the Files sidebar then groups by label without
  * re-reading. Returns null for non-PDF / oversized / unclassified files.
@@ -11,7 +11,7 @@ import { extractPDFMetadata } from "@app/services/pdfMetadataService";
 import type { FileId } from "@app/types/file";
 import type { StirlingFileStub } from "@app/types/fileContext";
 
-export const CLASSIFICATION_METADATA_KEY = "StirlingPDFClassification";
+export const CLASSIFICATION_METADATA_KEY = "RyanPDFClassification";
 
 /** Cap the auto-read by size — never pull a multi-GB file into memory for a label. */
 const MAX_READ_BYTES = 25 * 1024 * 1024;

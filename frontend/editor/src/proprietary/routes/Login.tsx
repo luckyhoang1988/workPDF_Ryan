@@ -62,9 +62,9 @@ export default function Login() {
   // fresh login (arrived signed-out, then signed in) from an already-authed visit.
   const sawSignedOutRef = useRef(false);
 
-  const AUTO_LOGIN_ATTEMPTS_KEY = "stirling_sso_auto_login_attempts";
-  const AUTO_LOGIN_ERRORS_KEY = "stirling_sso_auto_login_errors";
-  const AUTO_LOGIN_LOGOUT_KEY = "stirling_sso_auto_login_logged_out";
+  const AUTO_LOGIN_ATTEMPTS_KEY = "ryanpdf_sso_auto_login_attempts";
+  const AUTO_LOGIN_ERRORS_KEY = "ryanpdf_sso_auto_login_errors";
+  const AUTO_LOGIN_LOGOUT_KEY = "ryanpdf_sso_auto_login_logged_out";
   const MAX_AUTO_LOGIN_ATTEMPTS = 2;
   const MAX_AUTO_LOGIN_ERRORS = 1;
 
@@ -386,12 +386,12 @@ export default function Login() {
 
   // Set document meta
   useDocumentMeta({
-    title: `${t("login.title", "Sign in")} - Stirling PDF`,
+    title: `${t("login.title", "Sign in")} - RyanPDF`,
     description: t(
       "app.description",
       "The Free Adobe Acrobat alternative (10M+ Downloads)",
     ),
-    ogTitle: `${t("login.title", "Sign in")} - Stirling PDF`,
+    ogTitle: `${t("login.title", "Sign in")} - RyanPDF`,
     ogDescription: t(
       "app.description",
       "The Free Adobe Acrobat alternative (10M+ Downloads)",
@@ -424,12 +424,12 @@ export default function Login() {
         <div className="auth-logo-block">
           <img
             src={loginHeader}
-            alt="Stirling PDF"
+            alt="RyanPDF"
             className="auth-logo-header auth-logo-header--light"
           />
           <img
             src={withBasePath("/modern-logo/LoginDarkModeHeader.svg")}
-            alt="Stirling PDF"
+            alt="RyanPDF"
             className="auth-logo-header auth-logo-header--dark"
           />
         </div>
@@ -551,7 +551,7 @@ export default function Login() {
                   >
                     {t("login.password", "Password")}:
                   </Text>{" "}
-                  stirling
+                  ryanpdf
                 </Text>
                 <Text
                   size="xs"

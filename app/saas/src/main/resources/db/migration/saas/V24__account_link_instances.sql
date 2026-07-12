@@ -10,7 +10,7 @@
 --   3. The instance authenticates all unattended metering / entitlement calls with that device
 --      credential. No long-lived user JWT lives on the server side.
 --
--- Twin of supabase/migrations/20260619000000_account_link_instances.sql (Stirling-PDF-SaaS).
+-- Twin of supabase/migrations/20260619000000_account_link_instances.sql (RyanPDF-SaaS).
 -- Inert until release: the AccountLinkController + device-credential filter are gated behind
 -- stirling.billing.account-link.enabled (default off). The table itself is harmless additive.
 

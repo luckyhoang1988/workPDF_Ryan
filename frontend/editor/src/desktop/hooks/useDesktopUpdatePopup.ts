@@ -8,7 +8,7 @@ import {
 } from "@app/services/desktopUpdateService";
 import { connectionModeService } from "@app/services/connectionModeService";
 
-const SNOOZE_KEY = "stirling-pdf-updater:snoozedUntil";
+const SNOOZE_KEY = "ryanpdf-pdf-updater:snoozedUntil";
 const STARTUP_DELAY_MS = 15_000;
 /**
  * When the headless auto-update path fails (bad signature, corrupt download,
@@ -20,7 +20,7 @@ const STARTUP_DELAY_MS = 15_000;
  * open Settings → Software Updates and click Install Now manually, which
  * clears the backoff on success.
  */
-const AUTO_FAILURE_KEY = "stirling-pdf-updater:autoFailedAt";
+const AUTO_FAILURE_KEY = "ryanpdf-pdf-updater:autoFailedAt";
 const AUTO_FAILURE_BACKOFF_MS = 6 * 60 * 60 * 1000;
 
 /**

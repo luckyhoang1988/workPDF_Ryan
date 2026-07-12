@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
  * action (clicking a download button / pressing Done in the install modal) mark
  * the step complete immediately. Persisted so it survives reloads.
  */
-const KEY = "stirling.portal.editorInstalled";
-const EVENT = "stirling:editor-installed";
+const KEY = "ryanpdf.portal.editorInstalled";
+const EVENT = "ryanpdf:editor-installed";
 
 export function markEditorInstalled(): void {
   try {

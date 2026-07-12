@@ -1,5 +1,5 @@
 /**
- * FileContext - Manages PDF files for Stirling PDF multi-tool workflow
+ * FileContext - Manages PDF files for RyanPDF multi-tool workflow
  *
  * Handles file state, memory management, and resource cleanup for large PDFs (up to 100GB+).
  * Users upload PDFs once and chain tools (split → merge → compress → view) without reloading.
@@ -420,12 +420,12 @@ function FileContextInner({
         thumbnail,
         processedMetadata,
       );
-      const stirlingUnlockedFile = createStirlingFile(
+      const ryanpdfUnlockedFile = createStirlingFile(
         unlockedFile,
         childStub.id,
       );
 
-      await consumeFilesWrapper([fileId], [stirlingUnlockedFile], [childStub]);
+      await consumeFilesWrapper([fileId], [ryanpdfUnlockedFile], [childStub]);
     },
     [consumeFilesWrapper, t],
   );

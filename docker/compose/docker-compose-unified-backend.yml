@@ -1,25 +1,25 @@
-# Example Docker Compose for Unified Stirling-PDF Container
+# Example Docker Compose for Unified RyanPDF Container
 # MODE=BACKEND: Backend API only (no frontend)
 
 services:
-  stirling-pdf-backend-only:
-    container_name: Stirling-PDF-Backend-Only
+  ryanpdf-backend-only:
+    container_name: RyanPDF-Backend-Only
     build:
       context: ../..
       dockerfile: docker/Dockerfile.unified
     ports:
       - "8080:8080"
     volumes:
-      - ./stirling/data:/usr/share/tessdata:rw
-      - ./stirling/config:/configs:rw
-      - ./stirling/logs:/logs:rw
-      - ./stirling/customFiles:/customFiles:rw
-      - ./stirling/pipeline:/pipeline:rw
+      - ./ryanpdf/data:/usr/share/tessdata:rw
+      - ./ryanpdf/config:/configs:rw
+      - ./ryanpdf/logs:/logs:rw
+      - ./ryanpdf/customFiles:/customFiles:rw
+      - ./ryanpdf/pipeline:/pipeline:rw
     environment:
       # MODE parameter: BACKEND only
       MODE: BACKEND
 
-      # Standard Stirling-PDF configuration
+      # Standard RyanPDF configuration
       DISABLE_ADDITIONAL_FEATURES: "false"
       DOCKER_ENABLE_SECURITY: "false"
       PUID: 1000
@@ -28,7 +28,7 @@ services:
 
       # Application settings
       SYSTEM_DEFAULTLOCALE: en-US
-      UI_APPNAME: Stirling-PDF
+      UI_APPNAME: RyanPDF
       SYSTEM_MAXFILESIZE: "100"
       METRICS_ENABLED: "true"
 

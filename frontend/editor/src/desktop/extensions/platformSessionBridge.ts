@@ -93,7 +93,7 @@ export async function getPlatformSessionUser(): Promise<PlatformSessionUser | nu
   let jwtClaims: SupabaseJwtClaims | null = null;
   const token =
     typeof window !== "undefined"
-      ? window.localStorage.getItem("stirling_jwt")
+      ? window.localStorage.getItem("ryanpdf_jwt")
       : null;
   if (token) {
     jwtClaims = decodeSupabaseJwt(token);

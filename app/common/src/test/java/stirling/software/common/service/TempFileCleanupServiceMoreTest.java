@@ -161,8 +161,8 @@ class TempFileCleanupServiceMoreTest {
             when(tempFileManagement.isStartupCleanup()).thenReturn(true);
             when(registry.contains(any(File.class))).thenReturn(false);
 
-            // An old stirling temp file in the custom dir should be removed by startup cleanup.
-            Path stale = Files.createFile(customTempDir.resolve("stirling-pdf-stale.tmp"));
+            // An old ryanpdf temp file in the custom dir should be removed by startup cleanup.
+            Path stale = Files.createFile(customTempDir.resolve("ryanpdf-stale.tmp"));
             backdate(stale, 48L * 60 * 60 * 1000); // 48h old, beyond non-container 24h cutoff
 
             cleanupService.init();
@@ -219,8 +219,8 @@ class TempFileCleanupServiceMoreTest {
             when(tempFileManagement.getSystemTempDir()).thenReturn(systemTempDir.toString());
             when(registry.contains(any(File.class))).thenReturn(false);
 
-            // Old stirling file in the system temp dir should be deleted in container mode.
-            Path stale = Files.createFile(systemTempDir.resolve("stirling-pdf-sys.tmp"));
+            // Old ryanpdf file in the system temp dir should be deleted in container mode.
+            Path stale = Files.createFile(systemTempDir.resolve("ryanpdf-sys.tmp"));
             backdate(stale, 2L * 60 * 60 * 1000); // 2h old
 
             int deleted =

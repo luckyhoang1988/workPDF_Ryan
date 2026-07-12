@@ -605,7 +605,7 @@ public class ApplicationProperties {
             private Boolean enabled = false;
             private Boolean autoCreateUser = true;
             private Boolean blockRegistration = false;
-            private String registrationId = "stirling";
+            private String registrationId = "ryanpdf";
 
             @ToString.Exclude
             @JsonProperty("idpMetadataUri")
@@ -930,8 +930,8 @@ public class ApplicationProperties {
         @Data
         public static class ServerCertificate {
             private boolean enabled =
-                    true; // Enable server-side "Sign with Stirling-PDF" certificate
-            private String organizationName = "Stirling PDF Inc";
+                    true; // Enable server-side "Sign with RyanPDF" certificate
+            private String organizationName = "RyanPDF Inc";
             private int validity = 365; // Certificate validity in days
             private boolean regenerateOnStartup =
                     false; // Generate a new certificate on each startup
@@ -1081,7 +1081,7 @@ public class ApplicationProperties {
         private String libreofficeDir = "";
 
         private String systemTempDir = "";
-        private String prefix = "stirling-pdf-";
+        private String prefix = "ryanpdf-";
         private long maxAgeHours = 24;
         private long cleanupIntervalMinutes = 30;
         private boolean startupCleanup = true;
@@ -1093,7 +1093,7 @@ public class ApplicationProperties {
                 return baseTmpDir;
             }
             String tmp = java.lang.System.getProperty("java.io.tmpdir");
-            return new File(tmp, "stirling-pdf").getPath();
+            return new File(tmp, "ryanpdf").getPath();
         }
 
         @JsonIgnore
@@ -1226,12 +1226,12 @@ public class ApplicationProperties {
 
             @Deprecated
             public String getCreator() {
-                return creator == null || creator.trim().isEmpty() ? "Stirling-PDF" : creator;
+                return creator == null || creator.trim().isEmpty() ? "RyanPDF" : creator;
             }
 
             @Deprecated
             public String getProducer() {
-                return producer == null || producer.trim().isEmpty() ? "Stirling-PDF" : producer;
+                return producer == null || producer.trim().isEmpty() ? "RyanPDF" : producer;
             }
         }
     }
@@ -1390,12 +1390,12 @@ public class ApplicationProperties {
                 private String producer;
 
                 public String getCreator() {
-                    return creator == null || creator.trim().isEmpty() ? "Stirling-PDF" : creator;
+                    return creator == null || creator.trim().isEmpty() ? "RyanPDF" : creator;
                 }
 
                 public String getProducer() {
                     return producer == null || producer.trim().isEmpty()
-                            ? "Stirling-PDF"
+                            ? "RyanPDF"
                             : producer;
                 }
             }

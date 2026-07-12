@@ -47,7 +47,7 @@ class IndexedDBManager {
       return existingPromise;
     }
 
-    // SaaS lineage shipped a v6 and a v7 of stirling-pdf-files whose
+    // SaaS lineage shipped a v6 and a v7 of ryanpdf-pdf-files whose
     // upgrade paths corrupted records (separate cursor walks racing in
     // one versionchange transaction). The SaaS build wipes those
     // databases on open to get users unstuck; we carry the wipe forward
@@ -55,7 +55,7 @@ class IndexedDBManager {
     // gets a clean v9 install instead of trying to migrate corrupt data.
     // Affected users have already lost their files - this is just the
     // recovery path they were already on.
-    if (config.name === "stirling-pdf-files") {
+    if (config.name === "ryanpdf-pdf-files") {
       const existingVersion = await this.getDatabaseVersion(config.name);
       if (existingVersion === 6 || existingVersion === 7) {
         console.warn(
@@ -161,7 +161,7 @@ class IndexedDBManager {
 
           // Perform data migration for files database
           if (
-            config.name === "stirling-pdf-files" &&
+            config.name === "ryanpdf-pdf-files" &&
             storeConfig.name === "files" &&
             store
           ) {
@@ -175,7 +175,7 @@ class IndexedDBManager {
         // file row), so folder_members / folder_run_states /
         // smart_folders are dead weight. The deleteObjectStore calls
         // must happen inside this versionchange transaction.
-        if (config.name === "stirling-pdf-files") {
+        if (config.name === "ryanpdf-pdf-files") {
           for (const orphan of [
             "folder_members",
             "folder_run_states",
@@ -192,7 +192,7 @@ class IndexedDBManager {
   }
 
   /**
-   * Single-pass migration for the `files` store on stirling-pdf-files.
+   * Single-pass migration for the `files` store on ryanpdf-pdf-files.
    *
    * Runs ONE openCursor() walk and applies every applicable per-version
    * delta to each record before `cursor.update()` writes it back. The
@@ -363,7 +363,7 @@ class IndexedDBManager {
 // Pre-defined database configurations
 export const DATABASE_CONFIGS = {
   FILES: {
-    name: "stirling-pdf-files",
+    name: "ryanpdf-pdf-files",
     version: 9,
     stores: [
       {
@@ -395,7 +395,7 @@ export const DATABASE_CONFIGS = {
   } as DatabaseConfig,
 
   DRAFTS: {
-    name: "stirling-pdf-drafts",
+    name: "ryanpdf-pdf-drafts",
     version: 1,
     stores: [
       {
@@ -406,7 +406,7 @@ export const DATABASE_CONFIGS = {
   } as DatabaseConfig,
 
   PREFERENCES: {
-    name: "stirling-pdf-preferences",
+    name: "ryanpdf-pdf-preferences",
     version: 1,
     stores: [
       {

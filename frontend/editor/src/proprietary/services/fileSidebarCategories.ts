@@ -20,7 +20,7 @@ export interface SidebarCategory {
 
 // v2: labelKeys hold label ids (was lower-cased names in v1); bumping discards
 // stale name-keyed prefs so they don't silently stop matching.
-const STORAGE_KEY = "stirling.fileSidebarCategories.v2";
+const STORAGE_KEY = "ryanpdf.fileSidebarCategories.v2";
 
 /** The built-in default, derived from LABEL_FAMILIES. Fresh copy per call (callers may mutate). */
 export function defaultCategories(): SidebarCategory[] {

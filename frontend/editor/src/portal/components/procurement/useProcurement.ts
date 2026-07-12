@@ -163,7 +163,7 @@ export function useProcurement(autoOpen = false): ProcurementController {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "stirling-enterprise.lic";
+      a.download = "ryanpdf-enterprise.lic";
       document.body.appendChild(a);
       a.click();
       a.remove();

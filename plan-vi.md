@@ -1,4 +1,4 @@
-# Kế hoạch: Hoàn thiện song ngữ Anh-Việt cho Stirling-PDF (webapp + desktop)
+# Kế hoạch: Hoàn thiện song ngữ Anh-Việt cho RyanPDF (webapp + desktop)
 
 ## Context
 

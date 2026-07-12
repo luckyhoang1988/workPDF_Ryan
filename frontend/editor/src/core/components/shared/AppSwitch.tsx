@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Button, Dropdown } from "@app/ui";
-import markLight from "@app/assets/brand/modern-logo/StirlingPDFLogoNoTextLight.svg";
-import markDark from "@app/assets/brand/modern-logo/StirlingPDFLogoNoTextDark.svg";
+import markLight from "@app/assets/brand/modern-logo/RyanPDFLogoNoTextLight.svg";
+import markDark from "@app/assets/brand/modern-logo/RyanPDFLogoNoTextDark.svg";
 import "@app/components/shared/AppSwitch.css";
 
 export type AppSwitchTarget = "editor" | "processor";

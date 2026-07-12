@@ -19,7 +19,7 @@ import stirling.software.common.model.PdfMetadata;
 public class PdfMetadataService {
 
     /** ({@code {labels}}). Written by the classify-and-label tool. */
-    public static final String CLASSIFICATION_KEY = "StirlingPDFClassification";
+    public static final String CLASSIFICATION_KEY = "RyanPDFClassification";
 
     private final ApplicationProperties applicationProperties;
     private final String stirlingPDFLabel;

@@ -57,7 +57,7 @@ keepWorking = "Continua treballant"
 loading = "Carregant..."
 loginAgreementAccept = "Accepta"
 loginAgreementDecline = "Rebutja"
-loginAgreementProvider = "Aquest avís és proporcionat pel vostre administrador, no per Stirling PDF Inc."
+loginAgreementProvider = "Aquest avís és proporcionat pel vostre administrador, no per RyanPDF Inc."
 loginAgreementTitle = "Acord d'inici de sessió"
 logOut = "Tanca la sessió"
 marginTooltip = "Distància entre el número de pàgina i la vora de la pàgina."
@@ -919,11 +919,11 @@ description = "Configureu funcions i funcionalitats opcionals."
 title = "Funcions"
 
 [admin.settings.features.serverCertificate]
-description = "Configureu la generació de certificats al costat del servidor per a la funcionalitat \"Sign with Stirling-PDF\""
+description = "Configureu la generació de certificats al costat del servidor per a la funcionalitat \"Sign with RyanPDF\""
 label = "Certificat del servidor"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Habilita el certificat del costat del servidor per a l'opció \"Sign with Stirling-PDF\""
+description = "Habilita el certificat del costat del servidor per a l'opció \"Sign with RyanPDF\""
 label = "Habilita el certificat del servidor"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1071,7 +1071,7 @@ description = "URL o nom de fitxer de la política de galetes"
 label = "Política de galetes"
 
 [admin.settings.legal.disclaimer]
-message = "En personalitzar aquests documents legals, assumiu la plena responsabilitat de garantir el compliment de totes les lleis i regulacions aplicables, incloent-hi, entre d'altres, el GDPR i altres requisits de protecció de dades de la UE. Només modifiqueu aquests paràmetres si: (1) esteu operant una instància personal/privada, (2) esteu fora de la jurisdicció de la UE i enteneu les vostres obligacions legals locals, o (3) heu obtingut l'assessorament legal adequat i accepteu la responsabilitat exclusiva de totes les dades dels usuaris i el compliment legal. Stirling-PDF i els seus desenvolupadors no assumeixen cap responsabilitat per les vostres obligacions legals."
+message = "En personalitzar aquests documents legals, assumiu la plena responsabilitat de garantir el compliment de totes les lleis i regulacions aplicables, incloent-hi, entre d'altres, el GDPR i altres requisits de protecció de dades de la UE. Només modifiqueu aquests paràmetres si: (1) esteu operant una instància personal/privada, (2) esteu fora de la jurisdicció de la UE i enteneu les vostres obligacions legals locals, o (3) heu obtingut l'assessorament legal adequat i accepteu la responsabilitat exclusiva de totes les dades dels usuaris i el compliment legal. RyanPDF i els seus desenvolupadors no assumeixen cap responsabilitat per les vostres obligacions legals."
 title = "Avís de responsabilitat legal"
 
 [admin.settings.legal.impressum]
@@ -1158,8 +1158,8 @@ description = "Nom d'usuari per a l'autenticació SMTP"
 label = "Nom d'usuari SMTP"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a RyanPDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning RyanPDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose RyanPDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1189,7 +1189,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning RyanPDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1202,12 +1202,12 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+description = "OAuth needs an external IdP. API key uses a RyanPDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled RyanPDF user."
+label = "Require an existing RyanPDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1218,7 +1218,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a RyanPDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1539,7 +1539,7 @@ description = "Quan està habilitat, només els ID d'usuari llistats poden utili
 label = "Permet ID d'usuari específics"
 
 [admin.settings.telegram.enabled]
-description = "Permet als usuaris interactuar amb Stirling PDF a través del bot de Telegram configurat."
+description = "Permet als usuaris interactuar amb RyanPDF a través del bot de Telegram configurat."
 label = "Habilita el bot de Telegram"
 
 [admin.settings.telegram.feedback]
@@ -1612,20 +1612,20 @@ settingsOverview = "Aquest és el <strong>Panell de paràmetres</strong>. Els pa
 systemCustomization = "Tenim nombroses maneres de personalitzar la IU: els <strong>Paràmetres del sistema</strong> us permeten canviar el nom de l’aplicació i els idiomes, <strong>Funcions</strong> permet la gestió de certificats del servidor, i <strong>Endpoints</strong> us permet habilitar o deshabilitar eines específiques per als vostres usuaris."
 teamsAndUsers = "Gestioneu <strong>Equips</strong> i usuaris individuals aquí. Podeu convidar usuaris nous via correu, enllaços compartibles o crear comptes personalitzats vosaltres mateixos."
 welcome = "Benvinguts a la <strong>Visita d’administració</strong>! Explorem les potents funcionalitats i paràmetres d’empresa disponibles per als administradors del sistema."
-wrapUp = "Això és la visita d’administració! Heu vist les funcionalitats d’empresa que fan de Stirling PDF una solució potent i personalitzable per a organitzacions. Accediu a aquesta visita en qualsevol moment des del menú <strong>Ajuda</strong>."
+wrapUp = "Això és la visita d’administració! Heu vist les funcionalitats d’empresa que fan de RyanPDF una solució potent i personalitzable per a organitzacions. Accediu a aquesta visita en qualsevol moment des del menú <strong>Ajuda</strong>."
 
 [adminUserSettings]
 admin = "Administrador"
 title = "Opcions de Control d'Usuari"
 
 [agents]
-stirling_name = "Stirling"
+stirling_name = "RyanPDF"
 
 [analytics]
 learnMore = "Més informació"
-paragraph1 = "Stirling PDF té analítiques opcionals per ajudar-nos a millorar el producte. No recopilem cap informació personal ni el contingut dels fitxers."
-paragraph2 = "Si us plau, considera habilitar les analítiques per ajudar Stirling PDF a créixer i permetre'ns entendre millor els nostres usuaris."
-title = "Vols ajudar a millorar Stirling PDF?"
+paragraph1 = "RyanPDF té analítiques opcionals per ajudar-nos a millorar el producte. No recopilem cap informació personal ni el contingut dels fitxers."
+paragraph2 = "Si us plau, considera habilitar les analítiques per ajudar RyanPDF a créixer i permetre'ns entendre millor els nostres usuaris."
+title = "Vols ajudar a millorar RyanPDF?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2558,7 +2558,7 @@ bullet1 = "Admet formats PEM, PKCS12, JKS i certificats de servidor"
 bullet2 = "Opció per mostrar o amagar la signatura al PDF"
 bullet3 = "Afegeix motiu, ubicació i nom del signant"
 bullet4 = "Trieu en quina pàgina col·locar les signatures visibles"
-bullet5 = "Utilitza el certificat del servidor per a l'opció senzilla 'Sign with Stirling-PDF'"
+bullet5 = "Utilitza el certificat del servidor per a l'opció senzilla 'Sign with RyanPDF'"
 text = "Per signar un PDF, necessiteu un certificat digital (com PEM, PKCS12 o JKS). Podeu triar fer visible la signatura al document o mantenir-la invisible només per a seguretat."
 title = "Afegir signatures"
 
@@ -2739,10 +2739,10 @@ copy = "Copia el missatge"
 
 [chat.fab]
 close = "Close chat"
-open = "Open Stirling AI assistant"
+open = "Open RyanPDF AI assistant"
 
 [chat.header]
-agentMenu = "Opcions de l'agent Stirling"
+agentMenu = "Opcions de l'agent RyanPDF"
 clearChat = "Neteja el xat"
 
 [chat.input]
@@ -3072,14 +3072,14 @@ upgradeButton = "Actualitza el compte"
 
 [config.apiKeys]
 copyKeyAriaLabel = "Copia la clau API"
-description = "La vostra clau API per accedir al conjunt d’eines PDF de Stirling. Copieu-la al vostre projecte o actualitzeu-la per generar-ne una de nova."
-docsDescription = "Més informació sobre la integració amb Stirling PDF:"
+description = "La vostra clau API per accedir al conjunt d’eines PDF de RyanPDF. Copieu-la al vostre projecte o actualitzeu-la per generar-ne una de nova."
+docsDescription = "Més informació sobre la integració amb RyanPDF:"
 docsLink = "Documentació de l’API"
 docsTitle = "Documentació de l’API"
 generateError = "No hem pogut generar la vostra clau API."
 goToAccount = "Vés al compte"
 guestInfo = "Els usuaris convidats no reben claus API. Creeu un compte per obtenir una clau API que pugueu utilitzar a les vostres aplicacions."
-intro = "Utilitzeu la vostra clau API per accedir programàticament a les capacitats de processament de Stirling PDF."
+intro = "Utilitzeu la vostra clau API per accedir programàticament a les capacitats de processament de RyanPDF."
 label = "Clau API"
 publicKeyAriaLabel = "Clau API pública"
 refreshAriaLabel = "Actualitza la clau API"
@@ -3103,10 +3103,10 @@ title = "Actualitza les claus API"
 warning = "⚠️ Avís: Aquesta acció generarà claus API noves i invalidarà les anteriors."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your RyanPDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run RyanPDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using RyanPDF directly."
 title = "MCP Server"
 viewApiKeys = "View API keys"
 
@@ -3123,7 +3123,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your RyanPDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -3232,7 +3232,7 @@ showPreferencesBtn = "Gestiona les preferències"
 title = "Com fem servir les galetes"
 
 [cookieBanner.popUp.description]
-1 = "Fem servir galetes i altres tecnologies per fer que Stirling PDF funcioni millor per a vosaltres — ajudant-nos a millorar les nostres eines i a continuar creant funcionalitats que us agradaran."
+1 = "Fem servir galetes i altres tecnologies per fer que RyanPDF funcioni millor per a vosaltres — ajudant-nos a millorar les nostres eines i a continuar creant funcionalitats que us agradaran."
 2 = "If you’d rather not, clicking 'No Thanks' will only enable the essential cookies needed to keep things running smoothly."
 
 [cookieBanner.preferencesModal]
@@ -3245,12 +3245,12 @@ subtitle = "Ús de galetes"
 title = "Centre de preferències de consentiment"
 
 [cookieBanner.preferencesModal.analytics]
-description = "Aquestes galetes ens ajuden a entendre com s'utilitzen les nostres eines, de manera que puguem centrar-nos a construir les funcionalitats que la nostra comunitat valora més. Tingueu la seguretat que Stirling PDF no pot i mai rastrejarà el contingut dels documents amb què treballeu."
+description = "Aquestes galetes ens ajuden a entendre com s'utilitzen les nostres eines, de manera que puguem centrar-nos a construir les funcionalitats que la nostra comunitat valora més. Tingueu la seguretat que RyanPDF no pot i mai rastrejarà el contingut dels documents amb què treballeu."
 title = "Analítica"
 
 [cookieBanner.preferencesModal.description]
-1 = "Stirling PDF utilitza galetes i tecnologies similars per millorar la vostra experiència i entendre com s'utilitzen les nostres eines. Això ens ajuda a millorar el rendiment, desenvolupar les funcionalitats que més us importen i oferir suport continu als nostres usuaris."
-2 = "Stirling PDF no pot —i mai— rastrejar ni accedir al contingut dels documents que utilitzeu."
+1 = "RyanPDF utilitza galetes i tecnologies similars per millorar la vostra experiència i entendre com s'utilitzen les nostres eines. Això ens ajuda a millorar el rendiment, desenvolupar les funcionalitats que més us importen i oferir suport continu als nostres usuaris."
+2 = "RyanPDF no pot —i mai— rastrejar ni accedir al contingut dels documents que utilitzeu."
 3 = "La vostra privadesa i confiança són al cor del que fem."
 
 [cookieBanner.preferencesModal.necessary]
@@ -3346,14 +3346,14 @@ message = "No s'ha pogut establir el gestor PDF per defecte"
 title = "Error"
 
 [defaultApp.prompt]
-message = "Fes que Stirling PDF sigui l'aplicació per defecte per obrir fitxers PDF."
+message = "Fes que RyanPDF sigui l'aplicació per defecte per obrir fitxers PDF."
 
 [defaultApp.settingsOpened]
-message = "Selecciona Stirling PDF a la configuració del sistema"
+message = "Selecciona RyanPDF a la configuració del sistema"
 title = "Configuració oberta"
 
 [defaultApp.success]
-message = "Stirling PDF ara és el teu editor PDF per defecte"
+message = "RyanPDF ara és el teu editor PDF per defecte"
 title = "Aplicació per defecte establerta"
 
 [desktopUpdate]
@@ -3369,7 +3369,7 @@ updateFailedMessage = "No s'ha pogut descarregar o instal·lar l'actualització.
 
 [desktopUpdate.blocked]
 docsLink = "Consulta la documentació d'instal·lació"
-message = "Stirling-PDF no té permís per actualitzar-se en aquesta màquina."
+message = "RyanPDF no té permís per actualitzar-se en aquesta màquina."
 title = "Permisos d'administrador necessaris"
 
 [devAirgapped]
@@ -3939,7 +3939,7 @@ title = "Mou a la carpeta"
 [filesPage.origin]
 all = "Totes les fonts"
 cloud = "Núvol"
-cloudHint = "Emmagatzemat al servidor de Stirling"
+cloudHint = "Emmagatzemat al servidor de RyanPDF"
 local = "Local"
 localHint = "Només emmagatzemat en aquest navegador"
 shared = "Compartit"
@@ -4203,7 +4203,7 @@ invisible = "Invisible (només metadades)"
 location = "Ubicació:"
 logo = "Logotip:"
 logoHidden = "Sense logotip"
-logoShown = "Es mostra el logotip de Stirling PDF"
+logoShown = "Es mostra el logotip de RyanPDF"
 participantCount_one = "{{count}} participant will sign in order"
 participantCount_other = "{{count}} participants will sign in order"
 participants = "Participants"
@@ -4257,7 +4257,7 @@ title = "Signatura seqüencial"
 dismiss = "Tanca el bàner"
 message = "Creeu un compte gratuït per desar la vostra feina, accedir a més funcions i donar suport al projecte."
 signUp = "Registreu-vos gratis"
-title = "Esteu utilitzant Stirling PDF com a convidat!"
+title = "Esteu utilitzant RyanPDF com a convidat!"
 
 [home.addAttachments]
 desc = "Afegeix o elimina fitxers incrustats (adjunts) a o d'un PDF"
@@ -4416,7 +4416,7 @@ tags = "combina,uneix,unifica"
 title = "Fusiona"
 
 [home.mobile]
-brandAlt = "Logotip de Stirling PDF"
+brandAlt = "Logotip de RyanPDF"
 openFiles = "Obre fitxers"
 swipeHint = "Llisca a l'esquerra o a la dreta per canviar de vista"
 tools = "Eines"
@@ -4455,7 +4455,7 @@ tags = "organitza,reorganitza,reordena"
 title = "Organitza"
 
 [home.pdfTextEditor]
-desc = "Revisa i edita exportacions JSON de Stirling PDF amb edició de text agrupada i regeneració del PDF"
+desc = "Revisa i edita exportacions JSON de RyanPDF amb edició de text agrupada i regeneració del PDF"
 tags = "edit text,modify text,change text,edit content,update text,rewrite,correct,amend,redline,revise,text editor,content editor"
 title = "Editor de text PDF"
 
@@ -4641,7 +4641,7 @@ passwordRequired = "Cal contrasenya"
 signIn = "Inicieu sessió"
 validating = "S’està validant la invitació..."
 validationError = "No s’ha pogut validar l’enllaç d’invitació"
-welcome = "Us donem la benvinguda a Stirling PDF"
+welcome = "Us donem la benvinguda a RyanPDF"
 welcomeSubtitle = "Completeu la configuració del compte per començar"
 welcomeTitle = "Heu estat convidats!"
 
@@ -4669,7 +4669,7 @@ terms = "Termes i condicions"
 title = "Llicències de Tercers"
 
 [localMode]
-toolUnavailable = "Aquesta eina requereix un compte. Inicia sessió a Stirling Cloud o connecta’t a un servidor autoallotjat per utilitzar-la."
+toolUnavailable = "Aquesta eina requereix un compte. Inicia sessió a RyanPDF Cloud o connecta’t a un servidor autoallotjat per utilitzar-la."
 
 [localMode.toolPicker]
 message = "Inicia sessió per desbloquejar totes les eines."
@@ -4726,7 +4726,7 @@ subtitle = "Amb més d'una dotzena d'eines per censurar, signar, llegir i manipu
 title = "Edita PDF per mostrar/protegir la informació que vulguis"
 
 [login.slides.overview]
-alt = "Visió general de Stirling PDF"
+alt = "Visió general de RyanPDF"
 subtitle = "Una suite al núvol centrada en la privadesa per a PDF que et permet convertir, signar, censurar i gestionar documents, amb més de 50 eines potents."
 title = "Tot el que necessites per als teus PDF en un sol lloc."
 
@@ -4844,7 +4844,7 @@ message = "L'autenticació no ha estat correcta. Pots tancar aquesta finestra i 
 title = "Ha fallat l'autenticació"
 
 [oauth.success]
-message = "Pots tancar aquesta finestra i tornar a Stirling PDF."
+message = "Pots tancar aquesta finestra i tornar a RyanPDF."
 title = "Autenticació correcta"
 
 [oauthConsent]
@@ -4857,17 +4857,17 @@ loadFailed = "This authorisation request is invalid or has expired. Close this t
 loading = "Loading authorisation request..."
 missingId = "Missing authorisation request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your RyanPDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your RyanPDF account to continue connecting the app."
 title = "Authorise access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your RyanPDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -4989,7 +4989,7 @@ skipForNow = "Omet per ara"
 skipTheTour = "Omet la visita guiada"
 
 [onboarding.desktopInstall]
-body = "Stirling funciona millor com a aplicació d'escriptori. Pots usar-la fora de línia, accedir als documents més ràpid i fer edicions localment a l'ordinador."
+body = "RyanPDF funciona millor com a aplicació d'escriptori. Pots usar-la fora de línia, accedir als documents més ràpid i fer edicions localment a l'ordinador."
 selectOs = "Selecciona el sistema operatiu"
 title = "Baixa"
 titleWithOs = "Baixa per a {{osLabel}}"
@@ -4999,8 +4999,8 @@ authenticationCode = "Codi d'autenticació"
 qrCodeLoading = "Generant el codi QR…"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Quan habilitis el mode d'inici de sessió, podràs gestionar usuaris, configurar paràmetres i supervisar la salut del servidor. Les primeres <strong>{{freeTierLimit}}</strong> persones del teu servidor poden usar Stirling gratuïtament."
-adminBodyLoginEnabled = "Com a administrador, pots gestionar usuaris, configurar paràmetres i supervisar la salut del servidor. Les primeres <strong>{{freeTierLimit}}</strong> persones del teu servidor poden usar Stirling gratuïtament."
+adminBodyLoginDisabled = "Quan habilitis el mode d'inici de sessió, podràs gestionar usuaris, configurar paràmetres i supervisar la salut del servidor. Les primeres <strong>{{freeTierLimit}}</strong> persones del teu servidor poden usar RyanPDF gratuïtament."
+adminBodyLoginEnabled = "Com a administrador, pots gestionar usuaris, configurar paràmetres i supervisar la salut del servidor. Les primeres <strong>{{freeTierLimit}}</strong> persones del teu servidor poden usar RyanPDF gratuïtament."
 adminTitle = "Resum d'administració"
 userBody = "Convida companys, assigna rols i mantén els documents organitzats en un espai de treball segur. Habilita el mode d'inici de sessió quan estiguis llest per anar més enllà de l'ús individual."
 userTitle = "Resum del pla"
@@ -5008,7 +5008,7 @@ userTitle = "Resum del pla"
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to RyanPDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -5028,20 +5028,20 @@ rolePlaceholder = "Confirma el teu rol"
 roleUser = "Usuari"
 
 [onboarding.serverLicense]
-freeBody = "La nostra llicència <strong>Open-Core</strong> permet fins a <strong>{{freeTierLimit}}</strong> usuaris gratuïts per servidor. Per escalar sense interrupcions i obtenir accés anticipat a la nova <strong>eina d'edició de text PDF</strong>, recomanem el pla Stirling Server: edició completa i <strong>seients il·limitats</strong> per 99 $/servidor/mes."
+freeBody = "La nostra llicència <strong>Open-Core</strong> permet fins a <strong>{{freeTierLimit}}</strong> usuaris gratuïts per servidor. Per escalar sense interrupcions i obtenir accés anticipat a la nova <strong>eina d'edició de text PDF</strong>, recomanem el pla RyanPDF Server: edició completa i <strong>seients il·limitats</strong> per 99 $/servidor/mes."
 freeTitle = "Llicència del servidor"
-overLimitBody = "La nostra llicència permet fins a <strong>{{freeTierLimit}}</strong> usuaris gratuïts per servidor. Tens <strong>{{overLimitUserCopy}}</strong> usuaris de Stirling. Per continuar sense interrupcions, actualitza al pla Stirling Server: <strong>seients il·limitats</strong>, edició de text de PDF i control d'administració complet per 99 $/servidor/mes."
+overLimitBody = "La nostra llicència permet fins a <strong>{{freeTierLimit}}</strong> usuaris gratuïts per servidor. Tens <strong>{{overLimitUserCopy}}</strong> usuaris de RyanPDF. Per continuar sense interrupcions, actualitza al pla RyanPDF Server: <strong>seients il·limitats</strong>, edició de text de PDF i control d'administració complet per 99 $/servidor/mes."
 overLimitTitle = "Cal una llicència de servidor"
 seePlans = "Veure plans →"
 upgrade = "Actualitza ara →"
 
 [onboarding.tourOverview]
-body = "Stirling PDF V2 inclou desenes d'eines i un disseny renovat. Fes una visita ràpida per veure què ha canviat i on trobar les funcions que necessites."
+body = "RyanPDF V2 inclou desenes d'eines i un disseny renovat. Fes una visita ràpida per veure què ha canviat i on trobar les funcions que necessites."
 title = "Resum de la visita"
 
 [onboarding.welcomeSlide]
-body = "Stirling PDF ara està llest per a equips de totes les mides. Aquesta actualització inclou un disseny nou, potents capacitats d'administració i la funció més demanada: <strong>Editar text</strong>."
-title = "Benvingut a Stirling"
+body = "RyanPDF ara està llest per a equips de totes les mides. Aquesta actualització inclou un disseny nou, potents capacitats d'administració i la funció més demanada: <strong>Editar text</strong>."
+title = "Benvingut a RyanPDF"
 
 [onboarding.whatsNew]
 activeFilesView = "Utilitza Fitxers actius per veure tot el que tens obert i triar amb què treballar."
@@ -5347,7 +5347,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarise, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any RyanPDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -5406,7 +5406,7 @@ leader = "Team owner"
 member = "Member"
 
 [payg.signupRequired]
-body = "Stirling PDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using Stirling as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
+body = "RyanPDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using RyanPDF as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
 cancel = "Not now"
 cta = "Sign up free"
 subtext = "Creating an account is free and takes a few seconds. No credit card required."
@@ -5454,7 +5454,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. RyanPDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -5462,7 +5462,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarise, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any RyanPDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -5893,7 +5893,7 @@ upToFiveUsers = "Fins a 5 usuaris"
 usageTrackingPrometheus = "Seguiment d'ús i Prometheus"
 
 [plan.licenseWarning]
-body = "Tens {{total}} usuaris, però el nivell gratuït només admet {{limit}} per servidor. Actualitza per mantenir Stirling PDF funcionant sense problemes."
+body = "Tens {{total}} usuaris, però el nivell gratuït només admet {{limit}} per servidor. Actualitza per mantenir RyanPDF funcionant sense problemes."
 cta = "Veure plans"
 overLimit = "més de {{limit}}"
 title = "S'ha assolit el límit gratuït d'autoallotjats"
@@ -6192,25 +6192,25 @@ comingSoon = "Properament"
 [portal.accountLink.card]
 billingNote = "El processament desatès es factura al moneder de la teva organització."
 eyebrow = "Enllaç del compte"
-linkButton = "Enllaça el teu compte de Stirling"
+linkButton = "Enllaça el teu compte de RyanPDF"
 linked = "Enllaçat"
 linkedAs = "Enllaçat com a {{name}}."
 linkedGeneric = "Aquesta instància està enllaçada."
 notLinked = "No enllaçat"
-title = "Enllaça aquesta organització amb el seu compte de Stirling"
+title = "Enllaça aquesta organització amb el seu compte de RyanPDF"
 unlink = "Desenllaça"
 
 [portal.accountLink.card.error]
 title = "No s'ha pogut enllaçar"
 
 [portal.accountLink.card.loginNotConfigured]
-after = "per habilitar l'enllaç de comptes amb el compte de Stirling allotjat. En dev pots simular l'inici de sessió des del diàleg d'enllaç."
+after = "per habilitar l'enllaç de comptes amb el compte de RyanPDF allotjat. En dev pots simular l'inici de sessió des del diàleg d'enllaç."
 before = "Defineix"
 title = "L'inici de sessió SaaS no està configurat"
 
 [portal.accountLink.gate]
 action = "Enllaça el compte"
-description = "Enllaça el compte de Stirling d'aquesta organització per utilitzar funcions facturables."
+description = "Enllaça el compte de RyanPDF d'aquesta organització per utilitzar funcions facturables."
 title = "Enllaça per desbloquejar"
 titleFeature = "Enllaça per desbloquejar {{feature}}"
 
@@ -6242,13 +6242,13 @@ never = "mai"
 
 [portal.accountLink.modal]
 linkSubtitle = "Inicia la sessió al compte al qual s'hauria de facturar aquest servidor."
-linkTitle = "Enllaça el teu compte de Stirling"
-reauthSubtitle = "La sessió ha caducat: torna a iniciar la sessió al teu compte de Stirling. La instància continua enllaçada."
+linkTitle = "Enllaça el teu compte de RyanPDF"
+reauthSubtitle = "La sessió ha caducat: torna a iniciar la sessió al teu compte de RyanPDF. La instància continua enllaçada."
 reauthTitle = "Torna a iniciar la sessió"
 simulateSignIn = "Simula l'inici de sessió (dev)"
 
 [portal.accountLink.modal.loginNotConfigured]
-after = "per habilitar l'enllaç dins de l'aplicació amb el compte de Stirling allotjat."
+after = "per habilitar l'enllaç dins de l'aplicació amb el compte de RyanPDF allotjat."
 and = "i"
 before = "Defineix"
 title = "L'inici de sessió SaaS no està configurat"
@@ -6257,7 +6257,7 @@ title = "L'inici de sessió SaaS no està configurat"
 instancesSub = "Totes les instàncies autoallotjades registrades en aquesta organització. Revoca una credencial per tallar-ne immediatament l'accés desatès."
 instancesTitle = "Instàncies enllaçades"
 revokeError = "No s'ha pogut revocar la instància"
-sub = "Enllaça aquesta organització autoallotjada amb el seu compte de Stirling perquè el processament desatès es facturi al moneder de la teva organització."
+sub = "Enllaça aquesta organització autoallotjada amb el seu compte de RyanPDF perquè el processament desatès es facturi al moneder de la teva organització."
 
 [portal.accountLink.panel.loadError]
 forbidden = "Només el propietari de l'equip pot veure les instàncies enllaçades de l'organització."
@@ -6354,7 +6354,7 @@ close = "Tanca l'assistent"
 error = "No s'ha pogut contactar amb l'assistent."
 errorWithDetail = "No s'ha pogut contactar amb l'assistent: {{detail}}"
 inputAriaLabel = "Pregunta a l'assistent"
-inputPlaceholder = "Pregunta sobre Stirling…"
+inputPlaceholder = "Pregunta sobre RyanPDF…"
 open = "Obre l'assistent"
 send = "Envia"
 title = "Assistent"
@@ -6392,7 +6392,7 @@ title = "Stripe no està configurat"
 cta = "Crea el teu pressupost Enterprise"
 description = "Descomptes per volum compromès, desplegament air-gapped, MSA personalitzat i revisions de seguretat, i col·laboracions amb distribuïdors de tercers."
 eyebrow = "Descompte per volum · 1M+ PDF"
-title = "Stirling Enterprise"
+title = "RyanPDF Enterprise"
 
 [portal.billing.freeEditors]
 activeThisMonth = "Actius aquest mes"
@@ -6439,9 +6439,9 @@ viewAriaLabel = "Mostra la factura {{number}} a Stripe"
 viewLink = "Mostra ↗"
 
 [portal.billing.linkPrompt]
-cta = "Enllaça el compte de Stirling"
+cta = "Enllaça el compte de RyanPDF"
 description = "L'edició manual de PDF — visualitzar, signar, combinar, dividir, afegir marca d'aigua, comprimir, convertir, OCR manual — sempre és gratuïta, estigui enllaçada o no. Enllaça per reclamar 500 PDF gratuïts de processament mesurat (automatització, AI i l'API); quan en necessitis més, activa el pla Processor i paga només pel que utilitzis."
-title = "Enllaça el teu compte de Stirling"
+title = "Enllaça el teu compte de RyanPDF"
 
 [portal.billing.paymentMethod]
 billedMonthly = "Facturat mensualment"
@@ -6792,7 +6792,7 @@ time = "Hora"
 user = "Usuari"
 
 [portal.editorAdmin]
-subtitle = "Desplega l'Editor de Stirling PDF, vincula instàncies self-hosted a la teva organització i opera la flota en execució — objectius, salut, credencials i activació offline en un sol lloc."
+subtitle = "Desplega l'Editor de RyanPDF, vincula instàncies self-hosted a la teva organització i opera la flota en execució — objectius, salut, credencials i activació offline en un sol lloc."
 title = "Desplegament de l'Editor"
 
 [portal.editorAdmin.health.columns]
@@ -6878,7 +6878,7 @@ title = "Alguna cosa ha anat malament en aquesta pàgina"
 [portal.home.editor]
 activeUsers = "{{n}} actius"
 invite = "Convida companys d'equip"
-name = "Stirling PDF Editor"
+name = "RyanPDF Editor"
 open = "Obre al navegador"
 updated = "actualitzat {{time}}"
 
@@ -6938,7 +6938,7 @@ title = "Emet una clau API"
 [portal.infrastructure]
 manageEditorDeployment = "Gestiona el desplegament de l'Editor"
 sectionsAriaLabel = "Seccions d'infraestructura"
-subtitle = "Desplegaments, credencials, postura de seguretat, emmagatzematge i el rastre d'auditoria del teu espai de treball de Stirling."
+subtitle = "Desplegaments, credencials, postura de seguretat, emmagatzematge i el rastre d'auditoria del teu espai de treball de RyanPDF."
 title = "Infraestructura"
 
 [portal.infrastructure.apiKeys]
@@ -6958,7 +6958,7 @@ usageMonth = "Ús aquest mes"
 usageToday = "Ús avui"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Crea una clau amb abast per començar a cridar la Stirling API."
+description = "Crea una clau amb abast per començar a cridar la RyanPDF API."
 title = "Encara no hi ha claus API"
 
 [portal.infrastructure.audit]
@@ -7027,7 +7027,7 @@ keyNameLabel = "Nom de la clau"
 keyNamePlaceholder = "p. ex. Producció · ingestió"
 permissionsLabel = "Permisos"
 secretKeyCaption = "Clau secreta"
-secretWarning = "Desa-ho en un gestor de secrets. Stirling només emmagatzema un hash — no hi ha manera de recuperar-ho més tard."
+secretWarning = "Desa-ho en un gestor de secrets. RyanPDF només emmagatzema un hash — no hi ha manera de recuperar-ho més tard."
 subtitle = "Limita la clau al mínim que necessita. La pots rotar o revocar en qualsevol moment."
 subtitleCreated = "Copia aquest secret ara — no es tornarà a mostrar."
 title = "Crea una clau API"
@@ -7062,7 +7062,7 @@ version = "Versió"
 
 [portal.infrastructure.deployments.regions]
 heading = "Regions"
-subheading = "Salut en directe de cada regió Stirling desplegada — latència, càrrega i versió del desplegament."
+subheading = "Salut en directe de cada regió RyanPDF desplegada — latència, càrrega i versió del desplegament."
 
 [portal.infrastructure.deployments.regions.empty]
 description = "Les regions desplegades apareixen aquí un cop s'hagi proveït el teu espai de treball."
@@ -7119,16 +7119,16 @@ operation = "Operació"
 routedTo = "Encaminat a"
 
 [portal.infrastructure.security.access.byok]
-description = "Proporciona una clau del teu propi KMS. Stirling hi xifra però encara pot llegir."
+description = "Proporciona una clau del teu propi KMS. RyanPDF hi xifra però encara pot llegir."
 label = "Porta la teva pròpia clau (BYOK)"
 
 [portal.infrastructure.security.access.hyok]
-description = "Les claus no surten mai del teu KMS. Stirling només conserva text xifrat."
+description = "Les claus no surten mai del teu KMS. RyanPDF només conserva text xifrat."
 label = "Conserva la teva pròpia clau (HYOK)"
 
 [portal.infrastructure.security.access.stirling]
-description = "Stirling gestiona les claus de xifratge. El més senzill — zero operacions de claus per part teva."
-label = "Claus conservades per Stirling"
+description = "RyanPDF gestiona les claus de xifratge. El més senzill — zero operacions de claus per part teva."
+label = "Claus conservades per RyanPDF"
 
 [portal.infrastructure.security.accessPolicy]
 heading = "Política d'accés a documents"
@@ -7142,15 +7142,15 @@ viewReport = "Mostra l'informe →"
 
 [portal.infrastructure.security.compliance]
 heading = "Compliment"
-subheading = "Atestacions i certificacions que cobreixen la plataforma Stirling."
+subheading = "Atestacions i certificacions que cobreixen la plataforma RyanPDF."
 
 [portal.infrastructure.security.empty]
 description = "La configuració de seguretat del teu espai de treball apareixerà aquí."
 title = "Postura de seguretat no disponible"
 
 [portal.infrastructure.security.hyokBanner]
-description = "Amb HYOK, les claus de xifratge no surten mai del teu KMS. Stirling emmagatzema i processa només text xifrat que pots revocar en qualsevol moment."
-title = "Stirling no pot desxifrar els teus documents"
+description = "Amb HYOK, les claus de xifratge no surten mai del teu KMS. RyanPDF emmagatzema i processa només text xifrat que pots revocar en qualsevol moment."
+title = "RyanPDF no pot desxifrar els teus documents"
 
 [portal.infrastructure.security.ipAllowlist]
 empty = "No hi ha intervals IP configurats — es permeten totes les IP."
@@ -7179,7 +7179,7 @@ subheading = "Custòdia de les claus que xifren documents en repòs — qui pot 
 
 [portal.infrastructure.security.managedBanner]
 description = "La custòdia porta-la-teva-pròpia-clau (BYOK) i conserva-la-teva-pròpia-clau (HYOK) està disponible a Enterprise. Actualitza per proporcionar claus del teu propi KMS."
-title = "Les claus les gestiona Stirling al teu pla"
+title = "Les claus les gestiona RyanPDF al teu pla"
 
 [portal.infrastructure.security.residency.apac]
 description = "ap-southeast-1"
@@ -7660,7 +7660,7 @@ upload = "Carrega"
 
 [portal.procurement.agreement]
 agreeCta = "Accepta i subscriu-te"
-confirm = "He llegit i accepto el Stirling Enterprise Agreement."
+confirm = "He llegit i accepto el RyanPDF Enterprise Agreement."
 eyebrow = "Acord"
 intro = "Un únic acord combinat cobreix el teu tracte: Master Service Agreement, Order Form, EULA i Data Processing Agreement. Revisa'l i després accepta per convertir el pressupost en una subscripció compromesa."
 title = "Revisa el teu acord enterprise"
@@ -7675,7 +7675,7 @@ country = "País"
 countryEuro = "Eurozona (EUR €)"
 countryUK = "Regne Unit (GBP £)"
 countryUS = "Estats Units (USD $)"
-eula = "He llegit i accepto l'EULA de Stirling Enterprise. Regeix l'acord generat a partir d'aquest pressupost."
+eula = "He llegit i accepto l'EULA de RyanPDF Enterprise. Regeix l'acord generat a partir d'aquest pressupost."
 generate = "Genera pressupost"
 included = "Inclòs"
 indemnification = "Indemnització de PI"
@@ -7758,7 +7758,7 @@ daysLeft_one = "Queda {{count}} dia"
 daysLeft_other = "Queden {{count}} dies"
 engineerLabel = "El teu enginyer de solucions"
 eyebrow = "El teu desplegament"
-live = "Ja estàs en producció amb Stirling Enterprise"
+live = "Ja estàs en producció amb RyanPDF Enterprise"
 nextStep = "Pas següent: {{action}}"
 subtitle = "El teu enginyer de solucions és present en cada pas. Una acció següent cada vegada; la llista completa és a sota."
 title = "De la prova a producció, un camí guiat"
@@ -7785,7 +7785,7 @@ gatingAction = "Accepta el teu pressupost"
 label = "Pressupost"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Avalua Stirling amb els teus documents i fluxos de treball."
+blurb = "Avalua RyanPDF amb els teus documents i fluxos de treball."
 gatingAction = "Crea el teu pressupost"
 label = "Prova"
 
@@ -7799,14 +7799,14 @@ label = "La teva clau de llicència"
 
 [portal.procurement.link]
 cta = "Enllaça el compte"
-description = "La contractació s'executa amb el teu compte de Stirling enllaçat: així aprovisionem la prova, fixem el preu del pressupost i iniciem la facturació. Enllaça un compte per començar."
+description = "La contractació s'executa amb el teu compte de RyanPDF enllaçat: així aprovisionem la prova, fixem el preu del pressupost i iniciem la facturació. Enllaça un compte per començar."
 eyebrow = "Enterprise"
 title = "Enllaça el teu compte per començar"
 
 [portal.procurement.live]
 description = "La teva subscripció és activa i la teva llicència s'ha emès. El teu equip està aprovisionat i la facturació ha començat."
 eyebrow = "En producció"
-title = "Ja estàs en producció amb Stirling Enterprise"
+title = "Ja estàs en producció amb RyanPDF Enterprise"
 
 [portal.procurement.locked]
 description = "Les claus de prova, els pressupostos per volum compromès, l'acord d'una sola signatura, el pagament i el teu registre de documents seran aquí quan iniciïs una avaluació enterprise."
@@ -7841,7 +7841,7 @@ requestBodyFree = "Ho generem sota demanda. Confirma-ho i el teu enginyer de sol
 requestBodyPaid = "Aquest és un complement de pagament. Confirma-ho i el teu enginyer de solucions el dimensionarà i t'enviarà la documentació."
 requestCta = "Sol·licita"
 requestTitle = "Sol·licita aquest document"
-signBody = "Obre el Stirling Enterprise Agreement per a signatura electrònica: una signatura cobreix l'MSA, el formulari de comanda, l'EULA i el DPA. Contrasignem automàticament i avances al pagament."
+signBody = "Obre el RyanPDF Enterprise Agreement per a signatura electrònica: una signatura cobreix l'MSA, el formulari de comanda, l'EULA i el DPA. Contrasignem automàticament i avances al pagament."
 signCta = "Obre per signar"
 signTitle = "Revisa i signa el teu acord"
 uploadBody = "Envia'ns la teva PO i emetrem la factura segons les teves condicions. Arrossega el PDF o tria un fitxer a sota."
@@ -7893,7 +7893,7 @@ title = "Encara no hi ha res aquí"
 
 [portal.search]
 ariaLabel = "Cerca"
-placeholder = "Cerca a Stirling — endpoints, pipelines, docs…"
+placeholder = "Cerca a RyanPDF — endpoints, pipelines, docs…"
 
 [portal.search.empty]
 noActionsDescription = "Les accions ràpides apareixeran aquí quan estiguin disponibles."
@@ -7921,9 +7921,9 @@ switchToLight = "Canvia al tema clar"
 [portal.shell.sidebar]
 appEditor = "Editor"
 appProcessor = "Processador"
-brandSuffix = "Stirling Processor"
+brandSuffix = "RyanPDF Processor"
 docsCount = "{{docs}} docs"
-linkAccount = "Enllaça el compte de Stirling"
+linkAccount = "Enllaça el compte de RyanPDF"
 planEditor = "Pla Editor"
 planEnterprise = "Pla Enterprise"
 planProcessor = "Pla Processor"
@@ -7931,7 +7931,7 @@ primaryNav = "Navegació principal"
 switchApp = "Canvia d'aplicació"
 
 [portal.sources]
-subtitle = "Connexions d'entrada reutilitzables que alimenten documents a Stirling. Configura una connexió una vegada i després referencia-la des de qualsevol nombre de polítiques. Fes clic en una fila per veure'n la configuració i quines polítiques la utilitzen."
+subtitle = "Connexions d'entrada reutilitzables que alimenten documents a RyanPDF. Configura una connexió una vegada i després referencia-la des de qualsevol nombre de polítiques. Fes clic en una fila per veure'n la configuració i quines polítiques la utilitzen."
 title = "Fonts"
 
 [portal.sources.actions]
@@ -7986,7 +7986,7 @@ description = "Vigila un directori del servidor per detectar documents nous."
 label = "Carpeta"
 
 [portal.sources.types.folder.fields.directory]
-helperText = "Camí absolut que Stirling vigila per als fitxers a processar."
+helperText = "Camí absolut que RyanPDF vigila per als fitxers a processar."
 label = "Camí del directori"
 placeholder = "/data/incoming"
 
@@ -8034,7 +8034,7 @@ review = "Revisa i connecta"
 
 [portal.usage]
 managePayment = "Gestiona el pagament"
-subtitle = "Consum, factures i gestió del pla per a cada PDF que Stirling hagi facturat, en una sola consola."
+subtitle = "Consum, factures i gestió del pla per a cada PDF que RyanPDF hagi facturat, en una sola consola."
 title = "Ús i facturació"
 
 [portal.usage.error]
@@ -8044,7 +8044,7 @@ walletUnavailable = "Cartera no disponible: {{status}} {{statusText}}"
 
 [portal.usage.sessionExpired]
 action = "Torna a iniciar la sessió"
-body = "La sessió del teu compte de Stirling ha caducat. Torna a iniciar la sessió per veure la facturació — la teva instància continua enllaçada."
+body = "La sessió del teu compte de RyanPDF ha caducat. Torna a iniciar la sessió per veure la facturació — la teva instància continua enllaçada."
 title = "Sessió caducada"
 
 [portal.users]
@@ -8091,7 +8091,7 @@ summary = "Posseeix un equip — en gestiona els recursos dels membres i les con
 3 = "Tot el que pot fer un membre"
 
 [portal.welcome]
-ariaLabel = "Benvingut a Stirling PDF"
+ariaLabel = "Benvingut a RyanPDF"
 badge = "Open-source"
 installEditor = "Instal·la l'editor"
 inviteTeammates = "Convida companys d'equip"
@@ -8099,7 +8099,7 @@ openInBrowser = "Obre al navegador"
 perks = "Gratuït per sempre · Autoallotjable"
 subtitle = "L'editor PDF més segur del món és gratuït per a equips de totes les mides. Inclou més de 60 operacions PDF i SSO."
 title = "Benvingut a"
-titleAccent = "Stirling PDF"
+titleAccent = "RyanPDF"
 
 [printFile]
 title = "Imprimir Fitxer"
@@ -8790,8 +8790,8 @@ hideTools = "Amaga les eines no disponibles ▴"
 messageNoFallback = "Les eines no estaran disponibles fins que el teu servidor torni en línia."
 messageWithFallback = "Algunes eines requereixen connexió al servidor."
 showTools = "Mostra les eines no disponibles ▾"
-title = "No es pot accedir al teu servidor de Stirling-PDF"
-toolNotAvailableLocally = "El teu servidor de Stirling-PDF és fora de línia i \"{{endpoint}}\" no està disponible al backend local."
+title = "No es pot accedir al teu servidor de RyanPDF"
+toolNotAvailableLocally = "El teu servidor de RyanPDF és fora de línia i \"{{endpoint}}\" no està disponible al backend local."
 
 [session]
 expired = "La teva sessió ha expirat. Si us plau, actualitza la pàgina i torna a intentar-ho."
@@ -8851,7 +8851,7 @@ user = "Sessió iniciada com"
 
 [settings.connection.mode]
 local = "Només local"
-saas = "Stirling Cloud"
+saas = "RyanPDF Cloud"
 selfhosted = "Autoallotjat"
 
 [settings.developer]
@@ -8866,7 +8866,7 @@ autoUnzipFileLimitDescription = "Nombre màxim de fitxers a extreure del ZIP"
 autoUnzipFileLimitTooltip = "Només descomprimeix si el ZIP conté aquest nombre de fitxers o menys. Augmenta'l per extreure ZIPs més grans."
 autoUnzipTooltip = "Descomprimeix automàticament els fitxers ZIP retornats per operacions de l'API. Desactiva-ho per mantenir els fitxers ZIP intactes. Això no afecta els fluxos d'automatització."
 defaultPdfEditor = "Editor PDF per defecte"
-defaultPdfEditorActive = "Stirling PDF és el teu editor PDF per defecte"
+defaultPdfEditorActive = "RyanPDF és el teu editor PDF per defecte"
 defaultPdfEditorChecking = "Comprovant..."
 defaultPdfEditorInactive = "Una altra aplicació està establerta per defecte"
 defaultPdfEditorSet = "Ja és per defecte"
@@ -8927,7 +8927,7 @@ updateBehavior = "Comportament d'actualització"
 updateBehaviorDescription = "Tria si vols que es pregunti abans d'instal·lar actualitzacions, instal·lar-les automàticament o ometre completament les comprovacions d'actualitzacions."
 updateBehaviorError = "No s'ha pogut canviar el comportament d'actualització"
 updateBehaviorErrorLocked = "Aquesta configuració està bloquejada pel teu administrador."
-updateBehaviorLockedDescription = "El teu administrador ha configurat com Stirling-PDF gestiona les actualitzacions en aquesta màquina. Contacta-hi per canviar-ho."
+updateBehaviorLockedDescription = "El teu administrador ha configurat com RyanPDF gestiona les actualitzacions en aquesta màquina. Contacta-hi per canviar-ho."
 updateBehaviorSaved = "S'ha desat el comportament d'actualització."
 versionMismatch = "Warning: A mismatch has been detected between the client version and the AppConfig version. Using different versions can lead to compatibility issues, errors, and security risks. Please ensure that server and client are using the same version."
 viewDetails = "Veure detalls"
@@ -9011,7 +9011,7 @@ usageAnalytics = "Analítiques d'ús"
 [settings.planBilling]
 currentPlan = "Pla actual"
 loading = "S'està carregant la informació de facturació..."
-notAvailable = "Pla i Facturació només disponible quan esteu connectats a Stirling Cloud (mode SaaS)."
+notAvailable = "Pla i Facturació només disponible quan esteu connectats a RyanPDF Cloud (mode SaaS)."
 title = "Pla i Facturació"
 
 [settings.planBilling.billing]
@@ -9137,7 +9137,7 @@ emptyUsername = "Introdueix el teu nom d'usuari"
 oauthFailed = "Ha fallat l'inici de sessió OAuth. Torna-ho a provar."
 
 [setup.saas]
-title = "Inicia sessió a Stirling"
+title = "Inicia sessió a RyanPDF"
 
 [setup.selfhosted]
 changeServerLocked = "La teva organització ha restringit aquesta aplicació a un servidor específic"
@@ -9175,7 +9175,7 @@ step3 = "Reinicieu el servidor"
 title = "Inici de sessió no habilitat"
 
 [setup.server.url]
-description = "Introdueix la URL completa del teu servidor autoallotjat de Stirling PDF"
+description = "Introdueix la URL completa del teu servidor autoallotjat de RyanPDF"
 label = "URL del servidor"
 
 [sharedSign]
@@ -9411,7 +9411,7 @@ pleaseFillAllFields = "Ompliu tots els camps"
 signUp = "Registra't"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Uniu-vos a Stirling PDF per començar"
+subtitle = "Uniu-vos a RyanPDF per començar"
 title = "Crea un compte"
 unexpectedError = "Error inesperat: {{message}}"
 
@@ -9638,7 +9638,7 @@ download = "Descarrega"
 downloaded = "Baixat"
 downloadFailed = "No es pot descarregar aquest fitxer."
 downloadsCount = "Descàrregues: {{count}}"
-emailWarningBody = "Això sembla una adreça de correu electrònic. Si aquesta persona no és usuària de Stirling PDF, no podrà accedir al fitxer."
+emailWarningBody = "Això sembla una adreça de correu electrònic. Si aquesta persona no és usuària de RyanPDF, no podrà accedir al fitxer."
 emailWarningConfirm = "Comparteix igualment"
 emailWarningTitle = "Adreça de correu electrònic"
 errorTitle = "No s'ha pogut compartir"
@@ -9669,7 +9669,7 @@ manageTitle = "Gestiona la compartició"
 noActivity = "Encara no hi ha activitat."
 noLinks = "Encara no hi ha enllaços de compartició actius."
 noSharedUsers = "Encara no hi ha usuaris amb accés."
-openInApp = "Obre a Stirling PDF"
+openInApp = "Obre a RyanPDF"
 ownerLabel = "Propietari"
 ownerUnknown = "Desconegut"
 removeLink = "Elimina l'enllaç"
@@ -9723,7 +9723,7 @@ updateButton = "Actualitza al servidor"
 uploadButton = "Puja al servidor"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "RyanPDF Survey"
 
 [swagger]
 tags = "api,documentació,swagger,endpoints,desenvolupament"
@@ -9851,7 +9851,7 @@ favorites = "Preferits"
 heading = "Totes les eines (vista a pantalla completa)"
 noResults = "Prova d'ajustar la cerca o activa/desactiva les descripcions per trobar el que necessites."
 recommended = "Recomanat"
-selfHostedOffline = "Requereix el teu servidor de Stirling-PDF (actualment fora de línia):"
+selfHostedOffline = "Requereix el teu servidor de RyanPDF (actualment fora de línia):"
 showDetails = "Mostra els detalls"
 unavailable = "Desactivat per l'administrador del servidor:"
 unavailableDependency = "No disponible: falta l'eina necessària al servidor:"
@@ -9860,7 +9860,7 @@ unfavorite = "Elimina dels preferits"
 [toolPanel.modePrompt]
 chooseFullscreen = "Utilitza el mode de pantalla completa"
 chooseSidebar = "Utilitza el mode de barra lateral"
-description = "Previsualitza ambdós dissenys i decideix com vols explorar les eines de Stirling PDF."
+description = "Previsualitza ambdós dissenys i decideix com vols explorar les eines de RyanPDF."
 dismiss = "Potser més tard"
 fullscreenDescription = "Navega per totes les eines en un catàleg que cobreix l'espai de treball fins que en triïs una."
 fullscreenTitle = "Mode de pantalla completa - (antic)"
@@ -9928,7 +9928,7 @@ loadingDetailedInfo = "Carregant informació detallada..."
 migrationGuide = "Guia de migració"
 migrationGuides = "Guies de migració"
 migrationGuidesDesc = "Revisa els canvis importants abans d'actualitzar."
-modalSubtitle = "Una nova versió de Stirling PDF està llesta per instal·lar-se."
+modalSubtitle = "Una nova versió de RyanPDF està llesta per instal·lar-se."
 modalTitle = "Actualització disponible"
 notes = "Notes"
 releaseNotes = "Notes de llançament"
@@ -9952,7 +9952,7 @@ urgent = "Urgent"
 attentionBody = "L'administrador ha d'iniciar sessió per veure més informació. Contacta-hi immediatament."
 attentionBodyAdmin = "Revisa els requisits de llicència per mantenir aquest servidor complint la normativa."
 attentionTitle = "Aquest servidor requereix atenció d'administrador"
-message = "Treu el màxim rendiment de Stirling PDF amb usuaris il·limitats i funcions avançades"
+message = "Treu el màxim rendiment de RyanPDF amb usuaris il·limitats i funcions avançades"
 seeInfo = "Veure informació"
 title = "Actualitza al pla Server"
 upgradeButton = "Actualitza ara"
@@ -10069,7 +10069,7 @@ authWeb = "Contrasenya"
 create = "Crea un compte"
 createSubtitle = "Crea un compte autoallotjat amb una contrasenya o SSO."
 createTitle = "Crea un compte"
-editorDesc = "Edita PDFs a l'editor Stirling PDF. Tothom ho té."
+editorDesc = "Edita PDFs a l'editor RyanPDF. Tothom ho té."
 email = "Adreça electrònica"
 emailError = "Introdueix una adreça electrònica vàlida"
 emailPlaceholder2 = "name@company.com"
@@ -10084,7 +10084,7 @@ processorDeferred = "La invitació s'ha enviat, però encara no s'ha pogut conce
 processorDesc = "La superfície de governança, executa pipelines, agents i l'API."
 role = "Rol"
 send2 = "Envia la invitació"
-subtitle2 = "Rebran un correu electrònic per unir-se al teu espai de treball de Stirling."
+subtitle2 = "Rebran un correu electrònic per unir-se al teu espai de treball de RyanPDF."
 team = "Equip"
 title = "Convida persones"
 username = "Nom d'usuari"
@@ -10207,7 +10207,7 @@ downloads = "Descàrregues"
 entryLabel = "Resum de la signatura"
 filesEvaluated_one = "{{count}} fitxer avaluat"
 filesEvaluated_other = "{{count}} fitxers avaluats"
-footer = "Validat amb Stirling PDF"
+footer = "Validat amb RyanPDF"
 generatedAt = "Generat"
 noPdf = "L'informe PDF estarà disponible després d'una validació correcta."
 page = "Pàgina"

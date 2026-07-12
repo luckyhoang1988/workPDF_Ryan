@@ -6,10 +6,10 @@ export async function handleAuthCallbackSuccess(token: string): Promise<void> {
   const isDesktopPopup =
     typeof window !== "undefined" &&
     window.opener &&
-    window.name === "stirling-desktop-sso";
+    window.name === "ryanpdf-desktop-sso";
   if (isDesktopPopup) {
     try {
-      window.opener.postMessage({ type: "stirling-desktop-sso", token }, "*");
+      window.opener.postMessage({ type: "ryanpdf-desktop-sso", token }, "*");
     } catch (postError) {
       console.error(
         "[AuthCallback] Failed to notify desktop window:",

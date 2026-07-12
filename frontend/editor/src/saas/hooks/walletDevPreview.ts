@@ -21,7 +21,7 @@ import type { WalletDevPreview } from "@cloud/hooks/walletDevPreview";
 
 export type { WalletDevPreview } from "@cloud/hooks/walletDevPreview";
 
-const STORAGE_KEY = "stirling.payg.devSubscription";
+const STORAGE_KEY = "ryanpdf.payg.devSubscription";
 
 /**
  * Synthesise a wallet snapshot for the dev preview route. Mirrors the same

@@ -153,7 +153,7 @@ public class UIDataTessdataController {
             URL url = new URL(downloadUrl);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("User-Agent", "Stirling-PDF-App");
+            connection.setRequestProperty("User-Agent", "RyanPDF-App");
             connection.setRequestProperty("Accept", "application/octet-stream");
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(30000);
@@ -202,7 +202,7 @@ public class UIDataTessdataController {
             URL url = new URL(apiUrl);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("User-Agent", "Stirling-PDF-App");
+            connection.setRequestProperty("User-Agent", "RyanPDF-App");
             connection.setRequestProperty("Accept", "application/vnd.github+json");
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(30000);

@@ -1,6 +1,6 @@
-# Contributing to Stirling-PDF
+# Contributing to RyanPDF
 
-Thank you for your interest in contributing to Stirling-PDF! There are many ways to contribute other than writing code. For example, reporting bugs, creating suggestions, and adding or modifying translations.
+Thank you for your interest in contributing to RyanPDF! There are many ways to contribute other than writing code. For example, reporting bugs, creating suggestions, and adding or modifying translations.
 
 ## Issue Guidelines
 
@@ -38,11 +38,11 @@ Please make sure your Pull Request adheres to the following guidelines:
 
 ## Translations
 
-If you would like to add or modify a translation, please see [How to add new languages to Stirling-PDF](devGuide/HowToAddNewLanguage.md). Also, please create a Pull Request so others can use it!
+If you would like to add or modify a translation, please see [How to add new languages to RyanPDF](devGuide/HowToAddNewLanguage.md). Also, please create a Pull Request so others can use it!
 
 ## Docs
 
-Documentation for Stirling-PDF is handled in a separate repository. Please see [Docs repository](https://github.com/Stirling-Tools/Stirling-Tools.github.io) or use the "edit this page"-button at the bottom of each page at [https://docs.stirlingpdf.com/](https://docs.stirlingpdf.com/).
+Documentation for RyanPDF is handled in a separate repository. Please see [Docs repository](https://github.com/Stirling-Tools/Stirling-Tools.github.io) or use the "edit this page"-button at the bottom of each page at [https://docs.stirlingpdf.com/](https://docs.stirlingpdf.com/).
 
 ## Fixing Bugs or Adding a New Feature
 

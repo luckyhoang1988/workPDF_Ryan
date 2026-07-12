@@ -1,6 +1,6 @@
 /**
  * Service for managing folder-file associations in IndexedDB.
- * File blobs are stored in the main stirling-pdf-files database (fileStorage).
+ * File blobs are stored in the main ryanpdf-pdf-files database (fileStorage).
  * This service only maintains folder record metadata: which file IDs belong to
  * which folders and their processing status.
  */
@@ -10,7 +10,7 @@ import { FolderFileMetadata, FolderRecord } from "@app/types/watchedFolders";
 const FOLDER_CHANGE_EVENT = "folder-storage-changed";
 
 class WatchedFolderFileStorage {
-  private dbName = "stirling-pdf-folder-files";
+  private dbName = "ryanpdf-pdf-folder-files";
   private dbVersion = 3;
   private recordsStore = "folderRecords";
   private db: IDBDatabase | null = null;

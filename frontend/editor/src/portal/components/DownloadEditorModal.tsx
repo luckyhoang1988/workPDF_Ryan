@@ -17,16 +17,16 @@ import "@portal/components/DownloadEditorModal.css";
 /*  Install commands + guides (code isn't translated; only labels are)       */
 /* ──────────────────────────────────────────────────────────────────────── */
 
-const WINGET = "winget install StirlingTools.StirlingPDF";
-const BREW = "brew install --cask stirling-pdf";
+const WINGET = "winget install RyanPDFTools.RyanPDF";
+const BREW = "brew install --cask ryanpdf-pdf";
 const dockerCmd = (tag: string) =>
-  `docker run -d --name stirling-pdf -p 8080:8080 \\\n  -v ./stirling-data:/configs \\\n  stirlingtools/stirling-pdf:${tag}`;
-const HELM = `helm repo add stirling-pdf https://stirling-tools.github.io/Stirling-PDF/
+  `docker run -d --name ryanpdf-pdf -p 8080:8080 \\\n  -v ./ryanpdf-data:/configs \\\n  ryanpdftools/ryanpdf-pdf:${tag}`;
+const HELM = `helm repo add ryanpdf-pdf https://ryanpdf-tools.github.io/RyanPDF/
 helm repo update
-helm install stirling-pdf stirling-pdf/stirling-pdf-chart \\\n  --namespace stirling-pdf --create-namespace`;
+helm install ryanpdf-pdf ryanpdf-pdf/ryanpdf-pdf-chart \\\n  --namespace ryanpdf-pdf --create-namespace`;
 const JAR_URL = "https://files.stirlingpdf.com/Stirling-PDF-with-login.jar";
 const JAR =
-  "java -Xmx2g -jar Stirling-PDF-with-login.jar\n# then open http://localhost:8080";
+  "java -Xmx2g -jar RyanPDF-with-login.jar\n# then open http://localhost:8080";
 
 const GUIDES = {
   windows: "https://docs.stirlingpdf.com/Installation/Windows%20Installation/",

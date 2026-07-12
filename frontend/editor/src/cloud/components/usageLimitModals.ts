@@ -11,8 +11,8 @@
  */
 
 // Internal bridge events, not part of the public API. Use the helpers below.
-export const FREE_LIMIT_MODAL_EVENT = "stirling:open-free-limit-modal";
-export const SPEND_CAP_MODAL_EVENT = "stirling:open-spend-cap-modal";
+export const FREE_LIMIT_MODAL_EVENT = "ryanpdf:open-free-limit-modal";
+export const SPEND_CAP_MODAL_EVENT = "ryanpdf:open-spend-cap-modal";
 
 /** Open the "free limit reached" modal. Figures come from the live wallet. */
 export function openFreeLimitModal(): void {

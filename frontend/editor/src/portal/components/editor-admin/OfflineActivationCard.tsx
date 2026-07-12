@@ -21,7 +21,7 @@ export function OfflineActivationCard({ available, onUpgrade }: Props) {
 
   function generate() {
     // TODO(backend): POST /v1/editor/deployment/offline-bundle → streams a
-    // signed .stirlingpkg activation bundle for an air-gapped install.
+    // signed .ryanpdfpkg activation bundle for an air-gapped install.
     setGenerating(true);
     setTimeout(() => {
       setGenerating(false);
@@ -69,7 +69,7 @@ export function OfflineActivationCard({ available, onUpgrade }: Props) {
               )}
               description={t(
                 "portal.editorAdmin.offlineActivation.readyBanner.description",
-                { file: "activation-acme-3.2.1.stirlingpkg" },
+                { file: "activation-acme-3.2.1.ryanpdfpkg" },
               )}
             />
           )}

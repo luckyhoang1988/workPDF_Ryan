@@ -144,7 +144,7 @@ export function migrateFromLegacyPreferences(): void {
     // Skip if already migrated
     if (localStorage.getItem(migrationKey) === "true") return;
 
-    const prefsRaw = localStorage.getItem("stirlingpdf_preferences");
+    const prefsRaw = localStorage.getItem("ryanpdf_preferences");
     if (prefsRaw) {
       const prefs = JSON.parse(prefsRaw) as Record<string, unknown>;
 

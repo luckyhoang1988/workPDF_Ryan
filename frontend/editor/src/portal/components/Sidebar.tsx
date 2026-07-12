@@ -7,8 +7,8 @@ import { useTheme } from "@portal/contexts/ThemeContext";
 import { useUI } from "@portal/contexts/UIContext";
 import { LinkAccountFooterItem } from "@portal/components/LinkAccountFooterItem";
 import { EDITOR_URL, EDITOR_IS_SAME_APP } from "@portal/auth/editorUrl";
-import wordmarkLight from "@app/assets/brand/modern-logo/StirlingProcessorLogoBlackText.svg";
-import wordmarkDark from "@app/assets/brand/modern-logo/StirlingProcessorLogoWhiteText.svg";
+import wordmarkLight from "@app/assets/brand/modern-logo/RyanPDFProcessorLogoBlackText.svg";
+import wordmarkDark from "@app/assets/brand/modern-logo/RyanPDFProcessorLogoWhiteText.svg";
 import { SettingsIcon } from "@portal/components/icons";
 import {
   GROUP_PRIMARY,

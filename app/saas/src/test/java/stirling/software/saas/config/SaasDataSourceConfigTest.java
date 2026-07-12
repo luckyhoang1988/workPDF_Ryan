@@ -45,7 +45,7 @@ class SaasDataSourceConfigTest {
         ReflectionTestUtils.setField(config, "idleTimeout", 600000L);
         ReflectionTestUtils.setField(config, "maxLifetime", 1800000L);
         ReflectionTestUtils.setField(config, "keepaliveTime", 300000L);
-        ReflectionTestUtils.setField(config, "applicationName", "StirlingPDF-SaaS");
+        ReflectionTestUtils.setField(config, "applicationName", "RyanPDF-SaaS");
         ReflectionTestUtils.setField(
                 config, "connectionInitSql", "SET search_path TO stirling_pdf, auth, public");
     }
@@ -125,7 +125,7 @@ class SaasDataSourceConfigTest {
 
             HikariConfig hikari = capture(config::saasDataSource);
 
-            assertThat(hikari.getJdbcUrl()).contains("?ApplicationName=StirlingPDF-SaaS");
+            assertThat(hikari.getJdbcUrl()).contains("?ApplicationName=RyanPDF-SaaS");
         }
 
         @Test
@@ -137,7 +137,7 @@ class SaasDataSourceConfigTest {
 
             HikariConfig hikari = capture(config::saasDataSource);
 
-            assertThat(hikari.getJdbcUrl()).contains("&ApplicationName=StirlingPDF-SaaS");
+            assertThat(hikari.getJdbcUrl()).contains("&ApplicationName=RyanPDF-SaaS");
         }
 
         @Test

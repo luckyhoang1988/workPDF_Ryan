@@ -39,7 +39,7 @@ import type {
 import { useFrontendVersionInfo } from "@app/hooks/useFrontendVersionInfo";
 
 const DEFAULT_AUTO_UNZIP_FILE_LIMIT = 4;
-const BANNER_DISMISSED_KEY = "stirlingpdf_features_banner_dismissed";
+const BANNER_DISMISSED_KEY = "ryanpdf_features_banner_dismissed";
 
 /**
  * Desktop-only: user-facing update policy control, rendered inside the
@@ -414,7 +414,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
                   {desktopUpdateMode.locked
                     ? t(
                         "settings.general.updates.updateBehaviorLockedDescription",
-                        "Your administrator has configured how Stirling-PDF handles updates on this machine. Contact them to change this.",
+                        "Your administrator has configured how RyanPDF handles updates on this machine. Contact them to change this.",
                       )
                     : t(
                         "settings.general.updates.updateBehaviorDescription",
@@ -828,7 +828,7 @@ const GeneralSection: React.FC<GeneralSectionProps> = ({
           onClose={() => setUpdateModalOpened(false)}
           onRemindLater={() => {
             localStorage.setItem(
-              "stirling-pdf-updater:snoozedUntil",
+              "ryanpdf-pdf-updater:snoozedUntil",
               String(Date.now() + 24 * 60 * 60 * 1000),
             );
           }}

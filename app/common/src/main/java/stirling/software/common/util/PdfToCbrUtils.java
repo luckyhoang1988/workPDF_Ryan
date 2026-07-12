@@ -62,7 +62,7 @@ public class PdfToCbrUtils {
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         pdfRenderer.setSubsamplingAllowed(true); // Enable subsampling to reduce memory usage
 
-        Path tempDir = Files.createTempDirectory("stirling-pdf-cbr-");
+        Path tempDir = Files.createTempDirectory("ryanpdf-cbr-");
         List<Path> generatedImages = new ArrayList<>();
         try {
             int totalPages = document.getNumberOfPages();

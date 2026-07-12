@@ -78,7 +78,7 @@ export const CERT_LABEL: Record<CertStatus, string> = {
 
 // Brand/acronym key-management modes are not localised.
 export const KEY_MODE_LABEL: Record<KeyMode, string> = {
-  managed: "Stirling-managed",
+  managed: "RyanPDF-managed",
   byok: "BYOK",
   hyok: "HYOK",
 };
@@ -86,7 +86,7 @@ export const KEY_MODE_LABEL: Record<KeyMode, string> = {
 export const KEY_MODE_TONE: Record<KeyMode, StatusTone> = {
   managed: "info",
   byok: "purple",
-  // HYOK is the strongest posture (Stirling never sees plaintext) → success.
+  // HYOK is the strongest posture (RyanPDF never sees plaintext) → success.
   hyok: "success",
 };
 
@@ -163,7 +163,7 @@ export const MODEL_TYPE_TONE: Record<ModelType, ChipAccent> = {
 
 // Provider names are proper nouns, not localised.
 export const MODEL_PROVIDER_LABEL: Record<ModelProvider, string> = {
-  stirling: "Stirling",
+  ryanpdf: "RyanPDF",
   openai: "OpenAI",
   anthropic: "Anthropic",
   "on-prem": "On-prem",

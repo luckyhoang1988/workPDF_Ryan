@@ -19,8 +19,8 @@ import {
 import { DownloadEditorModal } from "@portal/components/DownloadEditorModal";
 import "@portal/components/EditorStatusCard.css";
 
-/** The Stirling brand mark, drawn at the hero size. Decorative. */
-function StirlingMark() {
+/** The RyanPDF brand mark, drawn at the hero size. Decorative. */
+function RyanPDFMark() {
   return (
     <svg
       className="portal-editor-hero__mark"
@@ -125,7 +125,7 @@ export function EditorStatusCard({ footer, hideChips }: EditorStatusCardProps) {
     >
       <div className="portal-editor-hero__row">
         <div className="portal-editor-hero__logo">
-          <StirlingMark />
+          <RyanPDFMark />
         </div>
 
         <div className="portal-editor-hero__info">

@@ -53,7 +53,7 @@ dependencies {
     implementation 'org.eclipse.jetty:jetty-alpn-java-server'
     implementation ('org.telegram:telegrambots:6.9.7.1') {
         // Grizzly server + Jersey JAX-RS stack: only used for webhook mode;
-        // Stirling-PDF uses long-polling mode so these are dead weight (~3 MB)
+        // RyanPDF uses long-polling mode so these are dead weight (~3 MB)
         exclude group: 'org.glassfish.jersey.inject'
         exclude group: 'org.glassfish.jersey.media'
         exclude group: 'org.glassfish.jersey.containers'
@@ -160,7 +160,7 @@ bootJar {
 
     manifest {
         attributes(
-            'Implementation-Title': 'Stirling-PDF',
+            'Implementation-Title': 'RyanPDF',
             'Implementation-Version': project.version,
             'Enable-Native-Access': 'ALL-UNNAMED'
         )

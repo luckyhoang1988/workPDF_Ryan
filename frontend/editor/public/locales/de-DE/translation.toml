@@ -57,7 +57,7 @@ keepWorking = "Weiterarbeiten"
 loading = "Laden..."
 loginAgreementAccept = "Akzeptieren"
 loginAgreementDecline = "Ablehnen"
-loginAgreementProvider = "Dieser Hinweis stammt von Ihrem Administrator, nicht von Stirling PDF Inc."
+loginAgreementProvider = "Dieser Hinweis stammt von Ihrem Administrator, nicht von RyanPDF Inc."
 loginAgreementTitle = "Anmeldevereinbarung"
 logOut = "Abmelden"
 marginTooltip = "Abstand zwischen der Seitenzahl und dem Seitenrand."
@@ -919,11 +919,11 @@ description = "Optionale Funktionen und Features konfigurieren."
 title = "Funktionen"
 
 [admin.settings.features.serverCertificate]
-description = "Serverseitige Zertifikatserstellung für die Funktion „Mit Stirling-PDF signieren“ konfigurieren"
+description = "Serverseitige Zertifikatserstellung für die Funktion „Mit RyanPDF signieren“ konfigurieren"
 label = "Serverzertifikat"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Serverseitiges Zertifikat für die Option „Mit Stirling-PDF signieren“ aktivieren"
+description = "Serverseitiges Zertifikat für die Option „Mit RyanPDF signieren“ aktivieren"
 label = "Serverzertifikat aktivieren"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1071,7 +1071,7 @@ description = "URL oder Dateiname zur Cookie-Richtlinie"
 label = "Cookie-Richtlinie"
 
 [admin.settings.legal.disclaimer]
-message = "Durch die Anpassung dieser rechtlichen Dokumente übernehmen Sie die volle Verantwortung für die Einhaltung aller geltenden Gesetze und Vorschriften, einschließlich, aber nicht beschränkt auf die DSGVO und andere EU-Datenschutzanforderungen. Ändern Sie diese Einstellungen nur, wenn: (1) Sie eine persönliche/private Instanz betreiben, (2) Sie sich außerhalb der EU-Gerichtsbarkeit befinden und Ihre lokalen rechtlichen Verpflichtungen verstehen oder (3) Sie eine angemessene Rechtsberatung eingeholt haben und die alleinige Verantwortung für alle Benutzerdaten und die rechtliche Compliance übernehmen. Stirling-PDF und seine Entwickler übernehmen keine Haftung für Ihre gesetzlichen Verpflichtungen."
+message = "Durch die Anpassung dieser rechtlichen Dokumente übernehmen Sie die volle Verantwortung für die Einhaltung aller geltenden Gesetze und Vorschriften, einschließlich, aber nicht beschränkt auf die DSGVO und andere EU-Datenschutzanforderungen. Ändern Sie diese Einstellungen nur, wenn: (1) Sie eine persönliche/private Instanz betreiben, (2) Sie sich außerhalb der EU-Gerichtsbarkeit befinden und Ihre lokalen rechtlichen Verpflichtungen verstehen oder (3) Sie eine angemessene Rechtsberatung eingeholt haben und die alleinige Verantwortung für alle Benutzerdaten und die rechtliche Compliance übernehmen. RyanPDF und seine Entwickler übernehmen keine Haftung für Ihre gesetzlichen Verpflichtungen."
 title = "Warnhinweis zur rechtlichen Verantwortung"
 
 [admin.settings.legal.impressum]
@@ -1158,8 +1158,8 @@ description = "Benutzername für SMTP-Authentifizierung"
 label = "SMTP-Benutzername"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a RyanPDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning RyanPDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose RyanPDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1189,7 +1189,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning RyanPDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1202,12 +1202,12 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+description = "OAuth needs an external IdP. API key uses a RyanPDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled RyanPDF user."
+label = "Require an existing RyanPDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1218,7 +1218,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a RyanPDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1539,7 +1539,7 @@ description = "Wenn aktiviert, können nur aufgelistete Benutzer-IDs den Bot ver
 label = "Allow Specific User IDs"
 
 [admin.settings.telegram.enabled]
-description = "Benutzern erlauben, über Ihren konfigurierten Telegram-Bot mit Stirling PDF zu interagieren."
+description = "Benutzern erlauben, über Ihren konfigurierten Telegram-Bot mit RyanPDF zu interagieren."
 label = "Telegram-Bot aktivieren"
 
 [admin.settings.telegram.feedback]
@@ -1612,20 +1612,20 @@ settingsOverview = "Dies ist das <strong>Einstellungsfeld</strong>. Admin-Einste
 systemCustomization = "Wir bieten umfangreiche Möglichkeiten zur UI-Anpassung: <strong>Systemeinstellungen</strong> ermöglichen Änderungen am App-Namen und an Sprachen, <strong>Funktionen</strong> ermöglicht die Verwaltung von Serverzertifikaten und <strong>Endpunkte</strong> das Aktivieren oder Deaktivieren spezifischer Tools für Ihre Benutzer."
 teamsAndUsers = "Verwalten Sie hier <strong>Teams</strong> und einzelne Benutzer. Sie können neue Benutzer per E-Mail, teilbaren Links einladen oder selbst benutzerdefinierte Konten erstellen."
 welcome = "Willkommen zur <strong>Admin-Tour</strong>! Entdecken wir die leistungsstarken Enterprise-Funktionen und Einstellungen für Systemadministratoren."
-wrapUp = "Das war die Admin-Tour! Sie haben die Enterprise-Funktionen gesehen, die Stirling PDF zu einer leistungsstarken, anpassbaren Lösung für Organisationen machen. Sie können diese Tour jederzeit über das <strong>Hilfe</strong>-Menü aufrufen."
+wrapUp = "Das war die Admin-Tour! Sie haben die Enterprise-Funktionen gesehen, die RyanPDF zu einer leistungsstarken, anpassbaren Lösung für Organisationen machen. Sie können diese Tour jederzeit über das <strong>Hilfe</strong>-Menü aufrufen."
 
 [adminUserSettings]
 admin = "Administrator"
 title = "Benutzerkontrolle"
 
 [agents]
-stirling_name = "Stirling"
+stirling_name = "RyanPDF"
 
 [analytics]
 learnMore = "Mehr erfahren"
-paragraph1 = "Stirling-PDF verfügt über Opt-in-Analytics, die uns helfen, das Produkt zu verbessern. Wir zeichnen keine persönlichen Informationen oder Dateiinhalte auf."
-paragraph2 = "Bitte erwägen Sie die Analytics zu aktivieren, um Stirling-PDF beim Wachsen zu helfen und um unsere User besser zu verstehen."
-title = "Möchten Sie Stirling-PDF verbessern?"
+paragraph1 = "RyanPDF verfügt über Opt-in-Analytics, die uns helfen, das Produkt zu verbessern. Wir zeichnen keine persönlichen Informationen oder Dateiinhalte auf."
+paragraph2 = "Bitte erwägen Sie die Analytics zu aktivieren, um RyanPDF beim Wachsen zu helfen und um unsere User besser zu verstehen."
+title = "Möchten Sie RyanPDF verbessern?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2558,7 +2558,7 @@ bullet1 = "Unterstützt PEM, PKCS12, JKS und Server-Zertifikatformate"
 bullet2 = "Option, Signatur auf der PDF zu zeigen oder zu verstecken"
 bullet3 = "Grund, Ort und Signierername hinzufügen"
 bullet4 = "Wählen Sie, auf welcher Seite sichtbare Signaturen platziert werden sollen"
-bullet5 = "Server-Zertifikat für einfache 'Mit Stirling-PDF signieren'-Option verwenden"
+bullet5 = "Server-Zertifikat für einfache 'Mit RyanPDF signieren'-Option verwenden"
 text = "Um eine PDF zu signieren, benötigen Sie ein digitales Zertifikat (wie PEM, PKCS12 oder JKS). Sie können wählen, ob Sie die Signatur auf dem Dokument sichtbar machen oder nur für die Sicherheit unsichtbar belassen."
 title = "Signaturen hinzufügen"
 
@@ -2739,10 +2739,10 @@ copy = "Nachricht kopieren"
 
 [chat.fab]
 close = "Close chat"
-open = "Open Stirling AI assistant"
+open = "Open RyanPDF AI assistant"
 
 [chat.header]
-agentMenu = "Stirling-Agent-Optionen"
+agentMenu = "RyanPDF-Agent-Optionen"
 clearChat = "Chat löschen"
 
 [chat.input]
@@ -3072,14 +3072,14 @@ upgradeButton = "Konto upgraden"
 
 [config.apiKeys]
 copyKeyAriaLabel = "API-Schlüssel kopieren"
-description = "Ihr API-Schlüssel für den Zugriff auf Stirlings PDF-Tools. Kopieren Sie ihn in Ihr Projekt oder aktualisieren Sie, um einen neuen zu generieren."
-docsDescription = "Erfahren Sie mehr über die Integration mit Stirling PDF:"
+description = "Ihr API-Schlüssel für den Zugriff auf RyanPDFs PDF-Tools. Kopieren Sie ihn in Ihr Projekt oder aktualisieren Sie, um einen neuen zu generieren."
+docsDescription = "Erfahren Sie mehr über die Integration mit RyanPDF:"
 docsLink = "API-Dokumentation"
 docsTitle = "API-Dokumentation"
 generateError = "Wir konnten Ihren API-Schlüssel nicht generieren."
 goToAccount = "Zu Konto wechseln"
 guestInfo = "Gastnutzer erhalten keine API-Schlüssel. Erstellen Sie ein Konto, um einen API-Schlüssel für Ihre Anwendungen zu erhalten."
-intro = "Verwenden Sie Ihren API-Schlüssel, um programmgesteuert auf die Verarbeitungsfunktionen von Stirling PDF zuzugreifen."
+intro = "Verwenden Sie Ihren API-Schlüssel, um programmgesteuert auf die Verarbeitungsfunktionen von RyanPDF zuzugreifen."
 label = "API-Schlüssel"
 publicKeyAriaLabel = "Öffentlicher API-Schlüssel"
 refreshAriaLabel = "API-Schlüssel aktualisieren"
@@ -3103,10 +3103,10 @@ title = "API-Schlüssel aktualisieren"
 warning = "⚠️ Warnung: Diese Aktion wird neue API-Schlüssel generieren und Ihre bisherigen Schlüssel ungültig machen."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your RyanPDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run RyanPDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using RyanPDF directly."
 title = "MCP Server"
 viewApiKeys = "View API keys"
 
@@ -3123,7 +3123,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your RyanPDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -3232,7 +3232,7 @@ showPreferencesBtn = "Einstellungen verwalten"
 title = "Wie wir Cookies verwenden"
 
 [cookieBanner.popUp.description]
-1 = "Wir verwenden Cookies und andere Technologien, damit Stirling PDF für Sie besser funktioniert. Dies hilft uns dabei, unsere Tools zu verbessern und weiterhin Funktionen zu entwickeln, die Ihnen gefallen werden."
+1 = "Wir verwenden Cookies und andere Technologien, damit RyanPDF für Sie besser funktioniert. Dies hilft uns dabei, unsere Tools zu verbessern und weiterhin Funktionen zu entwickeln, die Ihnen gefallen werden."
 2 = "Wenn Sie dies nicht möchten, klicken Sie auf „Nein, Danke“. Dadurch werden nur die unbedingt erforderlichen Cookies aktiviert, die für einen reibungslosen Ablauf erforderlich sind."
 
 [cookieBanner.preferencesModal]
@@ -3245,12 +3245,12 @@ subtitle = "Cookie-Nutzung"
 title = "Einwilligungszentrum"
 
 [cookieBanner.preferencesModal.analytics]
-description = "Diese Cookies helfen uns zu verstehen, wie unsere Tools genutzt werden, damit wir uns darauf konzentrieren können, die Funktionen zu entwickeln, die unserer Community am meisten am Herzen liegen. Seien Sie beruhigt – Stirling PDF kann und wird niemals den Inhalt der Dokumente verfolgen, mit denen Sie arbeiten."
+description = "Diese Cookies helfen uns zu verstehen, wie unsere Tools genutzt werden, damit wir uns darauf konzentrieren können, die Funktionen zu entwickeln, die unserer Community am meisten am Herzen liegen. Seien Sie beruhigt – RyanPDF kann und wird niemals den Inhalt der Dokumente verfolgen, mit denen Sie arbeiten."
 title = "Analyse"
 
 [cookieBanner.preferencesModal.description]
-1 = "Stirling PDF verwendet Cookies und ähnliche Technologien, um Ihr Erlebnis zu verbessern und den Einsatz unserer Tools zu verstehen. Dies hilft uns, die Leistung zu verbessern, die für Sie wichtigen Funktionen zu entwickeln und unseren Nutzern kontinuierlichen Support zu bieten."
-2 = "Stirling PDF kann und wird niemals den Inhalt der von Ihnen verwendeten Dokumente verfolgen oder darauf zugreifen."
+1 = "RyanPDF verwendet Cookies und ähnliche Technologien, um Ihr Erlebnis zu verbessern und den Einsatz unserer Tools zu verstehen. Dies hilft uns, die Leistung zu verbessern, die für Sie wichtigen Funktionen zu entwickeln und unseren Nutzern kontinuierlichen Support zu bieten."
+2 = "RyanPDF kann und wird niemals den Inhalt der von Ihnen verwendeten Dokumente verfolgen oder darauf zugreifen."
 3 = "Ihre Privatsphäre und Ihr Vertrauen stehen bei uns im Mittelpunkt."
 
 [cookieBanner.preferencesModal.necessary]
@@ -3346,14 +3346,14 @@ message = "Standard-PDF-Handler konnte nicht festgelegt werden"
 title = "Fehler"
 
 [defaultApp.prompt]
-message = "Stellen Sie Stirling PDF als Standardanwendung zum Öffnen von PDF-Dateien ein."
+message = "Stellen Sie RyanPDF als Standardanwendung zum Öffnen von PDF-Dateien ein."
 
 [defaultApp.settingsOpened]
-message = "Bitte wählen Sie Stirling PDF in den Systemeinstellungen aus"
+message = "Bitte wählen Sie RyanPDF in den Systemeinstellungen aus"
 title = "Einstellungen geöffnet"
 
 [defaultApp.success]
-message = "Stirling PDF ist nun Ihr Standard-PDF-Editor"
+message = "RyanPDF ist nun Ihr Standard-PDF-Editor"
 title = "Standard-App festgelegt"
 
 [desktopUpdate]
@@ -3369,7 +3369,7 @@ updateFailedMessage = "Das Update konnte nicht heruntergeladen oder installiert 
 
 [desktopUpdate.blocked]
 docsLink = "Installationsdokumentation anzeigen"
-message = "Stirling-PDF hat auf diesem Gerät keine Berechtigung, sich selbst zu aktualisieren."
+message = "RyanPDF hat auf diesem Gerät keine Berechtigung, sich selbst zu aktualisieren."
 title = "Administratorberechtigungen erforderlich"
 
 [devAirgapped]
@@ -3939,7 +3939,7 @@ title = "In Ordner verschieben"
 [filesPage.origin]
 all = "Alle Quellen"
 cloud = "Cloud"
-cloudHint = "Auf dem Stirling-Server gespeichert"
+cloudHint = "Auf dem RyanPDF-Server gespeichert"
 local = "Lokal"
 localHint = "Nur in diesem Browser gespeichert"
 shared = "Geteilt"
@@ -4203,7 +4203,7 @@ invisible = "Unsichtbar (nur Metadaten)"
 location = "Ort:"
 logo = "Logo:"
 logoHidden = "Kein Logo"
-logoShown = "Stirling PDF-Logo wird angezeigt"
+logoShown = "RyanPDF-Logo wird angezeigt"
 participantCount_one = "{{count}} participant will sign in order"
 participantCount_other = "{{count}} participants will sign in order"
 participants = "Teilnehmer"
@@ -4257,7 +4257,7 @@ title = "Sequenzielles Signieren"
 dismiss = "Banner schließen"
 message = "Erstellen Sie ein kostenloses Konto, um Ihre Arbeit zu speichern, auf mehr Funktionen zuzugreifen und das Projekt zu unterstützen."
 signUp = "Kostenlos registrieren"
-title = "Sie verwenden Stirling PDF als Gast!"
+title = "Sie verwenden RyanPDF als Gast!"
 
 [home.addAttachments]
 desc = "Eingebettete Dateien (Anhänge) zu einer PDF hinzufügen oder entfernen"
@@ -4416,7 +4416,7 @@ tags = "kombinieren,zusammenführen,vereinen"
 title = "Zusammenführen"
 
 [home.mobile]
-brandAlt = "Stirling PDF-Logo"
+brandAlt = "RyanPDF-Logo"
 openFiles = "Dateien öffnen"
 swipeHint = "Zum Wechseln der Ansicht nach links oder rechts wischen"
 tools = "Werkzeuge"
@@ -4641,7 +4641,7 @@ passwordRequired = "Passwort ist erforderlich"
 signIn = "Anmelden"
 validating = "Einladung wird validiert..."
 validationError = "Einladungslink konnte nicht validiert werden"
-welcome = "Willkommen bei Stirling PDF"
+welcome = "Willkommen bei RyanPDF"
 welcomeSubtitle = "Schließen Sie die Kontoeinrichtung ab, um zu starten"
 welcomeTitle = "Sie wurden eingeladen!"
 
@@ -4669,7 +4669,7 @@ terms = "AGB"
 title = "Lizenzen von Drittanbietern"
 
 [localMode]
-toolUnavailable = "Dieses Tool erfordert ein Konto. Melden Sie sich bei Stirling Cloud an oder verbinden Sie sich mit einem selbstgehosteten Server, um es zu verwenden."
+toolUnavailable = "Dieses Tool erfordert ein Konto. Melden Sie sich bei RyanPDF Cloud an oder verbinden Sie sich mit einem selbstgehosteten Server, um es zu verwenden."
 
 [localMode.toolPicker]
 message = "Melden Sie sich an, um alle Tools freizuschalten."
@@ -4726,7 +4726,7 @@ subtitle = "Mit über einem Dutzend Tools zum Schwärzen, Signieren, Lesen und B
 title = "PDFs bearbeiten, um gewünschte Informationen anzuzeigen/zu schützen"
 
 [login.slides.overview]
-alt = "Stirling PDF Übersicht"
+alt = "RyanPDF Übersicht"
 subtitle = "Eine Privacy-First-Cloud-Suite für PDFs, mit der Sie Dokumente konvertieren, signieren, schwärzen und verwalten – plus 50+ weitere leistungsstarke Tools."
 title = "Ihr One-Stop-Shop für alle PDF-Anforderungen."
 
@@ -4844,7 +4844,7 @@ message = "Die Authentifizierung war nicht erfolgreich. Sie können dieses Fenst
 title = "Authentifizierung fehlgeschlagen"
 
 [oauth.success]
-message = "Sie können dieses Fenster schließen und zu Stirling PDF zurückkehren."
+message = "Sie können dieses Fenster schließen und zu RyanPDF zurückkehren."
 title = "Authentifizierung erfolgreich"
 
 [oauthConsent]
@@ -4857,17 +4857,17 @@ loadFailed = "This authorisation request is invalid or has expired. Close this t
 loading = "Loading authorisation request..."
 missingId = "Missing authorisation request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your RyanPDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your RyanPDF account to continue connecting the app."
 title = "Authorise access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your RyanPDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -4989,7 +4989,7 @@ skipForNow = "Für jetzt überspringen"
 skipTheTour = "Rundgang überspringen"
 
 [onboarding.desktopInstall]
-body = "Stirling funktioniert am besten als Desktop-App. Sie können es offline nutzen, schneller auf Dokumente zugreifen und lokal auf Ihrem Computer bearbeiten."
+body = "RyanPDF funktioniert am besten als Desktop-App. Sie können es offline nutzen, schneller auf Dokumente zugreifen und lokal auf Ihrem Computer bearbeiten."
 selectOs = "Betriebssystem auswählen"
 title = "Herunterladen"
 titleWithOs = "Herunterladen für {{osLabel}}"
@@ -4999,8 +4999,8 @@ authenticationCode = "Authentifizierungscode"
 qrCodeLoading = "Ihr QR-Code wird erstellt…"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Sobald Sie den Login-Modus aktivieren, können Sie Nutzer verwalten, Einstellungen konfigurieren und die Servergesundheit überwachen. Die ersten <strong>{{freeTierLimit}}</strong> Personen auf Ihrem Server nutzen Stirling kostenlos."
-adminBodyLoginEnabled = "Als Admin können Sie Nutzer verwalten, Einstellungen konfigurieren und die Servergesundheit überwachen. Die ersten <strong>{{freeTierLimit}}</strong> Personen auf Ihrem Server nutzen Stirling kostenlos."
+adminBodyLoginDisabled = "Sobald Sie den Login-Modus aktivieren, können Sie Nutzer verwalten, Einstellungen konfigurieren und die Servergesundheit überwachen. Die ersten <strong>{{freeTierLimit}}</strong> Personen auf Ihrem Server nutzen RyanPDF kostenlos."
+adminBodyLoginEnabled = "Als Admin können Sie Nutzer verwalten, Einstellungen konfigurieren und die Servergesundheit überwachen. Die ersten <strong>{{freeTierLimit}}</strong> Personen auf Ihrem Server nutzen RyanPDF kostenlos."
 adminTitle = "Admin-Übersicht"
 userBody = "Laden Sie Teammitglieder ein, weisen Sie Rollen zu und halten Sie Ihre Dokumente in einem sicheren Arbeitsbereich organisiert. Aktivieren Sie den Login-Modus, wenn Sie über die Einzelnutzung hinaus wachsen möchten."
 userTitle = "Plan-Übersicht"
@@ -5008,7 +5008,7 @@ userTitle = "Plan-Übersicht"
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to RyanPDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -5028,20 +5028,20 @@ rolePlaceholder = "Rolle bestätigen"
 roleUser = "Benutzer"
 
 [onboarding.serverLicense]
-freeBody = "Unsere <strong>Open-Core</strong>-Lizenz erlaubt bis zu <strong>{{freeTierLimit}}</strong> Nutzern pro Server kostenlos. Um unterbrechungsfrei zu skalieren, empfehlen wir den Stirling Server-Plan - <strong>unbegrenzte Plätze</strong> und <strong>SSO-Unterstützung</strong> für $99/Server/Monat."
+freeBody = "Unsere <strong>Open-Core</strong>-Lizenz erlaubt bis zu <strong>{{freeTierLimit}}</strong> Nutzern pro Server kostenlos. Um unterbrechungsfrei zu skalieren, empfehlen wir den RyanPDF Server-Plan - <strong>unbegrenzte Plätze</strong> und <strong>SSO-Unterstützung</strong> für $99/Server/Monat."
 freeTitle = "Server-Lizenz"
-overLimitBody = "Unsere Lizenz erlaubt bis zu <strong>{{freeTierLimit}}</strong> Nutzer pro Server kostenlos. Sie haben <strong>{{overLimitUserCopy}}</strong> Stirling-Nutzer. Um ohne Unterbrechung fortzufahren, upgraden Sie auf den Stirling-Server-Plan – <strong>unbegrenzte Plätze</strong>, PDF-Textbearbeitung und volle Admin-Kontrolle für $99/Server/Monat."
+overLimitBody = "Unsere Lizenz erlaubt bis zu <strong>{{freeTierLimit}}</strong> Nutzer pro Server kostenlos. Sie haben <strong>{{overLimitUserCopy}}</strong> RyanPDF-Nutzer. Um ohne Unterbrechung fortzufahren, upgraden Sie auf den RyanPDF-Server-Plan – <strong>unbegrenzte Plätze</strong>, PDF-Textbearbeitung und volle Admin-Kontrolle für $99/Server/Monat."
 overLimitTitle = "Server-Lizenz erforderlich"
 seePlans = "Pläne ansehen →"
 upgrade = "Jetzt upgraden →"
 
 [onboarding.tourOverview]
-body = "Stirling PDF V2 wird mit Dutzenden Tools und einem aufgefrischten Layout ausgeliefert. Machen Sie eine kurze Tour, um zu sehen, was sich geändert hat und wo Sie die benötigten Funktionen finden."
+body = "RyanPDF V2 wird mit Dutzenden Tools und einem aufgefrischten Layout ausgeliefert. Machen Sie eine kurze Tour, um zu sehen, was sich geändert hat und wo Sie die benötigten Funktionen finden."
 title = "Tour-Übersicht"
 
 [onboarding.welcomeSlide]
-body = "Stirling PDF ist jetzt bereit für Teams jeder Größe. Dieses Update bringt ein neues Layout, leistungsstarke neue Admin-Funktionen und unser meistgewünschtes Feature – <strong>Text bearbeiten</strong>."
-title = "Willkommen bei Stirling"
+body = "RyanPDF ist jetzt bereit für Teams jeder Größe. Dieses Update bringt ein neues Layout, leistungsstarke neue Admin-Funktionen und unser meistgewünschtes Feature – <strong>Text bearbeiten</strong>."
+title = "Willkommen bei RyanPDF"
 
 [onboarding.whatsNew]
 activeFilesView = "Verwenden Sie „Aktive Dateien“, um alles Geöffnete zu sehen und auszuwählen, woran Sie arbeiten möchten."
@@ -5347,7 +5347,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarise, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any RyanPDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -5406,7 +5406,7 @@ leader = "Team owner"
 member = "Member"
 
 [payg.signupRequired]
-body = "Stirling PDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using Stirling as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
+body = "RyanPDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using RyanPDF as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
 cancel = "Not now"
 cta = "Sign up free"
 subtext = "Creating an account is free and takes a few seconds. No credit card required."
@@ -5454,7 +5454,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. RyanPDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -5462,7 +5462,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarise, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any RyanPDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -5893,7 +5893,7 @@ upToFiveUsers = "Bis zu 5 Benutzer"
 usageTrackingPrometheus = "Nutzungsverfolgung & Prometheus"
 
 [plan.licenseWarning]
-body = "Sie haben {{total}} Nutzer, aber die kostenlose Stufe unterstützt nur {{limit}} pro Server. Upgraden Sie, um Stirling PDF reibungslos weiter zu betreiben."
+body = "Sie haben {{total}} Nutzer, aber die kostenlose Stufe unterstützt nur {{limit}} pro Server. Upgraden Sie, um RyanPDF reibungslos weiter zu betreiben."
 cta = "Pläne ansehen"
 overLimit = "mehr als {{limit}}"
 title = "Freies Self-Hosted-Limit erreicht"
@@ -6192,25 +6192,25 @@ comingSoon = "Demnächst"
 [portal.accountLink.card]
 billingNote = "Unbeaufsichtigte Verarbeitung wird Ihrem Organisations-Wallet berechnet."
 eyebrow = "Kontoverknüpfung"
-linkButton = "Ihr Stirling-Konto verknüpfen"
+linkButton = "Ihr RyanPDF-Konto verknüpfen"
 linked = "Verknüpft"
 linkedAs = "Verknüpft als {{name}}."
 linkedGeneric = "Diese Instanz ist verknüpft."
 notLinked = "Nicht verknüpft"
-title = "Diese Organisation mit ihrem Stirling-Konto verknüpfen"
+title = "Diese Organisation mit ihrem RyanPDF-Konto verknüpfen"
 unlink = "Verknüpfung aufheben"
 
 [portal.accountLink.card.error]
 title = "Verknüpfung konnte nicht hergestellt werden"
 
 [portal.accountLink.card.loginNotConfigured]
-after = "fest, um die Kontoverknüpfung mit dem gehosteten Stirling-Konto zu aktivieren. In der Entwicklung können Sie die Anmeldung über den Verknüpfungsdialog simulieren."
+after = "fest, um die Kontoverknüpfung mit dem gehosteten RyanPDF-Konto zu aktivieren. In der Entwicklung können Sie die Anmeldung über den Verknüpfungsdialog simulieren."
 before = "Legen Sie"
 title = "SaaS-Login nicht konfiguriert"
 
 [portal.accountLink.gate]
 action = "Konto verknüpfen"
-description = "Verknüpfen Sie das Stirling-Konto dieser Organisation, um abrechenbare Funktionen zu nutzen."
+description = "Verknüpfen Sie das RyanPDF-Konto dieser Organisation, um abrechenbare Funktionen zu nutzen."
 title = "Verknüpfen zum Entsperren"
 titleFeature = "Verknüpfen, um {{feature}} zu entsperren"
 
@@ -6242,13 +6242,13 @@ never = "nie"
 
 [portal.accountLink.modal]
 linkSubtitle = "Melden Sie sich bei dem Konto an, über das dieser Server abgerechnet werden soll."
-linkTitle = "Ihr Stirling-Konto verknüpfen"
-reauthSubtitle = "Ihre Sitzung ist abgelaufen — melden Sie sich erneut bei Ihrem Stirling-Konto an. Ihre Instanz bleibt verknüpft."
+linkTitle = "Ihr RyanPDF-Konto verknüpfen"
+reauthSubtitle = "Ihre Sitzung ist abgelaufen — melden Sie sich erneut bei Ihrem RyanPDF-Konto an. Ihre Instanz bleibt verknüpft."
 reauthTitle = "Erneut anmelden"
 simulateSignIn = "Anmeldung simulieren (dev)"
 
 [portal.accountLink.modal.loginNotConfigured]
-after = "fest, um die In-App-Verknüpfung mit dem gehosteten Stirling-Konto zu aktivieren."
+after = "fest, um die In-App-Verknüpfung mit dem gehosteten RyanPDF-Konto zu aktivieren."
 and = "und"
 before = "Legen Sie"
 title = "SaaS-Login nicht konfiguriert"
@@ -6257,7 +6257,7 @@ title = "SaaS-Login nicht konfiguriert"
 instancesSub = "Jede selbst gehostete Instanz, die bei dieser Organisation registriert ist. Widerrufen Sie Zugangsdaten, um ihren unbeaufsichtigten Zugriff sofort zu unterbrechen."
 instancesTitle = "Verknüpfte Instanzen"
 revokeError = "Instanz konnte nicht widerrufen werden"
-sub = "Verknüpfen Sie diese selbst gehostete Organisation mit ihrem Stirling-Konto, damit unbeaufsichtigte Verarbeitung Ihrem Organisations-Wallet berechnet wird."
+sub = "Verknüpfen Sie diese selbst gehostete Organisation mit ihrem RyanPDF-Konto, damit unbeaufsichtigte Verarbeitung Ihrem Organisations-Wallet berechnet wird."
 
 [portal.accountLink.panel.loadError]
 forbidden = "Nur der Teambesitzer kann die verknüpften Instanzen der Organisation anzeigen."
@@ -6354,7 +6354,7 @@ close = "Assistent schließen"
 error = "Der Assistent konnte nicht erreicht werden."
 errorWithDetail = "Der Assistent konnte nicht erreicht werden: {{detail}}"
 inputAriaLabel = "Assistenten fragen"
-inputPlaceholder = "Fragen Sie zu Stirling…"
+inputPlaceholder = "Fragen Sie zu RyanPDF…"
 open = "Assistent öffnen"
 send = "Senden"
 title = "Assistent"
@@ -6392,7 +6392,7 @@ title = "Stripe nicht konfiguriert"
 cta = "Enterprise-Angebot erstellen"
 description = "Volumenrabatte mit Abnahmeverpflichtung, Air-Gapped-Bereitstellung, benutzerdefinierte MSA- und Sicherheitsprüfungen sowie Partnerschaften mit Drittanbieter-Distributoren."
 eyebrow = "Volumenrabatt · 1M+ PDFs"
-title = "Stirling Enterprise"
+title = "RyanPDF Enterprise"
 
 [portal.billing.freeEditors]
 activeThisMonth = "Diesen Monat aktiv"
@@ -6439,9 +6439,9 @@ viewAriaLabel = "Rechnung {{number}} in Stripe anzeigen"
 viewLink = "Anzeigen ↗"
 
 [portal.billing.linkPrompt]
-cta = "Stirling-Konto verknüpfen"
+cta = "RyanPDF-Konto verknüpfen"
 description = "Manuelle PDF-Bearbeitung — anzeigen, signieren, zusammenführen, teilen, Wasserzeichen hinzufügen, komprimieren, konvertieren, manuelle OCR — ist immer kostenlos, ob verknüpft oder nicht. Verknüpfen Sie Ihr Konto, um 500 kostenlose PDFs für nutzungsbasierte Verarbeitung (Automatisierung, KI und API) zu erhalten; wenn Sie mehr benötigen, aktivieren Sie den Processor-Tarif und zahlen nur für das, was Sie nutzen."
-title = "Ihr Stirling-Konto verknüpfen"
+title = "Ihr RyanPDF-Konto verknüpfen"
 
 [portal.billing.paymentMethod]
 billedMonthly = "Monatlich abgerechnet"
@@ -6792,7 +6792,7 @@ time = "Zeit"
 user = "Benutzer"
 
 [portal.editorAdmin]
-subtitle = "Stellen Sie den Stirling PDF Editor bereit, koppeln Sie selbst gehostete Instanzen mit Ihrer Organisation und betreiben Sie die laufende Flotte — Ziele, Zustand, Zugangsdaten und Offline-Aktivierung an einem Ort."
+subtitle = "Stellen Sie den RyanPDF Editor bereit, koppeln Sie selbst gehostete Instanzen mit Ihrer Organisation und betreiben Sie die laufende Flotte — Ziele, Zustand, Zugangsdaten und Offline-Aktivierung an einem Ort."
 title = "Editor-Bereitstellung"
 
 [portal.editorAdmin.health.columns]
@@ -6878,7 +6878,7 @@ title = "Auf dieser Seite ist etwas schiefgelaufen"
 [portal.home.editor]
 activeUsers = "{{n}} aktiv"
 invite = "Teammitglieder einladen"
-name = "Stirling PDF Editor"
+name = "RyanPDF Editor"
 open = "Im Browser öffnen"
 updated = "aktualisiert {{time}}"
 
@@ -6938,7 +6938,7 @@ title = "API-Schlüssel ausstellen"
 [portal.infrastructure]
 manageEditorDeployment = "Editor-Bereitstellung verwalten"
 sectionsAriaLabel = "Infrastrukturbereiche"
-subtitle = "Bereitstellungen, Zugangsdaten, Sicherheitsstatus, Speicher und Audit-Trail für Ihren Stirling-Arbeitsbereich."
+subtitle = "Bereitstellungen, Zugangsdaten, Sicherheitsstatus, Speicher und Audit-Trail für Ihren RyanPDF-Arbeitsbereich."
 title = "Infrastruktur"
 
 [portal.infrastructure.apiKeys]
@@ -6958,7 +6958,7 @@ usageMonth = "Nutzung diesen Monat"
 usageToday = "Nutzung heute"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Erstellen Sie einen eingeschränkten Schlüssel, um die Stirling API aufzurufen."
+description = "Erstellen Sie einen eingeschränkten Schlüssel, um die RyanPDF API aufzurufen."
 title = "Noch keine API-Schlüssel"
 
 [portal.infrastructure.audit]
@@ -7027,7 +7027,7 @@ keyNameLabel = "Schlüsselname"
 keyNamePlaceholder = "z. B. Produktion · Aufnahme"
 permissionsLabel = "Berechtigungen"
 secretKeyCaption = "Geheimer Schlüssel"
-secretWarning = "Speichern Sie dies in einem Secrets-Manager. Stirling speichert immer nur einen Hash — es gibt keine Möglichkeit, ihn später wiederherzustellen."
+secretWarning = "Speichern Sie dies in einem Secrets-Manager. RyanPDF speichert immer nur einen Hash — es gibt keine Möglichkeit, ihn später wiederherzustellen."
 subtitle = "Beschränken Sie den Schlüssel auf das Minimum, das er benötigt. Sie können ihn jederzeit rotieren oder widerrufen."
 subtitleCreated = "Kopieren Sie dieses Secret jetzt — es wird nicht erneut angezeigt."
 title = "API-Schlüssel erstellen"
@@ -7062,7 +7062,7 @@ version = "Version"
 
 [portal.infrastructure.deployments.regions]
 heading = "Regionen"
-subheading = "Live-Zustand für jede bereitgestellte Stirling-Region — Latenz, Last und Rollout-Version."
+subheading = "Live-Zustand für jede bereitgestellte RyanPDF-Region — Latenz, Last und Rollout-Version."
 
 [portal.infrastructure.deployments.regions.empty]
 description = "Bereitgestellte Regionen erscheinen hier, sobald Ihr Arbeitsbereich bereitgestellt ist."
@@ -7119,16 +7119,16 @@ operation = "Operation"
 routedTo = "Weitergeleitet an"
 
 [portal.infrastructure.security.access.byok]
-description = "Stellen Sie einen Schlüssel aus Ihrem eigenen KMS bereit. Stirling verschlüsselt damit, kann aber weiterhin lesen."
+description = "Stellen Sie einen Schlüssel aus Ihrem eigenen KMS bereit. RyanPDF verschlüsselt damit, kann aber weiterhin lesen."
 label = "Bring your own key (BYOK)"
 
 [portal.infrastructure.security.access.hyok]
-description = "Schlüssel verlassen niemals Ihr KMS. Stirling hält nur Ciphertext."
+description = "Schlüssel verlassen niemals Ihr KMS. RyanPDF hält nur Ciphertext."
 label = "Hold your own key (HYOK)"
 
 [portal.infrastructure.security.access.stirling]
-description = "Stirling verwaltet Verschlüsselungsschlüssel. Am einfachsten — kein Schlüsselbetrieb auf Ihrer Seite."
-label = "Von Stirling gehaltene Schlüssel"
+description = "RyanPDF verwaltet Verschlüsselungsschlüssel. Am einfachsten — kein Schlüsselbetrieb auf Ihrer Seite."
+label = "Von RyanPDF gehaltene Schlüssel"
 
 [portal.infrastructure.security.accessPolicy]
 heading = "Dokumentzugriffsrichtlinie"
@@ -7142,15 +7142,15 @@ viewReport = "Bericht anzeigen →"
 
 [portal.infrastructure.security.compliance]
 heading = "Compliance"
-subheading = "Attestierungen und Zertifizierungen für die Stirling-Plattform."
+subheading = "Attestierungen und Zertifizierungen für die RyanPDF-Plattform."
 
 [portal.infrastructure.security.empty]
 description = "Die Sicherheitskonfiguration Ihres Arbeitsbereichs erscheint hier."
 title = "Sicherheitsstatus nicht verfügbar"
 
 [portal.infrastructure.security.hyokBanner]
-description = "Mit HYOK verlassen Verschlüsselungsschlüssel niemals Ihr KMS. Stirling speichert und verarbeitet nur Ciphertext, den Sie jederzeit widerrufen können."
-title = "Stirling kann Ihre Dokumente nicht entschlüsseln"
+description = "Mit HYOK verlassen Verschlüsselungsschlüssel niemals Ihr KMS. RyanPDF speichert und verarbeitet nur Ciphertext, den Sie jederzeit widerrufen können."
+title = "RyanPDF kann Ihre Dokumente nicht entschlüsseln"
 
 [portal.infrastructure.security.ipAllowlist]
 empty = "Keine IP-Bereiche konfiguriert — alle IPs erlaubt."
@@ -7179,7 +7179,7 @@ subheading = "Verwahrung der Schlüssel, die ruhende Dokumente verschlüsseln �
 
 [portal.infrastructure.security.managedBanner]
 description = "Bring-your-own-key (BYOK) und hold-your-own-key (HYOK) sind in Enterprise verfügbar. Upgraden Sie, um Schlüssel aus Ihrem eigenen KMS bereitzustellen."
-title = "Schlüssel werden in Ihrem Plan von Stirling verwaltet"
+title = "Schlüssel werden in Ihrem Plan von RyanPDF verwaltet"
 
 [portal.infrastructure.security.residency.apac]
 description = "ap-southeast-1"
@@ -7660,7 +7660,7 @@ upload = "Upload"
 
 [portal.procurement.agreement]
 agreeCta = "Zustimmen & abonnieren"
-confirm = "Ich habe die Stirling Enterprise Agreement gelesen und stimme ihr zu."
+confirm = "Ich habe die RyanPDF Enterprise Agreement gelesen und stimme ihr zu."
 eyebrow = "Vereinbarung"
 intro = "Eine kombinierte Vereinbarung deckt Ihren Deal ab: Master Service Agreement, Bestellformular, EULA und Data Processing Agreement. Prüfen Sie sie und stimmen Sie dann zu, um das Angebot als verbindliches Abonnement anzunehmen."
 title = "Ihre Enterprise-Vereinbarung prüfen"
@@ -7675,7 +7675,7 @@ country = "Land"
 countryEuro = "Eurozone (EUR €)"
 countryUK = "Vereinigtes Königreich (GBP £)"
 countryUS = "Vereinigte Staaten (USD $)"
-eula = "Ich habe die Stirling Enterprise EULA gelesen und stimme ihr zu. Sie regelt die Vereinbarung, die aus diesem Angebot generiert wird."
+eula = "Ich habe die RyanPDF Enterprise EULA gelesen und stimme ihr zu. Sie regelt die Vereinbarung, die aus diesem Angebot generiert wird."
 generate = "Angebot erstellen"
 included = "Enthalten"
 indemnification = "IP-Freistellung"
@@ -7758,7 +7758,7 @@ daysLeft_one = "Noch {{count}} Tag"
 daysLeft_other = "Noch {{count}} Tage"
 engineerLabel = "Ihr Solutions Engineer"
 eyebrow = "Ihr Rollout"
-live = "Sie sind live auf Stirling Enterprise"
+live = "Sie sind live auf RyanPDF Enterprise"
 nextStep = "Nächster Schritt: {{action}}"
 subtitle = "Ihr Solutions Engineer ist bei jedem Schritt dabei. Immer nur die nächste Aktion; die vollständige Checkliste finden Sie unten."
 title = "Vom Test bis zum Live-Betrieb, ein geführter Weg"
@@ -7785,7 +7785,7 @@ gatingAction = "Ihr Angebot annehmen"
 label = "Angebot"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Evaluieren Sie Stirling mit Ihren Dokumenten und Workflows."
+blurb = "Evaluieren Sie RyanPDF mit Ihren Dokumenten und Workflows."
 gatingAction = "Ihr Angebot erstellen"
 label = "Testversion"
 
@@ -7799,14 +7799,14 @@ label = "Ihr Lizenzschlüssel"
 
 [portal.procurement.link]
 cta = "Konto verknüpfen"
-description = "Die Beschaffung läuft über Ihr verknüpftes Stirling-Konto: So stellen wir die Testversion bereit, bepreisen Ihr Angebot und starten die Abrechnung. Verknüpfen Sie ein Konto, um zu beginnen."
+description = "Die Beschaffung läuft über Ihr verknüpftes RyanPDF-Konto: So stellen wir die Testversion bereit, bepreisen Ihr Angebot und starten die Abrechnung. Verknüpfen Sie ein Konto, um zu beginnen."
 eyebrow = "Enterprise"
 title = "Verknüpfen Sie Ihr Konto, um zu beginnen"
 
 [portal.procurement.live]
 description = "Ihr Abonnement ist aktiv und Ihre Lizenz wurde ausgestellt. Ihr Team ist bereitgestellt und die Abrechnung hat begonnen."
 eyebrow = "Live"
-title = "Sie sind live auf Stirling Enterprise"
+title = "Sie sind live auf RyanPDF Enterprise"
 
 [portal.procurement.locked]
 description = "Testschlüssel, Angebote mit verbindlichem Volumen, die Ein-Signatur-Vereinbarung, Zahlung und Ihr Dokumentenregister befinden sich alle hier, sobald Sie eine Enterprise-Evaluation starten."
@@ -7841,7 +7841,7 @@ requestBodyFree = "Wir generieren dies auf Anfrage. Bestätigen Sie, und Ihr Sol
 requestBodyPaid = "Dies ist ein kostenpflichtiges Add-on. Bestätigen Sie, und Ihr Solutions Engineer wird den Umfang festlegen und die Unterlagen senden."
 requestCta = "Anfordern"
 requestTitle = "Dieses Dokument anfordern"
-signBody = "Öffnet die Stirling Enterprise Agreement zur elektronischen Signatur: Eine Unterschrift deckt MSA, Bestellformular, EULA und DPA ab. Wir gegenzeichnen automatisch, und Sie fahren mit der Zahlung fort."
+signBody = "Öffnet die RyanPDF Enterprise Agreement zur elektronischen Signatur: Eine Unterschrift deckt MSA, Bestellformular, EULA und DPA ab. Wir gegenzeichnen automatisch, und Sie fahren mit der Zahlung fort."
 signCta = "Zur Unterschrift öffnen"
 signTitle = "Ihre Vereinbarung prüfen und unterschreiben"
 uploadBody = "Senden Sie uns Ihre Bestellung, und wir stellen sie Ihnen zu Ihren Bedingungen in Rechnung. Ziehen Sie das PDF hinein oder wählen Sie unten eine Datei aus."
@@ -7893,7 +7893,7 @@ title = "Hier ist noch nichts"
 
 [portal.search]
 ariaLabel = "Suchen"
-placeholder = "Stirling durchsuchen — Endpoints, Pipelines, Dokumente…"
+placeholder = "RyanPDF durchsuchen — Endpoints, Pipelines, Dokumente…"
 
 [portal.search.empty]
 noActionsDescription = "Schnellaktionen werden hier angezeigt, sobald sie verfügbar sind."
@@ -7921,9 +7921,9 @@ switchToLight = "Zum hellen Theme wechseln"
 [portal.shell.sidebar]
 appEditor = "Editor"
 appProcessor = "Processor"
-brandSuffix = "Stirling Processor"
+brandSuffix = "RyanPDF Processor"
 docsCount = "{{docs}} Dokumente"
-linkAccount = "Stirling-Konto verknüpfen"
+linkAccount = "RyanPDF-Konto verknüpfen"
 planEditor = "Editor-Plan"
 planEnterprise = "Enterprise-Plan"
 planProcessor = "Processor-Plan"
@@ -7931,7 +7931,7 @@ primaryNav = "Primäre Navigation"
 switchApp = "App wechseln"
 
 [portal.sources]
-subtitle = "Wiederverwendbare Eingabeverbindungen, die Dokumente in Stirling einspeisen. Konfigurieren Sie eine Verbindung einmal und referenzieren Sie sie dann in beliebig vielen Richtlinien. Klicken Sie auf eine Zeile, um ihre Konfiguration und die Richtlinien anzuzeigen, die sie verwenden."
+subtitle = "Wiederverwendbare Eingabeverbindungen, die Dokumente in RyanPDF einspeisen. Konfigurieren Sie eine Verbindung einmal und referenzieren Sie sie dann in beliebig vielen Richtlinien. Klicken Sie auf eine Zeile, um ihre Konfiguration und die Richtlinien anzuzeigen, die sie verwenden."
 title = "Quellen"
 
 [portal.sources.actions]
@@ -7986,7 +7986,7 @@ description = "Überwacht ein Verzeichnis auf dem Server auf neue Dokumente."
 label = "Ordner"
 
 [portal.sources.types.folder.fields.directory]
-helperText = "Absoluter Pfad, den Stirling auf zu verarbeitende Dateien überwacht."
+helperText = "Absoluter Pfad, den RyanPDF auf zu verarbeitende Dateien überwacht."
 label = "Verzeichnispfad"
 placeholder = "/data/incoming"
 
@@ -8034,7 +8034,7 @@ review = "Prüfen & verbinden"
 
 [portal.usage]
 managePayment = "Zahlung verwalten"
-subtitle = "Verbrauch, Rechnungen und Planverwaltung für jedes PDF, das Stirling abgerechnet hat, in einer Konsole."
+subtitle = "Verbrauch, Rechnungen und Planverwaltung für jedes PDF, das RyanPDF abgerechnet hat, in einer Konsole."
 title = "Nutzung & Abrechnung"
 
 [portal.usage.error]
@@ -8044,7 +8044,7 @@ walletUnavailable = "Wallet nicht verfügbar: {{status}} {{statusText}}"
 
 [portal.usage.sessionExpired]
 action = "Erneut anmelden"
-body = "Ihre Stirling-Kontositzung ist abgelaufen. Melden Sie sich erneut an, um die Abrechnung anzuzeigen — Ihre Instanz bleibt verknüpft."
+body = "Ihre RyanPDF-Kontositzung ist abgelaufen. Melden Sie sich erneut an, um die Abrechnung anzuzeigen — Ihre Instanz bleibt verknüpft."
 title = "Sitzung abgelaufen"
 
 [portal.users]
@@ -8091,7 +8091,7 @@ summary = "Besitzt ein Team — verwaltet die Ressourcen seiner Mitglieder und f
 3 = "Alles, was Member tun kann"
 
 [portal.welcome]
-ariaLabel = "Willkommen bei Stirling PDF"
+ariaLabel = "Willkommen bei RyanPDF"
 badge = "Open-source"
 installEditor = "Editor installieren"
 inviteTeammates = "Teammitglieder einladen"
@@ -8099,7 +8099,7 @@ openInBrowser = "Im Browser öffnen"
 perks = "Für immer kostenlos · Selbst hostbar"
 subtitle = "Der weltweit sicherste PDF Editor ist kostenlos für Teams jeder Größe. Enthält 60+ PDF-Operationen und SSO."
 title = "Willkommen bei"
-titleAccent = "Stirling PDF"
+titleAccent = "RyanPDF"
 
 [printFile]
 title = "Datei drucken"
@@ -8790,8 +8790,8 @@ hideTools = "Nicht verfügbare Tools ausblenden ▴"
 messageNoFallback = "Tools sind nicht verfügbar, bis Ihr Server wieder online ist."
 messageWithFallback = "Einige Tools erfordern eine Serververbindung."
 showTools = "Nicht verfügbare Tools anzeigen ▾"
-title = "Ihr Stirling-PDF-Server ist nicht erreichbar"
-toolNotAvailableLocally = "Ihr Stirling-PDF-Server ist offline und „{{endpoint}}“ ist im lokalen Backend nicht verfügbar."
+title = "Ihr RyanPDF-Server ist nicht erreichbar"
+toolNotAvailableLocally = "Ihr RyanPDF-Server ist offline und „{{endpoint}}“ ist im lokalen Backend nicht verfügbar."
 
 [session]
 expired = "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und versuchen Sie es erneut."
@@ -8851,7 +8851,7 @@ user = "Angemeldet als"
 
 [settings.connection.mode]
 local = "Nur lokal"
-saas = "Stirling Cloud"
+saas = "RyanPDF Cloud"
 selfhosted = "Selbst gehostet"
 
 [settings.developer]
@@ -8866,7 +8866,7 @@ autoUnzipFileLimitDescription = "Maximale Anzahl an Dateien, die aus einem ZIP e
 autoUnzipFileLimitTooltip = "Nur entpacken, wenn das ZIP höchstens so viele Dateien enthält. Erhöhen, um größere ZIPs zu extrahieren."
 autoUnzipTooltip = "ZIP-Dateien, die von API-Operationen zurückgegeben werden, automatisch extrahieren. Deaktivieren, um ZIP-Dateien intakt zu lassen. Dies beeinflusst Automatisierungs-Workflows nicht."
 defaultPdfEditor = "Standard-PDF-Editor"
-defaultPdfEditorActive = "Stirling PDF ist Ihr Standard-PDF-Editor"
+defaultPdfEditorActive = "RyanPDF ist Ihr Standard-PDF-Editor"
 defaultPdfEditorChecking = "Prüfen..."
 defaultPdfEditorInactive = "Eine andere Anwendung ist als Standard festgelegt"
 defaultPdfEditorSet = "Bereits Standard"
@@ -8927,7 +8927,7 @@ updateBehavior = "Update-Verhalten"
 updateBehaviorDescription = "Wählen Sie, ob vor der Installation von Updates gefragt werden soll, ob sie automatisch installiert werden oder ob Updateprüfungen ganz übersprungen werden."
 updateBehaviorError = "Update-Verhalten konnte nicht geändert werden"
 updateBehaviorErrorLocked = "Diese Einstellung ist durch Ihren Administrator gesperrt."
-updateBehaviorLockedDescription = "Ihr Administrator hat konfiguriert, wie Stirling-PDF auf diesem Gerät mit Updates umgeht. Kontaktieren Sie ihn, um dies zu ändern."
+updateBehaviorLockedDescription = "Ihr Administrator hat konfiguriert, wie RyanPDF auf diesem Gerät mit Updates umgeht. Kontaktieren Sie ihn, um dies zu ändern."
 updateBehaviorSaved = "Update-Verhalten gespeichert."
 versionMismatch = "Warnung: Eine Nichtübereinstimmung wurde zwischen der Client-Version und der AppConfig-Version erkannt. Die Verwendung verschiedener Versionen kann zu Kompatibilitätsproblemen, Fehlern und Sicherheitsrisiken führen. Bitte stellen Sie sicher, dass Server und Client dieselbe Version verwenden."
 viewDetails = "Details anzeigen"
@@ -9011,7 +9011,7 @@ usageAnalytics = "Nutzungsanalyse"
 [settings.planBilling]
 currentPlan = "Aktueller Tarif"
 loading = "Abrechnungsinformationen werden geladen..."
-notAvailable = "Tarif & Abrechnung ist nur verfügbar, wenn Sie mit Stirling Cloud verbunden sind (SaaS-Modus)."
+notAvailable = "Tarif & Abrechnung ist nur verfügbar, wenn Sie mit RyanPDF Cloud verbunden sind (SaaS-Modus)."
 title = "Tarif & Abrechnung"
 
 [settings.planBilling.billing]
@@ -9137,7 +9137,7 @@ emptyUsername = "Bitte geben Sie Ihren Benutzernamen ein"
 oauthFailed = "OAuth-Login fehlgeschlagen. Bitte erneut versuchen."
 
 [setup.saas]
-title = "Bei Stirling anmelden"
+title = "Bei RyanPDF anmelden"
 
 [setup.selfhosted]
 changeServerLocked = "Ihre Organisation hat diese App auf einen bestimmten Server beschränkt"
@@ -9175,7 +9175,7 @@ step3 = "Starten Sie den Server neu"
 title = "Anmeldung nicht aktiviert"
 
 [setup.server.url]
-description = "Geben Sie die vollständige URL Ihres selbst gehosteten Stirling PDF-Servers ein"
+description = "Geben Sie die vollständige URL Ihres selbst gehosteten RyanPDF-Servers ein"
 label = "Server-URL"
 
 [sharedSign]
@@ -9411,7 +9411,7 @@ pleaseFillAllFields = "Bitte füllen Sie alle Felder aus"
 signUp = "Registrieren"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Bei Stirling PDF anmelden und loslegen"
+subtitle = "Bei RyanPDF anmelden und loslegen"
 title = "Konto erstellen"
 unexpectedError = "Unerwarteter Fehler: {{message}}"
 
@@ -9638,7 +9638,7 @@ download = "Herunterladen"
 downloaded = "Heruntergeladen"
 downloadFailed = "Diese Datei kann nicht heruntergeladen werden."
 downloadsCount = "Downloads: {{count}}"
-emailWarningBody = "Das sieht nach einer E-Mail-Adresse aus. Wenn diese Person noch kein Stirling PDF-Benutzer ist, kann sie nicht auf die Datei zugreifen."
+emailWarningBody = "Das sieht nach einer E-Mail-Adresse aus. Wenn diese Person noch kein RyanPDF-Benutzer ist, kann sie nicht auf die Datei zugreifen."
 emailWarningConfirm = "Trotzdem freigeben"
 emailWarningTitle = "E-Mail-Adresse"
 errorTitle = "Freigabe fehlgeschlagen"
@@ -9669,7 +9669,7 @@ manageTitle = "Freigabe verwalten"
 noActivity = "Noch keine Aktivität."
 noLinks = "Noch keine aktiven Freigabelinks."
 noSharedUsers = "Noch keine Benutzer mit Zugriff."
-openInApp = "In Stirling PDF öffnen"
+openInApp = "In RyanPDF öffnen"
 ownerLabel = "Eigentümer"
 ownerUnknown = "Unbekannt"
 removeLink = "Link entfernen"
@@ -9723,7 +9723,7 @@ updateButton = "Auf Server aktualisieren"
 uploadButton = "Auf Server hochladen"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "RyanPDF Survey"
 
 [swagger]
 tags = "API,Dokumentation,Swagger,Endpunkte,Entwicklung"
@@ -9851,7 +9851,7 @@ favorites = "Favoriten"
 heading = "Alle Tools (Vollbildansicht)"
 noResults = "Passen Sie Ihre Suche an oder blenden Sie Beschreibungen ein/aus, um das Gewünschte zu finden."
 recommended = "Empfohlen"
-selfHostedOffline = "Erfordert Ihren Stirling-PDF-Server (derzeit offline):"
+selfHostedOffline = "Erfordert Ihren RyanPDF-Server (derzeit offline):"
 showDetails = "Details anzeigen"
 unavailable = "Vom Serveradministrator deaktiviert:"
 unavailableDependency = "Nicht verfügbar – erforderliches Tool auf dem Server fehlt:"
@@ -9860,7 +9860,7 @@ unfavorite = "Aus Favoriten entfernen"
 [toolPanel.modePrompt]
 chooseFullscreen = "Vollbildmodus verwenden"
 chooseSidebar = "Seitenleistenmodus verwenden"
-description = "Sehen Sie sich beide Layouts an und entscheiden Sie, wie Sie die Stirling PDF-Tools erkunden möchten."
+description = "Sehen Sie sich beide Layouts an und entscheiden Sie, wie Sie die RyanPDF-Tools erkunden möchten."
 dismiss = "Vielleicht später"
 fullscreenDescription = "Alle Tools in einem Katalog durchsuchen, der den Arbeitsbereich überdeckt, bis Sie eines auswählen."
 fullscreenTitle = "Vollbildmodus - (veraltet)"
@@ -9928,7 +9928,7 @@ loadingDetailedInfo = "Detaillierte Informationen werden geladen..."
 migrationGuide = "Migrationshinweis"
 migrationGuides = "Migrationshinweise"
 migrationGuidesDesc = "Wichtige Änderungen vor dem Aktualisieren prüfen."
-modalSubtitle = "Eine neue Version von Stirling PDF ist zur Installation bereit."
+modalSubtitle = "Eine neue Version von RyanPDF ist zur Installation bereit."
 modalTitle = "Update verfügbar"
 notes = "Hinweise"
 releaseNotes = "Versionshinweise"
@@ -9952,7 +9952,7 @@ urgent = "Dringend"
 attentionBody = "Ihr Admin muss sich anmelden, um mehr Infos zu sehen. Bitte kontaktieren Sie ihn umgehend."
 attentionBodyAdmin = "Prüfen Sie die Lizenzanforderungen, um diesen Server konform zu halten."
 attentionTitle = "Dieser Server benötigt Admin-Aufmerksamkeit"
-message = "Holen Sie das Beste aus Stirling PDF heraus – mit unbegrenzten Nutzern und erweiterten Funktionen"
+message = "Holen Sie das Beste aus RyanPDF heraus – mit unbegrenzten Nutzern und erweiterten Funktionen"
 seeInfo = "Infos anzeigen"
 title = "Upgrade auf Server-Plan"
 upgradeButton = "Jetzt upgraden"
@@ -10069,7 +10069,7 @@ authWeb = "Passwort"
 create = "Konto erstellen"
 createSubtitle = "Erstellen Sie ein selbst gehostetes Konto mit einem Passwort oder SSO."
 createTitle = "Konto erstellen"
-editorDesc = "PDFs im Stirling PDF Editor bearbeiten. Alle erhalten dies."
+editorDesc = "PDFs im RyanPDF Editor bearbeiten. Alle erhalten dies."
 email = "E-Mail-Adresse"
 emailError = "Geben Sie eine gültige E-Mail-Adresse ein"
 emailPlaceholder2 = "name@company.com"
@@ -10084,7 +10084,7 @@ processorDeferred = "Einladung gesendet, aber Processor-Zugriff konnte noch nich
 processorDesc = "Die Governance-Oberfläche, Pipelines ausführen, Agents und die API."
 role = "Rolle"
 send2 = "Einladung senden"
-subtitle2 = "Sie erhalten eine E-Mail, um Ihrem Stirling-Arbeitsbereich beizutreten."
+subtitle2 = "Sie erhalten eine E-Mail, um Ihrem RyanPDF-Arbeitsbereich beizutreten."
 team = "Team"
 title = "Personen einladen"
 username = "Benutzername"
@@ -10207,7 +10207,7 @@ downloads = "Downloads"
 entryLabel = "Signaturübersicht"
 filesEvaluated_one = "{{count}} Datei ausgewertet"
 filesEvaluated_other = "{{count}} Dateien ausgewertet"
-footer = "Validiert mit Stirling PDF"
+footer = "Validiert mit RyanPDF"
 generatedAt = "Erstellt"
 noPdf = "Der PDF-Bericht ist nach einer erfolgreichen Validierung verfügbar."
 page = "Seite"

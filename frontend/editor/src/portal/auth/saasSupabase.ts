@@ -4,14 +4,14 @@ import {
 } from "@app/auth/supabase/supabaseClient";
 
 /**
- * Configures the shared Supabase client against the Stirling Supabase project so
+ * Configures the shared Supabase client against the RyanPDF Supabase project so
  * the portal can mint a SaaS JWT IN-APP for account linking (no popup). This is a
  * separate, transient SaaS auth — the portal's own session stays Spring (the
  * local instance admin); calls to the local backend still carry the Spring
  * bearer, and the SaaS JWT is passed only in the link request body.
  *
  * Config: VITE_SUPABASE_URL + VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY (both public)
- * — the one Stirling Supabase project every flavor talks to (same vars the editor
+ * — the one RyanPDF Supabase project every flavor talks to (same vars the editor
  * and proprietary billing client use; there is no separate SaaS project). SaaS
  * needs no per-flavor override: the signed-in editor session is on this same
  * project, so the client picks it up. Absent → {@link isSaasSupabaseConfigured}
@@ -26,7 +26,7 @@ export const isSaasSupabaseConfigured = Boolean(url && key);
 export const SAAS_OAUTH_PROVIDERS = ["google", "github", "apple", "azure"];
 
 /** sessionStorage marker set before an SSO redirect so the return can finish the link. */
-export const PENDING_LINK_KEY = "stirling-account-link-pending";
+export const PENDING_LINK_KEY = "ryanpdf-account-link-pending";
 
 let configured = false;
 

@@ -34,7 +34,7 @@ export interface FolderFileMetadata {
   addedAt: Date;
   status: "pending" | "processing" | "processed" | "error";
   processedAt?: Date;
-  /** All output file ids produced by this run — references stirling-pdf-files */
+  /** All output file ids produced by this run — references ryanpdf-pdf-files */
   displayFileIds?: string[];
   /** First output file id — kept for backwards compat with existing records */
   displayFileId?: string;

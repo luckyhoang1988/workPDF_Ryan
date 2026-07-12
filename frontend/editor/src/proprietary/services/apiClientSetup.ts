@@ -10,7 +10,7 @@ let failedQueue: Array<{
 
 function getJwtTokenFromStorage(): string | null {
   try {
-    return localStorage.getItem("stirling_jwt");
+    return localStorage.getItem("ryanpdf_jwt");
   } catch (error) {
     console.error("[API Client] Failed to read JWT from localStorage:", error);
     return null;
@@ -19,7 +19,7 @@ function getJwtTokenFromStorage(): string | null {
 
 function setJwtTokenInStorage(token: string): void {
   try {
-    localStorage.setItem("stirling_jwt", token);
+    localStorage.setItem("ryanpdf_jwt", token);
     console.debug("[API Client] Stored new JWT token in localStorage");
   } catch (error) {
     console.error("[API Client] Failed to store JWT in localStorage:", error);
@@ -28,7 +28,7 @@ function setJwtTokenInStorage(token: string): void {
 
 function clearJwtTokenFromStorage(): void {
   try {
-    localStorage.removeItem("stirling_jwt");
+    localStorage.removeItem("ryanpdf_jwt");
     console.debug("[API Client] Cleared JWT token from localStorage");
   } catch (error) {
     console.error("[API Client] Failed to clear JWT from localStorage:", error);

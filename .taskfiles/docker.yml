@@ -8,33 +8,33 @@ tasks:
   build:
     desc: "Build standard Docker image"
     cmds:
-      - docker build -t stirling-pdf -f {{.EMBEDDED_DIR}}/Dockerfile .
+      - docker build -t ryanpdf -f {{.EMBEDDED_DIR}}/Dockerfile .
 
   build:fat:
     desc: "Build fat Docker image (all features)"
     cmds:
-      - docker build -t stirling-pdf-fat -f {{.EMBEDDED_DIR}}/Dockerfile.fat .
+      - docker build -t ryanpdf-fat -f {{.EMBEDDED_DIR}}/Dockerfile.fat .
 
   build:ultra-lite:
     desc: "Build ultra-lite Docker image"
     cmds:
-      - docker build -t stirling-pdf-ultra-lite -f {{.EMBEDDED_DIR}}/Dockerfile.ultra-lite .
+      - docker build -t ryanpdf-ultra-lite -f {{.EMBEDDED_DIR}}/Dockerfile.ultra-lite .
 
   build:backend:
     desc: "Build backend-only Docker image (no embedded frontend)"
     cmds:
-      - docker build -t stirling-pdf-backend -f docker/backend/Dockerfile .
+      - docker build -t ryanpdf-backend -f docker/backend/Dockerfile .
 
   build:frontend:
     desc: "Build frontend-only Docker image"
     cmds:
-      - docker build -t stirling-pdf-frontend -f docker/frontend/Dockerfile .
+      - docker build -t ryanpdf-frontend -f docker/frontend/Dockerfile .
 
   build:engine:
     desc: "Build engine Docker image"
     dir: engine
     cmds:
-      - docker build -t stirling-pdf-engine .
+      - docker build -t ryanpdf-engine .
 
   up:
     desc: "Start standard docker compose stack"

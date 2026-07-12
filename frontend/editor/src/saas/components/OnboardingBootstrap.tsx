@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { usePreferences } from "@app/contexts/PreferencesContext";
 import { useOnboarding } from "@app/contexts/OnboardingContext";
 
-const ONBOARDING_SESSION_BLOCK_KEY = "stirling-onboarding-session-active";
+const ONBOARDING_SESSION_BLOCK_KEY = "ryanpdf-onboarding-session-active";
 
 /**
  * SaaS-only bootstrap to clear deferred tour requests and mark the tool panel

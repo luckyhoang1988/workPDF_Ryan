@@ -18,7 +18,7 @@ import {
 import { openAppSettings } from "@app/utils/appSettings";
 import { requestStartTour } from "@app/constants/events";
 import apiClient from "@app/services/apiClient";
-import stirlingMark from "@app/assets/brand/modern-logo/logo512.png";
+import ryanpdfMark from "@app/assets/brand/modern-logo/logo512.png";
 import styles from "@app/components/onboarding/OnboardingChecklist.module.css";
 
 const FLOW_ID = "saas-checklist";
@@ -76,9 +76,9 @@ export function OnboardingChecklist() {
       {
         id: STEP_DOWNLOAD_DESKTOP,
         titleKey: "onboarding.checklist.downloadDesktop.title",
-        titleFallback: "Download Stirling for Desktop",
+        titleFallback: "Download RyanPDF for Desktop",
         descriptionKey: "onboarding.checklist.downloadDesktop.description",
-        descriptionFallback: "Run Stirling natively on your machine",
+        descriptionFallback: "Run RyanPDF natively on your machine",
         onClick: () => setDownloadOpen(true),
       },
       {
@@ -94,7 +94,7 @@ export function OnboardingChecklist() {
         titleKey: "onboarding.checklist.takeTour.title",
         titleFallback: "Take the tour",
         descriptionKey: "onboarding.checklist.takeTour.description",
-        descriptionFallback: "See how Stirling works in a quick walkthrough",
+        descriptionFallback: "See how RyanPDF works in a quick walkthrough",
         onClick: handleTakeTour,
       },
       {
@@ -102,7 +102,7 @@ export function OnboardingChecklist() {
         titleKey: "onboarding.checklist.shareAnalytics.title",
         titleFallback: "Share anonymous usage data",
         descriptionKey: "onboarding.checklist.shareAnalytics.description",
-        descriptionFallback: "Help improve Stirling",
+        descriptionFallback: "Help improve RyanPDF",
         onClick: () => setAnalyticsOpen(true),
       },
     ],
@@ -173,13 +173,13 @@ export function OnboardingChecklist() {
         >
           <span className={styles.titleGroup}>
             <img
-              src={stirlingMark}
+              src={ryanpdfMark}
               alt=""
               aria-hidden="true"
               className={styles.logo}
             />
             <span className={styles.title}>
-              {t("onboarding.checklist.title", "Set up Stirling PDF")}
+              {t("onboarding.checklist.title", "Set up RyanPDF")}
             </span>
           </span>
           <span className={styles.headerRight}>

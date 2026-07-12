@@ -4,13 +4,13 @@
  * The editor injects its own richer axios instance (with platform routing,
  * error toasts, credit headers, ...) via {@link configureSpringAuth}. Apps that
  * don't have one - notably the portal - fall back to this minimal client, which
- * attaches the `stirling_jwt` bearer token so the portal and editor share a
+ * attaches the `ryanpdf_jwt` bearer token so the portal and editor share a
  * single same-origin session.
  */
 import axios, { type AxiosInstance } from "axios";
 
 /** localStorage key holding the Spring JWT. Shared so portal + editor agree. */
-export const JWT_STORAGE_KEY = "stirling_jwt";
+export const JWT_STORAGE_KEY = "ryanpdf_jwt";
 
 export function getStoredToken(): string | null {
   try {

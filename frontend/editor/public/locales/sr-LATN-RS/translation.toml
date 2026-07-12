@@ -57,7 +57,7 @@ keepWorking = "Nastavi sa radom"
 loading = "Učitavam..."
 loginAgreementAccept = "Prihvati"
 loginAgreementDecline = "Odbij"
-loginAgreementProvider = "Ovo obaveštenje obezbeđuje vaš administrator, a ne Stirling PDF Inc."
+loginAgreementProvider = "Ovo obaveštenje obezbeđuje vaš administrator, a ne RyanPDF Inc."
 loginAgreementTitle = "Sporazum o prijavi"
 logOut = "Odjavi se"
 marginTooltip = "Udaljenost između broja stranice i ivice strane."
@@ -919,11 +919,11 @@ description = "Podesite opcione funkcije i funkcionalnosti."
 title = "Funkcije"
 
 [admin.settings.features.serverCertificate]
-description = "Podesite generisanje serverskog sertifikata za funkcionalnost \"Sign with Stirling-PDF\""
+description = "Podesite generisanje serverskog sertifikata za funkcionalnost \"Sign with RyanPDF\""
 label = "Serverski sertifikat"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Omogući serverski sertifikat za opciju \"Sign with Stirling-PDF\""
+description = "Omogući serverski sertifikat za opciju \"Sign with RyanPDF\""
 label = "Omogući serverski sertifikat"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1071,7 +1071,7 @@ description = "URL ili naziv datoteke do politike kolačića"
 label = "Politika kolačića"
 
 [admin.settings.legal.disclaimer]
-message = "Prilagođavanjem ovih pravnih dokumenata preuzimate punu odgovornost za obezbeđivanje usklađenosti sa svim primenjivim zakonima i propisima, uključujući, ali ne ograničavajući se na GDPR i druge EU zahteve zaštite podataka. Menjajte ova podešavanja samo ako: (1) upravljate ličnom/privatnom instancom, (2) nalazite se van jurisdikcije EU i razumete svoje lokalne pravne obaveze, ili (3) ste pribavili odgovarajući pravni savet i prihvatate punu odgovornost za sve korisničke podatke i pravnu usklađenost. Stirling-PDF i njegovi developeri ne snose odgovornost za vaše pravne obaveze."
+message = "Prilagođavanjem ovih pravnih dokumenata preuzimate punu odgovornost za obezbeđivanje usklađenosti sa svim primenjivim zakonima i propisima, uključujući, ali ne ograničavajući se na GDPR i druge EU zahteve zaštite podataka. Menjajte ova podešavanja samo ako: (1) upravljate ličnom/privatnom instancom, (2) nalazite se van jurisdikcije EU i razumete svoje lokalne pravne obaveze, ili (3) ste pribavili odgovarajući pravni savet i prihvatate punu odgovornost za sve korisničke podatke i pravnu usklađenost. RyanPDF i njegovi developeri ne snose odgovornost za vaše pravne obaveze."
 title = "Upozorenje o pravnoj odgovornosti"
 
 [admin.settings.legal.impressum]
@@ -1158,8 +1158,8 @@ description = "Korisničko ime za SMTP autentikaciju"
 label = "SMTP korisničko ime"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a RyanPDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning RyanPDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose RyanPDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1189,7 +1189,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning RyanPDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1202,12 +1202,12 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+description = "OAuth needs an external IdP. API key uses a RyanPDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled RyanPDF user."
+label = "Require an existing RyanPDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1218,7 +1218,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a RyanPDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1539,7 +1539,7 @@ description = "Kada je omogućeno, samo navedeni ID-jevi korisnika mogu koristit
 label = "Dozvoli određene ID-jeve korisnika"
 
 [admin.settings.telegram.enabled]
-description = "Omogućava korisnicima interakciju sa Stirling PDF putem vašeg podešenog Telegram bota."
+description = "Omogućava korisnicima interakciju sa RyanPDF putem vašeg podešenog Telegram bota."
 label = "Omogući Telegram bot"
 
 [admin.settings.telegram.feedback]
@@ -1612,20 +1612,20 @@ settingsOverview = "Ovo je <strong>Panel podešavanja</strong>. Admin podešavan
 systemCustomization = "Postoje široke mogućnosti prilagođavanja UI-ja: <strong>System Settings</strong> vam omogućavaju promenu imena aplikacije i jezika, <strong>Features</strong> omogućava upravljanje sertifikatima servera, a <strong>Endpoints</strong> omogućava uključivanje ili isključivanje pojedinačnih alata za vaše korisnike."
 teamsAndUsers = "Ovde upravljajte <strong>timovima</strong> i pojedinačnim korisnicima. Možete pozvati nove korisnike emailom, deljivim linkovima ili im sami kreirati naloge."
 welcome = "Dobrodošli u <strong>Admin turu</strong>! Hajde da istražimo moćne enterprise funkcije i podešavanja dostupna sistemskim administratorima."
-wrapUp = "To je bila admin tura! Videli ste enterprise funkcije koje čine Stirling PDF moćnim, prilagodljivim rešenjem za organizacije. Ovoj turi možete pristupiti uvek preko menija <strong>Pomoć</strong>."
+wrapUp = "To je bila admin tura! Videli ste enterprise funkcije koje čine RyanPDF moćnim, prilagodljivim rešenjem za organizacije. Ovoj turi možete pristupiti uvek preko menija <strong>Pomoć</strong>."
 
 [adminUserSettings]
 admin = "Administrator"
 title = "Podešavanja kontrole korisnika"
 
 [agents]
-stirling_name = "Stirling"
+stirling_name = "RyanPDF"
 
 [analytics]
 learnMore = "Saznaj više"
-paragraph1 = "Stirling PDF ima opcioni sistem analitike koji nam pomaže da unapredimo proizvod. Ne pratimo nikakve lične podatke niti sadržaj fajlova."
-paragraph2 = "Molimo te da razmotriš uključivanje analitike kako bi pomogao Stirling PDF-u da raste i omogućio nam bolje razumevanje naših korisnika."
-title = "Želiš li da učiniš Stirling PDF boljim?"
+paragraph1 = "RyanPDF ima opcioni sistem analitike koji nam pomaže da unapredimo proizvod. Ne pratimo nikakve lične podatke niti sadržaj fajlova."
+paragraph2 = "Molimo te da razmotriš uključivanje analitike kako bi pomogao RyanPDF-u da raste i omogućio nam bolje razumevanje naših korisnika."
+title = "Želiš li da učiniš RyanPDF boljim?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2558,7 +2558,7 @@ bullet1 = "Podržava PEM, PKCS12, JKS i formate serverskog sertifikata"
 bullet2 = "Opcija da prikažete ili sakrijete potpis na PDF-u"
 bullet3 = "Dodajte razlog, lokaciju i ime potpisnika"
 bullet4 = "Izaberite na kojoj strani da postavite vidljive potpise"
-bullet5 = "Koristite serverski sertifikat za jednostavnu opciju 'Potpiši sa Stirling-PDF'"
+bullet5 = "Koristite serverski sertifikat za jednostavnu opciju 'Potpiši sa RyanPDF'"
 text = "Za potpisivanje PDF-a potreban je digitalni sertifikat (kao PEM, PKCS12 ili JKS). Možete izabrati da potpis bude vidljiv na dokumentu ili da bude nevidljiv samo radi bezbednosti."
 title = "Dodavanje potpisa"
 
@@ -2739,10 +2739,10 @@ copy = "Kopiraj poruku"
 
 [chat.fab]
 close = "Close chat"
-open = "Open Stirling AI assistant"
+open = "Open RyanPDF AI assistant"
 
 [chat.header]
-agentMenu = "Opcije Stirling agenta"
+agentMenu = "Opcije RyanPDF agenta"
 clearChat = "Obriši čet"
 
 [chat.input]
@@ -3072,14 +3072,14 @@ upgradeButton = "Nadogradi nalog"
 
 [config.apiKeys]
 copyKeyAriaLabel = "Kopiraj API ključ"
-description = "Vaš API ključ za pristup Stirlingovom paketu PDF alata. Kopirajte ga u svoj projekat ili osvežite da generišete novi."
-docsDescription = "Saznajte više o integraciji sa Stirling PDF:"
+description = "Vaš API ključ za pristup RyanPDFovom paketu PDF alata. Kopirajte ga u svoj projekat ili osvežite da generišete novi."
+docsDescription = "Saznajte više o integraciji sa RyanPDF:"
 docsLink = "API dokumentacija"
 docsTitle = "API dokumentacija"
 generateError = "Nismo mogli da generišemo vaš API ključ."
 goToAccount = "Idi na nalog"
 guestInfo = "Gosti ne dobijaju API ključeve. Napravite nalog da biste dobili API ključ koji možete koristiti u svojim aplikacijama."
-intro = "Koristite svoj API ključ za programski pristup mogućnostima obrade koje nudi Stirling PDF."
+intro = "Koristite svoj API ključ za programski pristup mogućnostima obrade koje nudi RyanPDF."
 label = "API ključ"
 publicKeyAriaLabel = "Javni API ključ"
 refreshAriaLabel = "Osveži API ključ"
@@ -3103,10 +3103,10 @@ title = "Osveži API ključeve"
 warning = "⚠️ Upozorenje: Ova radnja će generisati nove API ključeve i poništiti vaše prethodne ključeve."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your RyanPDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run RyanPDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using RyanPDF directly."
 title = "MCP Server"
 viewApiKeys = "View API keys"
 
@@ -3123,7 +3123,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your RyanPDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -3232,7 +3232,7 @@ showPreferencesBtn = "Upravljaj podešavanjima"
 title = "Kako koristimo kolačiće"
 
 [cookieBanner.popUp.description]
-1 = "Koristimo kolačiće i druge tehnologije kako bismo poboljšali rad Stirling PDF-a — pomažući nam da unapredimo naše alate i nastavimo da razvijamo funkcije koje ćete voleti."
+1 = "Koristimo kolačiće i druge tehnologije kako bismo poboljšali rad RyanPDF-a — pomažući nam da unapredimo naše alate i nastavimo da razvijamo funkcije koje ćete voleti."
 2 = "If you’d rather not, clicking 'No Thanks' will only enable the essential cookies needed to keep things running smoothly."
 
 [cookieBanner.preferencesModal]
@@ -3245,12 +3245,12 @@ subtitle = "Korišćenje kolačića"
 title = "Centar za podešavanja saglasnoti"
 
 [cookieBanner.preferencesModal.analytics]
-description = "Ovi kolačići nam pomažu da razumemo kako se naši alati koriste, kako bismo mogli da se fokusiramo na razvoj funkcija koje naša zajednica najviše ceni. Budite sigurni — Stirling PDF ne može i nikada neće pratiti sadržaj dokumenata sa kojima radite."
+description = "Ovi kolačići nam pomažu da razumemo kako se naši alati koriste, kako bismo mogli da se fokusiramo na razvoj funkcija koje naša zajednica najviše ceni. Budite sigurni — RyanPDF ne može i nikada neće pratiti sadržaj dokumenata sa kojima radite."
 title = "Analitika"
 
 [cookieBanner.preferencesModal.description]
-1 = "Stirling PDF koristi kolačiće i slične tehnologije kako bi poboljšao vaše iskustvo i razumeo kako se naši alati koriste. Ovo nam pomaže da unapredimo performanse, razvijamo funkcije koje su vam važne i pružimo kontinuiranu podršku našim korisnicima."
-2 = "Stirling PDF ne može — i nikada neće — pratiti ili pristupati sadržaju dokumenata koje koristite."
+1 = "RyanPDF koristi kolačiće i slične tehnologije kako bi poboljšao vaše iskustvo i razumeo kako se naši alati koriste. Ovo nam pomaže da unapredimo performanse, razvijamo funkcije koje su vam važne i pružimo kontinuiranu podršku našim korisnicima."
+2 = "RyanPDF ne može — i nikada neće — pratiti ili pristupati sadržaju dokumenata koje koristite."
 3 = "Vaša privatnost i poverenje su osnovni principi našeg rada."
 
 [cookieBanner.preferencesModal.necessary]
@@ -3346,14 +3346,14 @@ message = "Neuspešno postavljanje podrazumevanog PDF rukovaoca"
 title = "Greška"
 
 [defaultApp.prompt]
-message = "Postavite Stirling PDF kao podrazumevanu aplikaciju za otvaranje PDF fajlova."
+message = "Postavite RyanPDF kao podrazumevanu aplikaciju za otvaranje PDF fajlova."
 
 [defaultApp.settingsOpened]
-message = "Molimo izaberite Stirling PDF u podešavanjima sistema"
+message = "Molimo izaberite RyanPDF u podešavanjima sistema"
 title = "Podešavanja otvorena"
 
 [defaultApp.success]
-message = "Stirling PDF je sada vaš podrazumevani PDF uređivač"
+message = "RyanPDF je sada vaš podrazumevani PDF uređivač"
 title = "Podrazumevana aplikacija postavljena"
 
 [desktopUpdate]
@@ -3369,7 +3369,7 @@ updateFailedMessage = "Nije uspelo preuzimanje ili instalacija ažuriranja."
 
 [desktopUpdate.blocked]
 docsLink = "Prikaži dokumentaciju za instalaciju"
-message = "Stirling-PDF nema dozvolu da se sam ažurira na ovoj mašini."
+message = "RyanPDF nema dozvolu da se sam ažurira na ovoj mašini."
 title = "Potrebne su administratorske dozvole"
 
 [devAirgapped]
@@ -3939,7 +3939,7 @@ title = "Premesti u fasciklu"
 [filesPage.origin]
 all = "Svi izvori"
 cloud = "Oblak"
-cloudHint = "Skladišteno na Stirling serveru"
+cloudHint = "Skladišteno na RyanPDF serveru"
 local = "Lokalno"
 localHint = "Samo skladišteno u ovom pregledaču"
 shared = "Podeljeno"
@@ -4203,7 +4203,7 @@ invisible = "Nevidljivo (samo metapodaci)"
 location = "Lokacija:"
 logo = "Logotip:"
 logoHidden = "Bez logotipa"
-logoShown = "Prikazan Stirling PDF logotip"
+logoShown = "Prikazan RyanPDF logotip"
 participantCount_one = "{{count}} participant will sign in order"
 participantCount_other = "{{count}} participants will sign in order"
 participants = "Učesnici"
@@ -4257,7 +4257,7 @@ title = "Sekvencijalno potpisivanje"
 dismiss = "Zatvori baner"
 message = "Kreirajte besplatan nalog da sačuvate svoj rad, pristupite dodatnim funkcijama i podržite projekat."
 signUp = "Registruj se besplatno"
-title = "Koristite Stirling PDF kao gost!"
+title = "Koristite RyanPDF kao gost!"
 
 [home.addAttachments]
 desc = "Dodajte ili uklonite ugradene datoteke (priloge) u/iz PDF-a"
@@ -4416,7 +4416,7 @@ tags = "spoji,pridruži,ujedini"
 title = "Spajanje"
 
 [home.mobile]
-brandAlt = "logo Stirling PDF"
+brandAlt = "logo RyanPDF"
 openFiles = "Otvori datoteke"
 swipeHint = "Prevucite levo ili desno da biste promenili prikaz"
 tools = "Alati"
@@ -4455,7 +4455,7 @@ tags = "organizuj,preuredi,redosled"
 title = "Organizacija"
 
 [home.pdfTextEditor]
-desc = "Pregledajte i uređujte Stirling PDF JSON izvoze uz grupisano uređivanje teksta i ponovno generisanje PDF-a"
+desc = "Pregledajte i uređujte RyanPDF JSON izvoze uz grupisano uređivanje teksta i ponovno generisanje PDF-a"
 tags = "edit text,modify text,change text,edit content,update text,rewrite,correct,amend,redline,revise,text editor,content editor"
 title = "PDF uređivač teksta"
 
@@ -4641,7 +4641,7 @@ passwordRequired = "Lozinka je obavezna"
 signIn = "Prijavite se"
 validating = "Validacija poziva..."
 validationError = "Nije uspela validacija pozivnog linka"
-welcome = "Dobrodošli u Stirling PDF"
+welcome = "Dobrodošli u RyanPDF"
 welcomeSubtitle = "Dovršite podešavanje naloga da biste počeli"
 welcomeTitle = "Pozvani ste!"
 
@@ -4669,7 +4669,7 @@ terms = "Uslovi i odredbe"
 title = "3rd Party Licenses"
 
 [localMode]
-toolUnavailable = "Ovaj alat zahteva nalog. Prijavite se na Stirling Cloud ili se povežite na samohostovani server da biste ga koristili."
+toolUnavailable = "Ovaj alat zahteva nalog. Prijavite se na RyanPDF Cloud ili se povežite na samohostovani server da biste ga koristili."
 
 [localMode.toolPicker]
 message = "Prijavite se da otključate sve alate."
@@ -4726,7 +4726,7 @@ subtitle = "Uz više od desetak alata za zatamnjivanje, potpisivanje, čitanje i
 title = "Uredite PDF dokumente da prikažete/zaštitite informacije koje želite"
 
 [login.slides.overview]
-alt = "Pregled Stirling PDF"
+alt = "Pregled RyanPDF"
 subtitle = "Cloud paket sa privatnošću na prvom mestu za PDF dokumente koji omogućava konvertovanje, potpisivanje, zatamnjivanje i upravljanje dokumentima, uz 50+ drugih moćnih alata."
 title = "Sve na jednom mestu za sve vaše PDF potrebe."
 
@@ -4844,7 +4844,7 @@ message = "Autentikacija nije uspela. Možete zatvoriti ovaj prozor i pokušati 
 title = "Autentikacija neuspešna"
 
 [oauth.success]
-message = "Možete zatvoriti ovaj prozor i vratiti se u Stirling PDF."
+message = "Možete zatvoriti ovaj prozor i vratiti se u RyanPDF."
 title = "Autentikacija uspešna"
 
 [oauthConsent]
@@ -4857,17 +4857,17 @@ loadFailed = "This authorisation request is invalid or has expired. Close this t
 loading = "Loading authorisation request..."
 missingId = "Missing authorisation request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your RyanPDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your RyanPDF account to continue connecting the app."
 title = "Authorise access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your RyanPDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -4989,7 +4989,7 @@ skipForNow = "Preskoči za sada"
 skipTheTour = "Preskoči obilazak"
 
 [onboarding.desktopInstall]
-body = "Stirling najbolje radi kao desktop aplikacija. Možete je koristiti offline, brže pristupati dokumentima i praviti izmene lokalno na računaru."
+body = "RyanPDF najbolje radi kao desktop aplikacija. Možete je koristiti offline, brže pristupati dokumentima i praviti izmene lokalno na računaru."
 selectOs = "Izaberite operativni sistem"
 title = "Preuzmi"
 titleWithOs = "Preuzmi za {{osLabel}}"
@@ -4999,8 +4999,8 @@ authenticationCode = "Autentifikacioni kod"
 qrCodeLoading = "Generisanje vašeg QR koda…"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Kada omogućite režim prijave, možete upravljati korisnicima, podešavati opcije i pratiti stanje servera. Prvih <strong>{{freeTierLimit}}</strong> ljudi na vašem serveru koristi Stirling besplatno."
-adminBodyLoginEnabled = "Kao admin, možete upravljati korisnicima, podešavati opcije i pratiti stanje servera. Prvih <strong>{{freeTierLimit}}</strong> ljudi na vašem serveru koristi Stirling besplatno."
+adminBodyLoginDisabled = "Kada omogućite režim prijave, možete upravljati korisnicima, podešavati opcije i pratiti stanje servera. Prvih <strong>{{freeTierLimit}}</strong> ljudi na vašem serveru koristi RyanPDF besplatno."
+adminBodyLoginEnabled = "Kao admin, možete upravljati korisnicima, podešavati opcije i pratiti stanje servera. Prvih <strong>{{freeTierLimit}}</strong> ljudi na vašem serveru koristi RyanPDF besplatno."
 adminTitle = "Admin pregled"
 userBody = "Pozovite kolege, dodeljujte uloge i držite dokumente organizovanim u jednom bezbednom prostoru. Omogućite režim prijave kad god ste spremni da pređete preko solo upotrebe."
 userTitle = "Pregled plana"
@@ -5008,7 +5008,7 @@ userTitle = "Pregled plana"
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to RyanPDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -5028,20 +5028,20 @@ rolePlaceholder = "Potvrdite svoju ulogu"
 roleUser = "Korisnik"
 
 [onboarding.serverLicense]
-freeBody = "Naše <strong>Open-Core</strong> licenciranje dozvoljava do <strong>{{freeTierLimit}}</strong> korisnika besplatno po serveru. Da se bez prekida skalirate i dobijete rani pristup našem novom <strong>alatu za uređivanje PDF teksta</strong>, preporučujemo Stirling Server plan - puno uređivanje i <strong>neograničena mesta</strong> za $99/server/mes."
+freeBody = "Naše <strong>Open-Core</strong> licenciranje dozvoljava do <strong>{{freeTierLimit}}</strong> korisnika besplatno po serveru. Da se bez prekida skalirate i dobijete rani pristup našem novom <strong>alatu za uređivanje PDF teksta</strong>, preporučujemo RyanPDF Server plan - puno uređivanje i <strong>neograničena mesta</strong> za $99/server/mes."
 freeTitle = "Serverska licenca"
-overLimitBody = "Naše licenciranje dozvoljava do <strong>{{freeTierLimit}}</strong> korisnika besplatno po serveru. Imate <strong>{{overLimitUserCopy}}</strong> Stirling korisnika. Da nastavite bez prekida, pređite na Stirling Server plan - <strong>neograničena mesta</strong>, uređivanje PDF teksta i puna admin kontrola za $99/server/mes."
+overLimitBody = "Naše licenciranje dozvoljava do <strong>{{freeTierLimit}}</strong> korisnika besplatno po serveru. Imate <strong>{{overLimitUserCopy}}</strong> RyanPDF korisnika. Da nastavite bez prekida, pređite na RyanPDF Server plan - <strong>neograničena mesta</strong>, uređivanje PDF teksta i puna admin kontrola za $99/server/mes."
 overLimitTitle = "Potrebna serverska licenca"
 seePlans = "Pogledajte planove →"
 upgrade = "Nadogradite sada →"
 
 [onboarding.tourOverview]
-body = "Stirling PDF V2 dolazi sa desetinama alata i osveženim rasporedom. Pođite na kratki obilazak da vidite šta se promenilo i gde da pronađete funkcije koje su vam potrebne."
+body = "RyanPDF V2 dolazi sa desetinama alata i osveženim rasporedom. Pođite na kratki obilazak da vidite šta se promenilo i gde da pronađete funkcije koje su vam potrebne."
 title = "Pregled obilaska"
 
 [onboarding.welcomeSlide]
-body = "Stirling PDF je sada spreman za timove svih veličina. Ovo ažuriranje donosi novi raspored, moćne admin mogućnosti i našu najtraženiju funkciju - <strong>Uredi tekst</strong>."
-title = "Dobrodošli u Stirling"
+body = "RyanPDF je sada spreman za timove svih veličina. Ovo ažuriranje donosi novi raspored, moćne admin mogućnosti i našu najtraženiju funkciju - <strong>Uredi tekst</strong>."
+title = "Dobrodošli u RyanPDF"
 
 [onboarding.whatsNew]
 activeFilesView = "Koristite Aktivne fajlove da vidite sve što je otvoreno i izaberete na čemu ćete raditi."
@@ -5347,7 +5347,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarise, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any RyanPDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -5406,7 +5406,7 @@ leader = "Team owner"
 member = "Member"
 
 [payg.signupRequired]
-body = "Stirling PDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using Stirling as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
+body = "RyanPDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using RyanPDF as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
 cancel = "Not now"
 cta = "Sign up free"
 subtext = "Creating an account is free and takes a few seconds. No credit card required."
@@ -5454,7 +5454,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. RyanPDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -5462,7 +5462,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarise, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any RyanPDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -5893,7 +5893,7 @@ upToFiveUsers = "Do 5 korisnika"
 usageTrackingPrometheus = "Praćenje upotrebe i Prometheus"
 
 [plan.licenseWarning]
-body = "Imate {{total}} korisnika, ali besplatni nivo podržava samo {{limit}} po serveru. Nadogradite da bi Stirling PDF radio neometano."
+body = "Imate {{total}} korisnika, ali besplatni nivo podržava samo {{limit}} po serveru. Nadogradite da bi RyanPDF radio neometano."
 cta = "Pogledajte planove"
 overLimit = "više od {{limit}}"
 title = "Dostignuto ograničenje za besplatno samohostovanje"
@@ -6192,25 +6192,25 @@ comingSoon = "Uskoro"
 [portal.accountLink.card]
 billingNote = "Nenadzirana obrada se naplaćuje iz novčanika vaše organizacije."
 eyebrow = "Povezivanje naloga"
-linkButton = "Poveži svoj Stirling nalog"
+linkButton = "Poveži svoj RyanPDF nalog"
 linked = "Povezano"
 linkedAs = "Povezano kao {{name}}."
 linkedGeneric = "Ova instanca je povezana."
 notLinked = "Nije povezano"
-title = "Poveži ovu organizaciju sa njenim Stirling nalogom"
+title = "Poveži ovu organizaciju sa njenim RyanPDF nalogom"
 unlink = "Prekini vezu"
 
 [portal.accountLink.card.error]
 title = "Nije moguće povezati"
 
 [portal.accountLink.card.loginNotConfigured]
-after = "da biste omogućili povezivanje naloga sa hostovanim Stirling nalogom. U razvojnom okruženju možete simulirati prijavu iz dijaloga za povezivanje."
+after = "da biste omogućili povezivanje naloga sa hostovanim RyanPDF nalogom. U razvojnom okruženju možete simulirati prijavu iz dijaloga za povezivanje."
 before = "Podesite"
 title = "SaaS prijava nije konfigurisana"
 
 [portal.accountLink.gate]
 action = "Poveži nalog"
-description = "Povežite Stirling nalog ove organizacije da biste koristili funkcije koje se naplaćuju."
+description = "Povežite RyanPDF nalog ove organizacije da biste koristili funkcije koje se naplaćuju."
 title = "Povežite za otključavanje"
 titleFeature = "Povežite za otključavanje {{feature}}"
 
@@ -6242,13 +6242,13 @@ never = "nikad"
 
 [portal.accountLink.modal]
 linkSubtitle = "Prijavite se na nalog na koji ovaj server treba da naplaćuje."
-linkTitle = "Povežite svoj Stirling nalog"
-reauthSubtitle = "Vaša sesija je istekla — ponovo se prijavite na svoj Stirling nalog. Vaša instanca ostaje povezana."
+linkTitle = "Povežite svoj RyanPDF nalog"
+reauthSubtitle = "Vaša sesija je istekla — ponovo se prijavite na svoj RyanPDF nalog. Vaša instanca ostaje povezana."
 reauthTitle = "Prijavite se ponovo"
 simulateSignIn = "Simuliraj prijavu (dev)"
 
 [portal.accountLink.modal.loginNotConfigured]
-after = "da biste omogućili povezivanje u aplikaciji sa hostovanim Stirling nalogom."
+after = "da biste omogućili povezivanje u aplikaciji sa hostovanim RyanPDF nalogom."
 and = "i"
 before = "Podesite"
 title = "SaaS prijava nije konfigurisana"
@@ -6257,7 +6257,7 @@ title = "SaaS prijava nije konfigurisana"
 instancesSub = "Svaka self-hosted instanca registrovana za ovu organizaciju. Opozovite akreditiv da biste odmah prekinuli njen nenadzirani pristup."
 instancesTitle = "Povezane instance"
 revokeError = "Nije moguće opozvati instancu"
-sub = "Povežite ovu self-hosted organizaciju sa njenim Stirling nalogom kako bi se nenadzirana obrada naplaćivala iz novčanika vaše organizacije."
+sub = "Povežite ovu self-hosted organizaciju sa njenim RyanPDF nalogom kako bi se nenadzirana obrada naplaćivala iz novčanika vaše organizacije."
 
 [portal.accountLink.panel.loadError]
 forbidden = "Samo vlasnik tima može da vidi povezane instance organizacije."
@@ -6354,7 +6354,7 @@ close = "Zatvori asistenta"
 error = "Nije moguće doći do asistenta."
 errorWithDetail = "Nije moguće doći do asistenta: {{detail}}"
 inputAriaLabel = "Pitajte asistenta"
-inputPlaceholder = "Pitajte o Stirling…"
+inputPlaceholder = "Pitajte o RyanPDF…"
 open = "Otvori asistenta"
 send = "Pošalji"
 title = "Asistent"
@@ -6392,7 +6392,7 @@ title = "Stripe nije konfigurisan"
 cta = "Sastavite svoju Enterprise ponudu"
 description = "Popusti za ugovoreni obim, air-gapped implementacija, prilagođeni MSA i bezbednosne provere, kao i partnerstva sa distributerima trećih strana."
 eyebrow = "Popust na obim · 1M+ PDF dokumenata"
-title = "Stirling Enterprise"
+title = "RyanPDF Enterprise"
 
 [portal.billing.freeEditors]
 activeThisMonth = "Aktivno ovog meseca"
@@ -6439,9 +6439,9 @@ viewAriaLabel = "Prikaži fakturu {{number}} u Stripe"
 viewLink = "Prikaži ↗"
 
 [portal.billing.linkPrompt]
-cta = "Poveži Stirling nalog"
+cta = "Poveži RyanPDF nalog"
 description = "Ručno uređivanje PDF-a — prikaz, potpisivanje, spajanje, deljenje, vodeni žig, kompresovanje, konvertovanje, ručni OCR — uvek je besplatno, povezano ili ne. Povežite da biste preuzeli 500 besplatnih PDF dokumenata merene obrade (automatizacija, AI i API); kada vam zatreba više, uključite Processor plan i plaćajte samo ono što koristite."
-title = "Povežite svoj Stirling nalog"
+title = "Povežite svoj RyanPDF nalog"
 
 [portal.billing.paymentMethod]
 billedMonthly = "Naplaćuje se mesečno"
@@ -6792,7 +6792,7 @@ time = "Vreme"
 user = "Korisnik"
 
 [portal.editorAdmin]
-subtitle = "Postavite Stirling PDF Editor, uparite self-hosted instance sa svojom organizacijom i upravljajte aktivnom flotom — ciljevima, stanjem, akreditivima i offline aktivacijom na jednom mestu."
+subtitle = "Postavite RyanPDF Editor, uparite self-hosted instance sa svojom organizacijom i upravljajte aktivnom flotom — ciljevima, stanjem, akreditivima i offline aktivacijom na jednom mestu."
 title = "Postavljanje Editora"
 
 [portal.editorAdmin.health.columns]
@@ -6878,7 +6878,7 @@ title = "Nešto je pošlo naopako na ovoj stranici"
 [portal.home.editor]
 activeUsers = "{{n}} aktivnih"
 invite = "Pozovi članove tima"
-name = "Stirling PDF Editor"
+name = "RyanPDF Editor"
 open = "Otvori u pregledaču"
 updated = "ažurirano {{time}}"
 
@@ -6938,7 +6938,7 @@ title = "Izdajte API ključ"
 [portal.infrastructure]
 manageEditorDeployment = "Upravljajte postavljanjem Editora"
 sectionsAriaLabel = "Odeljci infrastrukture"
-subtitle = "Postavljanja, akreditivi, bezbednosni položaj, skladište i audit trag za vaš Stirling radni prostor."
+subtitle = "Postavljanja, akreditivi, bezbednosni položaj, skladište i audit trag za vaš RyanPDF radni prostor."
 title = "Infrastruktura"
 
 [portal.infrastructure.apiKeys]
@@ -6958,7 +6958,7 @@ usageMonth = "Korišćenje ovog meseca"
 usageToday = "Korišćenje danas"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Kreirajte ključ sa opsegom da biste počeli da pozivate Stirling API."
+description = "Kreirajte ključ sa opsegom da biste počeli da pozivate RyanPDF API."
 title = "Još nema API ključeva"
 
 [portal.infrastructure.audit]
@@ -7027,7 +7027,7 @@ keyNameLabel = "Naziv ključa"
 keyNamePlaceholder = "npr. Produkcija · unos"
 permissionsLabel = "Dozvole"
 secretKeyCaption = "Tajni ključ"
-secretWarning = "Sačuvajte ovo u menadžeru tajni. Stirling uvek čuva samo hash — nema načina da se kasnije oporavi."
+secretWarning = "Sačuvajte ovo u menadžeru tajni. RyanPDF uvek čuva samo hash — nema načina da se kasnije oporavi."
 subtitle = "Ograničite opseg ključa na minimum koji mu je potreban. Možete ga rotirati ili opozvati u bilo kom trenutku."
 subtitleCreated = "Kopirajte ovu tajnu sada — neće biti ponovo prikazana."
 title = "Kreiraj API ključ"
@@ -7062,7 +7062,7 @@ version = "Verzija"
 
 [portal.infrastructure.deployments.regions]
 heading = "Regioni"
-subheading = "Uživo stanje svakog postavljenog Stirling regiona — latencija, opterećenje i verzija uvođenja."
+subheading = "Uživo stanje svakog postavljenog RyanPDF regiona — latencija, opterećenje i verzija uvođenja."
 
 [portal.infrastructure.deployments.regions.empty]
 description = "Postavljeni regioni će se ovde pojaviti kada vaš radni prostor bude obezbeđen."
@@ -7119,16 +7119,16 @@ operation = "Operacija"
 routedTo = "Rutirano ka"
 
 [portal.infrastructure.security.access.byok]
-description = "Obezbedite ključ iz sopstvenog KMS. Stirling šifruje njime, ali i dalje može da čita."
+description = "Obezbedite ključ iz sopstvenog KMS. RyanPDF šifruje njime, ali i dalje može da čita."
 label = "Donesite sopstveni ključ (BYOK)"
 
 [portal.infrastructure.security.access.hyok]
-description = "Ključevi nikada ne napuštaju vaš KMS. Stirling čuva samo šifrovani tekst."
+description = "Ključevi nikada ne napuštaju vaš KMS. RyanPDF čuva samo šifrovani tekst."
 label = "Zadržite sopstveni ključ (HYOK)"
 
 [portal.infrastructure.security.access.stirling]
-description = "Stirling upravlja ključevima za šifrovanje. Najjednostavnije — bez upravljanja ključevima sa vaše strane."
-label = "Ključevi koje drži Stirling"
+description = "RyanPDF upravlja ključevima za šifrovanje. Najjednostavnije — bez upravljanja ključevima sa vaše strane."
+label = "Ključevi koje drži RyanPDF"
 
 [portal.infrastructure.security.accessPolicy]
 heading = "Politika pristupa dokumentima"
@@ -7142,15 +7142,15 @@ viewReport = "Prikaži izveštaj →"
 
 [portal.infrastructure.security.compliance]
 heading = "Usklađenost"
-subheading = "Potvrde i sertifikati koji pokrivaju Stirling platformu."
+subheading = "Potvrde i sertifikati koji pokrivaju RyanPDF platformu."
 
 [portal.infrastructure.security.empty]
 description = "Bezbednosna konfiguracija vašeg radnog prostora će se ovde pojaviti."
 title = "Bezbednosni položaj nije dostupan"
 
 [portal.infrastructure.security.hyokBanner]
-description = "Uz HYOK, ključevi za šifrovanje nikada ne napuštaju vaš KMS. Stirling čuva i obrađuje samo šifrovani tekst koji možete opozvati u bilo kom trenutku."
-title = "Stirling ne može da dešifruje vaše dokumente"
+description = "Uz HYOK, ključevi za šifrovanje nikada ne napuštaju vaš KMS. RyanPDF čuva i obrađuje samo šifrovani tekst koji možete opozvati u bilo kom trenutku."
+title = "RyanPDF ne može da dešifruje vaše dokumente"
 
 [portal.infrastructure.security.ipAllowlist]
 empty = "Nema konfigurisanih IP opsega — sve IP adrese su dozvoljene."
@@ -7179,7 +7179,7 @@ subheading = "Starateljstvo nad ključevima koji šifruju dokumente u mirovanju 
 
 [portal.infrastructure.security.managedBanner]
 description = "Starateljstvo po principu donesite sopstveni ključ (BYOK) i zadržite sopstveni ključ (HYOK) dostupno je na Enterprise planu. Nadogradite da obezbedite ključeve iz sopstvenog KMS."
-title = "Ključevima na vašem planu upravlja Stirling"
+title = "Ključevima na vašem planu upravlja RyanPDF"
 
 [portal.infrastructure.security.residency.apac]
 description = "ap-southeast-1"
@@ -7660,7 +7660,7 @@ upload = "Otpremi"
 
 [portal.procurement.agreement]
 agreeCta = "Prihvati i pretplati se"
-confirm = "Pročitao/la sam i prihvatam Stirling Enterprise Agreement."
+confirm = "Pročitao/la sam i prihvatam RyanPDF Enterprise Agreement."
 eyebrow = "Ugovor"
 intro = "Jedan objedinjeni ugovor pokriva vaš dogovor: Master Service Agreement, Order Form, EULA i Data Processing Agreement. Pregledajte ga, a zatim prihvatite ponudu kao obaveznu pretplatu."
 title = "Pregledajte svoj enterprise ugovor"
@@ -7675,7 +7675,7 @@ country = "Zemlja"
 countryEuro = "Evrozona (EUR €)"
 countryUK = "Ujedinjeno Kraljevstvo (GBP £)"
 countryUS = "Sjedinjene Države (USD $)"
-eula = "Pročitao/la sam i prihvatam Stirling Enterprise EULA. Ona uređuje ugovor generisan iz ove ponude."
+eula = "Pročitao/la sam i prihvatam RyanPDF Enterprise EULA. Ona uređuje ugovor generisan iz ove ponude."
 generate = "Generiši ponudu"
 included = "Uključeno"
 indemnification = "IP obeštećenje"
@@ -7758,7 +7758,7 @@ daysLeft_one = "Preostao je {{count}} dan"
 daysLeft_other = "Preostalo je {{count}} dana"
 engineerLabel = "Vaš solutions engineer"
 eyebrow = "Vaše uvođenje"
-live = "Uživo ste na Stirling Enterprise"
+live = "Uživo ste na RyanPDF Enterprise"
 nextStep = "Sledeći korak: {{action}}"
 subtitle = "Vaš solutions engineer je uz vas u svakom koraku. Jedna sledeća radnja u datom trenutku; potpuna kontrolna lista je ispod."
 title = "Od probnog perioda do rada uživo, jedan vođeni put"
@@ -7785,7 +7785,7 @@ gatingAction = "Prihvatite svoju ponudu"
 label = "Ponuda"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Procenite Stirling prema svojim dokumentima i tokovima rada."
+blurb = "Procenite RyanPDF prema svojim dokumentima i tokovima rada."
 gatingAction = "Napravite svoju ponudu"
 label = "Probni period"
 
@@ -7799,14 +7799,14 @@ label = "Vaš licencni ključ"
 
 [portal.procurement.link]
 cta = "Poveži nalog"
-description = "Nabavka radi na vašem povezanom Stirling nalogu: tako obezbeđujemo probni period, određujemo cenu ponude i pokrećemo naplatu. Povežite nalog za početak."
+description = "Nabavka radi na vašem povezanom RyanPDF nalogu: tako obezbeđujemo probni period, određujemo cenu ponude i pokrećemo naplatu. Povežite nalog za početak."
 eyebrow = "Enterprise"
 title = "Povežite svoj nalog da biste počeli"
 
 [portal.procurement.live]
 description = "Vaša pretplata je aktivna i licenca je izdata. Vaš tim je obezbeđen i naplata je počela."
 eyebrow = "Uživo"
-title = "Uživo ste na Stirling Enterprise"
+title = "Uživo ste na RyanPDF Enterprise"
 
 [portal.procurement.locked]
 description = "Probni ključevi, ponude za obavezni obim, ugovor sa jednim potpisom, plaćanje i vaša evidencija dokumenata nalaze se ovde kada započnete enterprise procenu."
@@ -7841,7 +7841,7 @@ requestBodyFree = "Ovo generišemo na zahtev. Potvrdite i vaš solutions enginee
 requestBodyPaid = "Ovo je plaćeni dodatak. Potvrdite i vaš solutions engineer će definisati obim i poslati dokumentaciju."
 requestCta = "Zatraži"
 requestTitle = "Zatraži ovaj dokument"
-signBody = "Otvara Stirling Enterprise Agreement za e-potpis: jedan potpis pokriva MSA, order form, EULA i DPA. Automatski supotpisujemo i prelazite na plaćanje."
+signBody = "Otvara RyanPDF Enterprise Agreement za e-potpis: jedan potpis pokriva MSA, order form, EULA i DPA. Automatski supotpisujemo i prelazite na plaćanje."
 signCta = "Otvori za potpis"
 signTitle = "Pregledajte i potpišite svoj ugovor"
 uploadBody = "Pošaljite nam svoju PO i fakturišemo prema njoj pod vašim uslovima. Prevucite PDF ili izaberite datoteku ispod."
@@ -7893,7 +7893,7 @@ title = "Ovde još nema ničega"
 
 [portal.search]
 ariaLabel = "Pretraga"
-placeholder = "Pretražite Stirling — endpoint-i, tokovi obrade, dokumenti…"
+placeholder = "Pretražite RyanPDF — endpoint-i, tokovi obrade, dokumenti…"
 
 [portal.search.empty]
 noActionsDescription = "Brze radnje će se pojaviti ovde kada budu dostupne."
@@ -7921,9 +7921,9 @@ switchToLight = "Prebaci na svetlu temu"
 [portal.shell.sidebar]
 appEditor = "Editor"
 appProcessor = "Processor"
-brandSuffix = "Stirling Processor"
+brandSuffix = "RyanPDF Processor"
 docsCount = "{{docs}} dok."
-linkAccount = "Poveži Stirling nalog"
+linkAccount = "Poveži RyanPDF nalog"
 planEditor = "Editor plan"
 planEnterprise = "Enterprise plan"
 planProcessor = "Processor plan"
@@ -7931,7 +7931,7 @@ primaryNav = "Primarna navigacija"
 switchApp = "Promeni aplikaciju"
 
 [portal.sources]
-subtitle = "Ponovo upotrebljive ulazne veze koje dostavljaju dokumente u Stirling. Konfigurišite vezu jednom, a zatim je referencirajte iz bilo kog broja politika. Kliknite na red za njenu konfiguraciju i politike koje je koriste."
+subtitle = "Ponovo upotrebljive ulazne veze koje dostavljaju dokumente u RyanPDF. Konfigurišite vezu jednom, a zatim je referencirajte iz bilo kog broja politika. Kliknite na red za njenu konfiguraciju i politike koje je koriste."
 title = "Izvori"
 
 [portal.sources.actions]
@@ -7986,7 +7986,7 @@ description = "Prati direktorijum na serveru za nove dokumente."
 label = "Fascikla"
 
 [portal.sources.types.folder.fields.directory]
-helperText = "Apsolutna putanja koju Stirling prati za datoteke za obradu."
+helperText = "Apsolutna putanja koju RyanPDF prati za datoteke za obradu."
 label = "Putanja direktorijuma"
 placeholder = "/data/incoming"
 
@@ -8034,7 +8034,7 @@ review = "Pregledaj i poveži"
 
 [portal.usage]
 managePayment = "Upravljaj plaćanjem"
-subtitle = "Potrošnja, fakture i upravljanje planom za svaki PDF koji je Stirling naplatio, u jednoj konzoli."
+subtitle = "Potrošnja, fakture i upravljanje planom za svaki PDF koji je RyanPDF naplatio, u jednoj konzoli."
 title = "Korišćenje i naplata"
 
 [portal.usage.error]
@@ -8044,7 +8044,7 @@ walletUnavailable = "Novčanik nije dostupan: {{status}} {{statusText}}"
 
 [portal.usage.sessionExpired]
 action = "Prijavite se ponovo"
-body = "Sesija vašeg Stirling naloga je istekla. Prijavite se ponovo da biste videli naplatu — vaša instanca ostaje povezana."
+body = "Sesija vašeg RyanPDF naloga je istekla. Prijavite se ponovo da biste videli naplatu — vaša instanca ostaje povezana."
 title = "Sesija je istekla"
 
 [portal.users]
@@ -8091,7 +8091,7 @@ summary = "Vlasnik tima — upravlja resursima njegovih članova i deljenim konf
 3 = "Sve što Član može da uradi"
 
 [portal.welcome]
-ariaLabel = "Dobro došli u Stirling PDF"
+ariaLabel = "Dobro došli u RyanPDF"
 badge = "Open-source"
 installEditor = "Instaliraj Editor"
 inviteTeammates = "Pozovite članove tima"
@@ -8099,7 +8099,7 @@ openInBrowser = "Otvori u pregledaču"
 perks = "Besplatno zauvek · Self-hostable"
 subtitle = "Najbezbedniji PDF Editor na svetu je besplatan za timove svih veličina. Uključuje 60+ PDF operacija i SSO."
 title = "Dobro došli u"
-titleAccent = "Stirling PDF"
+titleAccent = "RyanPDF"
 
 [printFile]
 title = "Odštampaj datoteku"
@@ -8790,8 +8790,8 @@ hideTools = "Sakrij nedostupne alate ▴"
 messageNoFallback = "Alati nisu dostupni dok se vaš server ne vrati na mrežu."
 messageWithFallback = "Neki alati zahtevaju vezu sa serverom."
 showTools = "Prikaži nedostupne alate ▾"
-title = "Vaš Stirling-PDF server je nedostupan"
-toolNotAvailableLocally = "Vaš Stirling-PDF server je van mreže i \"{{endpoint}}\" nije dostupan na lokalnom pozadinskom servisu."
+title = "Vaš RyanPDF server je nedostupan"
+toolNotAvailableLocally = "Vaš RyanPDF server je van mreže i \"{{endpoint}}\" nije dostupan na lokalnom pozadinskom servisu."
 
 [session]
 expired = "Istekla ti je sesija. Osveži stranicu i pokušaj ponovo."
@@ -8851,7 +8851,7 @@ user = "Prijavljeni kao"
 
 [settings.connection.mode]
 local = "Samo lokalno"
-saas = "Stirling Cloud"
+saas = "RyanPDF Cloud"
 selfhosted = "Samohostovano"
 
 [settings.developer]
@@ -8866,7 +8866,7 @@ autoUnzipFileLimitDescription = "Maksimalan broj datoteka za izdvajanje iz ZIP-a
 autoUnzipFileLimitTooltip = "Raspakuj samo ako ZIP sadrži ovoliko ili manje datoteka. Povećajte vrednost da biste izdvojili veće ZIP-ove."
 autoUnzipTooltip = "Automatski raspakuj ZIP datoteke vraćene iz API operacija. Isključite da biste zadržali ZIP datoteke netaknute. Ovo ne utiče na automatizovane tokove rada."
 defaultPdfEditor = "Podrazumevani PDF uređivač"
-defaultPdfEditorActive = "Stirling PDF je vaš podrazumevani PDF uređivač"
+defaultPdfEditorActive = "RyanPDF je vaš podrazumevani PDF uređivač"
 defaultPdfEditorChecking = "Provera..."
 defaultPdfEditorInactive = "Druga aplikacija je postavljena kao podrazumevana"
 defaultPdfEditorSet = "Već podrazumevano"
@@ -8927,7 +8927,7 @@ updateBehavior = "Ponašanje pri ažuriranju"
 updateBehaviorDescription = "Izaberite da li želite upit pre instaliranja ažuriranja, automatsku instalaciju ili potpuno preskakanje provera ažuriranja."
 updateBehaviorError = "Nije moguće promeniti ponašanje pri ažuriranju"
 updateBehaviorErrorLocked = "Ovu postavku je zaključao vaš administrator."
-updateBehaviorLockedDescription = "Vaš administrator je podesio kako Stirling-PDF rukuje ažuriranjima na ovoj mašini. Kontaktirajte ih da to promene."
+updateBehaviorLockedDescription = "Vaš administrator je podesio kako RyanPDF rukuje ažuriranjima na ovoj mašini. Kontaktirajte ih da to promene."
 updateBehaviorSaved = "Ponašanje pri ažuriranju sačuvano."
 versionMismatch = "Warning: A mismatch has been detected between the client version and the AppConfig version. Using different versions can lead to compatibility issues, errors, and security risks. Please ensure that server and client are using the same version."
 viewDetails = "Prikaži detalje"
@@ -9011,7 +9011,7 @@ usageAnalytics = "Analitika korišćenja"
 [settings.planBilling]
 currentPlan = "Trenutni plan"
 loading = "Učitavanje informacija o naplati..."
-notAvailable = "Plan i naplata su dostupni samo kada ste povezani na Stirling Cloud (SaaS režim)."
+notAvailable = "Plan i naplata su dostupni samo kada ste povezani na RyanPDF Cloud (SaaS režim)."
 title = "Plan i naplata"
 
 [settings.planBilling.billing]
@@ -9137,7 +9137,7 @@ emptyUsername = "Unesite korisničko ime"
 oauthFailed = "OAuth prijava nije uspela. Pokušajte ponovo."
 
 [setup.saas]
-title = "Prijavite se u Stirling"
+title = "Prijavite se u RyanPDF"
 
 [setup.selfhosted]
 changeServerLocked = "Vaša organizacija je ograničila ovu aplikaciju na određeni server"
@@ -9175,7 +9175,7 @@ step3 = "Restartujte server"
 title = "Prijavljivanje nije omogućeno"
 
 [setup.server.url]
-description = "Unesite puni URL vašeg samohostovanog Stirling PDF servera"
+description = "Unesite puni URL vašeg samohostovanog RyanPDF servera"
 label = "URL servera"
 
 [sharedSign]
@@ -9411,7 +9411,7 @@ pleaseFillAllFields = "Popunite sva polja"
 signUp = "Registruj se"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Pridružite se Stirling PDF da biste započeli"
+subtitle = "Pridružite se RyanPDF da biste započeli"
 title = "Kreirajte nalog"
 unexpectedError = "Neočekivana greška: {{message}}"
 
@@ -9638,7 +9638,7 @@ download = "Preuzmi"
 downloaded = "Preuzeto"
 downloadFailed = "Nije moguće preuzeti ovu datoteku."
 downloadsCount = "Preuzimanja: {{count}}"
-emailWarningBody = "Ovo izgleda kao adresa e-pošte. Ako ova osoba nije već korisnik Stirling PDF-a, neće moći da pristupi datoteci."
+emailWarningBody = "Ovo izgleda kao adresa e-pošte. Ako ova osoba nije već korisnik RyanPDF-a, neće moći da pristupi datoteci."
 emailWarningConfirm = "Ipak podeli"
 emailWarningTitle = "Adresa e-pošte"
 errorTitle = "Deljenje nije uspelo"
@@ -9669,7 +9669,7 @@ manageTitle = "Upravljanje deljenjem"
 noActivity = "Još nema aktivnosti."
 noLinks = "Još nema aktivnih linkova za deljenje."
 noSharedUsers = "Još niko nema pristup."
-openInApp = "Otvori u Stirling PDF"
+openInApp = "Otvori u RyanPDF"
 ownerLabel = "Vlasnik"
 ownerUnknown = "Nepoznato"
 removeLink = "Ukloni link"
@@ -9723,7 +9723,7 @@ updateButton = "Ažuriraj na serveru"
 uploadButton = "Otpremi na server"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "RyanPDF Survey"
 
 [swagger]
 tags = "api,documentation,swagger,endpoints,development"
@@ -9851,7 +9851,7 @@ favorites = "Omiljeno"
 heading = "Svi alati (prikaz preko celog ekrana)"
 noResults = "Pokušajte da prilagodite pretragu ili uključite opise da biste našli šta vam treba."
 recommended = "Preporučeno"
-selfHostedOffline = "Zahteva vaš Stirling-PDF server (trenutno van mreže):"
+selfHostedOffline = "Zahteva vaš RyanPDF server (trenutno van mreže):"
 showDetails = "Prikaži detalje"
 unavailable = "Onemogućio administrator servera:"
 unavailableDependency = "Nedostupno - potreban alat nedostaje na serveru:"
@@ -9860,7 +9860,7 @@ unfavorite = "Ukloni iz omiljenog"
 [toolPanel.modePrompt]
 chooseFullscreen = "Koristi režim celog ekrana"
 chooseSidebar = "Koristi režim bočne trake"
-description = "Pregledajte oba rasporeda i odlučite kako želite da istražujete Stirling PDF alate."
+description = "Pregledajte oba rasporeda i odlučite kako želite da istražujete RyanPDF alate."
 dismiss = "Možda kasnije"
 fullscreenDescription = "Pregledajte svaki alat u katalogu koji prekriva radni prostor dok ne izaberete jedan."
 fullscreenTitle = "Režim celog ekrana - (zastarelo)"
@@ -9928,7 +9928,7 @@ loadingDetailedInfo = "Učitavanje detaljnih informacija..."
 migrationGuide = "Vodič za migraciju"
 migrationGuides = "Vodiči za migraciju"
 migrationGuidesDesc = "Pregledajte važne promene pre ažuriranja."
-modalSubtitle = "Nova verzija Stirling PDF je spremna za instalaciju."
+modalSubtitle = "Nova verzija RyanPDF je spremna za instalaciju."
 modalTitle = "Dostupno ažuriranje"
 notes = "Napomene"
 releaseNotes = "Beleške izdanja"
@@ -9952,7 +9952,7 @@ urgent = "Hitno"
 attentionBody = "Vaš admin treba da se prijavi da vidi više informacija. Odmah ih kontaktirajte."
 attentionBodyAdmin = "Pregledajte zahteve licence da ovaj server ostane usklađen."
 attentionTitle = "Ovaj server zahteva pažnju admina"
-message = "Iskoristite maksimum iz Stirling PDF uz neograničene korisnike i napredne funkcije"
+message = "Iskoristite maksimum iz RyanPDF uz neograničene korisnike i napredne funkcije"
 seeInfo = "Pogledajte info"
 title = "Nadogradite na Server plan"
 upgradeButton = "Nadogradite sada"
@@ -10069,7 +10069,7 @@ authWeb = "Lozinka"
 create = "Kreiraj nalog"
 createSubtitle = "Kreirajte self-hosted nalog sa lozinkom ili SSO."
 createTitle = "Kreiraj nalog"
-editorDesc = "Uređujte PDF-ove u Stirling PDF Editor-u. Svi dobijaju ovo."
+editorDesc = "Uređujte PDF-ove u RyanPDF Editor-u. Svi dobijaju ovo."
 email = "Email adresa"
 emailError = "Unesite važeću email adresu"
 emailPlaceholder2 = "name@company.com"
@@ -10084,7 +10084,7 @@ processorDeferred = "Pozivnica je poslata, ali Processor pristup još nije mogao
 processorDesc = "Površina za upravljanje, pokretanje tokova obrade, agenti i API."
 role = "Uloga"
 send2 = "Pošalji poziv"
-subtitle2 = "Dobiće email da se pridruže vašem Stirling radnom prostoru."
+subtitle2 = "Dobiće email da se pridruže vašem RyanPDF radnom prostoru."
 team = "Tim"
 title = "Pozovi ljude"
 username = "Korisničko ime"
@@ -10207,7 +10207,7 @@ downloads = "Preuzimanja"
 entryLabel = "Rezime potpisa"
 filesEvaluated_one = "Procenjena je {{count}} datoteka"
 filesEvaluated_other = "Procenjeno je {{count}} datoteka"
-footer = "Validirano preko Stirling PDF"
+footer = "Validirano preko RyanPDF"
 generatedAt = "Generisano"
 noPdf = "PDF izveštaj će biti dostupan nakon uspešne validacije."
 page = "Stranica"

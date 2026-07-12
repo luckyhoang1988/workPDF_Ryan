@@ -13,7 +13,7 @@ interface RunStateRecord {
 }
 
 class FolderRunStateStorage {
-  private dbName = "stirling-pdf-folder-run-state";
+  private dbName = "ryanpdf-pdf-folder-run-state";
   private dbVersion = 1;
   private storeName = "runStates";
   private db: IDBDatabase | null = null;

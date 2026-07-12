@@ -50,7 +50,7 @@ public class TempFileCleanupService {
     // File patterns that identify our temp files
     private static final Predicate<String> IS_OUR_TEMP_FILE =
             fileName ->
-                    fileName.startsWith("stirling-pdf-")
+                    fileName.startsWith("ryanpdf-")
                             || fileName.startsWith("output_")
                             || fileName.startsWith("compressedPDF")
                             || fileName.startsWith("pdf-save-")

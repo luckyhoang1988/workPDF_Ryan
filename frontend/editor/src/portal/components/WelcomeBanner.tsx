@@ -10,7 +10,7 @@ import {
   UserPlusIcon,
 } from "@portal/components/icons";
 import { DownloadEditorModal } from "@portal/components/DownloadEditorModal";
-import markDark from "@app/assets/brand/modern-logo/StirlingPDFLogoNoTextDark.svg";
+import markDark from "@app/assets/brand/modern-logo/RyanPDFLogoNoTextDark.svg";
 import "@portal/components/WelcomeBanner.css";
 
 /* ──────────────────────────────────────────────────────────────────────── */

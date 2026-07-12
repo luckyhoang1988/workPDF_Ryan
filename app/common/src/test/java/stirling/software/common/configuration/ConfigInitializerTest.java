@@ -26,8 +26,8 @@ class ConfigInitializerTest {
                 customMetadata:
                   autoUpdateMetadata: false
                   author: username
-                  creator: Stirling-PDF
-                  producer: Stirling-PDF
+                  creator: RyanPDF
+                  producer: RyanPDF
             """;
 
     @Test

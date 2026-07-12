@@ -1,14 +1,14 @@
-# Stirling-PDF VPS Deployment Guide
+# RyanPDF VPS Deployment Guide
 
 ## Tóm tắt
 
-Stirling-PDF có thể triển khai trên VPS ngay lập tức bằng Docker. **MIT core** (công cụ PDF cơ bản) là miễn phí cho mọi mục đích. Các tính năng **Proprietary** (SSO/SAML, portal admin nâng cao) yêu cầu **license trả phí** cho production/quy mô lớn.
+RyanPDF có thể triển khai trên VPS ngay lập tức bằng Docker. **MIT core** (công cụ PDF cơ bản) là miễn phí cho mọi mục đích. Các tính năng **Proprietary** (SSO/SAML, portal admin nâng cao) yêu cầu **license trả phí** cho production/quy mô lớn.
 
 ---
 
 ## 1. Chọn Image Phù Hợp
 
-Stirling-PDF cung cấp 3 biến thể chính trong thư mục `docker/compose/`:
+RyanPDF cung cấp 3 biến thể chính trong thư mục `docker/compose/`:
 
 | Biến thể | File compose | RAM khuyến nghị | CPU | Khi nào dùng |
 |---|---|---|---|---|
@@ -279,7 +279,7 @@ services:
 - **Deployment**: Tự host thoải mái, không giới hạn, không cần license
 
 ### Proprietary Features (Trả Phí)
-- **File location**: `app/proprietary/LICENSE` ("Stirling PDF User License")
+- **File location**: `app/proprietary/LICENSE` ("RyanPDF User License")
 - **Modules**: `app/proprietary/`, `app/saas/`, `frontend/editor/src/proprietary/`, `frontend/editor/src/saas/`, `frontend/editor/src/cloud/`, `frontend/editor/src/desktop/`, `engine/`
 - **Công cụ**: SSO/SAML, advanced admin features, portal management, desktop client
 - **Deployment**: Trial/internal evaluation ONLY — production/quy mô lớn cần **paid license**

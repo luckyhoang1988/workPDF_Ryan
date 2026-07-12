@@ -98,7 +98,7 @@ public class TempFileCleanupServiceTest {
         // Arrange - Create various temp files
         Path ourTempFile1 = Files.createFile(systemTempDir.resolve("output_123.pdf"));
         Path ourTempFile2 = Files.createFile(systemTempDir.resolve("compressedPDF456.pdf"));
-        Path ourTempFile3 = Files.createFile(customTempDir.resolve("stirling-pdf-789.tmp"));
+        Path ourTempFile3 = Files.createFile(customTempDir.resolve("ryanpdf-789.tmp"));
         Path ourTempFile4 = Files.createFile(customTempDir.resolve("pdf-save-123-456.tmp"));
         Path ourTempFile5 = Files.createFile(libreOfficeTempDir.resolve("input_file.pdf"));
 

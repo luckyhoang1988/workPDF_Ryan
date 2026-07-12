@@ -53,27 +53,27 @@ build_and_test() {
     local security_suffix=""
     local docker_compose_base="./testing/compose/docker-compose"
     local compose_suffix=".yml"
-    local service_name_base="Stirling-PDF"
+    local service_name_base="RyanPDF"
 
     case "$build_type" in
         full)
             dockerfile_name="./docker/embedded/Dockerfile.fat"
             if [ "$enable_security" == "true" ]; then
                 compose_file="${docker_compose_base}-fat-security${compose_suffix}"
-                service_name="Stirling-PDF-Security-Fat"
+                service_name="RyanPDF-Security-Fat"
             else
                 compose_file="${docker_compose_base}-fat${compose_suffix}"
-                service_name="stirling-pdf-fat"
+                service_name="ryanpdf-fat"
             fi
             ;;
         ultra-lite)
             dockerfile_name="./docker/embedded/Dockerfile.ultra-lite"
             if [ "$enable_security" == "true" ]; then
                 compose_file="${docker_compose_base}-ultra-lite-security${compose_suffix}"
-                service_name="stirling-pdf-backend-ultra-lite-security"
+                service_name="ryanpdf-backend-ultra-lite-security"
             else
                 compose_file="${docker_compose_base}-ultra-lite${compose_suffix}"
-                service_name="Stirling-PDF-Ultra-Lite"
+                service_name="RyanPDF-Ultra-Lite"
             fi
             ;;
     esac

@@ -40,14 +40,14 @@ class PdfToVideoRequestTest {
             req.setResolution("720p");
             req.setDpi(300);
             req.setOpacity(0.5f);
-            req.setWatermarkText("Stirling Software");
+            req.setWatermarkText("RyanPDF");
 
             assertThat(req.getVideoFormat()).isEqualTo("webm");
             assertThat(req.getSecondsPerPage()).isEqualTo(5);
             assertThat(req.getResolution()).isEqualTo("720p");
             assertThat(req.getDpi()).isEqualTo(300);
             assertThat(req.getOpacity()).isEqualTo(0.5f);
-            assertThat(req.getWatermarkText()).isEqualTo("Stirling Software");
+            assertThat(req.getWatermarkText()).isEqualTo("RyanPDF");
         }
     }
 

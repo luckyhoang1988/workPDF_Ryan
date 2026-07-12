@@ -1,9 +1,9 @@
 services:
-  stirling-pdf:
+  ryanpdf:
     build:
       context: ../..
       dockerfile: docker/embedded/Dockerfile.ultra-lite
-    container_name: Stirling-PDF-Ultra-Lite
+    container_name: RyanPDF-Ultra-Lite
     restart: unless-stopped
     deploy:
       resources:
@@ -17,28 +17,28 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../../stirling/latest/config:/configs:rw
-      - ../../stirling/latest/logs:/logs:rw
+      - ../../ryanpdf/latest/config:/configs:rw
+      - ../../ryanpdf/latest/logs:/logs:rw
     environment:
       DISABLE_ADDITIONAL_FEATURES: "true"
       SECURITY_ENABLELOGIN: "false"
       ENDPOINTS_GROUPS_TO_REMOVE: "CLI"
       SYSTEM_DEFAULTLOCALE: en-US
-      UI_APPNAME: Stirling-PDF-Ultra-lite
-      UI_HOMEDESCRIPTION: Demo site for Stirling-PDF-Ultra-lite Latest
-      UI_APPNAMENAVBAR: Stirling-PDF-Ultra-lite Latest
+      UI_APPNAME: RyanPDF-Ultra-lite
+      UI_HOMEDESCRIPTION: Demo site for RyanPDF-Ultra-lite Latest
+      UI_APPNAMENAVBAR: RyanPDF-Ultra-lite Latest
       SYSTEM_MAXFILESIZE: "100"
       METRICS_ENABLED: "true"
       SYSTEM_GOOGLEVISIBILITY: "true"
       SHOW_SURVEY: "true"
     networks:
-      - stirling-network
+      - ryanpdf-network
 
 networks:
-  stirling-network:
+  ryanpdf-network:
     driver: bridge
 
 volumes:
-  stirling-data:
-  stirling-config:
-  stirling-logs:
+  ryanpdf-data:
+  ryanpdf-config:
+  ryanpdf-logs:

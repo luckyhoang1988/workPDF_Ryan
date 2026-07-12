@@ -1,14 +1,14 @@
-# Stirling-PDF Developer Guide
+# RyanPDF Developer Guide
 
 ## 1. Introduction
 
-Stirling-PDF is a robust, locally hosted, web-based PDF manipulation tool. **Stirling 2.0** represents a complete frontend rewrite with a modern React SPA (Single Page Application).
+RyanPDF is a robust, locally hosted, web-based PDF manipulation tool. **RyanPDF 2.0** represents a complete frontend rewrite with a modern React SPA (Single Page Application).
 
-This guide focuses on developing for Stirling 2.0, including both the React frontend and Spring Boot backend development workflows.
+This guide focuses on developing for RyanPDF 2.0, including both the React frontend and Spring Boot backend development workflows.
 
 ## 2. Project Overview
 
-**Stirling 2.0** is built using:
+**RyanPDF 2.0** is built using:
 
 **Backend:**
 - Spring Boot (requires JDK 25)
@@ -87,19 +87,19 @@ These are not required to run the app but enable specific features. The app dete
       4. Install the required extensions from the list.
 
 4. Lombok Setup
-Stirling-PDF uses Lombok to reduce boilerplate code. Some IDEs, like Eclipse, don't support Lombok out of the box. To set up Lombok in your development environment:
+RyanPDF uses Lombok to reduce boilerplate code. Some IDEs, like Eclipse, don't support Lombok out of the box. To set up Lombok in your development environment:
 Visit the [Lombok website](https://projectlombok.org/setup/) for installation instructions specific to your IDE.
 
 5. Add environment variable
-For local testing, you should generally be testing the full 'Security' version of Stirling PDF. To do this, you must add the environment flag DISABLE_ADDITIONAL_FEATURES=false to your system and/or IDE build/run step.
-6. **Frontend Setup (Required for Stirling 2.0)**
+For local testing, you should generally be testing the full 'Security' version of RyanPDF. To do this, you must add the environment flag DISABLE_ADDITIONAL_FEATURES=false to your system and/or IDE build/run step.
+6. **Frontend Setup (Required for RyanPDF 2.0)**
    Navigate to the frontend directory and install dependencies using npm.
 
 ### Verify Setup
 
 Run `task install` to install all project dependencies (frontend npm packages, engine Python packages). Gradle manages its own dependencies automatically. Then run `task check` to verify everything builds and passes.
 
-## 4. Stirling 2.0 Development Workflow
+## 4. RyanPDF 2.0 Development Workflow
 
 ### Using Taskfile (Recommended)
 
@@ -121,13 +121,13 @@ The frontend is a React SPA that runs independently during development:
 3. **Development flow**: The Vite dev server automatically proxies API calls to the backend
 
 ### File Storage Architecture
-Stirling 2.0 uses client-side file storage:
+RyanPDF 2.0 uses client-side file storage:
 - **IndexedDB**: Stores files locally in the browser with automatic thumbnail generation
 - **PDF.js**: Handles client-side PDF rendering and processing
 - **URL Parameters**: Support for deep linking and tool state persistence
 
 ### Tauri Desktop App Development
-Stirling-PDF can be packaged as a cross-platform desktop application using Tauri with PDF file association support and bundled JRE.
+RyanPDF can be packaged as a cross-platform desktop application using Tauri with PDF file association support and bundled JRE.
 
 Using Taskfile: `task desktop:dev` (development) or `task desktop:build` (production build).
 
@@ -136,10 +136,10 @@ See [the frontend README](frontend/README.md#tauri) for detailed build instructi
 ## 5. Project Structure
 
 ```bash
-Stirling-PDF/
+RyanPDF/
 ├── .github/               # GitHub-specific files (workflows, issue templates)
-├── configs/               # Configuration files used by stirling at runtime (generated at runtime)
-├── frontend/              # Frontend workspace (Stirling 2.0)
+├── configs/               # Configuration files used by RyanPDF at runtime (generated at runtime)
+├── frontend/              # Frontend workspace (RyanPDF 2.0)
 │   ├── editor/            # PDF editor app (the original React SPA)
 │   │   ├── src/
 │   │   │   ├── components/    # React components
@@ -195,7 +195,7 @@ Stirling-PDF/
 
 ## 6. Docker-based Development
 
-Stirling-PDF offers several Docker versions:
+RyanPDF offers several Docker versions:
 
 - Full: All features included
 - Ultra-Lite: Basic PDF operations only
@@ -203,7 +203,7 @@ Stirling-PDF offers several Docker versions:
 
 ### Example Docker Compose Files
 
-Stirling-PDF provides several example Docker Compose files in the `exampleYmlFiles` directory, such as:
+RyanPDF provides several example Docker Compose files in the `exampleYmlFiles` directory, such as:
 
 - `docker-compose-latest.yml`: Latest version without login and security features
 - `docker-compose-latest-security.yml`: Latest version with login and security features enabled
@@ -270,7 +270,7 @@ task docker:logs             # tail logs
 
 #### Manual Docker Builds
 
-Stirling-PDF uses different Docker images for various configurations. The build process is controlled by environment variables and uses specific Dockerfile variants. Here's how to build the Docker images:
+RyanPDF uses different Docker images for various configurations. The build process is controlled by environment variables and uses specific Dockerfile variants. Here's how to build the Docker images:
 
 1. Set the security environment variable:
 
@@ -320,7 +320,7 @@ task check   # full quality gate: lint + typecheck + test
 
 ### Comprehensive Testing Script
 
-Stirling-PDF also provides a `test.sh` script in the root directory for Docker integration tests. This script builds all versions of Stirling-PDF, checks that each version works, and runs Cucumber tests. It's recommended to run this script before submitting a final pull request.
+RyanPDF also provides a `test.sh` script in the root directory for Docker integration tests. This script builds all versions of RyanPDF, checks that each version works, and runs Cucumber tests. It's recommended to run this script before submitting a final pull request.
 
 To run the test script:
 
@@ -342,7 +342,7 @@ Note: The `test.sh` script will run automatically when you raise a PR. However, 
 
 2. Access the application at `http://localhost:8080` and manually test all features developed.
 
-### Frontend Development Testing (Stirling 2.0)
+### Frontend Development Testing (RyanPDF 2.0)
 
 For React frontend development:
 
@@ -354,14 +354,14 @@ For React frontend development:
 
 ### Local Testing (Java and UI Components)
 
-For quick iterations and development of Java backend, JavaScript, and UI components, you can run and test Stirling-PDF locally without Docker. This approach allows you to work on and verify changes to:
+For quick iterations and development of Java backend, JavaScript, and UI components, you can run and test RyanPDF locally without Docker. This approach allows you to work on and verify changes to:
 
 - Java backend logic
 - RESTful API endpoints
 - JavaScript functionality
 - User interface components and styling
 
-To run Stirling-PDF locally:
+To run RyanPDF locally:
 
 1. Compile and run the project using built-in IDE methods or by running:
 
@@ -413,7 +413,7 @@ API documentation is available at `/swagger-ui/index.html` when running the appl
 
 ## 10. Customization
 
-Stirling-PDF can be customized through environment variables or a `settings.yml` file. Key customization options include:
+RyanPDF can be customized through environment variables or a `settings.yml` file. Key customization options include:
 
 - Application name and branding
 - Security settings
@@ -432,7 +432,7 @@ Refer to the main README for a full list of customization options.
 
 ## 11. Language Translations
 
-For managing language translations that affect multiple files, Stirling-PDF provides a helper script:
+For managing language translations that affect multiple files, RyanPDF provides a helper script:
 
 ```bash
 /scripts/replace_translation_line.sh
@@ -450,9 +450,9 @@ Remember to test your changes thoroughly to ensure they don't break any existing
 
 ## Code examples
 
-### React Component Development (Stirling 2.0)
+### React Component Development (RyanPDF 2.0)
 
-For Stirling 2.0, new features are built as React components:
+For RyanPDF 2.0, new features are built as React components:
 
 #### Creating a New Tool Component
 
@@ -578,9 +578,9 @@ For Stirling 2.0, new features are built as React components:
   }
   ```
 
-## Adding New Translations to Existing Language Files in Stirling-PDF
+## Adding New Translations to Existing Language Files in RyanPDF
 
-When adding a new feature or modifying existing ones in Stirling-PDF, you'll need to add new translation entries to the existing language files. Here's a step-by-step guide:
+When adding a new feature or modifying existing ones in RyanPDF, you'll need to add new translation entries to the existing language files. Here's a step-by-step guide:
 
 ### 1. Locate Existing Language Files
 

@@ -13,7 +13,7 @@ const CALENDLY_SCRIPT = "https://assets.calendly.com/assets/external/widget.js";
 // Base scheduling link; overridable per-environment without a code change.
 export const CALENDLY_URL: string =
   import.meta.env.VITE_CALENDLY_URL ||
-  "https://calendly.com/d/cm4p-zz5-yy8/stirling-pdf-15-minute-group-discussion";
+  "https://calendly.com/d/cm4p-zz5-yy8/ryanpdf-pdf-15-minute-group-discussion";
 
 // Calendly takes bare hex (no leading #). Its embed always renders form inputs on a white background
 // regardless of these params, so a dark background_color leaves light input text on white — unreadable.

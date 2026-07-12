@@ -50,7 +50,7 @@ public class StirlingAiTool implements McpTool {
 
     @Override
     public String description() {
-        return "Invoke a Stirling AI agent capability (Q&A about a PDF, edit-plan generation,"
+        return "Invoke a RyanPDF AI agent capability (Q&A about a PDF, edit-plan generation,"
                 + " inline comments, math audit, draft-spec helper). Call"
                 + " stirling_describe_operation with the chosen capability id to get its"
                 + " parameters schema before invoking this tool. Some capabilities return content"

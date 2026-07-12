@@ -351,7 +351,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
               for both the imperative open events (direct-call 402s) and the
               usageLimitBridge event (server-side policy/AI run 402s). */}
           <UsageLimitModalHost />
-          {/* Global sign-in modal, opened via stirling:open-sign-in event */}
+          {/* Global sign-in modal, opened via ryanpdf:open-sign-in event */}
           <SignInModal />
           {/* Desktop auto-update popup */}
           {updatePopupModal}

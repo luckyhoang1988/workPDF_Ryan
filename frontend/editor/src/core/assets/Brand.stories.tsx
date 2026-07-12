@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 // Visual catalogue of the shared brand assets (shared/assets/brand) — the single
 // source of truth for the Stirling logos used across the apps.
-import modernMarkDark from "@app/assets/brand/modern-logo/StirlingPDFLogoNoTextDark.svg";
-import modernMarkLight from "@app/assets/brand/modern-logo/StirlingPDFLogoNoTextLight.svg";
-import modernBlack from "@app/assets/brand/modern-logo/StirlingPDFLogoBlackText.svg";
-import modernWhite from "@app/assets/brand/modern-logo/StirlingPDFLogoWhiteText.svg";
-import modernGrey from "@app/assets/brand/modern-logo/StirlingPDFLogoGreyText.svg";
-import classicMarkDark from "@app/assets/brand/classic-logo/StirlingPDFLogoNoTextDark.svg";
-import classicMarkLight from "@app/assets/brand/classic-logo/StirlingPDFLogoNoTextLight.svg";
-import classicBlack from "@app/assets/brand/classic-logo/StirlingPDFLogoBlackText.svg";
-import classicWhite from "@app/assets/brand/classic-logo/StirlingPDFLogoWhiteText.svg";
-import classicGrey from "@app/assets/brand/classic-logo/StirlingPDFLogoGreyText.svg";
+import modernMarkDark from "@app/assets/brand/modern-logo/RyanPDFLogoNoTextDark.svg";
+import modernMarkLight from "@app/assets/brand/modern-logo/RyanPDFLogoNoTextLight.svg";
+import modernBlack from "@app/assets/brand/modern-logo/RyanPDFLogoBlackText.svg";
+import modernWhite from "@app/assets/brand/modern-logo/RyanPDFLogoWhiteText.svg";
+import modernGrey from "@app/assets/brand/modern-logo/RyanPDFLogoGreyText.svg";
+import classicMarkDark from "@app/assets/brand/classic-logo/RyanPDFLogoNoTextDark.svg";
+import classicMarkLight from "@app/assets/brand/classic-logo/RyanPDFLogoNoTextLight.svg";
+import classicBlack from "@app/assets/brand/classic-logo/RyanPDFLogoBlackText.svg";
+import classicWhite from "@app/assets/brand/classic-logo/RyanPDFLogoWhiteText.svg";
+import classicGrey from "@app/assets/brand/classic-logo/RyanPDFLogoGreyText.svg";
 
 type Asset = { label: string; src: string; onDark?: boolean };
 type VariantSet = { variant: string; mark: Asset[]; wordmark: Asset[] };

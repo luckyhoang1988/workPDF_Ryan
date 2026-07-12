@@ -79,13 +79,13 @@ public class GeneralUtils {
             if (!Files.exists(tempDir)) {
                 Files.createDirectories(tempDir);
             }
-            tempFile = Files.createTempFile(tempDir, "stirling-pdf-", null).toFile();
+            tempFile = Files.createTempFile(tempDir, "ryanpdf-", null).toFile();
         } else {
-            Path tempDir = Path.of(System.getProperty("java.io.tmpdir"), "stirling-pdf");
+            Path tempDir = Path.of(System.getProperty("java.io.tmpdir"), "ryanpdf");
             if (!Files.exists(tempDir)) {
                 Files.createDirectories(tempDir);
             }
-            tempFile = Files.createTempFile(tempDir, "stirling-pdf-", null).toFile();
+            tempFile = Files.createTempFile(tempDir, "ryanpdf-", null).toFile();
         }
 
         try (InputStream inputStream = multipartFile.getInputStream();

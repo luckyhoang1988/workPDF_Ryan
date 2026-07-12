@@ -26,7 +26,7 @@ export default function AuthCallback() {
     const handleCallback = async () => {
       if (
         typeof window !== "undefined" &&
-        window.sessionStorage.getItem("stirling_sso_auto_login_logged_out") ===
+        window.sessionStorage.getItem("ryanpdf_sso_auto_login_logged_out") ===
           "1"
       ) {
         navigate("/login", {
@@ -55,7 +55,7 @@ export default function AuthCallback() {
           return;
         }
 
-        localStorage.setItem("stirling_jwt", token);
+        localStorage.setItem("ryanpdf_jwt", token);
         window.dispatchEvent(new CustomEvent("jwt-available"));
 
         const { data, error } = await springAuth.getSession();
@@ -64,7 +64,7 @@ export default function AuthCallback() {
             `[AuthCallback] Failed to validate token (${elapsed()}):`,
             error,
           );
-          localStorage.removeItem("stirling_jwt");
+          localStorage.removeItem("ryanpdf_jwt");
           navigate("/login", {
             replace: true,
             state: { error: "OAuth login failed - invalid token." },

@@ -40,8 +40,8 @@ import {
 } from "@app/components/chat/ChatContext";
 import { formatRelativeTime } from "@app/utils/timeUtils";
 import { useTranslatedToolCatalog } from "@app/data/useTranslatedToolRegistry";
-import { StirlingLogoAnimated } from "@app/components/agents/StirlingLogoAnimated";
-import { StirlingLogoOutline } from "@app/components/agents/StirlingLogoOutline";
+import { RyanPDFLogoAnimated } from "@app/components/agents/RyanPDFLogoAnimated";
+import { RyanPDFLogoOutline } from "@app/components/agents/RyanPDFLogoOutline";
 import { PanelHeader } from "@app/ui/PanelHeader";
 import { ChatQuickActions } from "@app/components/chat/ChatQuickActions";
 import "@app/components/chat/ChatPanel.css";
@@ -200,7 +200,7 @@ function ProgressLogDisplay({
   return (
     <div className="chat-progress-live">
       <span className="chat-progress-live__logo">
-        <StirlingLogoAnimated size={18} />
+        <RyanPDFLogoAnimated size={18} />
       </span>
       <span className="chat-progress-live__label">{label}</span>
       {current && (
@@ -474,12 +474,12 @@ export function ChatPanel({ onBack, backLabel }: ChatPanelProps) {
   return (
     <Box className="chat-panel chat-panel--embedded">
       <PanelHeader
-        icon={<StirlingLogoOutline size={16} />}
-        title={t("agents.stirling_name", "Stirling")}
+        icon={<RyanPDFLogoOutline size={16} />}
+        title={t("agents.ryanpdf_name", "RyanPDF")}
         loading={isLoading}
         className="chat-panel__header"
         barClassName="chat-panel__agent-pill-vt"
-        menuLabel={t("chat.header.agentMenu", "Stirling agent options")}
+        menuLabel={t("chat.header.agentMenu", "RyanPDF agent options")}
         menuItems={[
           {
             key: "clear-chat",

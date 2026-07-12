@@ -11,7 +11,7 @@ usage() {
     echo "Examples:"
     echo "  $0                                    # Run all tests"
     echo "  $0 --rerun-failed                     # Rerun tests that failed previously"
-    echo "  $0 --rerun \"Stirling-PDF-Regression Stirling-PDF-Security-Fat-with-login,Webpage-Accessibility-full\""
+    echo "  $0 --rerun \"RyanPDF-Regression RyanPDF-Security-Fat-with-login,Webpage-Accessibility-full\""
     exit 0
 }
 
@@ -705,9 +705,9 @@ main() {
     # 1. Ultra-Lite (no additional features)
     # ==================================================================
     # Check if any ultra-lite tests need to run before building
-    if should_run_test "Stirling-PDF-Ultra-Lite" || \
+    if should_run_test "RyanPDF-Ultra-Lite" || \
        should_run_test "Webpage-Accessibility-lite" || \
-       should_run_test "Stirling-PDF-Ultra-Lite-Version-Check"; then
+       should_run_test "RyanPDF-Ultra-Lite-Version-Check"; then
 
         gha_group "Build: Ultra-Lite (Gradle + Docker)"
         export DISABLE_ADDITIONAL_FEATURES=true
@@ -748,7 +748,7 @@ main() {
     fi
 
     # Test Ultra-Lite configuration
-    run_tests "Stirling-PDF-Ultra-Lite" "./docker/embedded/compose/docker-compose-latest-ultra-lite.yml"
+    run_tests "RyanPDF-Ultra-Lite" "./docker/embedded/compose/docker-compose-latest-ultra-lite.yml"
 
     if should_run_test "Webpage-Accessibility-lite"; then
         start_test_timer "Webpage-Accessibility-lite"
@@ -767,18 +767,18 @@ main() {
         stop_test_timer "Webpage-Accessibility-lite"
     fi
 
-    if should_run_test "Stirling-PDF-Ultra-Lite-Version-Check"; then
-        start_test_timer "Stirling-PDF-Ultra-Lite-Version-Check"
+    if should_run_test "RyanPDF-Ultra-Lite-Version-Check"; then
+        start_test_timer "RyanPDF-Ultra-Lite-Version-Check"
         echo "Testing version verification..."
-        if verify_app_version "Stirling-PDF-Ultra-Lite" "http://localhost:8080"; then
-            passed_tests+=("Stirling-PDF-Ultra-Lite-Version-Check")
-            echo "Version verification passed for Stirling-PDF-Ultra-Lite"
+        if verify_app_version "RyanPDF-Ultra-Lite" "http://localhost:8080"; then
+            passed_tests+=("RyanPDF-Ultra-Lite-Version-Check")
+            echo "Version verification passed for RyanPDF-Ultra-Lite"
         else
-            failed_tests+=("Stirling-PDF-Ultra-Lite-Version-Check")
-            capture_failure_logs "Stirling-PDF-Ultra-Lite-Version-Check" "$CURRENT_CONTAINER"
-            echo "Version verification failed for Stirling-PDF-Ultra-Lite"
+            failed_tests+=("RyanPDF-Ultra-Lite-Version-Check")
+            capture_failure_logs "RyanPDF-Ultra-Lite-Version-Check" "$CURRENT_CONTAINER"
+            echo "Version verification failed for RyanPDF-Ultra-Lite"
         fi
-        stop_test_timer "Stirling-PDF-Ultra-Lite-Version-Check"
+        stop_test_timer "RyanPDF-Ultra-Lite-Version-Check"
     fi
 
     docker-compose -f "./docker/embedded/compose/docker-compose-latest-ultra-lite.yml" down -v
@@ -787,14 +787,14 @@ main() {
     # 2. Full Fat + Security
     # ==================================================================
     # Check if any fat image tests need to run before building
-    if should_run_test "Stirling-PDF-Security-Fat" || \
+    if should_run_test "RyanPDF-Security-Fat" || \
        should_run_test "Webpage-Accessibility-full" || \
-       should_run_test "Stirling-PDF-Security-Fat-Version-Check" || \
-       should_run_test "Stirling-PDF-Security-Fat-with-login" || \
-       should_run_test "Stirling-PDF-Regression Stirling-PDF-Security-Fat-with-login" || \
-       should_run_test "Stirling-PDF-Fat-Disable-Endpoints" || \
+       should_run_test "RyanPDF-Security-Fat-Version-Check" || \
+       should_run_test "RyanPDF-Security-Fat-with-login" || \
+       should_run_test "RyanPDF-Regression RyanPDF-Security-Fat-with-login" || \
+       should_run_test "RyanPDF-Fat-Disable-Endpoints" || \
        should_run_test "Disabled-Endpoints" || \
-       should_run_test "Stirling-PDF-Fat-Disable-Endpoints-Version-Check"; then
+       should_run_test "RyanPDF-Fat-Disable-Endpoints-Version-Check"; then
 
         gha_group "Build: Fat + Security (Gradle + Docker)"
         export DISABLE_ADDITIONAL_FEATURES=false
@@ -835,7 +835,7 @@ main() {
     fi
 
     # Test fat + security compose
-    run_tests "Stirling-PDF-Security-Fat" "./docker/embedded/compose/docker-compose-latest-fat-security.yml"
+    run_tests "RyanPDF-Security-Fat" "./docker/embedded/compose/docker-compose-latest-fat-security.yml"
 
     if should_run_test "Webpage-Accessibility-full"; then
         start_test_timer "Webpage-Accessibility-full"
@@ -854,18 +854,18 @@ main() {
         stop_test_timer "Webpage-Accessibility-full"
     fi
 
-    if should_run_test "Stirling-PDF-Security-Fat-Version-Check"; then
-        start_test_timer "Stirling-PDF-Security-Fat-Version-Check"
+    if should_run_test "RyanPDF-Security-Fat-Version-Check"; then
+        start_test_timer "RyanPDF-Security-Fat-Version-Check"
         echo "Testing version verification..."
-        if verify_app_version "Stirling-PDF-Security-Fat" "http://localhost:8080"; then
-            passed_tests+=("Stirling-PDF-Security-Fat-Version-Check")
-            echo "Version verification passed for Stirling-PDF-Security-Fat"
+        if verify_app_version "RyanPDF-Security-Fat" "http://localhost:8080"; then
+            passed_tests+=("RyanPDF-Security-Fat-Version-Check")
+            echo "Version verification passed for RyanPDF-Security-Fat"
         else
-            failed_tests+=("Stirling-PDF-Security-Fat-Version-Check")
-            capture_failure_logs "Stirling-PDF-Security-Fat-Version-Check" "$CURRENT_CONTAINER"
-            echo "Version verification failed for Stirling-PDF-Security-Fat"
+            failed_tests+=("RyanPDF-Security-Fat-Version-Check")
+            capture_failure_logs "RyanPDF-Security-Fat-Version-Check" "$CURRENT_CONTAINER"
+            echo "Version verification failed for RyanPDF-Security-Fat"
         fi
-        stop_test_timer "Stirling-PDF-Security-Fat-Version-Check"
+        stop_test_timer "RyanPDF-Security-Fat-Version-Check"
     fi
 
     docker-compose -f "./docker/embedded/compose/docker-compose-latest-fat-security.yml" down -v
@@ -891,10 +891,10 @@ main() {
         fi
     fi
 
-    run_tests "Stirling-PDF-Security-Fat-with-login" "./docker/embedded/compose/test_cicd.yml"
+    run_tests "RyanPDF-Security-Fat-with-login" "./docker/embedded/compose/test_cicd.yml"
 
     # Only run behave tests if the container started successfully
-    if [[ " ${passed_tests[*]} " =~ "Stirling-PDF-Security-Fat-with-login" ]]; then
+    if [[ " ${passed_tests[*]} " =~ "RyanPDF-Security-Fat-with-login" ]]; then
 
         CONTAINER_NAME=$(docker-compose -f "./docker/embedded/compose/test_cicd.yml" ps --format '{{.Names}}' --filter "status=running" | head -n1)
 
@@ -911,7 +911,7 @@ main() {
         CUCUMBER_JUNIT_DIR="$PROJECT_ROOT/testing/cucumber/junit"
         mkdir -p "$CUCUMBER_JUNIT_DIR"
         cd "testing/cucumber"
-        start_test_timer "Stirling-PDF-Regression $CONTAINER_NAME"
+        start_test_timer "RyanPDF-Regression $CONTAINER_NAME"
 
         # Snapshot docker log line count before behave so we can extract only behave-window logs
         DOCKER_LOG_BEFORE=$(docker logs "$CONTAINER_NAME" 2>&1 | wc -l)
@@ -956,7 +956,7 @@ main() {
 
             if compare_file_lists "$BEFORE_FILE" "$AFTER_FILE" "$DIFF_FILE" "$CONTAINER_NAME"; then
                 echo "No unexpected temporary files found."
-                passed_tests+=("Stirling-PDF-Regression $CONTAINER_NAME")
+                passed_tests+=("RyanPDF-Regression $CONTAINER_NAME")
             else
                 echo "WARNING: Unexpected temporary files detected after behave tests!"
 
@@ -988,18 +988,18 @@ main() {
                 cp "$DIFF_FILE" "$REPORT_DIR/" 2>/dev/null || true
                 cp "${DIFF_FILE}.tmp" "$REPORT_DIR/files_diff_tmp_matches.txt" 2>/dev/null || true
 
-                test_failure_logs["Stirling-PDF-Regression-Temp-Files"]="$tempfile_log"
-                failed_tests+=("Stirling-PDF-Regression-Temp-Files")
+                test_failure_logs["RyanPDF-Regression-Temp-Files"]="$tempfile_log"
+                failed_tests+=("RyanPDF-Regression-Temp-Files")
             fi
-            passed_tests+=("Stirling-PDF-Regression $CONTAINER_NAME")
+            passed_tests+=("RyanPDF-Regression $CONTAINER_NAME")
         else
             gha_endgroup
-            failed_tests+=("Stirling-PDF-Regression $CONTAINER_NAME")
+            failed_tests+=("RyanPDF-Regression $CONTAINER_NAME")
 
             # Save docker logs from the behave window to a dedicated file
             local cucumber_log="$REPORT_DIR/cucumber-docker-context.log"
             docker logs "$CONTAINER_NAME" 2>&1 | tail -n +"$((DOCKER_LOG_BEFORE + 1))" > "$cucumber_log" 2>/dev/null || true
-            test_failure_logs["Stirling-PDF-Regression $CONTAINER_NAME"]="$cucumber_log"
+            test_failure_logs["RyanPDF-Regression $CONTAINER_NAME"]="$cucumber_log"
 
             gha_group "Docker logs during behave run: $CONTAINER_NAME"
             tail -100 "$cucumber_log"
@@ -1012,7 +1012,7 @@ main() {
             capture_file_list "$CONTAINER_NAME" "$AFTER_FILE"
             compare_file_lists "$BEFORE_FILE" "$AFTER_FILE" "$DIFF_FILE" "$CONTAINER_NAME"
         fi
-        stop_test_timer "Stirling-PDF-Regression $CONTAINER_NAME"
+        stop_test_timer "RyanPDF-Regression $CONTAINER_NAME"
     fi
     # `down` with the override removes the agent bind-mount cleanly. The
     # SIGTERM that `down` sends is what triggers dumponexit=true in the
@@ -1025,7 +1025,7 @@ main() {
     # ==================================================================
     # 4. Disabled Endpoints Test
     # ==================================================================
-    run_tests "Stirling-PDF-Fat-Disable-Endpoints" "./docker/embedded/compose/docker-compose-latest-fat-endpoints-disabled.yml"
+    run_tests "RyanPDF-Fat-Disable-Endpoints" "./docker/embedded/compose/docker-compose-latest-fat-endpoints-disabled.yml"
 
     if should_run_test "Disabled-Endpoints"; then
         start_test_timer "Disabled-Endpoints"
@@ -1042,18 +1042,18 @@ main() {
         stop_test_timer "Disabled-Endpoints"
     fi
 
-    if should_run_test "Stirling-PDF-Fat-Disable-Endpoints-Version-Check"; then
-        start_test_timer "Stirling-PDF-Fat-Disable-Endpoints-Version-Check"
+    if should_run_test "RyanPDF-Fat-Disable-Endpoints-Version-Check"; then
+        start_test_timer "RyanPDF-Fat-Disable-Endpoints-Version-Check"
         echo "Testing version verification..."
-        if verify_app_version "Stirling-PDF-Fat-Disable-Endpoints" "http://localhost:8080"; then
-            passed_tests+=("Stirling-PDF-Fat-Disable-Endpoints-Version-Check")
-            echo "Version verification passed for Stirling-PDF-Fat-Disable-Endpoints"
+        if verify_app_version "RyanPDF-Fat-Disable-Endpoints" "http://localhost:8080"; then
+            passed_tests+=("RyanPDF-Fat-Disable-Endpoints-Version-Check")
+            echo "Version verification passed for RyanPDF-Fat-Disable-Endpoints"
         else
-            failed_tests+=("Stirling-PDF-Fat-Disable-Endpoints-Version-Check")
-            capture_failure_logs "Stirling-PDF-Fat-Disable-Endpoints-Version-Check" "$CURRENT_CONTAINER"
-            echo "Version verification failed for Stirling-PDF-Fat-Disable-Endpoints"
+            failed_tests+=("RyanPDF-Fat-Disable-Endpoints-Version-Check")
+            capture_failure_logs "RyanPDF-Fat-Disable-Endpoints-Version-Check" "$CURRENT_CONTAINER"
+            echo "Version verification failed for RyanPDF-Fat-Disable-Endpoints"
         fi
-        stop_test_timer "Stirling-PDF-Fat-Disable-Endpoints-Version-Check"
+        stop_test_timer "RyanPDF-Fat-Disable-Endpoints-Version-Check"
     fi
 
     docker-compose -f "./docker/embedded/compose/docker-compose-latest-fat-endpoints-disabled.yml" down -v

@@ -81,7 +81,7 @@ export function isRunInFlight(run: PolicyRunRecord): boolean {
   return run.status === "COMPLETED" && !run.imported;
 }
 
-const STORAGE_KEY = "stirling-policy-runs";
+const STORAGE_KEY = "ryanpdf-policy-runs";
 /** Soft cap on stored runs so the activity log can't grow without bound. Only
  *  TERMINAL runs are ever evicted (see {@link capRuns}); in-flight runs are always
  *  kept, so a large upload batch (more files than this cap) still polls + imports

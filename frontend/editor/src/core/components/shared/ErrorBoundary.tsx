@@ -54,7 +54,7 @@ export default class ErrorBoundary extends React.Component<
 
     // Check localStorage for auth state
     try {
-      const jwt = localStorage.getItem("stirling_jwt");
+      const jwt = localStorage.getItem("ryanpdf_jwt");
       console.error("Auth state:", {
         hasJWT: !!jwt,
         jwtLength: jwt?.length || 0,

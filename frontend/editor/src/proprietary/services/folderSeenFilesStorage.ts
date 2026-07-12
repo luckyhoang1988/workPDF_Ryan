@@ -4,7 +4,7 @@
  * Prevents re-submitting the same file on every poll cycle.
  */
 
-const DB_NAME = "stirling-pdf-folder-seen-files";
+const DB_NAME = "ryanpdf-pdf-folder-seen-files";
 const DB_VERSION = 1;
 const STORE = "seenFiles";
 

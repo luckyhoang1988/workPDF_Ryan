@@ -6,7 +6,7 @@ import { invoke } from "@tauri-apps/api/core";
  */
 export const defaultAppService = {
   /**
-   * Check if Stirling PDF is the default PDF handler
+   * Check if RyanPDF is the default PDF handler
    */
   async isDefaultPdfHandler(): Promise<boolean> {
     try {
@@ -19,7 +19,7 @@ export const defaultAppService = {
   },
 
   /**
-   * Set or prompt to set Stirling PDF as default PDF handler
+   * Set or prompt to set RyanPDF as default PDF handler
    * Returns a status string indicating what happened
    */
   async setAsDefaultPdfHandler(): Promise<
@@ -40,7 +40,7 @@ export const defaultAppService = {
   hasUserDismissedPrompt(): boolean {
     try {
       const dismissed = localStorage.getItem(
-        "stirlingpdf_default_app_prompt_dismissed",
+        "ryanpdf_default_app_prompt_dismissed",
       );
       return dismissed === "true";
     } catch {
@@ -54,7 +54,7 @@ export const defaultAppService = {
   setPromptDismissed(dismissed: boolean): void {
     try {
       localStorage.setItem(
-        "stirlingpdf_default_app_prompt_dismissed",
+        "ryanpdf_default_app_prompt_dismissed",
         dismissed ? "true" : "false",
       );
     } catch (error) {

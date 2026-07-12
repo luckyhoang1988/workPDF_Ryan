@@ -44,7 +44,7 @@ export enum AiWorkflowPhase {
 
 /**
  * Engine-side progress detail for ENGINE_PROGRESS events. Mirrors the Python
- * {@code ProgressEvent} discriminated union (engine/src/stirling/contracts/progress.py)
+ * {@code ProgressEvent} discriminated union (engine/src/ryanpdf/contracts/progress.py)
  * and the Java {@code AiEngineProgressDetail} sealed interface; the {@code phase}
  * string is the discriminator. Field names are camelCase because the engine
  * serialises by alias.
@@ -142,7 +142,7 @@ type AiWorkflowOutcome =
   | "cannot_continue";
 
 interface AiWorkflowResultFile {
-  /** Stirling file ID — download with /api/v1/general/files/{fileId}. */
+  /** RyanPDF file ID — download with /api/v1/general/files/{fileId}. */
   fileId: string;
   fileName: string;
   contentType: string;
@@ -327,7 +327,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const messagesRef = useRef<ChatMessage[]>(state.messages);
   messagesRef.current = state.messages;
 
-  // Download a File from the Stirling files endpoint.
+  // Download a File from the RyanPDF files endpoint.
   const downloadFile = useCallback(
     async (descriptor: AiWorkflowResultFile): Promise<File> => {
       const response = await apiClient.get<Blob>(

@@ -23,7 +23,7 @@ function FirstLoginForm({
   usingDefaultCredentials = false,
 }: FirstLoginSlideProps) {
   const { t } = useTranslation();
-  // If using default credentials, pre-fill with "stirling" - user won't see this field
+  // If using default credentials, pre-fill with "ryanpdf" - user won't see this field
   const [currentPassword, setCurrentPassword] = useState(
     usingDefaultCredentials ? DEFAULT_PASSWORD : "",
   );

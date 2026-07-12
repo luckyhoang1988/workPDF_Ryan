@@ -1,7 +1,6 @@
 services:
-  stirling-pdf:
-    container_name: Stirling-PDF-Ultra-Lite
-    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:ultra-lite
+  ryanpdf:
+    container_name: RyanPDF-Ultra-Lite
     build:
       context: ../../../
       dockerfile: docker/embedded/Dockerfile.ultra-lite
@@ -17,16 +16,16 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../../../stirling/latest/config:/configs:rw
-      - ../../../stirling/latest/logs:/logs:rw
+      - ../../../ryanpdf/latest/config:/configs:rw
+      - ../../../ryanpdf/latest/logs:/logs:rw
     environment:
       SECURITY_ENABLELOGIN: "false"
       # STIRLING_JVM_PROFILE: "balanced"  # Options: balanced (G1GC, default), performance (Shenandoah)
       # JAVA_CUSTOM_OPTS: ""              # Additional JVM flags appended to the active profile
       SYSTEM_DEFAULTLOCALE: en-US
-      UI_APPNAME: Stirling-PDF-Ultra-lite
-      UI_HOMEDESCRIPTION: Demo site for Stirling-PDF-Ultra-lite Latest
-      UI_APPNAMENAVBAR: Stirling-PDF-Ultra-lite Latest
+      UI_APPNAME: RyanPDF-Ultra-lite
+      UI_HOMEDESCRIPTION: Demo site for RyanPDF-Ultra-lite Latest
+      UI_APPNAMENAVBAR: RyanPDF-Ultra-lite Latest
       SYSTEM_MAXFILESIZE: "100"
       METRICS_ENABLED: "true"
       SYSTEM_GOOGLEVISIBILITY: "true"

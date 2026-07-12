@@ -20,7 +20,7 @@ export interface RetryEntry {
 }
 
 class FolderRetryScheduleStorage {
-  private dbName = "stirling-pdf-retry-schedule";
+  private dbName = "ryanpdf-pdf-retry-schedule";
   private dbVersion = 1;
   private storeName = "retries";
   private db: IDBDatabase | null = null;

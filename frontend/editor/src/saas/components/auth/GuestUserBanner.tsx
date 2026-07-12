@@ -48,8 +48,8 @@ export function GuestUserBanner({ className = "" }: GuestUserBannerProps) {
       setVisible(true);
       hasShownThisLoad = true;
     };
-    window.addEventListener("stirling:show-guest-banner", show);
-    return () => window.removeEventListener("stirling:show-guest-banner", show);
+    window.addEventListener("ryanpdf:show-guest-banner", show);
+    return () => window.removeEventListener("ryanpdf:show-guest-banner", show);
   }, []);
 
   if (!isAnon || isDismissed || !visible) {
@@ -73,7 +73,7 @@ export function GuestUserBanner({ className = "" }: GuestUserBannerProps) {
       <div className="guest-banner-content">
         <div className="guest-banner-text">
           <div className="guest-banner-title">
-            {t("guestBanner.title", "You're using Stirling PDF as a guest!")}
+            {t("guestBanner.title", "You're using RyanPDF as a guest!")}
           </div>
           <div className="guest-banner-message">
             {t(

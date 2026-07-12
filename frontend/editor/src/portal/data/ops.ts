@@ -1,5 +1,5 @@
 /**
- * The Stirling operation library.
+ * The RyanPDF operation library.
  *
  * Three layers, ported faithfully from the prototype:
  *
@@ -61,7 +61,7 @@ export interface LibraryOp extends Omit<
   "defaultOn" | "pipelineOnly"
 > {
   category: OpCategory;
-  provider?: "claude" | "stirling";
+  provider?: "claude" | "ryanpdf";
 }
 
 export interface PipelineAgent {
@@ -267,7 +267,7 @@ export const PIPELINE_OPS: Record<OpKind, PipelineOp[]> = {
       icon: "lock",
       kind: "secure",
       defaultOn: true,
-      desc: "AES-256 on stored artifacts. Stirling-managed, customer KMS, or BYOK",
+      desc: "AES-256 on stored artifacts. RyanPDF-managed, customer KMS, or BYOK",
     },
     {
       id: "retention",
@@ -276,7 +276,7 @@ export const PIPELINE_OPS: Record<OpKind, PipelineOp[]> = {
       kind: "secure",
       defaultOn: true,
       pipelineOnly: true,
-      desc: "How long Stirling retains the artifact, run record, and audit trail",
+      desc: "How long RyanPDF retains the artifact, run record, and audit trail",
     },
     {
       id: "residency",
@@ -1043,7 +1043,7 @@ export const LIBRARY_OPS: readonly LibraryOp[] = [
     icon: "lock",
     kind: "secure",
     category: "Document Security",
-    desc: "AES-256 encryption on stored artifacts (Stirling-managed, BYOK, or HYOK)",
+    desc: "AES-256 encryption on stored artifacts (RyanPDF-managed, BYOK, or HYOK)",
   },
   {
     id: "flatten-secure",
@@ -1059,7 +1059,7 @@ export const LIBRARY_OPS: readonly LibraryOp[] = [
     icon: "fileText",
     kind: "secure",
     category: "Document Security",
-    desc: "How long Stirling retains the artifact, run record, and audit trail",
+    desc: "How long RyanPDF retains the artifact, run record, and audit trail",
   },
   {
     id: "residency",
@@ -1120,7 +1120,7 @@ export const LIBRARY_OPS: readonly LibraryOp[] = [
     icon: "check",
     kind: "validate",
     category: "Document Review",
-    provider: "stirling",
+    provider: "ryanpdf",
     desc: "Check documents against regulatory requirements",
   },
   {
@@ -1147,7 +1147,7 @@ export const LIBRARY_OPS: readonly LibraryOp[] = [
     icon: "fileText",
     kind: "modify",
     category: "Automation",
-    provider: "stirling",
+    provider: "ryanpdf",
     desc: "Auto-fill forms and extract submissions",
   },
 
@@ -1235,7 +1235,7 @@ export const SOURCE_OPTIONS: readonly SourceOption[] = [
     id: "upload",
     label: "Upload API",
     icon: "upload",
-    desc: "POST documents to a Stirling endpoint",
+    desc: "POST documents to a RyanPDF endpoint",
   },
   {
     id: "webhook",
@@ -1266,9 +1266,9 @@ export const SOURCE_OPTIONS: readonly SourceOption[] = [
 export const DESTINATION_OPTIONS: readonly DestinationOption[] = [
   {
     id: "vault",
-    label: "Stirling vault",
+    label: "RyanPDF vault",
     icon: "shield",
-    desc: "Store the processed document and extracted data in Stirling",
+    desc: "Store the processed document and extracted data in RyanPDF",
   },
   {
     id: "s3",

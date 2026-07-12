@@ -1,4 +1,4 @@
-# Stirling-PDF - Full version (embedded frontend)
+# RyanPDF - Full version (embedded frontend)
 # Uses pre-built base image for fast builds
 
 ARG BASE_VERSION=1.0.2
@@ -122,15 +122,9 @@ ENV VERSION_TAG=$VERSION_TAG \
     SAL_TMP=/tmp/stirling-pdf/libre
 
 # Metadata labels
-LABEL org.opencontainers.image.title="Stirling-PDF" \
+LABEL org.opencontainers.image.title="RyanPDF" \
       org.opencontainers.image.description="Full version with Calibre, LibreOffice, Tesseract, OCRmyPDF" \
-      org.opencontainers.image.source="https://github.com/Stirling-Tools/Stirling-PDF" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.vendor="Stirling-Tools" \
-      org.opencontainers.image.url="https://www.stirlingpdf.com" \
-      org.opencontainers.image.documentation="https://docs.stirlingpdf.com" \
-      maintainer="Stirling-Tools" \
-      org.opencontainers.image.authors="Stirling-Tools" \
       org.opencontainers.image.version="${VERSION_TAG}" \
       org.opencontainers.image.keywords="PDF, manipulation, API, Spring Boot, React"
 

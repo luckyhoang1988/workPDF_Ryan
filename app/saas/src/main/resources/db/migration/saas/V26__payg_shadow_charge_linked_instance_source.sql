@@ -1,4 +1,4 @@
--- Twin of supabase/migrations/<ts>_payg_shadow_charge_linked_instance_source.sql (Stirling-PDF-SaaS).
+-- Twin of supabase/migrations/<ts>_payg_shadow_charge_linked_instance_source.sql (RyanPDF-SaaS).
 -- Keep byte-identical to the Supabase twin.
 --
 -- Widen the payg_shadow_charge.job_source CHECK to allow LINKED_INSTANCE (combined-billing "Mode

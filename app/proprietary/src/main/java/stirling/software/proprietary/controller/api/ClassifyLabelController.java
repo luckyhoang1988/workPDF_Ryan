@@ -106,7 +106,7 @@ public class ClassifyLabelController {
             summary = "Classify a PDF and label its metadata",
             description =
                     "Reads the first two and last two pages, classifies the document via the AI"
-                            + " engine, and stores the result in the StirlingPDFClassification"
+                            + " engine, and stores the result in the RyanPDFClassification"
                             + " metadata field. Dispatched by the Classification policy; not"
                             + " intended for direct client use.")
     public ResponseEntity<Resource> classifyAndLabel(

@@ -1,4 +1,4 @@
--- Twin of supabase/migrations/<ts>_payg_instance_usage.sql (Stirling-PDF-SaaS). Keep the table
+-- Twin of supabase/migrations/<ts>_payg_instance_usage.sql (RyanPDF-SaaS). Keep the table
 -- definition byte-identical to the Supabase twin — both repos own this stirling_pdf table (the SaaS
 -- profile runs this Flyway migration against the Supabase-backed DB; non-Hibernate consumers — RLS,
 -- PostgREST, edge functions — rely on the Supabase migration ledger having the matching entry).

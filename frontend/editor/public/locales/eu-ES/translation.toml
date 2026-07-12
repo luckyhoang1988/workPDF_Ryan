@@ -57,7 +57,7 @@ keepWorking = "Lanean jarraitu"
 loading = "Kargatzen..."
 loginAgreementAccept = "Onartu"
 loginAgreementDecline = "Ukatu"
-loginAgreementProvider = "Ohar hau zure administratzaileak eman du, ez Stirling PDF Inc.-ek."
+loginAgreementProvider = "Ohar hau zure administratzaileak eman du, ez RyanPDF Inc.-ek."
 loginAgreementTitle = "Saio-hasierako hitzarmena"
 logOut = "Saioa itxi"
 marginTooltip = "Orri-zenbakiaren eta orrialdearen ertzen arteko distantzia."
@@ -919,11 +919,11 @@ description = "Konfiguratu aukerako eginbideak eta funtzionalitatea."
 title = "Eginbideak"
 
 [admin.settings.features.serverCertificate]
-description = "Konfiguratu zerbitzarian ziurtagiriak sortzea \"Stirling-PDFekin sinatu\" funtzionalitaterako"
+description = "Konfiguratu zerbitzarian ziurtagiriak sortzea \"RyanPDFekin sinatu\" funtzionalitaterako"
 label = "Zerbitzari-ziurtagiria"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Gaitu zerbitzari-ziurtagiria \"Stirling-PDFekin sinatu\" aukerarako"
+description = "Gaitu zerbitzari-ziurtagiria \"RyanPDFekin sinatu\" aukerarako"
 label = "Zerbitzari-ziurtagiria gaitu"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1071,7 +1071,7 @@ description = "Cookieen politikara doan URLa edo fitxategi-izena"
 label = "Cookieen politika"
 
 [admin.settings.legal.disclaimer]
-message = "Dokumentu legal hauek pertsonalizatuta, erantzukizun osoa hartzen duzu indarrean dauden lege eta araudi guztiekin bat etortzea bermatzeko, GDPR eta beste EBko datu-babes eskakizunak barne baina ez soilik. Ezarpen hauek soilik aldatu: (1) instantzia pertsonal/pribatua erabiltzen baduzu, (2) EBko jurisdikziotik kanpo bazaude eta zure betebehar legalak ulertzen badituzu, edo (3) aholku legal egokia eskuratu baduzu eta erabiltzaileen datu eta lege-betetze guztien erantzukizun esklusiboa onartzen baduzu. Stirling-PDF eta bere garatzaileek ez dute zure betebehar legalen erantzukizunik hartzen."
+message = "Dokumentu legal hauek pertsonalizatuta, erantzukizun osoa hartzen duzu indarrean dauden lege eta araudi guztiekin bat etortzea bermatzeko, GDPR eta beste EBko datu-babes eskakizunak barne baina ez soilik. Ezarpen hauek soilik aldatu: (1) instantzia pertsonal/pribatua erabiltzen baduzu, (2) EBko jurisdikziotik kanpo bazaude eta zure betebehar legalak ulertzen badituzu, edo (3) aholku legal egokia eskuratu baduzu eta erabiltzaileen datu eta lege-betetze guztien erantzukizun esklusiboa onartzen baduzu. RyanPDF eta bere garatzaileek ez dute zure betebehar legalen erantzukizunik hartzen."
 title = "Erantzukizun legalaren abisua"
 
 [admin.settings.legal.impressum]
@@ -1158,8 +1158,8 @@ description = "SMTP autentifikaziorako erabiltzaile-izena"
 label = "SMTP erabiltzaile-izena"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a RyanPDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning RyanPDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose RyanPDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1189,7 +1189,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning RyanPDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1202,12 +1202,12 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+description = "OAuth needs an external IdP. API key uses a RyanPDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled RyanPDF user."
+label = "Require an existing RyanPDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1218,7 +1218,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a RyanPDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1539,7 +1539,7 @@ description = "Gaituta dagoenean, zerrendatutako erabiltzaile IDek bakarrik erab
 label = "Baimendu erabiltzaile ID zehatzak"
 
 [admin.settings.telegram.enabled]
-description = "Baimendu erabiltzaileek Stirling PDFekin elkarreragitea konfiguratutako Telegram bot-aren bidez."
+description = "Baimendu erabiltzaileek RyanPDFekin elkarreragitea konfiguratutako Telegram bot-aren bidez."
 label = "Gaitu Telegram bot-a"
 
 [admin.settings.telegram.feedback]
@@ -1612,20 +1612,20 @@ settingsOverview = "Hau da <strong>Ezarpenen panela</strong>. Administrazio-ezar
 systemCustomization = "UI pertsonalizatzeko modu ugari ditugu: <strong>Sistemaren ezarpenek</strong> aplikazioaren izena eta hizkuntzak aldatzea uzten dute, <strong>Ezaugarriek</strong> zerbitzariaren ziurtagirien kudeaketa ahalbidetzen dute, eta <strong>Endpoints</strong> atalak erabiltzaileentzako tresna zehatzak gaitu edo desgaitu ditzake."
 teamsAndUsers = "Kudeatu hemen <strong>Taldeak</strong> eta erabiltzaile indibidualak. Erabiltzaile berriak e-postaz, partekatzeko esteken bidez gonbidatu edo zuk zeuk kontu pertsonalizatuak sor ditzakezu."
 welcome = "Ongi etorri <strong>Administrazio-birara</strong>! Azter ditzagun sistema-administratzaileentzako ezaugarri eta ezarpen boteretsuak."
-wrapUp = "Hori da administrazio-bira! Erakundeei egokitutako eta pertsonalizagarriak diren ezaugarriak ezagutu dituzu Stirling PDF irtenbide indartsu bihurtzen dutenak. Sar zaitez bira honetara edozein unetan <strong>Laguntza</strong> menutik."
+wrapUp = "Hori da administrazio-bira! Erakundeei egokitutako eta pertsonalizagarriak diren ezaugarriak ezagutu dituzu RyanPDF irtenbide indartsu bihurtzen dutenak. Sar zaitez bira honetara edozein unetan <strong>Laguntza</strong> menutik."
 
 [adminUserSettings]
 admin = "Admin"
 title = "Erabiltzailearen Ezarpenen Kontrolak"
 
 [agents]
-stirling_name = "Stirling"
+stirling_name = "RyanPDF"
 
 [analytics]
 learnMore = "Argibide gehiago"
-paragraph1 = "Stirling PDF-k aukerazko analitikak ditu produktua hobetzen laguntzeko. Ez dugu informazio pertsonalik edo fitxategi-edukirik jarraitzen."
-paragraph2 = "Mesedez, kontuan hartu analitikak gaitzea Stirling-PDF hazten laguntzeko eta gure erabiltzaileak hobeto ulertzeko."
-title = "Stirling PDF hobetzea nahi duzu?"
+paragraph1 = "RyanPDF-k aukerazko analitikak ditu produktua hobetzen laguntzeko. Ez dugu informazio pertsonalik edo fitxategi-edukirik jarraitzen."
+paragraph2 = "Mesedez, kontuan hartu analitikak gaitzea RyanPDF hazten laguntzeko eta gure erabiltzaileak hobeto ulertzeko."
+title = "RyanPDF hobetzea nahi duzu?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2558,7 +2558,7 @@ bullet1 = "Onartzen ditu PEM, PKCS12, JKS eta zerbitzariaren ziurtagiri formatua
 bullet2 = "Aukera sinadura PDFan erakusteko edo ezkutatzeko"
 bullet3 = "Gehitu arrazoia, kokapena eta sinatzailearen izena"
 bullet4 = "Aukeratu zein orritan jarri sinadura ikusgarriak"
-bullet5 = "Erabili zerbitzariaren ziurtagiria 'Sinatu Stirling-PDF-rekin' aukera errazarentzat"
+bullet5 = "Erabili zerbitzariaren ziurtagiria 'Sinatu RyanPDF-rekin' aukera errazarentzat"
 text = "PDF bat sinatzeko, ziurtagiri digital bat behar duzu (PEM, PKCS12 edo JKS modukoa). Sinadura dokumentuan ikusgai egitea edo segurtasunerako ikusezin mantentzea aukera dezakezu."
 title = "Sinadurak gehitzea"
 
@@ -2739,10 +2739,10 @@ copy = "Kopiatu mezua"
 
 [chat.fab]
 close = "Close chat"
-open = "Open Stirling AI assistant"
+open = "Open RyanPDF AI assistant"
 
 [chat.header]
-agentMenu = "Stirling agentearen aukerak"
+agentMenu = "RyanPDF agentearen aukerak"
 clearChat = "Garbitu txata"
 
 [chat.input]
@@ -3072,14 +3072,14 @@ upgradeButton = "Bertsio-berritu kontua"
 
 [config.apiKeys]
 copyKeyAriaLabel = "API gakoa kopiatu"
-description = "Stirlingen PDF tresna-multzora sartzeko zure API gakoa. Kopiatu zure proiektuara edo berritu berri bat sortzeko."
-docsDescription = "Ikasi gehiago Stirling PDFrekin integrazioari buruz:"
+description = "RyanPDFen PDF tresna-multzora sartzeko zure API gakoa. Kopiatu zure proiektuara edo berritu berri bat sortzeko."
+docsDescription = "Ikasi gehiago RyanPDFrekin integrazioari buruz:"
 docsLink = "API dokumentazioa"
 docsTitle = "API dokumentazioa"
 generateError = "Ezin izan dugu zure API gakoa sortu."
 goToAccount = "Joan kontura"
 guestInfo = "Gonbidatu erabiltzaileek ez dute API gakorik jasotzen. Sortu kontu bat zure aplikazioetan erabil dezakezun API gakoa lortzeko."
-intro = "Erabili zure API gakoa Stirling PDFren prozesatzeko gaitasunetara programatikoki sartzeko."
+intro = "Erabili zure API gakoa RyanPDFren prozesatzeko gaitasunetara programatikoki sartzeko."
 label = "API gakoa"
 publicKeyAriaLabel = "API gako publikoa"
 refreshAriaLabel = "API gakoa berritu"
@@ -3103,10 +3103,10 @@ title = "API gakoak berritu"
 warning = "⚠️ Abisua: Ekintza honek API gako berriak sortuko ditu eta aurreko gakoak baliogabe utziko ditu."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your RyanPDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run RyanPDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using RyanPDF directly."
 title = "MCP Server"
 viewApiKeys = "View API keys"
 
@@ -3123,7 +3123,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your RyanPDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -3232,7 +3232,7 @@ showPreferencesBtn = "Kudeatu hobespenak"
 title = "Cookieak nola erabiltzen ditugu"
 
 [cookieBanner.popUp.description]
-1 = "Cookieak eta beste teknologiak erabiltzen ditugu Stirling PDF zuretzat hobeto funtziona dadin—gure tresnak hobetzen eta gustuko izango dituzun ezaugarriak eraikitzen jarraitzen laguntzen digute."
+1 = "Cookieak eta beste teknologiak erabiltzen ditugu RyanPDF zuretzat hobeto funtziona dadin—gure tresnak hobetzen eta gustuko izango dituzun ezaugarriak eraikitzen jarraitzen laguntzen digute."
 2 = "If you’d rather not, clicking 'No Thanks' will only enable the essential cookies needed to keep things running smoothly."
 
 [cookieBanner.preferencesModal]
@@ -3245,12 +3245,12 @@ subtitle = "Cookieen erabilera"
 title = "Baimen-hobespenen zentroa"
 
 [cookieBanner.preferencesModal.analytics]
-description = "Cookie hauek gure tresnak nola erabiltzen diren ulertzen laguntzen digute, gure komunitateak baloratzen dituen ezaugarriak eraikitzera bideratu ahal izateko. Ziur egon—Stirling PDFk ezin du eta ez du inoiz jarraituko lantzen dituzun dokumentuen edukia."
+description = "Cookie hauek gure tresnak nola erabiltzen diren ulertzen laguntzen digute, gure komunitateak baloratzen dituen ezaugarriak eraikitzera bideratu ahal izateko. Ziur egon—RyanPDFk ezin du eta ez du inoiz jarraituko lantzen dituzun dokumentuen edukia."
 title = "Analitika"
 
 [cookieBanner.preferencesModal.description]
-1 = "Stirling PDFk cookieak eta antzeko teknologiak erabiltzen ditu zure esperientzia hobetzeko eta gure tresnak nola erabiltzen diren ulertzeko. Honek errendimendua hobetzen eta axola zaizkizun ezaugarriak garatzen laguntzen digu, eta erabiltzaileei etengabeko laguntza ematen die."
-2 = "Stirling PDF ezin da—eta ez du inoiz egingo—zuri erabiltzen dituzun dokumentuen edukia jarraitu edo atzitu."
+1 = "RyanPDFk cookieak eta antzeko teknologiak erabiltzen ditu zure esperientzia hobetzeko eta gure tresnak nola erabiltzen diren ulertzeko. Honek errendimendua hobetzen eta axola zaizkizun ezaugarriak garatzen laguntzen digu, eta erabiltzaileei etengabeko laguntza ematen die."
+2 = "RyanPDF ezin da—eta ez du inoiz egingo—zuri erabiltzen dituzun dokumentuen edukia jarraitu edo atzitu."
 3 = "Zure pribatutasuna eta konfiantza gure lanaren muinean daude."
 
 [cookieBanner.preferencesModal.necessary]
@@ -3346,14 +3346,14 @@ message = "Ezin izan da PDF kudeatzaile lehenetsia ezarri"
 title = "Errorea"
 
 [defaultApp.prompt]
-message = "Egin Stirling PDF PDF fitxategiak irekitzeko zure aplikazio lehenetsia."
+message = "Egin RyanPDF PDF fitxategiak irekitzeko zure aplikazio lehenetsia."
 
 [defaultApp.settingsOpened]
-message = "Hautatu Stirling PDF sistemaren ezarpenetan, mesedez"
+message = "Hautatu RyanPDF sistemaren ezarpenetan, mesedez"
 title = "Ezarpenak ireki dira"
 
 [defaultApp.success]
-message = "Stirling PDF orain zure PDF editore lehenetsia da"
+message = "RyanPDF orain zure PDF editore lehenetsia da"
 title = "Aplikazio lehenetsia ezarrita"
 
 [desktopUpdate]
@@ -3369,7 +3369,7 @@ updateFailedMessage = "Ezin izan da eguneratzea deskargatu edo instalatu."
 
 [desktopUpdate.blocked]
 docsLink = "Ikusi instalazioaren dokumentazioa"
-message = "Stirling-PDFk ez du baimenik makina honetan bere burua eguneratzeko."
+message = "RyanPDFk ez du baimenik makina honetan bere burua eguneratzeko."
 title = "Administratzaile-baimenak behar dira"
 
 [devAirgapped]
@@ -3939,7 +3939,7 @@ title = "Eraman karpetara"
 [filesPage.origin]
 all = "Jatorri guztiak"
 cloud = "Hodeia"
-cloudHint = "Stirling zerbitzarian gordeta"
+cloudHint = "RyanPDF zerbitzarian gordeta"
 local = "Tokikoa"
 localHint = "Nabigatzaile honetan soilik gordeta"
 shared = "Partekatuak"
@@ -4203,7 +4203,7 @@ invisible = "Ikusezina (metadatuak soilik)"
 location = "Kokapena:"
 logo = "Logotipoa:"
 logoHidden = "Logotiporik ez"
-logoShown = "Stirling PDF logotipoa erakusten da"
+logoShown = "RyanPDF logotipoa erakusten da"
 participantCount_one = "{{count}} participant will sign in order"
 participantCount_other = "{{count}} participants will sign in order"
 participants = "Parte-hartzaileak"
@@ -4257,7 +4257,7 @@ title = "Sinadura sekuentziala"
 dismiss = "Baztertu pankarta"
 message = "Sortu doako kontu bat zure lana gordetzeko, ezaugarri gehiago eskuratzeko eta proiektua babesteko."
 signUp = "Izena eman doan"
-title = "Stirling PDF gonbidatu gisa erabiltzen ari zara!"
+title = "RyanPDF gonbidatu gisa erabiltzen ari zara!"
 
 [home.addAttachments]
 desc = "Gehitu edo kendu txertatutako fitxategiak (eranskinak) PDF batean"
@@ -4416,7 +4416,7 @@ tags = "batu,elkartu,bat egin"
 title = "Elkartu"
 
 [home.mobile]
-brandAlt = "Stirling PDF logotipoa"
+brandAlt = "RyanPDF logotipoa"
 openFiles = "Ireki fitxategiak"
 swipeHint = "Egin hatz-keinua ezkerrera edo eskuinera ikuspegiak aldatzeko"
 tools = "Tresnak"
@@ -4455,7 +4455,7 @@ tags = "antolatu,berrordenatu,ordena aldatu"
 title = "Antolatzailea"
 
 [home.pdfTextEditor]
-desc = "Berrikusi eta editatu Stirling PDF JSON esportazioak taldekatutako testu-edizioarekin eta PDF birsorkuntzarekin"
+desc = "Berrikusi eta editatu RyanPDF JSON esportazioak taldekatutako testu-edizioarekin eta PDF birsorkuntzarekin"
 tags = "edit text,modify text,change text,edit content,update text,rewrite,correct,amend,redline,revise,text editor,content editor"
 title = "PDF testu-editorea"
 
@@ -4641,7 +4641,7 @@ passwordRequired = "Pasahitza beharrezkoa da"
 signIn = "Hasi saioa"
 validating = "Gonbidapena baliozkotzen..."
 validationError = "Ezin izan da gonbidapen-esteka baliozkotu"
-welcome = "Ongi etorri Stirling PDFra"
+welcome = "Ongi etorri RyanPDFra"
 welcomeSubtitle = "Amaitu zure kontuaren konfigurazioa hasteko"
 welcomeTitle = "Gonbidapena jaso duzu!"
 
@@ -4669,7 +4669,7 @@ terms = "Baldintzak eta erabilera-baldintzak"
 title = "3rd Party Licenses"
 
 [localMode]
-toolUnavailable = "Tresna honek kontu bat behar du. Hasi saioa Stirling Cloud-en edo konektatu norberak ostatatutako zerbitzari batera erabiltzeko."
+toolUnavailable = "Tresna honek kontu bat behar du. Hasi saioa RyanPDF Cloud-en edo konektatu norberak ostatatutako zerbitzari batera erabiltzeko."
 
 [localMode.toolPicker]
 message = "Hasi saioa tresna guztiak desblokeatzeko."
@@ -4726,7 +4726,7 @@ subtitle = "Dozenaka tresnarekin PDFak zentsuratu, sinatu, irakurri eta manipula
 title = "Editatu PDFak nahi duzun informazioa bistaratu edo babesteko"
 
 [login.slides.overview]
-alt = "Stirling PDF ikuspegi orokorra"
+alt = "RyanPDF ikuspegi orokorra"
 subtitle = "Pribatutasuna lehenesten duen hodeiko suitea, PDFak bihurtu, sinatu, zentsuratu eta kudeatzeko, eta 50+ tresna indartsu gehiagorekin."
 title = "Zure PDF behar guztietarako gune bakarra."
 
@@ -4844,7 +4844,7 @@ message = "Autentifikazioa ez da ongi burutu. Leiho hau itxi eta saiatu berriro.
 title = "Autentifikazioak huts egin du"
 
 [oauth.success]
-message = "Leiho hau itxi eta Stirling PDF-era itzul zaitezke."
+message = "Leiho hau itxi eta RyanPDF-era itzul zaitezke."
 title = "Autentifikazioa ongi burutu da"
 
 [oauthConsent]
@@ -4857,17 +4857,17 @@ loadFailed = "This authorisation request is invalid or has expired. Close this t
 loading = "Loading authorisation request..."
 missingId = "Missing authorisation request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your RyanPDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your RyanPDF account to continue connecting the app."
 title = "Authorise access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your RyanPDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -4989,7 +4989,7 @@ skipForNow = "Utzi oraingoz"
 skipTheTour = "Utzi bisita gidatua"
 
 [onboarding.desktopInstall]
-body = "Stirling hobekien funtzionatzen du mahaigaineko aplikazio gisa. Offline erabil dezakezu, dokumentuak azkarrago atzitu, eta editatu tokian bertan zure ordenagailuan."
+body = "RyanPDF hobekien funtzionatzen du mahaigaineko aplikazio gisa. Offline erabil dezakezu, dokumentuak azkarrago atzitu, eta editatu tokian bertan zure ordenagailuan."
 selectOs = "Hautatu sistema eragilea"
 title = "Deskargatu"
 titleWithOs = "Deskargatu {{osLabel}}-rako"
@@ -4999,8 +4999,8 @@ authenticationCode = "Autentifikazio-kodea"
 qrCodeLoading = "Zure QR kodea sortzen…"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Saio-hasiera modua gaitzen duzunean, erabiltzaileak kudeatu, ezarpenak konfiguratu eta zerbitzariaren osasuna monitorizatu ahal izango dituzu. Zure zerbitzariko lehen <strong>{{freeTierLimit}}</strong> pertsonek doan erabil dezakete Stirling."
-adminBodyLoginEnabled = "Admin gisa, erabiltzaileak kudeatu, ezarpenak konfiguratu eta zerbitzariaren osasuna monitorizatu ditzakezu. Zure zerbitzariko lehen <strong>{{freeTierLimit}}</strong> pertsonak doan erabil dezakete Stirling."
+adminBodyLoginDisabled = "Saio-hasiera modua gaitzen duzunean, erabiltzaileak kudeatu, ezarpenak konfiguratu eta zerbitzariaren osasuna monitorizatu ahal izango dituzu. Zure zerbitzariko lehen <strong>{{freeTierLimit}}</strong> pertsonek doan erabil dezakete RyanPDF."
+adminBodyLoginEnabled = "Admin gisa, erabiltzaileak kudeatu, ezarpenak konfiguratu eta zerbitzariaren osasuna monitorizatu ditzakezu. Zure zerbitzariko lehen <strong>{{freeTierLimit}}</strong> pertsonak doan erabil dezakete RyanPDF."
 adminTitle = "Admin ikuspegi orokorra"
 userBody = "Gonbidatu taldekideak, esleitu rolak eta mantendu dokumentuak antolatuta lan-espazio seguruan. Gaitu saio-hasiera modua bakarkako erabileratik harago hazteko prest zaudenean."
 userTitle = "Planaren ikuspegi orokorra"
@@ -5008,7 +5008,7 @@ userTitle = "Planaren ikuspegi orokorra"
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to RyanPDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -5028,20 +5028,20 @@ rolePlaceholder = "Baieztatu zure rola"
 roleUser = "Erabiltzailea"
 
 [onboarding.serverLicense]
-freeBody = "Gure <strong>Open-Core</strong> lizentziak <strong>{{freeTierLimit}}</strong> erabiltzaile arte baimentzen ditu doan zerbitzari bakoitzeko. Etenik gabe eskalatzeko eta gure <strong>PDF testu-edizio tresna</strong> berrirako sarbide goiztiarra lortzeko, gomendatzen dugu Stirling Server plana - edizio osoa eta <strong>eserleku mugagabeak</strong> $99/zerbitzari/hilean."
+freeBody = "Gure <strong>Open-Core</strong> lizentziak <strong>{{freeTierLimit}}</strong> erabiltzaile arte baimentzen ditu doan zerbitzari bakoitzeko. Etenik gabe eskalatzeko eta gure <strong>PDF testu-edizio tresna</strong> berrirako sarbide goiztiarra lortzeko, gomendatzen dugu RyanPDF Server plana - edizio osoa eta <strong>eserleku mugagabeak</strong> $99/zerbitzari/hilean."
 freeTitle = "Zerbitzari-lizentzia"
-overLimitBody = "Gure lizentziak baimentzen ditu <strong>{{freeTierLimit}}</strong> erabiltzaile doan zerbitzari bakoitzeko. <strong>{{overLimitUserCopy}}</strong> Stirling erabiltzaile dituzu. Jarraitzeko etenik gabe, eguneratu Stirling Server planera - <strong>eserleku mugagabeak</strong>, PDF testu-edizioa, eta admin kontrol osoa $99/zerbitzari/hilean."
+overLimitBody = "Gure lizentziak baimentzen ditu <strong>{{freeTierLimit}}</strong> erabiltzaile doan zerbitzari bakoitzeko. <strong>{{overLimitUserCopy}}</strong> RyanPDF erabiltzaile dituzu. Jarraitzeko etenik gabe, eguneratu RyanPDF Server planera - <strong>eserleku mugagabeak</strong>, PDF testu-edizioa, eta admin kontrol osoa $99/zerbitzari/hilean."
 overLimitTitle = "Beharrezkoa da zerbitzari-lizentzia"
 seePlans = "Ikusi planak →"
 upgrade = "Eguneratu orain →"
 
 [onboarding.tourOverview]
-body = "Stirling PDF V2k dozenaka tresna eta diseinu berritua dakartza. Egin ibilbide azkar bat aldaketak eta behar dituzun funtzioak non dauden ikusteko."
+body = "RyanPDF V2k dozenaka tresna eta diseinu berritua dakartza. Egin ibilbide azkar bat aldaketak eta behar dituzun funtzioak non dauden ikusteko."
 title = "Ibilbidearen ikuspegi orokorra"
 
 [onboarding.welcomeSlide]
-body = "Stirling PDF orain tamaina guztietako taldeentzat prest dago. Eguneratze honek diseinu berria, admin gaitasun indartsu berriak, eta eskatuen izan den eginbidea dakar - <strong>Testua editatu</strong>."
-title = "Ongi etorri Stirlingera"
+body = "RyanPDF orain tamaina guztietako taldeentzat prest dago. Eguneratze honek diseinu berria, admin gaitasun indartsu berriak, eta eskatuen izan den eginbidea dakar - <strong>Testua editatu</strong>."
+title = "Ongi etorri RyanPDFera"
 
 [onboarding.whatsNew]
 activeFilesView = "Erabili Fitxategi aktiboak irekitako guztia ikusteko eta zerrekin lan egin hautatzeko."
@@ -5347,7 +5347,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarise, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any RyanPDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -5406,7 +5406,7 @@ leader = "Team owner"
 member = "Member"
 
 [payg.signupRequired]
-body = "Stirling PDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using Stirling as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
+body = "RyanPDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using RyanPDF as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
 cancel = "Not now"
 cta = "Sign up free"
 subtext = "Creating an account is free and takes a few seconds. No credit card required."
@@ -5454,7 +5454,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. RyanPDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -5462,7 +5462,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarise, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any RyanPDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -5893,7 +5893,7 @@ upToFiveUsers = "Gehienez 5 erabiltzaile"
 usageTrackingPrometheus = "Erabilera-jarraipena eta Prometheus"
 
 [plan.licenseWarning]
-body = "{{total}} erabiltzaile dituzu baina maila doakoak {{limit}} soilik onartzen ditu zerbitzari bakoitzeko. Eguneratu Stirling PDF ondo ibil dadin."
+body = "{{total}} erabiltzaile dituzu baina maila doakoak {{limit}} soilik onartzen ditu zerbitzari bakoitzeko. Eguneratu RyanPDF ondo ibil dadin."
 cta = "Ikusi planak"
 overLimit = "{{limit}} baino gehiago"
 title = "Doako auto-ostatu muga gaindituta"
@@ -6192,25 +6192,25 @@ comingSoon = "Laster"
 [portal.accountLink.card]
 billingNote = "Gainbegiratu gabeko prozesamendua zure erakundearen zorroari fakturatzen zaio."
 eyebrow = "Kontu-lotura"
-linkButton = "Lotu zure Stirling kontua"
+linkButton = "Lotu zure RyanPDF kontua"
 linked = "Lotuta"
 linkedAs = "{{name}} gisa lotuta."
 linkedGeneric = "Instantzia hau lotuta dago."
 notLinked = "Lotu gabe"
-title = "Lotu erakunde hau bere Stirling kontuarekin"
+title = "Lotu erakunde hau bere RyanPDF kontuarekin"
 unlink = "Kendu lotura"
 
 [portal.accountLink.card.error]
 title = "Ezin izan da lotu"
 
 [portal.accountLink.card.loginNotConfigured]
-after = "hostatutako Stirling kontuarekin kontu-lotura gaitzeko. Garapenean, saio-hasiera simula dezakezu lotura-elkarrizketatik."
+after = "hostatutako RyanPDF kontuarekin kontu-lotura gaitzeko. Garapenean, saio-hasiera simula dezakezu lotura-elkarrizketatik."
 before = "Ezarri"
 title = "SaaS saio-hasiera ez dago konfiguratuta"
 
 [portal.accountLink.gate]
 action = "Lotu kontua"
-description = "Lotu erakunde honen Stirling kontua fakturagarriak diren eginbideak erabiltzeko."
+description = "Lotu erakunde honen RyanPDF kontua fakturagarriak diren eginbideak erabiltzeko."
 title = "Lotu desblokeatzeko"
 titleFeature = "Lotu {{feature}} desblokeatzeko"
 
@@ -6242,13 +6242,13 @@ never = "inoiz ez"
 
 [portal.accountLink.modal]
 linkSubtitle = "Hasi saioa zerbitzari honek fakturatu behar duen kontuan."
-linkTitle = "Lotu zure Stirling kontua"
-reauthSubtitle = "Zure saioa iraungi da — hasi saioa berriro zure Stirling kontuan. Zure instantziak lotuta jarraituko du."
+linkTitle = "Lotu zure RyanPDF kontua"
+reauthSubtitle = "Zure saioa iraungi da — hasi saioa berriro zure RyanPDF kontuan. Zure instantziak lotuta jarraituko du."
 reauthTitle = "Hasi saioa berriro"
 simulateSignIn = "Simulatu saio-hasiera (dev)"
 
 [portal.accountLink.modal.loginNotConfigured]
-after = "hostatutako Stirling kontuarekin aplikazio barruko lotura gaitzeko."
+after = "hostatutako RyanPDF kontuarekin aplikazio barruko lotura gaitzeko."
 and = "eta"
 before = "Ezarri"
 title = "SaaS saio-hasiera ez dago konfiguratuta"
@@ -6257,7 +6257,7 @@ title = "SaaS saio-hasiera ez dago konfiguratuta"
 instancesSub = "Erakunde honetan erregistratutako self-hosted instantzia guztiak. Ezeztatu kredentzial bat berehala haren gainbegiratu gabeko sarbidea eteteko."
 instancesTitle = "Lotutako instantziak"
 revokeError = "Ezin izan da instantzia ezeztatu"
-sub = "Lotu self-hosted erakunde hau bere Stirling kontuarekin, gainbegiratu gabeko prozesamendua zure erakundearen zorroari fakturatzeko."
+sub = "Lotu self-hosted erakunde hau bere RyanPDF kontuarekin, gainbegiratu gabeko prozesamendua zure erakundearen zorroari fakturatzeko."
 
 [portal.accountLink.panel.loadError]
 forbidden = "Taldearen jabeak bakarrik ikus ditzake erakundearen lotutako instantziak."
@@ -6354,7 +6354,7 @@ close = "Itxi laguntzailea"
 error = "Ezin izan da laguntzailearekin konektatu."
 errorWithDetail = "Ezin izan da laguntzailearekin konektatu: {{detail}}"
 inputAriaLabel = "Galdetu laguntzaileari"
-inputPlaceholder = "Galdetu Stirling-i buruz…"
+inputPlaceholder = "Galdetu RyanPDF-i buruz…"
 open = "Ireki laguntzailea"
 send = "Bidali"
 title = "Laguntzailea"
@@ -6392,7 +6392,7 @@ title = "Stripe ez dago konfiguratuta"
 cta = "Sortu zure Enterprise aurrekontua"
 description = "Bolumen-konpromisoagatiko deskontuak, air-gapped hedapena, MSA pertsonalizatua eta segurtasun-berrikuspenak, eta hirugarrenen banatzaileekin lankidetzak."
 eyebrow = "Bolumen-deskontua · 1M+ PDF"
-title = "Stirling Enterprise"
+title = "RyanPDF Enterprise"
 
 [portal.billing.freeEditors]
 activeThisMonth = "Aktibo hilabete honetan"
@@ -6439,9 +6439,9 @@ viewAriaLabel = "Ikusi {{number}} faktura Stripe-n"
 viewLink = "Ikusi ↗"
 
 [portal.billing.linkPrompt]
-cta = "Lotu Stirling kontua"
+cta = "Lotu RyanPDF kontua"
 description = "Eskuzko PDF edizioa — ikusi, sinatu, bateratu, zatitu, ur-marka jarri, konprimitu, bihurtu, eskuzko OCR — beti doakoa da, lotuta egon ala ez. Lotu 500 PDF doako neurtutako prozesamendurako (automatizazioa, AI eta API) eskuratzeko; gehiago behar duzunean, aktibatu Processor plana eta ordaindu erabiltzen duzunagatik soilik."
-title = "Lotu zure Stirling kontua"
+title = "Lotu zure RyanPDF kontua"
 
 [portal.billing.paymentMethod]
 billedMonthly = "Hilero fakturatua"
@@ -6792,7 +6792,7 @@ time = "Ordua"
 user = "Erabiltzailea"
 
 [portal.editorAdmin]
-subtitle = "Hedatu Stirling PDF Editor, parekatu norberak ostatatutako instantziak zure erakundearekin, eta kudeatu martxan dagoen flota — helburuak, osasuna, kredentzialak eta offline aktibazioa leku bakarrean."
+subtitle = "Hedatu RyanPDF Editor, parekatu norberak ostatatutako instantziak zure erakundearekin, eta kudeatu martxan dagoen flota — helburuak, osasuna, kredentzialak eta offline aktibazioa leku bakarrean."
 title = "Editorearen hedapena"
 
 [portal.editorAdmin.health.columns]
@@ -6878,7 +6878,7 @@ title = "Zerbait gaizki atera da orri honetan"
 [portal.home.editor]
 activeUsers = "{{n}} aktibo"
 invite = "Gonbidatu taldekideak"
-name = "Stirling PDF Editor"
+name = "RyanPDF Editor"
 open = "Ireki arakatzailean"
 updated = "eguneratua {{time}}"
 
@@ -6938,7 +6938,7 @@ title = "Jaulki API gako bat"
 [portal.infrastructure]
 manageEditorDeployment = "Kudeatu Editorearen hedapena"
 sectionsAriaLabel = "Azpiegitura-atalak"
-subtitle = "Hedapenak, kredentzialak, segurtasun-jarrera, biltegiratzea eta auditoria-arrastoa zure Stirling lan-eremurako."
+subtitle = "Hedapenak, kredentzialak, segurtasun-jarrera, biltegiratzea eta auditoria-arrastoa zure RyanPDF lan-eremurako."
 title = "Azpiegitura"
 
 [portal.infrastructure.apiKeys]
@@ -6958,7 +6958,7 @@ usageMonth = "Hilabete honetako erabilera"
 usageToday = "Gaurko erabilera"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Sortu esparru mugatuko gako bat Stirling API deitzen hasteko."
+description = "Sortu esparru mugatuko gako bat RyanPDF API deitzen hasteko."
 title = "Oraindik ez dago API gakorik"
 
 [portal.infrastructure.audit]
@@ -7027,7 +7027,7 @@ keyNameLabel = "Gakoaren izena"
 keyNamePlaceholder = "adib. Ekoizpena · ingestioa"
 permissionsLabel = "Baimenak"
 secretKeyCaption = "Gako sekretua"
-secretWarning = "Gorde hau sekretuen kudeatzaile batean. Stirling-ek hash bat baino ez du gordetzen — ez dago gero berreskuratzeko modurik."
+secretWarning = "Gorde hau sekretuen kudeatzaile batean. RyanPDF-ek hash bat baino ez du gordetzen — ez dago gero berreskuratzeko modurik."
 subtitle = "Mugatu gakoa behar duen gutxienekora. Edonoiz biratu edo baliogabetu dezakezu."
 subtitleCreated = "Kopiatu sekretu hau orain — ez da berriro erakutsiko."
 title = "Sortu API gakoa"
@@ -7062,7 +7062,7 @@ version = "Bertsioa"
 
 [portal.infrastructure.deployments.regions]
 heading = "Eskualdeak"
-subheading = "Hedatutako Stirling eskualde bakoitzaren zuzeneko osasuna — latentzia, karga eta zabalkunde-bertsioa."
+subheading = "Hedatutako RyanPDF eskualde bakoitzaren zuzeneko osasuna — latentzia, karga eta zabalkunde-bertsioa."
 
 [portal.infrastructure.deployments.regions.empty]
 description = "Hedatutako eskualdeak hemen agertuko dira zure lan-eremua hornitu ondoren."
@@ -7119,16 +7119,16 @@ operation = "Eragiketa"
 routedTo = "Hona bideratua"
 
 [portal.infrastructure.security.access.byok]
-description = "Eman zure KMS propioaren gako bat. Stirling-ek harekin zifratzen du, baina oraindik irakur dezake."
+description = "Eman zure KMS propioaren gako bat. RyanPDF-ek harekin zifratzen du, baina oraindik irakur dezake."
 label = "Ekarri zure gakoa (BYOK)"
 
 [portal.infrastructure.security.access.hyok]
-description = "Gakoak ez dira inoiz zure KMS-tik irteten. Stirling-ek zifratu-testua baino ez du gordetzen."
+description = "Gakoak ez dira inoiz zure KMS-tik irteten. RyanPDF-ek zifratu-testua baino ez du gordetzen."
 label = "Gorde zure gakoa (HYOK)"
 
 [portal.infrastructure.security.access.stirling]
-description = "Stirling-ek zifratze-gakoak kudeatzen ditu. Errazena — zure aldetik gako-eragiketarik gabe."
-label = "Stirling-ek gordetako gakoak"
+description = "RyanPDF-ek zifratze-gakoak kudeatzen ditu. Errazena — zure aldetik gako-eragiketarik gabe."
+label = "RyanPDF-ek gordetako gakoak"
 
 [portal.infrastructure.security.accessPolicy]
 heading = "Dokumentuetarako sarbide-gidalerroa"
@@ -7142,15 +7142,15 @@ viewReport = "Ikusi txostena →"
 
 [portal.infrastructure.security.compliance]
 heading = "Betetzea"
-subheading = "Stirling plataforma estaltzen duten egiaztapenak eta ziurtagiriak."
+subheading = "RyanPDF plataforma estaltzen duten egiaztapenak eta ziurtagiriak."
 
 [portal.infrastructure.security.empty]
 description = "Zure lan-eremuko segurtasun-konfigurazioa hemen agertuko da."
 title = "Segurtasun-jarrera ez dago eskuragarri"
 
 [portal.infrastructure.security.hyokBanner]
-description = "HYOK erabiliz, zifratze-gakoak ez dira inoiz zure KMS-tik irteten. Stirling-ek edozein unetan baliogabetu dezakezun zifratu-testua baino ez du gordetzen eta prozesatzen."
-title = "Stirling-ek ezin ditu zure dokumentuak deszifratu"
+description = "HYOK erabiliz, zifratze-gakoak ez dira inoiz zure KMS-tik irteten. RyanPDF-ek edozein unetan baliogabetu dezakezun zifratu-testua baino ez du gordetzen eta prozesatzen."
+title = "RyanPDF-ek ezin ditu zure dokumentuak deszifratu"
 
 [portal.infrastructure.security.ipAllowlist]
 empty = "Ez dago IP barrutirik konfiguratuta — IP guztiak baimenduta daude."
@@ -7179,7 +7179,7 @@ subheading = "Atsedenean dokumentuak zifratzen dituzten gakoen zaintza — nork 
 
 [portal.infrastructure.security.managedBanner]
 description = "Bring-your-own-key (BYOK) eta hold-your-own-key (HYOK) zaintza Enterprise planean daude eskuragarri. Berritu zure KMS propioko gakoak emateko."
-title = "Zure planean, gakoak Stirling-ek kudeatzen ditu"
+title = "Zure planean, gakoak RyanPDF-ek kudeatzen ditu"
 
 [portal.infrastructure.security.residency.apac]
 description = "ap-southeast-1"
@@ -7660,7 +7660,7 @@ upload = "Kargatu"
 
 [portal.procurement.agreement]
 agreeCta = "Adostu eta harpidetu"
-confirm = "Stirling Enterprise Agreement irakurri dut eta ados nago."
+confirm = "RyanPDF Enterprise Agreement irakurri dut eta ados nago."
 eyebrow = "Akordioa"
 intro = "Akordio bateratu batek zure tratua estaltzen du: Master Service Agreement, Order Form, EULA eta Data Processing Agreement. Berrikusi, eta gero adostu aurrekontua harpidetza konprometitu gisa onartzeko."
 title = "Berrikusi zure enpresa-akordioa"
@@ -7675,7 +7675,7 @@ country = "Herrialdea"
 countryEuro = "Eurogunea (EUR €)"
 countryUK = "Erresuma Batua (GBP £)"
 countryUS = "Estatu Batuak (USD $)"
-eula = "Stirling Enterprise EULA irakurri dut eta ados nago. Aurrekontu honetatik sortutako akordioa arautzen du."
+eula = "RyanPDF Enterprise EULA irakurri dut eta ados nago. Aurrekontu honetatik sortutako akordioa arautzen du."
 generate = "Sortu aurrekontua"
 included = "Barne"
 indemnification = "IP kalte-ordaina"
@@ -7758,7 +7758,7 @@ daysLeft_one = "{{count}} egun geratzen da"
 daysLeft_other = "{{count}} egun geratzen dira"
 engineerLabel = "Zure solutions engineer"
 eyebrow = "Zure hedapena"
-live = "Stirling Enterprise-n martxan zaude"
+live = "RyanPDF Enterprise-n martxan zaude"
 nextStep = "Hurrengo urratsa: {{action}}"
 subtitle = "Zure solutions engineer urrats guztietan dago. Hurrengo ekintza bat aldi berean; kontrol-zerrenda osoa behean dago."
 title = "Probalditik martxan egotera, bide gidatu bakarra"
@@ -7785,7 +7785,7 @@ gatingAction = "Onartu zure aurrekontua"
 label = "Aurrekontua"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Ebaluatu Stirling zure dokumentu eta lan-fluxuen aurka."
+blurb = "Ebaluatu RyanPDF zure dokumentu eta lan-fluxuen aurka."
 gatingAction = "Eraiki zure aurrekontua"
 label = "Probaldia"
 
@@ -7799,14 +7799,14 @@ label = "Zure lizentzia-gakoa"
 
 [portal.procurement.link]
 cta = "Lotu kontua"
-description = "Erosketa zure lotutako Stirling kontuan exekutatzen da: horrela hornitzen dugu probaldia, aurrekontuaren prezioa kalkulatzen dugu eta fakturazioa hasten dugu. Lotu kontu bat hasteko."
+description = "Erosketa zure lotutako RyanPDF kontuan exekutatzen da: horrela hornitzen dugu probaldia, aurrekontuaren prezioa kalkulatzen dugu eta fakturazioa hasten dugu. Lotu kontu bat hasteko."
 eyebrow = "Enterprise"
 title = "Lotu zure kontua hasteko"
 
 [portal.procurement.live]
 description = "Zure harpidetza aktibo dago eta zure lizentzia jaulkita dago. Zure taldea hornituta dago eta fakturazioa hasi da."
 eyebrow = "Martxan"
-title = "Stirling Enterprise-n martxan zaude"
+title = "RyanPDF Enterprise-n martxan zaude"
 
 [portal.procurement.locked]
 description = "Probaldi-gakoak, bolumen konprometituaren aurrekontuak, sinadura bakarreko akordioa, ordainketa eta zure dokumentu-liburua hemen egongo dira enterprise ebaluazioa hasten duzunean."
@@ -7841,7 +7841,7 @@ requestBodyFree = "Eskariaren arabera sortzen dugu. Berretsi eta zure solutions 
 requestBodyPaid = "Hau ordainpeko gehigarria da. Berretsi eta zure solutions engineer-ek irismena zehaztu eta dokumentazioa bidaliko du."
 requestCta = "Eskatu"
 requestTitle = "Eskatu dokumentu hau"
-signBody = "Stirling Enterprise Agreement irekitzen du e-sinadurarako: sinadura batek MSA, order form, EULA eta DPA estaltzen ditu. Guk automatikoki kontrassinatu eta ordainketara aurreratzen zara."
+signBody = "RyanPDF Enterprise Agreement irekitzen du e-sinadurarako: sinadura batek MSA, order form, EULA eta DPA estaltzen ditu. Guk automatikoki kontrassinatu eta ordainketara aurreratzen zara."
 signCta = "Ireki sinatzeko"
 signTitle = "Berrikusi eta sinatu zure akordioa"
 uploadBody = "Bidali zure PO eta haren kontra fakturatuko dizugu zure baldintzetan. Arrastatu PDFa edo aukeratu fitxategi bat behean."
@@ -7893,7 +7893,7 @@ title = "Oraindik ez dago ezer hemen"
 
 [portal.search]
 ariaLabel = "Bilatu"
-placeholder = "Bilatu Stirling — endpointak, pipelineak, dokumentuak…"
+placeholder = "Bilatu RyanPDF — endpointak, pipelineak, dokumentuak…"
 
 [portal.search.empty]
 noActionsDescription = "Ekintza azkarrak hemen agertuko dira erabilgarri daudenean."
@@ -7921,9 +7921,9 @@ switchToLight = "Aldatu gai argira"
 [portal.shell.sidebar]
 appEditor = "Editorea"
 appProcessor = "Prozesadorea"
-brandSuffix = "Stirling Processor"
+brandSuffix = "RyanPDF Processor"
 docsCount = "{{docs}} dok."
-linkAccount = "Lotu Stirling kontua"
+linkAccount = "Lotu RyanPDF kontua"
 planEditor = "Editor plana"
 planEnterprise = "Enterprise plana"
 planProcessor = "Processor plana"
@@ -7931,7 +7931,7 @@ primaryNav = "Nabigazio nagusia"
 switchApp = "Aldatu aplikazioa"
 
 [portal.sources]
-subtitle = "Stirling-era dokumentuak elikatzen dituzten sarrera-konexio berrerabilgarriak. Konfiguratu konexio bat behin, eta erreferentziatu nahi adina politikatan. Egin klik errenkada batean haren konfigurazioa eta zein politikek erabiltzen duten ikusteko."
+subtitle = "RyanPDF-era dokumentuak elikatzen dituzten sarrera-konexio berrerabilgarriak. Konfiguratu konexio bat behin, eta erreferentziatu nahi adina politikatan. Egin klik errenkada batean haren konfigurazioa eta zein politikek erabiltzen duten ikusteko."
 title = "Iturburuak"
 
 [portal.sources.actions]
@@ -7986,7 +7986,7 @@ description = "Begiratu zerbitzariko direktorio bat dokumentu berriak detektatze
 label = "Karpeta"
 
 [portal.sources.types.folder.fields.directory]
-helperText = "Stirling-ek prozesatzeko fitxategiak zaintzen dituen bide absolutua."
+helperText = "RyanPDF-ek prozesatzeko fitxategiak zaintzen dituen bide absolutua."
 label = "Direktorioaren bidea"
 placeholder = "/data/incoming"
 
@@ -8034,7 +8034,7 @@ review = "Berrikusi eta konektatu"
 
 [portal.usage]
 managePayment = "Kudeatu ordainketa"
-subtitle = "Stirling-ek fakturatutako PDF guztien kontsumoa, fakturak eta plan-kudeaketa, kontsola bakarrean."
+subtitle = "RyanPDF-ek fakturatutako PDF guztien kontsumoa, fakturak eta plan-kudeaketa, kontsola bakarrean."
 title = "Erabilera eta fakturazioa"
 
 [portal.usage.error]
@@ -8044,7 +8044,7 @@ walletUnavailable = "Wallet ez dago erabilgarri: {{status}} {{statusText}}"
 
 [portal.usage.sessionExpired]
 action = "Hasi saioa berriro"
-body = "Zure Stirling kontuaren saioa iraungi da. Hasi saioa berriro fakturazioa ikusteko — zure instantziak lotuta jarraitzen du."
+body = "Zure RyanPDF kontuaren saioa iraungi da. Hasi saioa berriro fakturazioa ikusteko — zure instantziak lotuta jarraitzen du."
 title = "Saioa iraungi da"
 
 [portal.users]
@@ -8091,7 +8091,7 @@ summary = "Talde baten jabea da — kideen baliabideak eta partekatutako konfigu
 3 = "Member-ek egin dezakeen guztia"
 
 [portal.welcome]
-ariaLabel = "Ongi etorri Stirling PDF-ra"
+ariaLabel = "Ongi etorri RyanPDF-ra"
 badge = "Open-source"
 installEditor = "Instalatu editorea"
 inviteTeammates = "Gonbidatu taldekideak"
@@ -8099,7 +8099,7 @@ openInBrowser = "Ireki arakatzailean"
 perks = "Doan betiko · Self-hostable"
 subtitle = "Munduko PDF Editor seguruena doakoa da tamaina guztietako taldeentzat. 60+ PDF eragiketa eta SSO barne."
 title = "Ongi etorri"
-titleAccent = "Stirling PDF"
+titleAccent = "RyanPDF"
 
 [printFile]
 title = "Inprimatu fitxategia"
@@ -8790,8 +8790,8 @@ hideTools = "Ezkutatu erabilgarri ez dauden tresnak ▴"
 messageNoFallback = "Tresnak ez daude erabilgarri zure zerbitzaria linean egon arte."
 messageWithFallback = "Zenbait tresnek zerbitzariarekiko konexioa behar dute."
 showTools = "Ikusi erabilgarri ez dauden tresnak ▾"
-title = "Ezin da atzitu zure Stirling-PDF zerbitzaria"
-toolNotAvailableLocally = "Zure Stirling-PDF zerbitzaria lineaz kanpo dago eta \"{{endpoint}}\" ez dago erabilgarri tokiko backend-ean."
+title = "Ezin da atzitu zure RyanPDF zerbitzaria"
+toolNotAvailableLocally = "Zure RyanPDF zerbitzaria lineaz kanpo dago eta \"{{endpoint}}\" ez dago erabilgarri tokiko backend-ean."
 
 [session]
 expired = "Zure saioa iraungi da. Freskatu orria eta saiatu berriro."
@@ -8851,7 +8851,7 @@ user = "Saioa hasita:"
 
 [settings.connection.mode]
 local = "Tokikoa bakarrik"
-saas = "Stirling Cloud"
+saas = "RyanPDF Cloud"
 selfhosted = "Auto-ostatua"
 
 [settings.developer]
@@ -8866,7 +8866,7 @@ autoUnzipFileLimitDescription = "Gehienez zenbat fitxategi atera ZIPetik"
 autoUnzipFileLimitTooltip = "Deskonprimitu soilik ZIPak hainbeste fitxategi edo gutxiago baditu. Ezarri handiagoa ZIP handiagoak erauzteko."
 autoUnzipTooltip = "Automatikoki deskonprimitu API eragiketek itzultzen dituzten ZIP fitxategiak. Desgaitu ZIP fitxategiak bere horretan mantentzeko. Honek ez du eraginik automatizazio-fluxuetan."
 defaultPdfEditor = "PDF editore lehenetsia"
-defaultPdfEditorActive = "Stirling PDF zure PDF editore lehenetsia da"
+defaultPdfEditorActive = "RyanPDF zure PDF editore lehenetsia da"
 defaultPdfEditorChecking = "Egiaztatzen..."
 defaultPdfEditorInactive = "Beste aplikazio bat dago lehenetsi gisa"
 defaultPdfEditorSet = "Dagoeneko lehenetsia"
@@ -8927,7 +8927,7 @@ updateBehavior = "Eguneratzeen portaera"
 updateBehaviorDescription = "Aukeratu eguneratzeak instalatu aurretik galdetzea, automatikoki instalatzea edo eguneratzeen egiaztapenak erabat saltatzea."
 updateBehaviorError = "Ezin izan da eguneratzeen portaera aldatu"
 updateBehaviorErrorLocked = "Ezarpen hau administratzaileak blokeatu du."
-updateBehaviorLockedDescription = "Zure administratzaileak konfiguratu du Stirling-PDF nola kudeatzen duen eguneratzeak makina honetan. Jarri harekin harremanetan aldatzeko."
+updateBehaviorLockedDescription = "Zure administratzaileak konfiguratu du RyanPDF nola kudeatzen duen eguneratzeak makina honetan. Jarri harekin harremanetan aldatzeko."
 updateBehaviorSaved = "Eguneratzeen portaera gordeta."
 versionMismatch = "Warning: A mismatch has been detected between the client version and the AppConfig version. Using different versions can lead to compatibility issues, errors, and security risks. Please ensure that server and client are using the same version."
 viewDetails = "Xehetasunak ikusi"
@@ -9011,7 +9011,7 @@ usageAnalytics = "Erabilera-analitika"
 [settings.planBilling]
 currentPlan = "Uneko plana"
 loading = "Fakturazio-informazioa kargatzen..."
-notAvailable = "Planak eta Fakturazioa erabilgarri daude soilik Stirling Cloud-era konektatuta dagoenean (SaaS modua)."
+notAvailable = "Planak eta Fakturazioa erabilgarri daude soilik RyanPDF Cloud-era konektatuta dagoenean (SaaS modua)."
 title = "Plana eta Fakturazioa"
 
 [settings.planBilling.billing]
@@ -9137,7 +9137,7 @@ emptyUsername = "Sartu zure erabiltzaile-izena"
 oauthFailed = "OAuth saio-hasierak huts egin du. Saiatu berriro."
 
 [setup.saas]
-title = "Hasi saioa Stirlingen"
+title = "Hasi saioa RyanPDFen"
 
 [setup.selfhosted]
 changeServerLocked = "Zure erakundeak aplikazio hau zerbitzari jakin batera mugatu du"
@@ -9175,7 +9175,7 @@ step3 = "Berrabiarazi zerbitzaria"
 title = "Saio-hasiera ez dago gaituta"
 
 [setup.server.url]
-description = "Sartu zure auto-ostatuko Stirling PDF zerbitzariaren URLa osoa"
+description = "Sartu zure auto-ostatuko RyanPDF zerbitzariaren URLa osoa"
 label = "Zerbitzariaren URLa"
 
 [sharedSign]
@@ -9411,7 +9411,7 @@ pleaseFillAllFields = "Bete eremu guztiak, mesedez"
 signUp = "Eman izena"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Batu Stirling PDFra hasteko"
+subtitle = "Batu RyanPDFra hasteko"
 title = "Sortu kontu bat"
 unexpectedError = "Ustekabeko errorea: {{message}}"
 
@@ -9638,7 +9638,7 @@ download = "Deskargatu"
 downloaded = "Deskargatuta"
 downloadFailed = "Ezin da fitxategi hau deskargatu."
 downloadsCount = "Deskargak: {{count}}"
-emailWarningBody = "Honek helbide elektroniko baten itxura du. Pertsona hau Stirling PDF erabiltzailea ez bada, ezin izango du fitxategia atzitu."
+emailWarningBody = "Honek helbide elektroniko baten itxura du. Pertsona hau RyanPDF erabiltzailea ez bada, ezin izango du fitxategia atzitu."
 emailWarningConfirm = "Partekatu hala ere"
 emailWarningTitle = "Helbide elektronikoa"
 errorTitle = "Partekatzea huts egin du"
@@ -9669,7 +9669,7 @@ manageTitle = "Partekatzea kudeatu"
 noActivity = "Oraindik ez dago jarduerarik."
 noLinks = "Ez dago partekatzeko esteka aktiborik oraindik."
 noSharedUsers = "Oraindik ez du inork atzipenik."
-openInApp = "Ireki Stirling PDF"
+openInApp = "Ireki RyanPDF"
 ownerLabel = "Jabea"
 ownerUnknown = "Ezezaguna"
 removeLink = "Kendu esteka"
@@ -9723,7 +9723,7 @@ updateButton = "Eguneratu zerbitzarian"
 uploadButton = "Igo zerbitzarira"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "RyanPDF Survey"
 
 [swagger]
 tags = "api,dokumentazioa,swagger,endpointak,garapena"
@@ -9851,7 +9851,7 @@ favorites = "Gogokoak"
 heading = "Tresna guztiak (pantaila osoko ikuspegia)"
 noResults = "Saiatu bilaketa moldatzen edo deskribapenak txandakatzen behar duzuna aurkitzeko."
 recommended = "Gomendatua"
-selfHostedOffline = "Zure Stirling-PDF zerbitzaria behar da (unean lineaz kanpo):"
+selfHostedOffline = "Zure RyanPDF zerbitzaria behar da (unean lineaz kanpo):"
 showDetails = "Erakutsi xehetasunak"
 unavailable = "Zerbitzariaren administratzaileak desgaituta:"
 unavailableDependency = "Ez dago eskuragarri - beharrezko tresna falta da zerbitzarian:"
@@ -9860,7 +9860,7 @@ unfavorite = "Kendu gogokoetatik"
 [toolPanel.modePrompt]
 chooseFullscreen = "Erabili pantaila osoko modua"
 chooseSidebar = "Erabili alboko barra modua"
-description = "Aurrebista bi diseinuak eta erabaki nola arakatu nahi dituzun Stirling PDF tresnak."
+description = "Aurrebista bi diseinuak eta erabaki nola arakatu nahi dituzun RyanPDF tresnak."
 dismiss = "Agian geroago"
 fullscreenDescription = "Arakatu tresna guztiak katalogo batean, tresna bat aukeratu arte lan-eremua estaltzen duena."
 fullscreenTitle = "Pantaila osoko modua - (ondarea)"
@@ -9928,7 +9928,7 @@ loadingDetailedInfo = "Informazio zehatza kargatzen..."
 migrationGuide = "Migrazio-gida"
 migrationGuides = "Migrazio-gidak"
 migrationGuidesDesc = "Berrikusi aldaketa garrantzitsuak eguneratu aurretik."
-modalSubtitle = "Stirling PDFren bertsio berria instalatzeko prest dago."
+modalSubtitle = "RyanPDFren bertsio berria instalatzeko prest dago."
 modalTitle = "Eguneratzea eskuragarri"
 notes = "Oharrak"
 releaseNotes = "Argitalpen-oharrak"
@@ -9952,7 +9952,7 @@ urgent = "Premiazko"
 attentionBody = "Zure administratzaileak saioa hasi behar du informazio gehiago ikusteko. Jarri harekin harremanetan berehala."
 attentionBodyAdmin = "Berrikusi lizentzia-eskakizunak zerbitzari hau betean mantentzeko."
 attentionTitle = "Zerbitzari honek admin arreta behar du"
-message = "Atera etekinik handiena Stirling PDF-i erabiltzaile mugagabeekin eta funtzio aurreratuekin"
+message = "Atera etekinik handiena RyanPDF-i erabiltzaile mugagabeekin eta funtzio aurreratuekin"
 seeInfo = "Ikusi informazioa"
 title = "Eguneratu Zerbitzari Planera"
 upgradeButton = "Eguneratu orain"
@@ -10069,7 +10069,7 @@ authWeb = "Pasahitza"
 create = "Sortu kontua"
 createSubtitle = "Sortu self-hosted kontu bat pasahitzarekin edo SSOrekin."
 createTitle = "Sortu kontua"
-editorDesc = "Editatu PDFak Stirling PDF Editor-en. Denek jasotzen dute hau."
+editorDesc = "Editatu PDFak RyanPDF Editor-en. Denek jasotzen dute hau."
 email = "Email helbidea"
 emailError = "Sartu baliozko email helbide bat"
 emailPlaceholder2 = "name@company.com"
@@ -10084,7 +10084,7 @@ processorDeferred = "Gonbidapena bidalita, baina Processor sarbidea oraindik ezi
 processorDesc = "Gobernantza-azalera, pipelineak, agenteak eta API exekutatzeko."
 role = "Rola"
 send2 = "Bidali gonbidapena"
-subtitle2 = "Mezu elektroniko bat jasoko dute zure Stirling lan-eremura sartzeko."
+subtitle2 = "Mezu elektroniko bat jasoko dute zure RyanPDF lan-eremura sartzeko."
 team = "Taldea"
 title = "Gonbidatu pertsonak"
 username = "Erabiltzaile-izena"
@@ -10207,7 +10207,7 @@ downloads = "Deskargak"
 entryLabel = "Sinaduraren laburpena"
 filesEvaluated_one = "{{count}} fitxategi ebaluatu da"
 filesEvaluated_other = "{{count}} fitxategi ebaluatu dira"
-footer = "Balidatua Stirling PDF bidez"
+footer = "Balidatua RyanPDF bidez"
 generatedAt = "Sortuta"
 noPdf = "PDF txostena erabilgarri egongo da balidazio arrakastatsu baten ostean."
 page = "Orria"

@@ -64,14 +64,14 @@ function getErrorMessage(error: unknown, fallback: string): string {
   return error instanceof Error ? error.message : fallback;
 }
 
-const OAUTH_REDIRECT_COOKIE = "stirling_redirect_path";
+const OAUTH_REDIRECT_COOKIE = "ryanpdf_redirect_path";
 const OAUTH_REDIRECT_COOKIE_MAX_AGE = 60 * 5; // 5 minutes
 
 function defaultRedirectPath(): string {
   return `${basePath() || ""}/auth/callback`;
 }
 
-export const POST_LOGIN_REDIRECT_STORAGE_KEY = "stirling_post_login_path";
+export const POST_LOGIN_REDIRECT_STORAGE_KEY = "ryanpdf_post_login_path";
 
 function normalizeRedirectPath(target?: string): string {
   if (!target || typeof target !== "string") {
@@ -292,7 +292,7 @@ class SpringAuthClient {
   }> {
     try {
       // Get JWT from localStorage
-      let token = localStorage.getItem("stirling_jwt");
+      let token = localStorage.getItem("ryanpdf_jwt");
 
       if (!token) {
         // console.debug('[SpringAuth] getSession: No JWT in localStorage');
@@ -304,13 +304,13 @@ class SpringAuthClient {
         if (tokenExpiry.expiresIn <= this.DESKTOP_SAAS_REFRESH_EARLY_SECONDS) {
           const refreshed = await platform().refreshPlatformSession();
           if (!refreshed) {
-            localStorage.removeItem("stirling_jwt");
+            localStorage.removeItem("ryanpdf_jwt");
             return { data: { session: null }, error: null };
           }
 
-          const refreshedToken = localStorage.getItem("stirling_jwt");
+          const refreshedToken = localStorage.getItem("ryanpdf_jwt");
           if (!refreshedToken) {
-            localStorage.removeItem("stirling_jwt");
+            localStorage.removeItem("ryanpdf_jwt");
             return { data: { session: null }, error: null };
           }
 
@@ -319,7 +319,7 @@ class SpringAuthClient {
         }
 
         if (tokenExpiry.expiresIn <= 0) {
-          localStorage.removeItem("stirling_jwt");
+          localStorage.removeItem("ryanpdf_jwt");
           return { data: { session: null }, error: null };
         }
 
@@ -384,7 +384,7 @@ class SpringAuthClient {
         if (!refreshResult.error && refreshResult.data.session) {
           return refreshResult;
         }
-        localStorage.removeItem("stirling_jwt");
+        localStorage.removeItem("ryanpdf_jwt");
         return { data: { session: null }, error: null };
       }
 
@@ -423,7 +423,7 @@ class SpringAuthClient {
       const token = data.session.access_token;
 
       // Store JWT in localStorage
-      localStorage.setItem("stirling_jwt", token);
+      localStorage.setItem("ryanpdf_jwt", token);
       // console.log('[SpringAuth] JWT stored in localStorage');
 
       // Sync token to platform-specific storage (Tauri store for desktop)
@@ -513,7 +513,7 @@ class SpringAuthClient {
    * Sign in with OAuth/SAML provider (GitHub, Google, Authentik, etc.)
    * This redirects to the Spring OAuth2/SAML2 authorization endpoint
    *
-   * @param params.provider - Full auth path from backend (e.g., '/oauth2/authorization/google', '/saml2/authenticate/stirling')
+   * @param params.provider - Full auth path from backend (e.g., '/oauth2/authorization/google', '/saml2/authenticate/ryanpdf')
    *                          The backend provides the complete path including the auth type and provider ID
    */
   async signInWithOAuth(params: {
@@ -552,7 +552,7 @@ class SpringAuthClient {
     try {
       if (typeof window !== "undefined") {
         window.sessionStorage.setItem(
-          "stirling_sso_auto_login_logged_out",
+          "ryanpdf_sso_auto_login_logged_out",
           "1",
         );
       }
@@ -577,7 +577,7 @@ class SpringAuthClient {
       }
 
       // Clean up local storage
-      localStorage.removeItem("stirling_jwt");
+      localStorage.removeItem("ryanpdf_jwt");
       try {
         Object.keys(localStorage)
           .filter((key) => key.startsWith("sb-") || key.includes("supabase"))
@@ -622,7 +622,7 @@ class SpringAuthClient {
     } catch (error: unknown) {
       console.error("[SpringAuth] signOut error:", error);
       // Still remove token even if backend call fails
-      localStorage.removeItem("stirling_jwt");
+      localStorage.removeItem("ryanpdf_jwt");
       try {
         await platform().clearPlatformAuthAfterSignOut();
       } catch (cleanupError) {
@@ -654,7 +654,7 @@ class SpringAuthClient {
       if (await platform().isDesktopSaaSAuthMode()) {
         const refreshed = await platform().refreshPlatformSession();
         if (!refreshed) {
-          localStorage.removeItem("stirling_jwt");
+          localStorage.removeItem("ryanpdf_jwt");
           return {
             data: { session: null },
             error: { message: "Token refresh failed - please log in again" },
@@ -672,7 +672,7 @@ class SpringAuthClient {
         }
 
         // Calculate adaptive intervals for desktop SaaS mode
-        const token = localStorage.getItem("stirling_jwt");
+        const token = localStorage.getItem("ryanpdf_jwt");
         if (token) {
           this.calculateAdaptiveIntervals(token);
         }
@@ -698,7 +698,7 @@ class SpringAuthClient {
       const token = data.session.access_token;
 
       // Update local storage with new token
-      localStorage.setItem("stirling_jwt", token);
+      localStorage.setItem("ryanpdf_jwt", token);
 
       // Sync token to platform-specific storage (Tauri store for desktop)
       await platform().savePlatformToken(token);
@@ -720,7 +720,7 @@ class SpringAuthClient {
 
       return { data: { session }, error: null };
     } catch (error: unknown) {
-      localStorage.removeItem("stirling_jwt");
+      localStorage.removeItem("ryanpdf_jwt");
 
       // 401/403 means the refresh token is no longer valid - normal expired
       // state, not an error worth surfacing. Other statuses (network, backend

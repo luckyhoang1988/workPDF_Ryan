@@ -867,7 +867,7 @@ const FileSidebar = forwardRef<HTMLDivElement, FileSidebarProps>(
               </span>
               {!collapsed && (
                 <Wordmark
-                  alt="Stirling PDF"
+                  alt="RyanPDF"
                   className="file-sidebar-brand-text sidebar-content-fade"
                 />
               )}

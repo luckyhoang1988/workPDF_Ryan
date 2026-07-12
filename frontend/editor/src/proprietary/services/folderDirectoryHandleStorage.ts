@@ -4,7 +4,7 @@
  * Permission must be re-requested each session before writing.
  */
 
-const DB_NAME = "stirling-pdf-folder-directory-handles";
+const DB_NAME = "ryanpdf-pdf-folder-directory-handles";
 const DB_VERSION = 1;
 const STORE = "handles";
 

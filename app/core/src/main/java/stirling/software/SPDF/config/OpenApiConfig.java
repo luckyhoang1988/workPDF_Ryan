@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.media.ComposedSchema;
@@ -30,7 +29,7 @@ public class OpenApiConfig {
 
     private final ApplicationProperties applicationProperties;
 
-    private static final String DEFAULT_TITLE = "Stirling PDF API";
+    private static final String DEFAULT_TITLE = "RyanPDF API";
     private static final String DEFAULT_DESCRIPTION =
             "API documentation for all Server-Side processing.\n"
                     + "Please note some functionality might be UI only and missing from here.";
@@ -51,12 +50,6 @@ public class OpenApiConfig {
                                         .name("Open-Core - MIT Licensed")
                                         .url(
                                                 "https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/refs/heads/main/LICENSE"))
-                        .termsOfService("https://www.stirlingpdf.com/terms")
-                        .contact(
-                                new Contact()
-                                        .name("Stirling Software")
-                                        .url("https://www.stirlingpdf.com")
-                                        .email("contact@stirlingpdf.com"))
                         .description(DEFAULT_DESCRIPTION);
 
         OpenAPI openAPI = new OpenAPI().info(info).openapi("3.0.3");

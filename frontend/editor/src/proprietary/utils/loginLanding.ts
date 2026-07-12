@@ -20,7 +20,7 @@ import apiClient from "@app/services/apiClient";
 // sessionStorage flag set at a genuine fresh login and consumed once when the
 // user lands, so the redirect never hijacks later in-session navigation (e.g.
 // switching back to the editor from the processor).
-export const LOGIN_LANDING_PENDING_KEY = "stirling_login_landing_pending";
+export const LOGIN_LANDING_PENDING_KEY = "ryanpdf_login_landing_pending";
 
 export type LoginLandingMode = "editor" | "dynamic";
 

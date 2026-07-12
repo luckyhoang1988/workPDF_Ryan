@@ -1,9 +1,9 @@
 services:
-  stirling-pdf:
+  ryanpdf:
     build:
       context: ../..
       dockerfile: docker/embedded/Dockerfile
-    container_name: Stirling-PDF-Security-with-login
+    container_name: RyanPDF-Security-with-login
     restart: unless-stopped
     deploy:
       resources:
@@ -17,9 +17,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../../stirling/latest/data:/usr/share/tessdata:rw
-      - ../../stirling/latest/config:/configs:rw
-      - ../../stirling/latest/logs:/logs:rw
+      - ../../ryanpdf/latest/data:/usr/share/tessdata:rw
+      - ../../ryanpdf/latest/config:/configs:rw
+      - ../../ryanpdf/latest/logs:/logs:rw
     environment:
       DISABLE_ADDITIONAL_FEATURES: "false"
       DOCKER_ENABLE_SECURITY: "true"
@@ -27,22 +27,22 @@ services:
       SECURITY_INITIALLOGIN_USERNAME: "admin"
       SECURITY_INITIALLOGIN_PASSWORD: "stirling"
       SYSTEM_DEFAULTLOCALE: en-US
-      UI_APPNAME: Stirling-PDF
-      UI_HOMEDESCRIPTION: Demo site for Stirling-PDF Latest with Security and Login
-      UI_APPNAMENAVBAR: Stirling-PDF Latest
+      UI_APPNAME: RyanPDF
+      UI_HOMEDESCRIPTION: Demo site for RyanPDF Latest with Security and Login
+      UI_APPNAMENAVBAR: RyanPDF Latest
       SYSTEM_MAXFILESIZE: "100"
       METRICS_ENABLED: "true"
       SYSTEM_GOOGLEVISIBILITY: "true"
       SECURITY_CUSTOMGLOBALAPIKEY: "123456789"
       SHOW_SURVEY: "true"
     networks:
-      - stirling-network
+      - ryanpdf-network
 
 networks:
-  stirling-network:
+  ryanpdf-network:
     driver: bridge
 
 volumes:
-  stirling-data:
-  stirling-config:
-  stirling-logs:
+  ryanpdf-data:
+  ryanpdf-config:
+  ryanpdf-logs:

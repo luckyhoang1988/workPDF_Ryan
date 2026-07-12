@@ -37,8 +37,8 @@ export interface ConnectionTestResult {
   diagnostics?: DiagnosticResult[];
 }
 
-export const LOCAL_MODE_STORAGE_KEY = "stirling-local-mode";
-export const JWT_EXPIRED_PROMPTED_KEY = "stirling-jwt-expired-prompted";
+export const LOCAL_MODE_STORAGE_KEY = "ryanpdf-local-mode";
+export const JWT_EXPIRED_PROMPTED_KEY = "ryanpdf-jwt-expired-prompted";
 
 export class ConnectionModeService {
   private static instance: ConnectionModeService;
@@ -182,7 +182,7 @@ export class ConnectionModeService {
     if (
       previousMode !== "saas" &&
       typeof window !== "undefined" &&
-      localStorage.getItem("stirling_jwt")
+      localStorage.getItem("ryanpdf_jwt")
     ) {
       window.dispatchEvent(new CustomEvent("jwt-available"));
     }
@@ -260,7 +260,7 @@ export class ConnectionModeService {
     if (
       previousMode !== "selfhosted" &&
       typeof window !== "undefined" &&
-      localStorage.getItem("stirling_jwt")
+      localStorage.getItem("ryanpdf_jwt")
     ) {
       window.dispatchEvent(new CustomEvent("jwt-available"));
     }

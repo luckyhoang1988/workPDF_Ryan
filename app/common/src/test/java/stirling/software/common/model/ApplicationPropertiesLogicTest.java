@@ -54,7 +54,7 @@ class ApplicationPropertiesLogicTest {
                 new ApplicationProperties.TempFileManagement();
 
         String expectedBase =
-                Path.of(java.lang.System.getProperty("java.io.tmpdir"), "stirling-pdf").toString();
+                Path.of(java.lang.System.getProperty("java.io.tmpdir"), "ryanpdf").toString();
         assertEquals(expectedBase, tfm.getBaseTmpDir());
 
         String expectedLibre = Path.of(expectedBase, "libreoffice").toString();
@@ -180,8 +180,8 @@ class ApplicationPropertiesLogicTest {
         ApplicationProperties.EnterpriseEdition.CustomMetadata eMeta = ee.getCustomMetadata();
         eMeta.setCreator("  ");
         eMeta.setProducer(null);
-        assertEquals("Stirling-PDF", eMeta.getCreator());
-        assertEquals("Stirling-PDF", eMeta.getProducer());
+        assertEquals("RyanPDF", eMeta.getCreator());
+        assertEquals("RyanPDF", eMeta.getProducer());
     }
 
     @Test
@@ -190,8 +190,8 @@ class ApplicationPropertiesLogicTest {
         Premium.ProFeatures.CustomMetadata pMeta = pf.getCustomMetadata();
         pMeta.setCreator("");
         pMeta.setProducer("");
-        assertEquals("Stirling-PDF", pMeta.getCreator());
-        assertEquals("Stirling-PDF", pMeta.getProducer());
+        assertEquals("RyanPDF", pMeta.getCreator());
+        assertEquals("RyanPDF", pMeta.getProducer());
     }
 
     @Test

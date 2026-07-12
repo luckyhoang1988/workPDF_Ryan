@@ -189,8 +189,8 @@ export default function AuthCallback() {
       >
         <div className="text-center">
           <img
-            src={withBasePath("/modern-logo/StirlingPDFLogoNoTextDark.svg")}
-            alt="Stirling PDF"
+            src={withBasePath("/modern-logo/RyanPDFLogoNoTextDark.svg")}
+            alt="RyanPDF"
             className="mx-auto mb-5 h-8 opacity-80"
           />
 

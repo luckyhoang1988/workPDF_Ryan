@@ -56,33 +56,33 @@ function isStandaloneCommentType(type: number | undefined): boolean {
 const ANNOTATE_PANEL_ID = "annotate" as const;
 const TEXT_COMMENT_TOOL_ID = "textComment" as const;
 
-type StirlingAnnotationCustomData = Record<string, unknown> & {
+type RyanPDFAnnotationCustomData = Record<string, unknown> & {
   annotationToolId?: string;
   isComment?: boolean;
   modifiedDate?: Date | number | string;
   toolId?: string;
 };
 
-type StirlingAnnotationMetadata = {
+type RyanPDFAnnotationMetadata = {
   creationDate?: Date | number | string;
-  customData?: StirlingAnnotationCustomData;
+  customData?: RyanPDFAnnotationCustomData;
   M?: Date | number | string;
   modifiedDate?: Date | number | string;
 };
 
-type StirlingAnnotationPatch = Partial<PdfAnnotationObject> & {
+type RyanPDFAnnotationPatch = Partial<PdfAnnotationObject> & {
   customData?: Record<string, unknown>;
 };
 
-function getStirlingAnnotationMetadata(
+function getRyanPDFAnnotationMetadata(
   ann: PdfAnnotationObject,
-): StirlingAnnotationMetadata {
-  return ann as StirlingAnnotationMetadata;
+): RyanPDFAnnotationMetadata {
+  return ann as RyanPDFAnnotationMetadata;
 }
 
 /** Format annotation date for display (e.g. "Mar 11, 6:05 PM"). */
 function formatCommentDate(obj: PdfAnnotationObject): string {
-  const metadata = getStirlingAnnotationMetadata(obj);
+  const metadata = getRyanPDFAnnotationMetadata(obj);
   const raw =
     metadata.modifiedDate ??
     metadata.creationDate ??
@@ -187,7 +187,7 @@ function getIconByType(type: number | undefined): string {
   return "comment";
 }
 function isCommentAnnotation(ann: PdfAnnotationObject): boolean {
-  const customData = getStirlingAnnotationMetadata(ann).customData;
+  const customData = getRyanPDFAnnotationMetadata(ann).customData;
   const toolId = customData?.toolId ?? customData?.annotationToolId;
   if (
     toolId === "textComment" ||
@@ -215,7 +215,7 @@ function isCommentAnnotation(ann: PdfAnnotationObject): boolean {
 }
 
 function isLinkedCommentAnnotation(ann: PdfAnnotationObject): boolean {
-  const customData = getStirlingAnnotationMetadata(ann).customData;
+  const customData = getRyanPDFAnnotationMetadata(ann).customData;
   const type = ann?.type;
   if (isStandaloneCommentType(type)) return false;
   if (ann?.inReplyToId) return false;
@@ -234,9 +234,9 @@ function getAnnotationPageIndex(
 
 function getRemoveCommentPatch(
   ann: PdfAnnotationObject,
-): StirlingAnnotationPatch {
+): RyanPDFAnnotationPatch {
   const customData = {
-    ...(getStirlingAnnotationMetadata(ann).customData ?? {}),
+    ...(getRyanPDFAnnotationMetadata(ann).customData ?? {}),
   };
   delete customData.isComment;
   return {
@@ -246,7 +246,7 @@ function getRemoveCommentPatch(
 }
 
 function getAnnotationToolId(ann: PdfAnnotationObject): string {
-  const customData = getStirlingAnnotationMetadata(ann).customData;
+  const customData = getRyanPDFAnnotationMetadata(ann).customData;
   return customData?.toolId ?? customData?.annotationToolId ?? "";
 }
 function getAnnotationTypeLabel(
@@ -518,7 +518,7 @@ export function CommentsSidebar({
     const commentPatches: Array<{
       pageIndex: number;
       id: string;
-      patch: StirlingAnnotationPatch;
+      patch: RyanPDFAnnotationPatch;
     }> = [];
 
     for (const [page, entries] of Object.entries(byPage)) {

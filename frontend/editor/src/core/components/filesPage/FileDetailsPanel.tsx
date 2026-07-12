@@ -117,7 +117,7 @@ export function FileDetailsPanel({
   // (free — no byte load), else read the PDF metadata via the shared service.
   // Gated on classification being enabled (SaaS + AI): off-feature we never read
   // the metadata or show the section, so a PDF that happens to carry the
-  // StirlingPDFClassification key never reveals the feature in a build without it.
+  // RyanPDFClassification key never reveals the feature in a build without it.
   useEffect(() => {
     setClassification(null);
     if (!classificationEnabled) return;

@@ -422,7 +422,7 @@ const useTelegramProvider = (): Provider => {
         ),
         description: t(
           "admin.settings.telegram.enabled.description",
-          "Allow users to interact with Stirling PDF through your configured Telegram bot.",
+          "Allow users to interact with RyanPDF through your configured Telegram bot.",
         ),
         defaultValue: false,
       },
@@ -693,7 +693,7 @@ const useSAML2Provider = (): Provider => {
           "provider.saml2.registrationId.description",
           "The name of your Service Provider (SP) app name",
         ),
-        defaultValue: "stirling",
+        defaultValue: "ryanpdf",
       },
       {
         key: "idpMetadataUri",
@@ -718,7 +718,7 @@ const useSAML2Provider = (): Provider => {
           "The URL for initiating SSO",
         ),
         placeholder:
-          "https://dev-XXXXXXXX.okta.com/app/dev-XXXXXXXX_stirlingpdf_1/externalKey/sso/saml",
+          "https://dev-XXXXXXXX.okta.com/app/dev-XXXXXXXX_ryanpdf_1/externalKey/sso/saml",
       },
       {
         key: "idpSingleLogoutUrl",
@@ -732,7 +732,7 @@ const useSAML2Provider = (): Provider => {
           "The URL for initiating SLO",
         ),
         placeholder:
-          "https://dev-XXXXXXXX.okta.com/app/dev-XXXXXXXX_stirlingpdf_1/externalKey/slo/saml",
+          "https://dev-XXXXXXXX.okta.com/app/dev-XXXXXXXX_ryanpdf_1/externalKey/slo/saml",
       },
       {
         key: "idpIssuer",

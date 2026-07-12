@@ -93,7 +93,7 @@ export class AuthService {
 
     // Sync to localStorage for web layer (fallback)
     try {
-      localStorage.setItem("stirling_jwt", token);
+      localStorage.setItem("ryanpdf_jwt", token);
     } catch (error) {
       console.error(
         "[Desktop AuthService] Failed to save token to localStorage:",
@@ -110,7 +110,7 @@ export class AuthService {
       try {
         await invoke("save_refresh_token", { token: refreshToken });
         // Only remove from localStorage after successful save
-        localStorage.removeItem("stirling_refresh_token");
+        localStorage.removeItem("ryanpdf_refresh_token");
       } catch (error) {
         console.error(
           "[Desktop AuthService] Failed to save refresh token:",
@@ -143,7 +143,7 @@ export class AuthService {
     }
 
     // Fallback to localStorage
-    return localStorage.getItem("stirling_jwt");
+    return localStorage.getItem("ryanpdf_jwt");
   }
 
   /**
@@ -181,8 +181,8 @@ export class AuthService {
 
     // Best effort: clear web storage
     try {
-      localStorage.removeItem("stirling_jwt");
-      localStorage.removeItem("stirling_refresh_token");
+      localStorage.removeItem("ryanpdf_jwt");
+      localStorage.removeItem("ryanpdf_refresh_token");
     } catch (error) {
       console.warn(
         "[Desktop AuthService] Failed to clear localStorage tokens",
@@ -474,7 +474,7 @@ export class AuthService {
         else if (errMsg.includes("404") || errMsg.includes("not found")) {
           this.setAuthStatus("unauthenticated", null);
           throw new Error(
-            "Login endpoint not found. Please ensure you are connecting to a valid Stirling PDF server.",
+            "Login endpoint not found. Please ensure you are connecting to a valid RyanPDF server.",
             {
               cause: error,
             },
@@ -870,7 +870,7 @@ export class AuthService {
       // Check if token exists in storage (user just logged in via web flow)
       const tokenInStorage =
         typeof window !== "undefined"
-          ? localStorage.getItem("stirling_jwt")
+          ? localStorage.getItem("ryanpdf_jwt")
           : null;
       if (tokenInStorage) {
         console.log(

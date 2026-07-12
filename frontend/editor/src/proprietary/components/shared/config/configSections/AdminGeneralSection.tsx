@@ -476,7 +476,7 @@ export default function AdminGeneralSection() {
                     ui: { ...settings.ui, appNameNavbar: e.target.value },
                   })
                 }
-                placeholder="Stirling PDF"
+                placeholder="RyanPDF"
                 disabled={!loginEnabled}
               />
             </div>
@@ -540,7 +540,7 @@ export default function AdminGeneralSection() {
                         }}
                       >
                         <img
-                          src="modern-logo/StirlingPDFLogoNoTextLight.svg"
+                          src="modern-logo/RyanPDFLogoNoTextLight.svg"
                           alt={t(
                             "admin.settings.general.logoStyle.modernAlt",
                             "Modern logo",
@@ -1041,7 +1041,7 @@ export default function AdminGeneralSection() {
                     },
                   })
                 }
-                placeholder="Stirling-PDF"
+                placeholder="RyanPDF"
                 disabled={!loginEnabled}
               />
             </div>
@@ -1075,7 +1075,7 @@ export default function AdminGeneralSection() {
                     },
                   })
                 }
-                placeholder="Stirling-PDF"
+                placeholder="RyanPDF"
                 disabled={!loginEnabled}
               />
             </div>

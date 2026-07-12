@@ -19,12 +19,12 @@ const STARTUP_DELAY_MS = 15_000;
  * Shared with the desktop popup so snoozing in either context suppresses
  * both popups for the same 24h window.
  */
-const SNOOZE_KEY = "stirling-pdf-updater:snoozedUntil";
+const SNOOZE_KEY = "ryanpdf-pdf-updater:snoozedUntil";
 const SNOOZE_DURATION_MS = 24 * 60 * 60 * 1000;
 
 /**
  * Web/server-side auto-popup that shows the UpdateModal on startup when a
- * newer Stirling-PDF version is available.
+ * newer RyanPDF version is available.
  */
 export function UpdateStartupPopup() {
   const { config } = useAppConfig();

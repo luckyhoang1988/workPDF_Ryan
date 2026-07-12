@@ -388,7 +388,7 @@ Owner downloads signed PDF
 2. **Append Summary Page (optional, before digital signing)**
 
    If `includeSummaryPage=true`, a new A4 page is appended showing:
-   - Stirling logo and "Signature Summary" title
+   - RyanPDF logo and "Signature Summary" title
    - Document name and session owner
    - Finalization timestamp
    - Per-participant: name, email, status, signed timestamp, reason, location, certificate type

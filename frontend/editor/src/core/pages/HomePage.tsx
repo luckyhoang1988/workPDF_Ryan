@@ -41,7 +41,7 @@ import type { FileSidebarProps } from "@app/components/shared/FileSidebar";
 import { Button } from "@app/ui/Button";
 import "@app/pages/HomePage.css";
 
-const SIDEBAR_COLLAPSED_STORAGE_KEY = "stirling.fileSidebarCollapsed";
+const SIDEBAR_COLLAPSED_STORAGE_KEY = "ryanpdf.fileSidebarCollapsed";
 
 function readPersistedSidebarCollapsed(): boolean {
   try {
@@ -198,7 +198,7 @@ export default function HomePage() {
     )?.hideToolPanel ??
       false);
 
-  const brandAltText = t("home.mobile.brandAlt", "Stirling PDF logo");
+  const brandAltText = t("home.mobile.brandAlt", "RyanPDF logo");
 
   const handleSelectMobileView = useCallback((view: MobileView) => {
     setActiveMobileView(view);
@@ -293,7 +293,7 @@ export default function HomePage() {
   const baseUrl = useBaseUrl();
 
   // Update document meta when tool changes
-  const appName = config?.appNameNavbar || "Stirling PDF";
+  const appName = config?.appNameNavbar || "RyanPDF";
   useDocumentMeta({
     title: selectedTool ? `${selectedTool.name} - ${appName}` : appName,
     description:

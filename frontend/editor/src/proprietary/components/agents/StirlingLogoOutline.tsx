@@ -1,7 +1,7 @@
 /**
- * A temp stirling logo, may change in future.
+ * A temp ryanpdf logo, may change in future.
  */
-export function StirlingLogoOutline({ size = 20 }: { size?: number }) {
+export function RyanPDFLogoOutline({ size = 20 }: { size?: number }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

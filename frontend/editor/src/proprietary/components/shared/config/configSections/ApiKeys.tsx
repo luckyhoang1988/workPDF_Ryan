@@ -64,7 +64,7 @@ export default function ApiKeys() {
       <Text size="sm" c="dimmed">
         {t(
           "config.apiKeys.intro",
-          "Use your API key to programmatically access Stirling PDF's processing capabilities.",
+          "Use your API key to programmatically access RyanPDF's processing capabilities.",
         )}
       </Text>
 
@@ -90,7 +90,7 @@ export default function ApiKeys() {
             <Text size="sm" c="dimmed">
               {t(
                 "config.apiKeys.docsDescription",
-                "Learn more about integrating with Stirling PDF:",
+                "Learn more about integrating with RyanPDF:",
               )}
             </Text>
             <Stack gap={4}>
@@ -115,7 +115,7 @@ export default function ApiKeys() {
               </Text>
               <Text size="sm">
                 <Anchor
-                  href="https://registry.scalar.com/@stirlingpdf/apis/stirling-pdf-processing-api/"
+                  href="https://registry.scalar.com/@ryanpdf/apis/ryanpdf-pdf-processing-api/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{

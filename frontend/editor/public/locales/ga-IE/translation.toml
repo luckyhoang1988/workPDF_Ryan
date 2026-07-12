@@ -57,7 +57,7 @@ keepWorking = "Lean ort ag obair"
 loading = "Á lódáil..."
 loginAgreementAccept = "Glac leis"
 loginAgreementDecline = "Diúltaigh"
-loginAgreementProvider = "Soláthraíonn do riarthóir an fógra seo, ní Stirling PDF Inc."
+loginAgreementProvider = "Soláthraíonn do riarthóir an fógra seo, ní RyanPDF Inc."
 loginAgreementTitle = "Comhaontú Logála Isteach"
 logOut = "Logáil amach"
 marginTooltip = "Fad idir an uimhir leathanaigh agus imeall na leathanaigh."
@@ -919,11 +919,11 @@ description = "Cumraigh gnéithe roghnacha agus feidhmiúlacht."
 title = "Gnéithe"
 
 [admin.settings.features.serverCertificate]
-description = "Cumraigh giniúint deimhnithe ar thaobh an fhreastalaí don fheidhmiúlacht \"Sínigh le Stirling-PDF\""
+description = "Cumraigh giniúint deimhnithe ar thaobh an fhreastalaí don fheidhmiúlacht \"Sínigh le RyanPDF\""
 label = "Deimhniú Freastalaí"
 
 [admin.settings.features.serverCertificate.enabled]
-description = "Cumasaigh deimhniú taobh an fhreastalaí don rogha \"Sínigh le Stirling-PDF\""
+description = "Cumasaigh deimhniú taobh an fhreastalaí don rogha \"Sínigh le RyanPDF\""
 label = "Cumasaigh Deimhniú Freastalaí"
 
 [admin.settings.features.serverCertificate.organizationName]
@@ -1071,7 +1071,7 @@ description = "URL nó ainm comhaid do bheartas fianán"
 label = "Beartas Fianán"
 
 [admin.settings.legal.disclaimer]
-message = "Trí na doiciméid dhlíthiúla seo a shaincheapadh, glacann tú freagracht iomlán as comhlíonadh a chinntiú le gach dlí agus rialachán i bhfeidhm, lena n‑áirítear ach gan a bheith teoranta do GDPR agus ceanglais chosanta sonraí AE eile. Ná modhnaigh na socruithe seo ach amháin má: (1) tá cás pearsanta/príobháideach á rith agat, (2) tá tú lasmuigh de dhlínse an AE agus tuigeann tú do chuid dualgas dlíthiúil áitiúil, nó (3) tá comhairle dhlí chuí faighte agat agus glacann tú leat freagracht iomlán as sonraí úsáideoirí agus comhlíonadh dlíthiúil. Ní ghlacann Stirling-PDF ná a fhorbróirí aon dliteanas as do chuid dualgas dlíthiúil."
+message = "Trí na doiciméid dhlíthiúla seo a shaincheapadh, glacann tú freagracht iomlán as comhlíonadh a chinntiú le gach dlí agus rialachán i bhfeidhm, lena n‑áirítear ach gan a bheith teoranta do GDPR agus ceanglais chosanta sonraí AE eile. Ná modhnaigh na socruithe seo ach amháin má: (1) tá cás pearsanta/príobháideach á rith agat, (2) tá tú lasmuigh de dhlínse an AE agus tuigeann tú do chuid dualgas dlíthiúil áitiúil, nó (3) tá comhairle dhlí chuí faighte agat agus glacann tú leat freagracht iomlán as sonraí úsáideoirí agus comhlíonadh dlíthiúil. Ní ghlacann RyanPDF ná a fhorbróirí aon dliteanas as do chuid dualgas dlíthiúil."
 title = "Rabhadh Freagrachta Dlí"
 
 [admin.settings.legal.impressum]
@@ -1158,8 +1158,8 @@ description = "Ainm úsáideora le haghaidh fíordheimhnithe SMTP"
 label = "Ainm Úsáideora SMTP"
 
 [admin.settings.mcp]
-apikeyNote = "Clients send a Stirling API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning Stirling user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
-description = "Expose Stirling's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
+apikeyNote = "Clients send a RyanPDF API key in the X-API-KEY header (or Authorization: Bearer <key>). The key maps to its owning RyanPDF user - only provisioned accounts get in, and actions are audited as that user. Manage keys under Account > API Keys."
+description = "Expose RyanPDF's PDF tools and AI agents to MCP clients over an OAuth-protected endpoint."
 title = "MCP Server"
 
 [admin.settings.mcp.acceptedAudiences]
@@ -1189,7 +1189,7 @@ step3ApiKeyb = "header (or Authorization: Bearer <key>). No OAuth or metadata di
 step4 = "Approve the sign-in; the client retries with a token. Tools appear grouped: convert, pages, misc, security, ai."
 step4ApiKey = "Tools appear grouped: convert, pages, misc, security, ai - and every call is audited as the key's owner."
 tip = "Tip: register the resource ID as an allowed audience in your IdP. Tested with MCP Inspector and Claude Desktop."
-tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning Stirling user."
+tipApiKey = "Tip: API-key mode needs no external IdP - simplest for self-host. The key maps to its owning RyanPDF user."
 title = "Connect an MCP client"
 
 [admin.settings.mcp.issuerUri]
@@ -1202,12 +1202,12 @@ label = "JWKS URL (optional)"
 placeholder = "Auto-discovered from issuer"
 
 [admin.settings.mcp.mode]
-description = "OAuth needs an external IdP. API key uses a Stirling per-user API key (X-API-KEY) - simplest for self-host."
+description = "OAuth needs an external IdP. API key uses a RyanPDF per-user API key (X-API-KEY) - simplest for self-host."
 label = "Authentication mode"
 
 [admin.settings.mcp.requireAccount]
-description = "Only let tokens through if their subject maps to a provisioned, enabled Stirling user."
-label = "Require an existing Stirling account"
+description = "Only let tokens through if their subject maps to a provisioned, enabled RyanPDF user."
+label = "Require an existing RyanPDF account"
 
 [admin.settings.mcp.resourceId]
 description = "This server's public /mcp URL. Tokens must list it in their audience (RFC 8707) or they are rejected."
@@ -1218,7 +1218,7 @@ description = "Require mcp.tools.read for read ops and mcp.tools.write for write
 label = "Enforce OAuth scopes"
 
 [admin.settings.mcp.usernameClaim]
-description = "JWT claim matched against a Stirling username (e.g. sub, email, preferred_username)."
+description = "JWT claim matched against a RyanPDF username (e.g. sub, email, preferred_username)."
 label = "Username claim"
 
 [admin.settings.plan.noData]
@@ -1539,7 +1539,7 @@ description = "Nuair a chumasaítear é, ní féidir ach leis na IDanna úsáide
 label = "Ceadaigh IDanna Úsáideora Sonracha"
 
 [admin.settings.telegram.enabled]
-description = "Ceadaigh d’úsáideoirí idirghníomhú le Stirling PDF tríd do bot Telegram cumraithe."
+description = "Ceadaigh d’úsáideoirí idirghníomhú le RyanPDF tríd do bot Telegram cumraithe."
 label = "Cumasaigh Bot Telegram"
 
 [admin.settings.telegram.feedback]
@@ -1612,20 +1612,20 @@ settingsOverview = "Seo é an <strong>Painéal Socruithe</strong>. Tá socruithe
 systemCustomization = "Tá bealaí fairsinge againn chun an comhéadan úsáideora a shaincheapadh: Ligeann <strong>Socruithe Córais</strong> duit ainm agus teangacha an aip a athrú, ceadaíonn <strong>Gnéithe</strong> bainistíocht teastais freastalaí, agus ligeann <strong>Deireadhphointí</strong> duit uirlisí sonracha a chumasú nó a dhíchumasú do d'úsáideoirí."
 teamsAndUsers = "Bainistigh <strong>Foirne</strong> agus úsáideoirí aonair anseo. Is féidir leat úsáideoirí nua a thabhairt isteach trí r-phost, naisc inroinnte, nó cuntais shaincheaptha a chruthú dóibh tú féin."
 welcome = "Fáilte go dtí an <strong>Turas Riaracháin</strong>! Déanaimis iniúchadh ar na gnéithe agus na socruithe cumhachtacha fiontraíochta atá ar fáil do riarthóirí córais."
-wrapUp = "Sin é an turas riaracháin! Chonaic tú na gnéithe fiontraíochta a dhéanann Stirling PDF ina réiteach cumhachtach, saincheaptha d’eagraíochtaí. Is féidir an turas seo a rochtain am ar bith ón roghchlár <strong>Cabhair</strong>."
+wrapUp = "Sin é an turas riaracháin! Chonaic tú na gnéithe fiontraíochta a dhéanann RyanPDF ina réiteach cumhachtach, saincheaptha d’eagraíochtaí. Is féidir an turas seo a rochtain am ar bith ón roghchlár <strong>Cabhair</strong>."
 
 [adminUserSettings]
 admin = "Riarachán"
 title = "Socruithe Rialaithe Úsáideora"
 
 [agents]
-stirling_name = "Stirling"
+stirling_name = "RyanPDF"
 
 [analytics]
 learnMore = "Tuilleadh eolais"
-paragraph1 = "Tá rogha an diúltaithe ag PDF Stirling chun cabhrú linn an táirge a fheabhsú. Ní rianaimid aon fhaisnéis phearsanta nó ábhar comhaid."
-paragraph2 = "Smaoinigh le do thoil ar anailísíocht a chumasú chun cabhrú le Stirling-PDF fás agus chun ligean dúinn ár n-úsáideoirí a thuiscint níos fearr."
-title = "An bhfuil fonn ort PDF Stirling a fheabhsú?"
+paragraph1 = "Tá rogha an diúltaithe ag PDF RyanPDF chun cabhrú linn an táirge a fheabhsú. Ní rianaimid aon fhaisnéis phearsanta nó ábhar comhaid."
+paragraph2 = "Smaoinigh le do thoil ar anailísíocht a chumasú chun cabhrú le RyanPDF fás agus chun ligean dúinn ár n-úsáideoirí a thuiscint níos fearr."
+title = "An bhfuil fonn ort PDF RyanPDF a fheabhsú?"
 
 [annotate]
 tags = "annotate,highlight,draw,markup,comment,notes,review,redline,feedback,markup tools,sticky notes,shapes,arrows,text box,freehand"
@@ -2558,7 +2558,7 @@ bullet1 = "Tacaíonn sé le formáidí PEM, PKCS12, JKS agus teastas an fhreasta
 bullet2 = "Rogha an síniú a thaispeáint nó a cheilt ar an PDF"
 bullet3 = "Cuir cúis, suíomh, agus ainm an tsíní leis"
 bullet4 = "Roghnaigh cén leathanach a gcuirfear sínithe infheicthe air"
-bullet5 = "Úsáid teastas an fhreastalaí don rogha shimplí 'Sign with Stirling-PDF'"
+bullet5 = "Úsáid teastas an fhreastalaí don rogha shimplí 'Sign with RyanPDF'"
 text = "Chun PDF a shíniú, teastaíonn teastas digiteach uait (mar PEM, PKCS12, nó JKS). Is féidir leat an síniú a dhéanamh infheicthe ar an doiciméad nó é a choinneáil dofheicthe ar mhaithe le slándáil amháin."
 title = "Sínithe a Chur Leis"
 
@@ -2739,10 +2739,10 @@ copy = "Cóipeáil teachtaireacht"
 
 [chat.fab]
 close = "Close chat"
-open = "Open Stirling AI assistant"
+open = "Open RyanPDF AI assistant"
 
 [chat.header]
-agentMenu = "Roghanna gníomhaire Stirling"
+agentMenu = "Roghanna gníomhaire RyanPDF"
 clearChat = "Glan comhrá"
 
 [chat.input]
@@ -3072,14 +3072,14 @@ upgradeButton = "Uasghrádaigh an Cuntas"
 
 [config.apiKeys]
 copyKeyAriaLabel = "Cóipeáil eochair API"
-description = "Do eochair API chun rochtain a fháil ar shraith uirlisí PDF Stirling. Cóipeáil chuig do thionscadal í nó déan athnuachan chun ceann nua a ghiniúint."
-docsDescription = "Tuilleadh eolais faoi chomhtháthú le Stirling PDF:"
+description = "Do eochair API chun rochtain a fháil ar shraith uirlisí PDF RyanPDF. Cóipeáil chuig do thionscadal í nó déan athnuachan chun ceann nua a ghiniúint."
+docsDescription = "Tuilleadh eolais faoi chomhtháthú le RyanPDF:"
 docsLink = "Doiciméadú API"
 docsTitle = "Doiciméadú API"
 generateError = "Níor éirigh linn d’eochair API a ghiniúint."
 goToAccount = "Téigh chuig an gCuntas"
 guestInfo = "Ní fhaigheann úsáideoirí aíochta eochracha API. Cruthaigh cuntas chun eochair API a fháil is féidir leat a úsáid i d’fheidhmchláir."
-intro = "Úsáid do eochair API chun rochtain ríomhchláraithe a fháil ar chumais phróiseála Stirling PDF."
+intro = "Úsáid do eochair API chun rochtain ríomhchláraithe a fháil ar chumais phróiseála RyanPDF."
 label = "Eochair API"
 publicKeyAriaLabel = "Eochair API phoiblí"
 refreshAriaLabel = "Athnuaigh eochair API"
@@ -3103,10 +3103,10 @@ title = "Athnuaigh Eochracha API"
 warning = "⚠️ Rabhadh: Ginfidh an gníomh seo eochracha API nua agus déanfaidh sé do chuid eochracha roimhe seo neamhbhailí."
 
 [config.mcp]
-description = "Model Context Protocol (MCP) lets AI assistants like Claude use your Stirling PDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
-guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run Stirling PDF tools on your behalf."
+description = "Model Context Protocol (MCP) lets AI assistants like Claude use your RyanPDF tools directly. Connect a client once and your assistant can convert, edit, secure and process documents on your behalf."
+guestInfo = "Guest users can't connect MCP clients. Create an account to use the MCP server and let your AI assistant run RyanPDF tools on your behalf."
 navLabel = "MCP Server"
-tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using Stirling PDF directly."
+tip = "Every action your assistant runs is performed as your account and counts towards your usage, just like using RyanPDF directly."
 title = "MCP Server"
 viewApiKeys = "View API keys"
 
@@ -3123,7 +3123,7 @@ label = "Your MCP endpoint"
 
 [config.mcp.setup]
 addTo = "Add to"
-hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your Stirling account on first use - no keys to copy."
+hint = "Pick your client, paste the snippet into the file shown, then restart it. You'll sign in with your RyanPDF account on first use - no keys to copy."
 title = "Connect your AI assistant"
 
 [config.overview]
@@ -3232,7 +3232,7 @@ showPreferencesBtn = "Bainistigh sainroghanna"
 title = "Conas a Úsáidimid Fianáin"
 
 [cookieBanner.popUp.description]
-1 = "Úsáidimid fianáin agus teicneolaíochtaí eile chun Stirling PDF a dhéanamh níos fearr duit—ag cabhrú linn ár n-uirlisí a fheabhsú agus gnéithe a thógáil a thaitneoidh leat."
+1 = "Úsáidimid fianáin agus teicneolaíochtaí eile chun RyanPDF a dhéanamh níos fearr duit—ag cabhrú linn ár n-uirlisí a fheabhsú agus gnéithe a thógáil a thaitneoidh leat."
 2 = "Mura mian leat, ní chuirfear ar chumas ach na fianáin riachtanacha atá riachtanach chun go n-oibreoidh rudaí go réidh má chliceálann tú ar 'Níl Go raibh maith agat'."
 
 [cookieBanner.preferencesModal]
@@ -3245,12 +3245,12 @@ subtitle = "Úsáid Fianáin"
 title = "Lárionad Sainroghanna Toilithe"
 
 [cookieBanner.preferencesModal.analytics]
-description = "Cuidíonn na fianáin seo linn a thuiscint conas a úsáidtear ár n-uirlisí, ionas gur féidir linn díriú ar na gnéithe is tábhachtaí dár bpobal a thógáil. Bí cinnte—ní féidir le Stirling PDF agus ní dhéanfaidh sé riamh ábhar na ndoiciméad a n-oibríonn tú leo a rianú."
+description = "Cuidíonn na fianáin seo linn a thuiscint conas a úsáidtear ár n-uirlisí, ionas gur féidir linn díriú ar na gnéithe is tábhachtaí dár bpobal a thógáil. Bí cinnte—ní féidir le RyanPDF agus ní dhéanfaidh sé riamh ábhar na ndoiciméad a n-oibríonn tú leo a rianú."
 title = "Anailísíocht"
 
 [cookieBanner.preferencesModal.description]
-1 = "Úsáideann Stirling PDF fianáin agus teicneolaíochtaí cosúil leo chun do thaithí a fheabhsú agus chun tuiscint a fháil ar conas a úsáidtear ár n-uirlisí. Cabhraíonn sé seo linn feidhmíocht a fheabhsú, na gnéithe a bhfuil cúram agat fúthu a fhorbairt, agus tacaíocht leanúnach a sholáthar dár n-úsáideoirí."
-2 = "Ní féidir le Stirling PDF—agus ní dhéanfaidh sé riamh—ábhar na ndoiciméad a úsáideann tú a rianú ná a rochtain."
+1 = "Úsáideann RyanPDF fianáin agus teicneolaíochtaí cosúil leo chun do thaithí a fheabhsú agus chun tuiscint a fháil ar conas a úsáidtear ár n-uirlisí. Cabhraíonn sé seo linn feidhmíocht a fheabhsú, na gnéithe a bhfuil cúram agat fúthu a fhorbairt, agus tacaíocht leanúnach a sholáthar dár n-úsáideoirí."
+2 = "Ní féidir le RyanPDF—agus ní dhéanfaidh sé riamh—ábhar na ndoiciméad a úsáideann tú a rianú ná a rochtain."
 3 = "Tá do phríobháideachas agus do mhuinín i gcroílár ár gcuid oibre."
 
 [cookieBanner.preferencesModal.necessary]
@@ -3346,14 +3346,14 @@ message = "Theip ar shocrú láimhseálaí PDF réamhshocraithe"
 title = "Earráid"
 
 [defaultApp.prompt]
-message = "Déan Stirling PDF mar d’fheidhmchlár réamhshocraithe chun comhaid PDF a oscailt."
+message = "Déan RyanPDF mar d’fheidhmchlár réamhshocraithe chun comhaid PDF a oscailt."
 
 [defaultApp.settingsOpened]
-message = "Roghnaigh Stirling PDF i socruithe do chórais"
+message = "Roghnaigh RyanPDF i socruithe do chórais"
 title = "Socruithe Oscailte"
 
 [defaultApp.success]
-message = "Is é Stirling PDF d’eagarthóir PDF réamhshocraithe anois"
+message = "Is é RyanPDF d’eagarthóir PDF réamhshocraithe anois"
 title = "Aip Réamhshocraithe Socraithe"
 
 [desktopUpdate]
@@ -3369,7 +3369,7 @@ updateFailedMessage = "Theip ar íoslódáil nó ar shuiteáil an nuashonraithe.
 
 [desktopUpdate.blocked]
 docsLink = "Féach ar dhoiciméadú suiteála"
-message = "Níl cead ag Stirling-PDF é féin a nuashonrú ar an meaisín seo."
+message = "Níl cead ag RyanPDF é féin a nuashonrú ar an meaisín seo."
 title = "Teastaíonn ceadanna riarthóra"
 
 [devAirgapped]
@@ -3939,7 +3939,7 @@ title = "Bog go fillteán"
 [filesPage.origin]
 all = "Gach foinse"
 cloud = "Scamall"
-cloudHint = "Stóráilte ar fhreastalaí Stirling"
+cloudHint = "Stóráilte ar fhreastalaí RyanPDF"
 local = "Áitiúil"
 localHint = "Stóráilte sa bhrabhsálaí seo amháin"
 shared = "Roinnte"
@@ -4203,7 +4203,7 @@ invisible = "Dofheicthe (meiteashonraí amháin)"
 location = "Suíomh:"
 logo = "Lógó:"
 logoHidden = "Gan lógó"
-logoShown = "Lógó Stirling PDF le feiceáil"
+logoShown = "Lógó RyanPDF le feiceáil"
 participantCount_one = "{{count}} participant will sign in order"
 participantCount_other = "{{count}} participants will sign in order"
 participants = "Rannpháirtithe"
@@ -4257,7 +4257,7 @@ title = "Sínithe Seicheamhach"
 dismiss = "Dún an meirge"
 message = "Cruthaigh cuntas saor in aisce chun do chuid oibre a shábháil, rochtain a fháil ar níos mó gnéithe, agus tacú leis an tionscadal."
 signUp = "Cláraigh saor in aisce"
-title = "Tá tú ag úsáid Stirling PDF mar aoi!"
+title = "Tá tú ag úsáid RyanPDF mar aoi!"
 
 [home.addAttachments]
 desc = "Cuir comhaid leabaithe (iatáin) le PDF nó bain iad"
@@ -4416,7 +4416,7 @@ tags = "cumaisc,ceangail,aontaigh"
 title = "Cumaisc"
 
 [home.mobile]
-brandAlt = "Lógó Stirling PDF"
+brandAlt = "Lógó RyanPDF"
 openFiles = "Oscail comhaid"
 swipeHint = "Svaidhpeáil ar chlé nó ar dheis chun radhairc a athrú"
 tools = "Uirlisí"
@@ -4641,7 +4641,7 @@ passwordRequired = "Tá focal faire riachtanach"
 signIn = "Sínigh isteach"
 validating = "Cuireadh á bhailíochtú..."
 validationError = "Theip ar bhailíochtú an naisc chuireadh"
-welcome = "Fáilte go Stirling PDF"
+welcome = "Fáilte go RyanPDF"
 welcomeSubtitle = "Críochnaigh socrú do chuntais chun tosú"
 welcomeTitle = "Tugadh cuireadh duit!"
 
@@ -4669,7 +4669,7 @@ terms = "Téarmaí agus Coinníollacha"
 title = "Ceadúnais 3ú Páirtí"
 
 [localMode]
-toolUnavailable = "Teastaíonn cuntas ón uirlis seo. Sínigh isteach le Stirling Cloud nó ceangail le freastalaí féinóstáilte chun é a úsáid."
+toolUnavailable = "Teastaíonn cuntas ón uirlis seo. Sínigh isteach le RyanPDF Cloud nó ceangail le freastalaí féinóstáilte chun é a úsáid."
 
 [localMode.toolPicker]
 message = "Sínigh isteach chun na huirlisí go léir a dhíghlasáil."
@@ -4726,7 +4726,7 @@ subtitle = "Le breis agus dosaen uirlis chun cabhrú leat PDFanna a dhubhú, a s
 title = "Cuir PDFanna in eagar chun an t-eolas is mian leat a thaispeáint nó a dhaingniú"
 
 [login.slides.overview]
-alt = "Forbhreathnú Stirling PDF"
+alt = "Forbhreathnú RyanPDF"
 subtitle = "Sraith néal-bhunaithe le príobháideachas ar dtús do PDFanna a ligeann duit tiontú, síniú, dubhú agus bainistiú a dhéanamh ar cháipéisí, móide 50+ uirlis chumhachtach eile."
 title = "Do shiopa aon-stad do gach riachtanas PDF."
 
@@ -4844,7 +4844,7 @@ message = "Níor éirigh leis an bhfíordheimhniú. Is féidir leat an fhuinneog
 title = "Theip ar an bhfíordheimhniú"
 
 [oauth.success]
-message = "Is féidir leat an fhuinneog seo a dhúnadh agus filleadh ar Stirling PDF."
+message = "Is féidir leat an fhuinneog seo a dhúnadh agus filleadh ar RyanPDF."
 title = "Fíordheimhniú Rathúil"
 
 [oauthConsent]
@@ -4857,17 +4857,17 @@ loadFailed = "This authorisation request is invalid or has expired. Close this t
 loading = "Loading authorisation request..."
 missingId = "Missing authorisation request. Start the connection from your app and try again."
 redirecting = "Returning you to the app..."
-requesting = "{{app}} wants to access your Stirling PDF account"
+requesting = "{{app}} wants to access your RyanPDF account"
 scopesIntro = "This will allow {{app}} to:"
 signedInAs = "Signed in as {{name}}"
 signInButton = "Sign in to continue"
-signInPrompt = "Sign in to your Stirling PDF account to continue connecting the app."
+signInPrompt = "Sign in to your RyanPDF account to continue connecting the app."
 title = "Authorise access"
 unknownApp = "A third-party application"
 
 [oauthConsent.access]
 actAsYou = "Act as you - everything {{app}} does runs under your account and counts towards your usage"
-tools = "Use your Stirling PDF tools on your behalf - convert, edit, sign, secure and process your documents"
+tools = "Use your RyanPDF tools on your behalf - convert, edit, sign, secure and process your documents"
 
 [oauthConsent.scope]
 email = "See your email address"
@@ -4989,7 +4989,7 @@ skipForNow = "Scipeáil faoi láthair"
 skipTheTour = "Scipeáil an turas"
 
 [onboarding.desktopInstall]
-body = "Oibríonn Stirling is fearr mar aip deisce. Is féidir leat é a úsáid as líne, rochtain níos tapúla a fháil ar dhoiciméid, agus eagarthóireacht a dhéanamh go háitiúil ar do ríomhaire."
+body = "Oibríonn RyanPDF is fearr mar aip deisce. Is féidir leat é a úsáid as líne, rochtain níos tapúla a fháil ar dhoiciméid, agus eagarthóireacht a dhéanamh go háitiúil ar do ríomhaire."
 selectOs = "Roghnaigh córas oibriúcháin"
 title = "Íoslódáil"
 titleWithOs = "Íoslódáil do {{osLabel}}"
@@ -4999,8 +4999,8 @@ authenticationCode = "Cód fíordheimhnithe"
 qrCodeLoading = "Cód QR á ghiniúint…"
 
 [onboarding.planOverview]
-adminBodyLoginDisabled = "Nuair a chumasaíonn tú mód logála isteach, is féidir leat úsáideoirí a bhainistiú, socruithe a chumrú, agus sláinte an fhreastalaí a mheas. Faigheann an chéad <strong>{{freeTierLimit}}</strong> duine ar do fhreastalaí Stirling saor in aisce."
-adminBodyLoginEnabled = "Mar riarthóir, is féidir leat úsáideoirí a bhainistiú, socruithe a chumrú, agus sláinte an fhreastalaí a mheas. Faigheann an chéad <strong>{{freeTierLimit}}</strong> duine ar do fhreastalaí Stirling saor in aisce."
+adminBodyLoginDisabled = "Nuair a chumasaíonn tú mód logála isteach, is féidir leat úsáideoirí a bhainistiú, socruithe a chumrú, agus sláinte an fhreastalaí a mheas. Faigheann an chéad <strong>{{freeTierLimit}}</strong> duine ar do fhreastalaí RyanPDF saor in aisce."
+adminBodyLoginEnabled = "Mar riarthóir, is féidir leat úsáideoirí a bhainistiú, socruithe a chumrú, agus sláinte an fhreastalaí a mheas. Faigheann an chéad <strong>{{freeTierLimit}}</strong> duine ar do fhreastalaí RyanPDF saor in aisce."
 adminTitle = "Forbhreathnú Riarthóra"
 userBody = "Tabhair cuireadh do chomhoibrithe, sann róil, agus coinnigh do dhoiciméid eagraithe in aon spás oibre slán amháin. Cumasaigh mód logála isteach aon uair is mian leat dul thar úsáid aonair."
 userTitle = "Forbhreathnú Plean"
@@ -5008,7 +5008,7 @@ userTitle = "Forbhreathnú Plean"
 [onboarding.saas.freeEditor]
 freeLine = "The editor is now <free>completely free</free>."
 premium = "We've added loads of new features, including <strong>Policies</strong> and <strong>Agent Chat</strong>."
-title = "Welcome to Stirling"
+title = "Welcome to RyanPDF"
 
 [onboarding.saas.team]
 addButton = "Add"
@@ -5028,20 +5028,20 @@ rolePlaceholder = "Deimhnigh do ról"
 roleUser = "Úsáideoir"
 
 [onboarding.serverLicense]
-freeBody = "Ceadaíonn ár gceadúnú <strong>Open-Core</strong> suas le <strong>{{freeTierLimit}}</strong> úsáideoirí saor in aisce in aghaidh an fhreastalaí. Chun scálú gan bhriseadh, molaimid an plean Stirling Server - <strong>suíocháin neamhtheoranta</strong> agus <strong>tacaíocht SSO</strong> ar $99/server/mo."
+freeBody = "Ceadaíonn ár gceadúnú <strong>Open-Core</strong> suas le <strong>{{freeTierLimit}}</strong> úsáideoirí saor in aisce in aghaidh an fhreastalaí. Chun scálú gan bhriseadh, molaimid an plean RyanPDF Server - <strong>suíocháin neamhtheoranta</strong> agus <strong>tacaíocht SSO</strong> ar $99/server/mo."
 freeTitle = "Ceadúnas Freastalaí"
-overLimitBody = "Ceadaíonn ár gceadúnú suas le <strong>{{freeTierLimit}}</strong> úsáideoir in aisce in aghaidh freastalaí. Tá <strong>{{overLimitUserCopy}}</strong> úsáideoir Stirling agat. Chun leanúint gan bhriseadh, uasghrádaigh go plean Freastalaí Stirling - <strong>suíocháin neamhtheoranta</strong>, eagarthóireacht téacs PDF, agus lánrialú riaracháin ar $99/freastalaí/mí."
+overLimitBody = "Ceadaíonn ár gceadúnú suas le <strong>{{freeTierLimit}}</strong> úsáideoir in aisce in aghaidh freastalaí. Tá <strong>{{overLimitUserCopy}}</strong> úsáideoir RyanPDF agat. Chun leanúint gan bhriseadh, uasghrádaigh go plean Freastalaí RyanPDF - <strong>suíocháin neamhtheoranta</strong>, eagarthóireacht téacs PDF, agus lánrialú riaracháin ar $99/freastalaí/mí."
 overLimitTitle = "Ceadúnas Freastalaí de dhíth"
 seePlans = "Féach ar Phleananna →"
 upgrade = "Uasghrádaigh anois →"
 
 [onboarding.tourOverview]
-body = "Tagann Stirling PDF V2 le mórán uirlisí agus leagan amach athnuaite. Tabhair cuairt ghearr chun a fheiceáil cad a d'athraigh agus cá háit le fáil na gnéithe atá uait."
+body = "Tagann RyanPDF V2 le mórán uirlisí agus leagan amach athnuaite. Tabhair cuairt ghearr chun a fheiceáil cad a d'athraigh agus cá háit le fáil na gnéithe atá uait."
 title = "Forbhreathnú ar an Turas"
 
 [onboarding.welcomeSlide]
-body = "Tá Stirling PDF réidh anois do fhoirne de gach méid. Cuimsíonn an nuashonrú seo leagan amach nua, cumais riaracháin chumhachtacha nua, agus ár ngné is mó a iarradh - <strong>Cuir Téacs in Eagar</strong>."
-title = "Fáilte go Stirling"
+body = "Tá RyanPDF réidh anois do fhoirne de gach méid. Cuimsíonn an nuashonrú seo leagan amach nua, cumais riaracháin chumhachtacha nua, agus ár ngné is mó a iarradh - <strong>Cuir Téacs in Eagar</strong>."
+title = "Fáilte go RyanPDF"
 
 [onboarding.whatsNew]
 activeFilesView = "Bain úsáid as Comhaid Ghníomhacha chun gach rud atá oscailte agat a fheiceáil agus chun a roghnú cad atá le hoibriú air."
@@ -5347,7 +5347,7 @@ benefit1Body = "chain tools, schedule runs, batch process"
 benefit1Title = "Automation pipelines"
 benefit2Body = "summarise, classify, redact, AI-OCR"
 benefit2Title = "AI tools"
-benefit3Body = "call any Stirling endpoint programmatically"
+benefit3Body = "call any RyanPDF endpoint programmatically"
 benefit3Title = "API access"
 button = "Turn on Processor →"
 reassurance = "No minimum · Set a $0 cap to test · Cancel anytime"
@@ -5406,7 +5406,7 @@ leader = "Team owner"
 member = "Member"
 
 [payg.signupRequired]
-body = "Stirling PDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using Stirling as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
+body = "RyanPDF gives every signed-up account 500 free operations, enough to keep most workflows humming without paying a cent. You're currently using RyanPDF as a guest, which doesn't include billable tools like AI, automations, or hosted processing."
 cancel = "Not now"
 cta = "Sign up free"
 subtext = "Creating an account is free and takes a few seconds. No credit card required."
@@ -5454,7 +5454,7 @@ usdNote = "Estimated in USD. You can adjust your cap any time after subscribing,
 [payg.upgrade.checkout]
 capValue = "{{symbol}}{{amount}} / month"
 edit = "Edit"
-help = "Stripe handles your card details. Stirling never sees them."
+help = "Stripe handles your card details. RyanPDF never sees them."
 loading = "Loading checkout…"
 noCap = "No cap"
 title = "Add your payment method"
@@ -5462,7 +5462,7 @@ title = "Add your payment method"
 [payg.upgrade.help]
 aiBody = "summarise, classify, redact, AI-OCR"
 aiTitle = "AI tools"
-apiBody = "programmatic access to any Stirling endpoint"
+apiBody = "programmatic access to any RyanPDF endpoint"
 apiTitle = "API calls"
 automationBody = "chained tools or scheduled runs that don't need clicks"
 automationTitle = "Automation pipelines"
@@ -5893,7 +5893,7 @@ upToFiveUsers = "Suas le 5 úsáideoir"
 usageTrackingPrometheus = "Rianú úsáide & Prometheus"
 
 [plan.licenseWarning]
-body = "Tá {{total}} úsáideoir agat ach ní thacaíonn an sraith saor in aisce ach le {{limit}} in aghaidh an fhreastalaí. Uasghrádaigh chun Stirling PDF a choinneáil ag rith go réidh."
+body = "Tá {{total}} úsáideoir agat ach ní thacaíonn an sraith saor in aisce ach le {{limit}} in aghaidh an fhreastalaí. Uasghrádaigh chun RyanPDF a choinneáil ag rith go réidh."
 cta = "Féach ar phleananna"
 overLimit = "níos mó ná {{limit}}"
 title = "Sroichtear teorainn féin-óstáilte saor in aisce"
@@ -6192,25 +6192,25 @@ comingSoon = "Ag teacht go luath"
 [portal.accountLink.card]
 billingNote = "Billeálann próiseáil gan freastal ar sparán d’eagraíochta."
 eyebrow = "Nasc cuntais"
-linkButton = "Nasc do chuntas Stirling"
+linkButton = "Nasc do chuntas RyanPDF"
 linked = "Nasctha"
 linkedAs = "Nasctha mar {{name}}."
 linkedGeneric = "Tá an t-áis seo nasctha."
 notLinked = "Gan nascadh"
-title = "Nasc an eagraíocht seo lena cuntas Stirling"
+title = "Nasc an eagraíocht seo lena cuntas RyanPDF"
 unlink = "Dínasc"
 
 [portal.accountLink.card.error]
 title = "Níorbh fhéidir nascadh"
 
 [portal.accountLink.card.loginNotConfigured]
-after = "chun nascadh cuntais leis an gcuntas Stirling óstáilte a chumasú. In dev is féidir leat síniú isteach a insamhladh ón dialóg naisc."
+after = "chun nascadh cuntais leis an gcuntas RyanPDF óstáilte a chumasú. In dev is féidir leat síniú isteach a insamhladh ón dialóg naisc."
 before = "Socraigh"
 title = "Níl logáil isteach SaaS cumraithe"
 
 [portal.accountLink.gate]
 action = "Nasc cuntas"
-description = "Nasc cuntas Stirling na heagraíochta seo chun gnéithe inbhilleáilte a úsáid."
+description = "Nasc cuntas RyanPDF na heagraíochta seo chun gnéithe inbhilleáilte a úsáid."
 title = "Nasc chun díghlasáil"
 titleFeature = "Nasc chun {{feature}} a dhíghlasáil"
 
@@ -6242,13 +6242,13 @@ never = "riamh"
 
 [portal.accountLink.modal]
 linkSubtitle = "Sínigh isteach sa chuntas ar cheart don fhreastalaí seo billeáil ina aghaidh."
-linkTitle = "Nasc do chuntas Stirling"
-reauthSubtitle = "Chuaigh do sheisiún in éag — sínigh isteach arís i do chuntas Stirling. Fanann d’áis nasctha."
+linkTitle = "Nasc do chuntas RyanPDF"
+reauthSubtitle = "Chuaigh do sheisiún in éag — sínigh isteach arís i do chuntas RyanPDF. Fanann d’áis nasctha."
 reauthTitle = "Sínigh isteach arís"
 simulateSignIn = "Insamhail síniú isteach (dev)"
 
 [portal.accountLink.modal.loginNotConfigured]
-after = "chun nascadh in-app leis an gcuntas Stirling óstáilte a chumasú."
+after = "chun nascadh in-app leis an gcuntas RyanPDF óstáilte a chumasú."
 and = "agus"
 before = "Socraigh"
 title = "Níl logáil isteach SaaS cumraithe"
@@ -6257,7 +6257,7 @@ title = "Níl logáil isteach SaaS cumraithe"
 instancesSub = "Gach áis féin-óstáilte atá cláraithe leis an eagraíocht seo. Cúlghair dintiúr chun a rochtain gan freastal a ghearradh láithreach."
 instancesTitle = "Áiseanna nasctha"
 revokeError = "Níorbh fhéidir an áis a chúlghairm"
-sub = "Nasc an eagraíocht féin-óstáilte seo lena cuntas Stirling ionas go mbilleálfaidh próiseáil gan freastal ar sparán d’eagraíochta."
+sub = "Nasc an eagraíocht féin-óstáilte seo lena cuntas RyanPDF ionas go mbilleálfaidh próiseáil gan freastal ar sparán d’eagraíochta."
 
 [portal.accountLink.panel.loadError]
 forbidden = "Ní féidir ach le húinéir na foirne áiseanna nasctha na heagraíochta a fheiceáil."
@@ -6354,7 +6354,7 @@ close = "Dún cúntóir"
 error = "Níorbh fhéidir an cúntóir a bhaint amach."
 errorWithDetail = "Níorbh fhéidir an cúntóir a bhaint amach: {{detail}}"
 inputAriaLabel = "Cuir ceist ar an gcúntóir"
-inputPlaceholder = "Fiafraigh faoi Stirling…"
+inputPlaceholder = "Fiafraigh faoi RyanPDF…"
 open = "Oscail cúntóir"
 send = "Seol"
 title = "Cúntóir"
@@ -6392,7 +6392,7 @@ title = "Níl Stripe cumraithe"
 cta = "Tóg do luachan Enterprise"
 description = "Lascainí toirte tiomanta, imscaradh air-gapped, MSA saincheaptha agus athbhreithnithe slándála, agus comhpháirtíochtaí dáileoirí 3rd-party."
 eyebrow = "Lascaine toirte · 1M+ PDFs"
-title = "Stirling Enterprise"
+title = "RyanPDF Enterprise"
 
 [portal.billing.freeEditors]
 activeThisMonth = "Gníomhach an mhí seo"
@@ -6439,9 +6439,9 @@ viewAriaLabel = "Amharc ar shonrasc {{number}} in Stripe"
 viewLink = "Amharc ↗"
 
 [portal.billing.linkPrompt]
-cta = "Nasc cuntas Stirling"
+cta = "Nasc cuntas RyanPDF"
 description = "Tá eagarthóireacht PDF de láimh — amharc, síniú, cumasc, scoilt, comhartha uisce, comhbhrú, tiontú, OCR de láimh — saor in aisce i gcónaí, bíodh sé nasctha nó ná bíodh. Nasc chun 500 PDFs próiseála méadraithe saor in aisce a éileamh (uathoibriú, AI, agus an API); nuair a bheidh níos mó uait, cuir an plean Processor ar siúl agus íoc as an méid a úsáideann tú amháin."
-title = "Nasc do chuntas Stirling"
+title = "Nasc do chuntas RyanPDF"
 
 [portal.billing.paymentMethod]
 billedMonthly = "Billeáilte go míosúil"
@@ -6792,7 +6792,7 @@ time = "Am"
 user = "Úsáideoir"
 
 [portal.editorAdmin]
-subtitle = "Imscar Stirling PDF Editor, péireáil insteansanna féin-óstáilte le d’eagraíocht, agus oibrigh an flít atá ag rith — spriocanna, sláinte, dintiúir, agus gníomhachtú as líne in aon áit amháin."
+subtitle = "Imscar RyanPDF Editor, péireáil insteansanna féin-óstáilte le d’eagraíocht, agus oibrigh an flít atá ag rith — spriocanna, sláinte, dintiúir, agus gníomhachtú as líne in aon áit amháin."
 title = "Imscaradh an Eagarthóra"
 
 [portal.editorAdmin.health.columns]
@@ -6878,7 +6878,7 @@ title = "Chuaigh rud éigin mícheart ar an leathanach seo"
 [portal.home.editor]
 activeUsers = "{{n}} gníomhach"
 invite = "Tabhair cuireadh do chomhghleacaithe"
-name = "Stirling PDF Editor"
+name = "RyanPDF Editor"
 open = "Oscail sa bhrabhsálaí"
 updated = "nuashonraithe {{time}}"
 
@@ -6938,7 +6938,7 @@ title = "Eisigh eochair API"
 [portal.infrastructure]
 manageEditorDeployment = "Bainistigh imscaradh an Eagarthóra"
 sectionsAriaLabel = "Rannáin bhonneagair"
-subtitle = "Imscarthaí, dintiúir, seasamh slándála, stóráil, agus an rian iniúchta do do spás oibre Stirling."
+subtitle = "Imscarthaí, dintiúir, seasamh slándála, stóráil, agus an rian iniúchta do do spás oibre RyanPDF."
 title = "Bonneagar"
 
 [portal.infrastructure.apiKeys]
@@ -6958,7 +6958,7 @@ usageMonth = "Úsáid an mhí seo"
 usageToday = "Úsáid inniu"
 
 [portal.infrastructure.apiKeys.empty]
-description = "Cruthaigh eochair scóipithe chun tosú ag glaoch ar an Stirling API."
+description = "Cruthaigh eochair scóipithe chun tosú ag glaoch ar an RyanPDF API."
 title = "Níl aon eochracha API fós"
 
 [portal.infrastructure.audit]
@@ -7027,7 +7027,7 @@ keyNameLabel = "Ainm eochrach"
 keyNamePlaceholder = "m.sh. Táirgeadh · ionghabháil"
 permissionsLabel = "Ceadanna"
 secretKeyCaption = "Eochair rúnda"
-secretWarning = "Stóráil é seo i mbainisteoir rúin. Ní stórálann Stirling ach hash riamh — níl aon bhealach ann é a aisghabháil níos déanaí."
+secretWarning = "Stóráil é seo i mbainisteoir rúin. Ní stórálann RyanPDF ach hash riamh — níl aon bhealach ann é a aisghabháil níos déanaí."
 subtitle = "Scóipigh an eochair chuig an íosmhéid a theastaíonn uaithi. Is féidir leat í a rothlú nó a chúlghairm am ar bith."
 subtitleCreated = "Cóipeáil an rún seo anois — ní thaispeánfar arís é."
 title = "Cruthaigh eochair API"
@@ -7062,7 +7062,7 @@ version = "Leagan"
 
 [portal.infrastructure.deployments.regions]
 heading = "Réigiúin"
-subheading = "Sláinte bheo do gach réigiún Stirling imscartha — foighne, ualach, agus leagan rollout."
+subheading = "Sláinte bheo do gach réigiún RyanPDF imscartha — foighne, ualach, agus leagan rollout."
 
 [portal.infrastructure.deployments.regions.empty]
 description = "Taispeánfar réigiúin imscartha anseo nuair a bheidh do spás oibre soláthraithe."
@@ -7119,16 +7119,16 @@ operation = "Oibríocht"
 routedTo = "Ródaithe chuig"
 
 [portal.infrastructure.security.access.byok]
-description = "Soláthair eochair ó do KMS féin. Criptíonn Stirling léi ach is féidir leis léamh fós."
+description = "Soláthair eochair ó do KMS féin. Criptíonn RyanPDF léi ach is féidir leis léamh fós."
 label = "Tabhair leat d’eochair féin (BYOK)"
 
 [portal.infrastructure.security.access.hyok]
-description = "Ní fhágann eochracha do KMS riamh. Ní choinníonn Stirling ach ciphertext."
+description = "Ní fhágann eochracha do KMS riamh. Ní choinníonn RyanPDF ach ciphertext."
 label = "Coinnigh d’eochair féin (HYOK)"
 
 [portal.infrastructure.security.access.stirling]
-description = "Bainistíonn Stirling eochracha criptithe. Is simplí é — gan aon ops eochrach ar do thaobh."
-label = "Eochracha á gcoinneáil ag Stirling"
+description = "Bainistíonn RyanPDF eochracha criptithe. Is simplí é — gan aon ops eochrach ar do thaobh."
+label = "Eochracha á gcoinneáil ag RyanPDF"
 
 [portal.infrastructure.security.accessPolicy]
 heading = "Beartas rochtana doiciméad"
@@ -7142,15 +7142,15 @@ viewReport = "Féach ar thuairisc →"
 
 [portal.infrastructure.security.compliance]
 heading = "Comhlíonadh"
-subheading = "Fianuithe agus deimhnithe a chlúdaíonn ardán Stirling."
+subheading = "Fianuithe agus deimhnithe a chlúdaíonn ardán RyanPDF."
 
 [portal.infrastructure.security.empty]
 description = "Taispeánfar cumraíocht slándála do spáis oibre anseo."
 title = "Níl seasamh slándála ar fáil"
 
 [portal.infrastructure.security.hyokBanner]
-description = "Le HYOK, ní fhágann eochracha criptithe do KMS riamh. Ní stórálann ná ní phróiseálann Stirling ach ciphertext ar féidir leat a chúlghairm am ar bith."
-title = "Ní féidir le Stirling do dhoiciméid a dhíchriptiú"
+description = "Le HYOK, ní fhágann eochracha criptithe do KMS riamh. Ní stórálann ná ní phróiseálann RyanPDF ach ciphertext ar féidir leat a chúlghairm am ar bith."
+title = "Ní féidir le RyanPDF do dhoiciméid a dhíchriptiú"
 
 [portal.infrastructure.security.ipAllowlist]
 empty = "Níl aon raonta IP cumraithe — ceadaítear gach IP."
@@ -7179,7 +7179,7 @@ subheading = "Coimeád na n-eochracha a chriptíonn doiciméid atá ar fos — c
 
 [portal.infrastructure.security.managedBanner]
 description = "Tá coimeád tabhair-leat-d’eochair-féin (BYOK) agus coimeád coinnigh-d’eochair-féin (HYOK) ar fáil ar Enterprise. Uasghrádaigh chun eochracha a sholáthar ó do KMS féin."
-title = "Tá eochracha á mbainistiú ag Stirling ar do phlean"
+title = "Tá eochracha á mbainistiú ag RyanPDF ar do phlean"
 
 [portal.infrastructure.security.residency.apac]
 description = "ap-southeast-1"
@@ -7660,7 +7660,7 @@ upload = "Uaslódáil"
 
 [portal.procurement.agreement]
 agreeCta = "Aontaigh & liostáil"
-confirm = "Tá Comhaontú Stirling Enterprise léite agam agus aontaím leis."
+confirm = "Tá Comhaontú RyanPDF Enterprise léite agam agus aontaím leis."
 eyebrow = "Comhaontú"
 intro = "Clúdaíonn comhaontú comhcheangailte amháin do mhargadh: Máistir-Chomhaontú Seirbhíse, Foirm Ordaithe, EULA, agus Comhaontú Próiseála Sonraí. Déan athbhreithniú air, ansin aontaigh chun glacadh leis an luachan mar shíntiús tiomanta."
 title = "Athbhreithnigh do chomhaontú enterprise"
@@ -7675,7 +7675,7 @@ country = "Tír"
 countryEuro = "Limistéar an euro (EUR €)"
 countryUK = "An Ríocht Aontaithe (GBP £)"
 countryUS = "Stáit Aontaithe Mheiriceá (USD $)"
-eula = "Tá Stirling Enterprise EULA léite agam agus aontaím leis. Rialaíonn sé an comhaontú a ghintear ón luachan seo."
+eula = "Tá RyanPDF Enterprise EULA léite agam agus aontaím leis. Rialaíonn sé an comhaontú a ghintear ón luachan seo."
 generate = "Gin luachan"
 included = "San áireamh"
 indemnification = "Slánaíocht IP"
@@ -7758,7 +7758,7 @@ daysLeft_one = "{{count}} lá fágtha"
 daysLeft_other = "{{count}} lá fágtha"
 engineerLabel = "D’innealtóir réiteach"
 eyebrow = "Do chur i bhfeidhm"
-live = "Tá tú beo ar Stirling Enterprise"
+live = "Tá tú beo ar RyanPDF Enterprise"
 nextStep = "An chéad chéim eile: {{action}}"
 subtitle = "Tá d’innealtóir réiteach ar gach céim. Gníomh amháin eile ag an am; tá an seicliosta iomlán thíos."
 title = "Ó thriail go beo, cosán treoraithe amháin"
@@ -7785,7 +7785,7 @@ gatingAction = "Glac le do luachan"
 label = "Luachan"
 
 [portal.procurement.journeySteps.trial]
-blurb = "Déan Stirling a mheas i gcoinne do cháipéisí agus sreafaí oibre."
+blurb = "Déan RyanPDF a mheas i gcoinne do cháipéisí agus sreafaí oibre."
 gatingAction = "Tóg do luachan"
 label = "Triail"
 
@@ -7799,14 +7799,14 @@ label = "D’eochair cheadúnais"
 
 [portal.procurement.link]
 cta = "Nasc cuntas"
-description = "Ritheann soláthar ar do chuntas Stirling nasctha: sin mar a sholáthraímid an triail, a phraghsálaimid do luachan, agus a thosaímid billeáil. Nasc cuntas chun tosú."
+description = "Ritheann soláthar ar do chuntas RyanPDF nasctha: sin mar a sholáthraímid an triail, a phraghsálaimid do luachan, agus a thosaímid billeáil. Nasc cuntas chun tosú."
 eyebrow = "Enterprise"
 title = "Nasc do chuntas chun tosú"
 
 [portal.procurement.live]
 description = "Tá do shíntiús gníomhach agus tá do cheadúnas eisithe. Tá d’fhoireann soláthraithe agus tá billeáil tosaithe."
 eyebrow = "Beo"
-title = "Tá tú beo ar Stirling Enterprise"
+title = "Tá tú beo ar RyanPDF Enterprise"
 
 [portal.procurement.locked]
 description = "Beidh eochracha trialach, luachana toirte tiomanta, an comhaontú aon-sínithe, íocaíocht, agus do mhórleabhar cáipéisí ar fad anseo nuair a thosóidh tú measúnú enterprise."
@@ -7841,7 +7841,7 @@ requestBodyFree = "Ginimid é seo ar éileamh. Deimhnigh agus seolfaidh d’inne
 requestBodyPaid = "Is breiseán íoctha é seo. Deimhnigh agus déanfaidh d’innealtóir réiteach a raon a shainiú agus an páipéarachas a sheoladh."
 requestCta = "Iarr"
 requestTitle = "Iarr an cháipéis seo"
-signBody = "Osclaíonn sé Comhaontú Stirling Enterprise le haghaidh r-shínithe: clúdaíonn síniú amháin an MSA, foirm ordaithe, EULA agus DPA. Frithshínímid go huathoibríoch agus bogann tú ar aghaidh go híocaíocht."
+signBody = "Osclaíonn sé Comhaontú RyanPDF Enterprise le haghaidh r-shínithe: clúdaíonn síniú amháin an MSA, foirm ordaithe, EULA agus DPA. Frithshínímid go huathoibríoch agus bogann tú ar aghaidh go híocaíocht."
 signCta = "Oscail le síniú"
 signTitle = "Athbhreithnigh agus sínigh do chomhaontú"
 uploadBody = "Seol do PO chugainn agus eiseoimid sonrasc ina choinne ar do théarmaí. Tarraing isteach an PDF nó roghnaigh comhad thíos."
@@ -7893,7 +7893,7 @@ title = "Níl aon rud anseo fós"
 
 [portal.search]
 ariaLabel = "Cuardaigh"
-placeholder = "Cuardaigh Stirling — endpoints, píblínte, cáipéisí…"
+placeholder = "Cuardaigh RyanPDF — endpoints, píblínte, cáipéisí…"
 
 [portal.search.empty]
 noActionsDescription = "Beidh gníomhartha tapa le feiceáil anseo nuair a bheidh siad ar fáil."
@@ -7921,9 +7921,9 @@ switchToLight = "Athraigh go téama geal"
 [portal.shell.sidebar]
 appEditor = "Eagarthóir"
 appProcessor = "Próiseálaí"
-brandSuffix = "Stirling Processor"
+brandSuffix = "RyanPDF Processor"
 docsCount = "{{docs}} cháipéis"
-linkAccount = "Nasc cuntas Stirling"
+linkAccount = "Nasc cuntas RyanPDF"
 planEditor = "Plean Eagarthóra"
 planEnterprise = "Plean Enterprise"
 planProcessor = "Plean Próiseálaí"
@@ -7931,7 +7931,7 @@ primaryNav = "Príomh-nascleanúint"
 switchApp = "Athraigh aip"
 
 [portal.sources]
-subtitle = "Naisc ionchuir in-athúsáidte a chuireann cáipéisí isteach i Stirling. Cumraigh ceangal uair amháin, ansin tagair dó ó aon líon beartas. Cliceáil ró dá chumraíocht agus na beartais a úsáideann é."
+subtitle = "Naisc ionchuir in-athúsáidte a chuireann cáipéisí isteach i RyanPDF. Cumraigh ceangal uair amháin, ansin tagair dó ó aon líon beartas. Cliceáil ró dá chumraíocht agus na beartais a úsáideann é."
 title = "Foinsí"
 
 [portal.sources.actions]
@@ -7986,7 +7986,7 @@ description = "Faire ar chomhadlann ar an bhfreastalaí le haghaidh cáipéisí 
 label = "Fillteán"
 
 [portal.sources.types.folder.fields.directory]
-helperText = "Cosán absalóideach a bhféachann Stirling air le haghaidh comhad le próiseáil."
+helperText = "Cosán absalóideach a bhféachann RyanPDF air le haghaidh comhad le próiseáil."
 label = "Cosán comhadlainne"
 placeholder = "/data/incoming"
 
@@ -8034,7 +8034,7 @@ review = "Athbhreithnigh & ceangail"
 
 [portal.usage]
 managePayment = "Bainistigh Íocaíocht"
-subtitle = "Tomhaltas, sonraisc, agus bainistíocht pleananna do gach PDF a bhilligh Stirling, in aon chonsól amháin."
+subtitle = "Tomhaltas, sonraisc, agus bainistíocht pleananna do gach PDF a bhilligh RyanPDF, in aon chonsól amháin."
 title = "Úsáid & billeáil"
 
 [portal.usage.error]
@@ -8044,7 +8044,7 @@ walletUnavailable = "Níl sparán ar fáil: {{status}} {{statusText}}"
 
 [portal.usage.sessionExpired]
 action = "Sínigh isteach arís"
-body = "Tá seisiún do chuntais Stirling imithe in éag. Sínigh isteach arís chun billeáil a fheiceáil — fanann d’instance nasctha."
+body = "Tá seisiún do chuntais RyanPDF imithe in éag. Sínigh isteach arís chun billeáil a fheiceáil — fanann d’instance nasctha."
 title = "Seisiún imithe in éag"
 
 [portal.users]
@@ -8091,7 +8091,7 @@ summary = "Is leis/léi foireann — bainistíonn sé/sí acmhainní a ball agus
 3 = "Gach rud is féidir le Ball a dhéanamh"
 
 [portal.welcome]
-ariaLabel = "Fáilte go Stirling PDF"
+ariaLabel = "Fáilte go RyanPDF"
 badge = "Open-source"
 installEditor = "Suiteáil an tEagarthóir"
 inviteTeammates = "Tabhair cuireadh do chomhpháirtithe foirne"
@@ -8099,7 +8099,7 @@ openInBrowser = "Oscail sa bhrabhsálaí"
 perks = "Saor go deo · Self-hostable"
 subtitle = "Tá an PDF Editor is sláine ar domhan saor in aisce d’fhoirne de gach méid. Áirítear 60+ oibríocht PDF agus SSO."
 title = "Fáilte go"
-titleAccent = "Stirling PDF"
+titleAccent = "RyanPDF"
 
 [printFile]
 title = "Priontáil Comhad"
@@ -8790,8 +8790,8 @@ hideTools = "Folaigh uirlisí nach bhfuil ar fáil ▴"
 messageNoFallback = "Ní bheidh uirlisí ar fáil go dtí go mbeidh do fhreastalaí ar líne arís."
 messageWithFallback = "Teastaíonn ceangal le freastalaí ó chuid d’uirlisí."
 showTools = "Féach uirlisí nach bhfuil ar fáil ▾"
-title = "Ní féidir do fhreastalaí Stirling-PDF a bhaint amach"
-toolNotAvailableLocally = "Tá do fhreastalaí Stirling-PDF as líne agus níl \"{{endpoint}}\" ar fáil ar an gcúlcheann áitiúil."
+title = "Ní féidir do fhreastalaí RyanPDF a bhaint amach"
+toolNotAvailableLocally = "Tá do fhreastalaí RyanPDF as líne agus níl \"{{endpoint}}\" ar fáil ar an gcúlcheann áitiúil."
 
 [session]
 expired = "Tá do sheisiún imithe in éag. Athnuaigh an leathanach agus bain triail eile as."
@@ -8851,7 +8851,7 @@ user = "Logáilte isteach mar"
 
 [settings.connection.mode]
 local = "Áitiúil Amháin"
-saas = "Stirling Cloud"
+saas = "RyanPDF Cloud"
 selfhosted = "Féin-óstáilte"
 
 [settings.developer]
@@ -8866,7 +8866,7 @@ autoUnzipFileLimitDescription = "Uasmhéid comhad le baint as ZIP"
 autoUnzipFileLimitTooltip = "Dífhuascail ach amháin má tá an oiread seo comhad sa ZIP nó níos lú. Socraigh níos airde chun ZIPanna níos mó a bhaint."
 autoUnzipTooltip = "Baineann sé comhaid ZIP a fhilleann ó oibríochtaí API go huathoibríoch. Díchumasaigh chun comhaid ZIP a choinneáil slán. Ní théann sé seo i bhfeidhm ar shreafaí oibre uathoibrithe."
 defaultPdfEditor = "Eagarthóir PDF réamhshocraithe"
-defaultPdfEditorActive = "Is é Stirling PDF d’eagarthóir PDF réamhshocraithe"
+defaultPdfEditorActive = "Is é RyanPDF d’eagarthóir PDF réamhshocraithe"
 defaultPdfEditorChecking = "Á sheiceáil..."
 defaultPdfEditorInactive = "Tá feidhmchlár eile socraithe mar réamhshocrú"
 defaultPdfEditorSet = "Réamhshocraithe Cheana"
@@ -8927,7 +8927,7 @@ updateBehavior = "Iompar nuashonruithe"
 updateBehaviorDescription = "Roghnaigh an dtabharfar leid roimh shuiteáil nuashonruithe, an suiteálfar go huathoibríoch iad, nó an scipeálfar seiceálacha nuashonraithe go hiomlán."
 updateBehaviorError = "Níorbh fhéidir iompar an nuashonraithe a athrú"
 updateBehaviorErrorLocked = "Tá an socrú seo faoi ghlas ag do riarthóir."
-updateBehaviorLockedDescription = "Tá do riarthóir tar éis a chumrú conas a láimhseálann Stirling-PDF nuashonruithe ar an meaisín seo. Déan teagmháil leo chun é seo a athrú."
+updateBehaviorLockedDescription = "Tá do riarthóir tar éis a chumrú conas a láimhseálann RyanPDF nuashonruithe ar an meaisín seo. Déan teagmháil leo chun é seo a athrú."
 updateBehaviorSaved = "Sábháladh iompar an nuashonraithe."
 versionMismatch = "Warning: A mismatch has been detected between the client version and the AppConfig version. Using different versions can lead to compatibility issues, errors, and security risks. Please ensure that server and client are using the same version."
 viewDetails = "Féach Sonraí"
@@ -9011,7 +9011,7 @@ usageAnalytics = "Anailísíocht Úsáide"
 [settings.planBilling]
 currentPlan = "Plean Reatha"
 loading = "Eolas billeála á lódáil..."
-notAvailable = "Tá Plean & Billeáil ar fáil ach amháin nuair a bhíonn ceangal le Stirling Cloud (mód SaaS)."
+notAvailable = "Tá Plean & Billeáil ar fáil ach amháin nuair a bhíonn ceangal le RyanPDF Cloud (mód SaaS)."
 title = "Plean & Billeáil"
 
 [settings.planBilling.billing]
@@ -9137,7 +9137,7 @@ emptyUsername = "Cuir isteach d’ainm úsáideora"
 oauthFailed = "Theip ar logáil isteach OAuth. Bain triail eile as."
 
 [setup.saas]
-title = "Sínigh isteach i Stirling"
+title = "Sínigh isteach i RyanPDF"
 
 [setup.selfhosted]
 changeServerLocked = "Tá do eagraíocht tar éis an aip seo a shrianadh le freastalaí ar leith"
@@ -9175,7 +9175,7 @@ step3 = "Atosaigh an freastalaí"
 title = "Níl an Logáil Isteach Cumasaithe"
 
 [setup.server.url]
-description = "Cuir isteach URL iomlán do fhreastalaí Stirling PDF féin-óstáilte"
+description = "Cuir isteach URL iomlán do fhreastalaí RyanPDF féin-óstáilte"
 label = "URL an fhreastalaí"
 
 [sharedSign]
@@ -9411,7 +9411,7 @@ pleaseFillAllFields = "Líon isteach na réimsí go léir, le do thoil"
 signUp = "Cláraigh"
 signUpWith = "Sign up with"
 skip = "Skip"
-subtitle = "Bí le Stirling PDF chun tosú"
+subtitle = "Bí le RyanPDF chun tosú"
 title = "Cruthaigh cuntas"
 unexpectedError = "Earráid gan choinne: {{message}}"
 
@@ -9638,7 +9638,7 @@ download = "Íoslódáil"
 downloaded = "Íosluchtaithe"
 downloadFailed = "Níorbh fhéidir an comhad seo a íoslódáil."
 downloadsCount = "Íoslódálacha: {{count}}"
-emailWarningBody = "Is cosúil gur seoladh ríomhphoist é seo. Mura bhfuil an duine seo ina úsáideoir Stirling PDF cheana, ní bheidh sé in ann rochtain a fháil ar an gcomhad."
+emailWarningBody = "Is cosúil gur seoladh ríomhphoist é seo. Mura bhfuil an duine seo ina úsáideoir RyanPDF cheana, ní bheidh sé in ann rochtain a fháil ar an gcomhad."
 emailWarningConfirm = "Comhroinn mar sin féin"
 emailWarningTitle = "Seoladh ríomhphoist"
 errorTitle = "Theip ar chomhroinnt"
@@ -9669,7 +9669,7 @@ manageTitle = "Bainistigh Comhroinnt"
 noActivity = "Níl aon ghníomhaíocht fós."
 noLinks = "Níl aon naisc chomhroinnte gníomhacha fós."
 noSharedUsers = "Níl aon úsáideoirí le rochtain fós."
-openInApp = "Oscail i Stirling PDF"
+openInApp = "Oscail i RyanPDF"
 ownerLabel = "Úinéir"
 ownerUnknown = "Anaithnid"
 removeLink = "Bain nasc"
@@ -9723,7 +9723,7 @@ updateButton = "Nuashonraigh ar an bhfreastalaí"
 uploadButton = "Uaslódáil chuig an bhfreastalaí"
 
 [survey]
-title = "Stirling-PDF Survey"
+title = "RyanPDF Survey"
 
 [swagger]
 tags = "api,doiciméadú,swagger,críochphointí,forbairt"
@@ -9851,7 +9851,7 @@ favorites = "Ceanáin"
 heading = "Gach uirlis (radharc lánscáileáin)"
 noResults = "Bain triail as do chuardach a choigeartú nó tuairiscí a scoránaigh chun an rud atá uait a aimsiú."
 recommended = "Molta"
-selfHostedOffline = "Teastaíonn do fhreastalaí Stirling-PDF uaidh (faoi láthair as líne):"
+selfHostedOffline = "Teastaíonn do fhreastalaí RyanPDF uaidh (faoi láthair as líne):"
 showDetails = "Taispeáin Sonraí"
 unavailable = "Díchumasaithe ag riarthóir freastalaí:"
 unavailableDependency = "Níl ar fáil - uirlis riachtanach ar iarraidh ar an bhfreastalaí:"
@@ -9860,7 +9860,7 @@ unfavorite = "Bain den Cheanáin"
 [toolPanel.modePrompt]
 chooseFullscreen = "Úsáid mód lánscáileáin"
 chooseSidebar = "Úsáid mód barra taoibh"
-description = "Réamhamharc ar an dá leagan amach agus socraigh conas is mian leat uirlisí Stirling PDF a iniúchadh."
+description = "Réamhamharc ar an dá leagan amach agus socraigh conas is mian leat uirlisí RyanPDF a iniúchadh."
 dismiss = "B'fhéidir níos déanaí"
 fullscreenDescription = "Brabhsáil gach uirlis i gcatalóg a chlúdaíonn an spás oibre go dtí go roghnaíonn tú ceann."
 fullscreenTitle = "Mód lánscáileáin - (oidhreachta)"
@@ -9928,7 +9928,7 @@ loadingDetailedInfo = "Ag lódáil eolas mionsonraithe..."
 migrationGuide = "Treoir Imirce"
 migrationGuides = "Treoracha Imirce"
 migrationGuidesDesc = "Athbhreithnigh na hathruithe tábhachtacha sula nuashonraítear."
-modalSubtitle = "Tá leagan nua de Stirling PDF réidh le suiteáil."
+modalSubtitle = "Tá leagan nua de RyanPDF réidh le suiteáil."
 modalTitle = "Nuashonrú ar Fáil"
 notes = "Nótaí"
 releaseNotes = "Nótaí Eisiúna"
@@ -9952,7 +9952,7 @@ urgent = "Práinneach"
 attentionBody = "Ní mór do d’riarthóir síniú isteach chun tuilleadh eolais a fheiceáil. Déan teagmháil leo láithreach."
 attentionBodyAdmin = "Athbhreithnigh na riachtanais ceadúnais chun an freastalaí seo a choinneáil comhlíontach."
 attentionTitle = "Teastaíonn aird riarthóra ón bhfreastalaí seo"
-message = "Bain an leas is fearr as Stirling PDF le húsáideoirí neamhtheoranta agus gnéithe ardleibhéil"
+message = "Bain an leas is fearr as RyanPDF le húsáideoirí neamhtheoranta agus gnéithe ardleibhéil"
 seeInfo = "Féach eolas"
 title = "Uasghrádaigh go Plean Freastalaí"
 upgradeButton = "Uasghrádaigh Anois"
@@ -10069,7 +10069,7 @@ authWeb = "Pasfhocal"
 create = "Cruthaigh cuntas"
 createSubtitle = "Cruthaigh cuntas self-hosted le pasfhocal nó SSO."
 createTitle = "Cruthaigh cuntas"
-editorDesc = "Cuir PDFs in eagar san Eagarthóir Stirling PDF. Faigheann gach duine é seo."
+editorDesc = "Cuir PDFs in eagar san Eagarthóir RyanPDF. Faigheann gach duine é seo."
 email = "Seoladh ríomhphoist"
 emailError = "Cuir isteach seoladh ríomhphoist bailí"
 emailPlaceholder2 = "name@company.com"
@@ -10084,7 +10084,7 @@ processorDeferred = "Seoladh cuireadh, ach níorbh fhéidir rochtain Processor a
 processorDesc = "An dromchla rialachais, píblínte a rith, gníomhairí, agus an API."
 role = "Ról"
 send2 = "Seol cuireadh"
-subtitle2 = "Gheobhaidh siad ríomhphost chun dul isteach i do spás oibre Stirling."
+subtitle2 = "Gheobhaidh siad ríomhphost chun dul isteach i do spás oibre RyanPDF."
 team = "Foireann"
 title = "Tabhair cuireadh do dhaoine"
 username = "Ainm úsáideora"
@@ -10207,7 +10207,7 @@ downloads = "Íoslódálacha"
 entryLabel = "Achoimre ar Shínithe"
 filesEvaluated_one = "Measadh {{count}} comhad"
 filesEvaluated_other = "Measadh {{count}} comhad"
-footer = "Bailíochtaithe trí Stirling PDF"
+footer = "Bailíochtaithe trí RyanPDF"
 generatedAt = "Ginte"
 noPdf = "Beidh tuarascáil PDF ar fáil tar éis bailíochtaithe rathúla."
 page = "Leathanach"

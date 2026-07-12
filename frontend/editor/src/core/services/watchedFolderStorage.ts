@@ -7,7 +7,7 @@ import { WatchedFolder } from "@app/types/watchedFolders";
 const STORAGE_CHANGE_EVENT = "watched-folder-storage-changed";
 
 class WatchedFolderStorage {
-  private dbName = "stirling-pdf-watched-folders";
+  private dbName = "ryanpdf-pdf-watched-folders";
   private dbVersion = 1;
   private storeName = "watchedFolders";
   private db: IDBDatabase | null = null;

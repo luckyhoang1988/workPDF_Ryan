@@ -1,6 +1,6 @@
 # Windows Code Signing Setup Guide
 
-This guide explains how to set up Windows code signing for Stirling-PDF desktop application builds.
+This guide explains how to set up Windows code signing for RyanPDF desktop application builds.
 
 ## Overview
 

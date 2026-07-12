@@ -34,7 +34,7 @@ public class MobileScannerService {
     public MobileScannerService() throws IOException {
         // Create temp directory for mobile scanner uploads
         this.tempDirectory =
-                Path.of(System.getProperty("java.io.tmpdir"), "stirling-mobile-scanner");
+                Path.of(System.getProperty("java.io.tmpdir"), "ryanpdf-mobile-scanner");
         Files.createDirectories(tempDirectory);
         log.info("Mobile scanner temp directory: {}", tempDirectory);
     }

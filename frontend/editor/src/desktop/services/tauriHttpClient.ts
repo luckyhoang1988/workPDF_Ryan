@@ -77,7 +77,7 @@ class TauriHttpClient {
   public defaults: TauriHttpRequestConfig = {
     baseURL: "",
     headers: {
-      "User-Agent": "StirlingPDF-Desktop/1.0 Tauri",
+      "User-Agent": "RyanPDF-Desktop/1.0 Tauri",
     },
     timeout: 120000,
     responseType: "json",

@@ -46,7 +46,7 @@ export interface ComponentPricing {
 export interface SdkComponent {
   id: string;
   name: string;
-  /** Package suffix — full name is `@stirling/<package>`. */
+  /** Package suffix — full name is `@ryanpdf/<package>`. */
   package: string;
   description: string;
   maturity: ComponentMaturity;

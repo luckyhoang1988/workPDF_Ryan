@@ -41,7 +41,7 @@ export async function printPdfNatively(
 
   const tempPath = await join(
     await tempDir(),
-    `stirling-print-${generateId()}-${sanitizeFileName(fileName)}`,
+    `ryanpdf-print-${generateId()}-${sanitizeFileName(fileName)}`,
   );
 
   await writeFile(tempPath, new Uint8Array(await source.arrayBuffer()));

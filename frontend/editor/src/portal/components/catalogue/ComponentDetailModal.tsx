@@ -60,7 +60,7 @@ export function ComponentDetailModal({
   }));
 
   const maturity = MATURITY_META[component.maturity];
-  const npm = `@stirling/${component.package}`;
+  const npm = `@ryanpdf/${component.package}`;
 
   return (
     <Modal

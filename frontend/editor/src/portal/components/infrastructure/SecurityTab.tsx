@@ -40,10 +40,10 @@ export function SecurityTab() {
 
   const ACCESS_OPTS: RadioOption<AccessPolicy>[] = [
     {
-      value: "stirling",
-      label: t("portal.infrastructure.security.access.stirling.label"),
+      value: "ryanpdf",
+      label: t("portal.infrastructure.security.access.ryanpdf.label"),
       description: t(
-        "portal.infrastructure.security.access.stirling.description",
+        "portal.infrastructure.security.access.ryanpdf.description",
       ),
     },
     {
@@ -108,7 +108,7 @@ export function SecurityTab() {
   const [access, setAccess] = useState<AccessPolicy | null>(null);
   const [residency, setResidency] = useState<DataResidency | null>(null);
 
-  const accessValue = access ?? data?.accessPolicy ?? "stirling";
+  const accessValue = access ?? data?.accessPolicy ?? "ryanpdf";
   const residencyValue = residency ?? data?.dataResidency ?? "us";
 
   if (isLoading) {
@@ -188,7 +188,7 @@ export function SecurityTab() {
                 {KEY_MODE_LABEL[data.keyManagement.mode]}
               </StatusBadge>
             </div>
-            {/* Rotation is a privileged backend action; disabled where Stirling
+            {/* Rotation is a privileged backend action; disabled where RyanPDF
                 holds the keys (managed tiers can't rotate customer keys). */}
             <Button
               variant="secondary"

@@ -1,6 +1,6 @@
 /**
  * Returns a map of fileId → folderId[] for all files currently in any watched folder.
- * Both input files (keyed by their FileId in stirling-pdf-files) and their output
+ * Both input files (keyed by their FileId in ryanpdf-pdf-files) and their output
  * counterparts (displayFileId) are included so folder tags show on both versions.
  */
 

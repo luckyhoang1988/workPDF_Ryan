@@ -24,7 +24,7 @@ const PROVIDER_GLYPH: Record<
   StorageConfig["providers"][number]["kind"],
   string
 > = {
-  stirling: "◆",
+  ryanpdf: "◆",
   s3: "▣",
   azure: "▤",
 };

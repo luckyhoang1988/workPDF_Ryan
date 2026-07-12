@@ -99,7 +99,7 @@ export function useWatchedFolders(): UseWatchedFoldersReturn {
     await folderDirectoryHandleStorage.remove(id).catch(() => {});
     await folderDirectoryHandleStorage.removeInput(id).catch(() => {});
     await watchedFolderStorage.deleteFolder(id);
-    window.dispatchEvent(new CustomEvent("stirling:files-changed"));
+    window.dispatchEvent(new CustomEvent("ryanpdf:files-changed"));
   }, []);
 
   return {

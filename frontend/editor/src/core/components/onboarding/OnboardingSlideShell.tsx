@@ -6,7 +6,7 @@ import { Button, type ButtonAccent } from "@app/ui/Button";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import LocalIcon from "@app/components/shared/LocalIcon";
 import { Z_INDEX_OVER_FULLSCREEN_SURFACE } from "@app/styles/zIndex";
-import stirlingMark from "@app/assets/brand/modern-logo/logo512.png";
+import ryanpdfMark from "@app/assets/brand/modern-logo/logo512.png";
 import styles from "@app/components/onboarding/InitialOnboardingModal/InitialOnboardingModal.module.css";
 
 /** A footer button. `action` is an opaque string handled by the caller. */
@@ -39,7 +39,7 @@ export interface OnboardingSlideShellProps {
 }
 
 /**
- * Hero art for the inset panel. `appIcon` renders the Stirling app mark
+ * Hero art for the inset panel. `appIcon` renders the RyanPDF app mark
  * directly; otherwise the children glyph sits inside a soft white tile.
  */
 export function ShellHero({
@@ -51,7 +51,7 @@ export function ShellHero({
 }) {
   if (appIcon) {
     return (
-      <img src={stirlingMark} alt="Stirling" className={styles.heroAppIcon} />
+      <img src={ryanpdfMark} alt="RyanPDF" className={styles.heroAppIcon} />
     );
   }
   return <div className={styles.heroTile}>{children}</div>;
@@ -125,12 +125,12 @@ export default function OnboardingSlideShell({
         <header className={styles.header}>
           <div className={styles.brand}>
             <img
-              src={stirlingMark}
+              src={ryanpdfMark}
               alt=""
               aria-hidden="true"
               className={styles.brandLogo}
             />
-            <span className={styles.wordmark}>Stirling</span>
+            <span className={styles.wordmark}>RyanPDF</span>
           </div>
           <div className={styles.headerRight}>
             {showProgress && (

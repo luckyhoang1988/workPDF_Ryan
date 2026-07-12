@@ -32,7 +32,7 @@ export function ComponentsSection({
       <CodeBlock
         lang="typescript"
         caption={t("portal.docs.components.codeCaption")}
-        code={`import { DocumentViewer } from "@stirling/react";
+        code={`import { DocumentViewer } from "@ryanpdf/react";
 
 <DocumentViewer
   documentId={doc.id}
