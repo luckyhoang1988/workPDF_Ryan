@@ -15,7 +15,7 @@ services:
       timeout: 10s
       retries: 16
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - ../../ryanpdf/latest/data:/usr/share/tessdata:rw
       - ../../ryanpdf/latest/config:/configs:rw

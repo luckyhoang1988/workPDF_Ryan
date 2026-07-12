@@ -17,11 +17,18 @@ local.properties
 version.properties
 
 #### Stirling-PDF Files ###
-pipeline/
-!pipeline/.gitkeep
+# Anchored to repo root: a bare "pipeline/" would also match
+# app/core/src/main/resources/static/pipeline/defaultWebUIConfigs/ (source
+# resources bundled into the jar), silently excluding it from git and
+# breaking startup (InitialSetup fails to load Pre-publish-sanitization.json).
+/pipeline/
+!/pipeline/.gitkeep
 customFiles/
 configs/
-watchedFolders/
+# NOTE: runtime watched-folders data lives at pipeline/watchedFolders, already
+# covered by pipeline/ above. A bare "watchedFolders/" pattern here would also
+# match frontend/editor/src/proprietary/components/watchedFolders/ (source
+# code), silently excluding it from git — so it is intentionally omitted.
 clientWebUI/
 # Scratch dir used by local fixture-regeneration runs (see
 # app/proprietary/src/test/resources/db-migration-fixtures/README.md).

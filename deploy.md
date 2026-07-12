@@ -2,13 +2,13 @@
 
 ## Tóm tắt
 
-RyanPDF có thể triển khai trên VPS ngay lập tức bằng Docker. **MIT core** (công cụ PDF cơ bản) là miễn phí cho mọi mục đích. Các tính năng **Proprietary** (SSO/SAML, portal admin nâng cao) yêu cầu **license trả phí** cho production/quy mô lớn.
+RyanPDF triển khai trên VPS bằng Docker, build từ source (không dùng image publish sẵn trên Docker Hub). **MIT core** (công cụ PDF cơ bản) miễn phí cho mọi mục đích. Các tính năng **Proprietary** (SSO/SAML, portal admin nâng cao) yêu cầu **license trả phí** cho production/quy mô lớn — mặc định repo này build ở chế độ MIT core (`DISABLE_ADDITIONAL_FEATURES: "true"`).
 
 ---
 
 ## 1. Chọn Image Phù Hợp
 
-RyanPDF cung cấp 3 biến thể chính trong thư mục `docker/compose/`:
+3 biến thể chính trong thư mục `docker/compose/`:
 
 | Biến thể | File compose | RAM khuyến nghị | CPU | Khi nào dùng |
 |---|---|---|---|---|
@@ -16,89 +16,42 @@ RyanPDF cung cấp 3 biến thể chính trong thư mục `docker/compose/`:
 | **Standard** | `docker-compose.yml` | 4 GB | 2 vCPU | Cân bằng, đủ OCR/convert, đa số trường hợp |
 | **Fat** | `docker-compose.fat.yml` | 6 GB | 4 vCPU | OCR/LibreOffice nặng, xử lý file lớn đồng thời cao |
 
-### Lựa chọn
-- VPS 2 GB → `ultra-lite`
-- VPS 4+ GB → `standard` (khuyến nghị)
-- VPS 6+ GB + tải OCR cao → `fat`
+Cả 3 file cùng nằm trong `docker/compose/` và dùng chung một file `docker/compose/.env`.
 
 ---
 
-## 2. File Cấu Hình Chính
+## 2. Credentials — Dùng `.env` (không hardcode)
 
-### Dockerfile
-- **Standard**: `docker/embedded/Dockerfile` — chứa LibreOffice, Tesseract, Ghostscript trong base image
-- **Fat**: `docker/Dockerfile.fat`
-- **Ultra-lite**: `docker/Dockerfile.ultra-lite`
-
-### Compose Files
-Vị trí: `docker/compose/`
-
-**Standard** (`docker-compose.yml`):
+Cả 3 compose file đọc user/pass admin từ biến môi trường:
 ```yaml
-services:
-  stirling-pdf:
-    build: {context: ../.., dockerfile: docker/embedded/Dockerfile}
-    ports: ["8080:8080"]
-    volumes:
-      - ../../stirling/latest/data:/usr/share/tessdata:rw
-      - ../../stirling/latest/config:/configs:rw
-      - ../../stirling/latest/logs:/logs:rw
-    environment:
-      DISABLE_ADDITIONAL_FEATURES: "true"
-      SECURITY_ENABLELOGIN: "false"
-      SYSTEM_MAXFILESIZE: "100"
-      METRICS_ENABLED: "true"
+environment:
+  SECURITY_ENABLELOGIN: "true"
+  SECURITY_INITIALLOGIN_USERNAME: "${SECURITY_INITIALLOGIN_USERNAME}"
+  SECURITY_INITIALLOGIN_PASSWORD: "${SECURITY_INITIALLOGIN_PASSWORD}"
 ```
 
-**Ý nghĩa**:
-- `DISABLE_ADDITIONAL_FEATURES: "true"` → dùng bản MIT core (không có proprietary features)
-- `SECURITY_ENABLELOGIN: "false"` → **DEFAULT: mở không cần login** (⚠️ nguy hiểm nếu public)
-- `SYSTEM_MAXFILESIZE: "100"` → giới hạn 100 MB/file (điều chỉnh theo nhu cầu)
-- `/configs` → chứa H2 embedded database (độc lập, không cần Postgres/Redis)
-
-### Application Properties
-File: `app/core/src/main/resources/application.properties` (105 dòng)
-
-**Cấu hình mặc định**:
-```properties
-spring.servlet.multipart.max-file-size=2000MB
-spring.servlet.multipart.max-request-size=2100MB
-```
-Điều chỉnh qua biến môi trường:
+Trên VPS, tạo file thật từ template:
 ```bash
-SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE=500MB
-SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE=550MB
+cd docker/compose
+cp .env.example .env
+nano .env   # điền username/password thật, KHÔNG commit file này lên git
 ```
+
+`.env.example` (đã có sẵn trong repo, an toàn để commit):
+```
+SECURITY_INITIALLOGIN_USERNAME=changeme
+SECURITY_INITIALLOGIN_PASSWORD=changeme
+```
+
+**Nếu không tạo `.env`**: biến sẽ rỗng, Spring có thể tự sinh tài khoản mặc định `admin`/`stirling` → mất an toàn. Luôn tạo `.env` trước khi `docker compose up`.
 
 ---
 
 ## 3. 🔐 Bảo Mật — QUAN TRỌNG
 
-### Vấn đề 1: Login Bị Tắt Mặc Định
-**Mặc định**: `SECURITY_ENABLELOGIN=false` → bất kỳ ai truy cập cũng dùng được tất cả công cụ (không cần xác thực).
-
-**Trên VPS public, PHẢI bật login**:
-```yaml
-environment:
-  SECURITY_ENABLELOGIN: "true"
-  SECURITY_INITIALLOGIN_USERNAME: "your_admin_username"
-  SECURITY_INITIALLOGIN_PASSWORD: "your_strong_password"
-```
-
-**Nếu không set 2 biến trên**: Hệ thống tự tạo `admin`/`stirling` → **rất dễ bị tấn công** vì mọi người biết tài khoản mặc định này.
-
-### Vấn đề 2: Không Có TLS Tích Hợp
-Container chỉ expose **cổng 8080** không có HTTPS/TLS. Trên production:
-- **Phải dùng reverse proxy** (Caddy, nginx, Traefik) cho HTTPS termination
-- Không expose port 8080 trực tiếp ra internet
-- Chỉ mở port 80 & 443 cho proxy
-
-### Vấn đề 3: Database Credentials
-H2 embedded database dùng mặc định:
-- Username: `sa`
-- Password: (trống/blank)
-
-⚠️ **Không cần đổi cho file-based H2**, nhưng đảm bảo `/configs` volume được **backup định kỳ**.
+- **Login**: đã bật `SECURITY_ENABLELOGIN=true` sẵn trong cả 3 file compose — chỉ cần set `.env` đúng.
+- **TLS**: container chỉ expose cổng 8080, không có HTTPS tích hợp. Bắt buộc dùng reverse proxy (Caddy khuyến nghị) cho production, không expose 8080 thẳng ra internet — chỉ mở 80/443.
+- **Database**: H2 embedded file-based (`/configs`), user `sa`/blank password — không cần đổi, nhưng backup định kỳ volume `/configs`.
 
 ---
 
@@ -106,254 +59,135 @@ H2 embedded database dùng mặc định:
 
 ### 4.1 Chuẩn Bị VPS
 ```bash
-# 1. SSH vào VPS
 ssh user@your-vps-ip
 
-# 2. Cài Docker & Docker Compose
+# Cài Docker & Compose plugin (Ubuntu/Debian)
 curl -fsSL https://get.docker.com | sh
 sudo usermod -aG docker $USER
 newgrp docker
-
-# 3. Clone hoặc download project
-git clone https://github.com/Stirling-Tools/Stirling-PDF.git
-cd Stirling-PDF
 ```
 
-### 4.2 Tạo Thư Mục Persistent Volumes
+### 4.2 Clone Code
 ```bash
-mkdir -p ~/stirling-pdf/{data,config,logs}
+git clone https://github.com/luckyhoang1988/workPDF_Ryan.git
+cd workPDF_Ryan
 ```
 
-### 4.3 Chỉnh Docker Compose
-**Copy file compose phù hợp**:
+### 4.3 Tạo Persistent Volumes
+Volumes được mount tương đối ra ngoài `docker/compose/` theo path `../../ryanpdf/latest/{data,config,logs}`, tức thư mục `ryanpdf/latest/` ở root repo — Docker tự tạo khi `up` nếu chưa có, không cần tạo tay.
+
+### 4.4 Tạo `.env`
 ```bash
-# Ví dụ: dùng standard image
-cp docker/compose/docker-compose.yml .
+cd docker/compose
+cp .env.example .env
+nano .env   # SECURITY_INITIALLOGIN_USERNAME / PASSWORD thật
 ```
 
-**Sửa trong `docker-compose.yml`**:
-```yaml
-services:
-  stirling-pdf:
-    build: {context: ., dockerfile: docker/embedded/Dockerfile}
-    ports: ["8080:8080"]
-    volumes:
-      - ./stirling-pdf/data:/usr/share/tessdata:rw
-      - ./stirling-pdf/config:/configs:rw
-      - ./stirling-pdf/logs:/logs:rw
-    environment:
-      DISABLE_ADDITIONAL_FEATURES: "true"
-      SECURITY_ENABLELOGIN: "true"                           # ← BẬT LOGIN
-      SECURITY_INITIALLOGIN_USERNAME: "admin"                # ← ĐỔI TÊN
-      SECURITY_INITIALLOGIN_PASSWORD: "your_strong_pwd_123"  # ← ĐỔI PASSWORD
-      SYSTEM_MAXFILESIZE: "100"
-      METRICS_ENABLED: "true"
-```
+### 4.5 Setup Reverse Proxy (Caddy — tự động HTTPS)
 
-### 4.4 Setup Reverse Proxy (HTTPS)
-
-**Ví dụ với Caddy** (khuyến nghị, đơn giản nhất — tự lấy Let's Encrypt cert):
-
-File `Caddyfile`:
-```
-your-domain.com {
-    reverse_proxy localhost:8080 {
-        header_down -Server
-        header_up X-Forwarded-For {http.request.remote.host}
-        header_up X-Forwarded-Proto {http.request.proto}
-    }
-}
-```
-
-Chạy Caddy:
+Template có sẵn tại `docker/compose/Caddyfile.example`:
 ```bash
-docker run -d \
-  -p 80:80 -p 443:443 \
+cd docker/compose
+cp Caddyfile.example Caddyfile
+nano Caddyfile   # đổi your-domain.com thành domain thật
+docker run -d --name caddy --restart unless-stopped \
+  --network host \
   -v $(pwd)/Caddyfile:/etc/caddy/Caddyfile \
   -v caddy_data:/data \
   -v caddy_config:/config \
   caddy:latest
 ```
+(dùng `--network host` để Caddy reach `localhost:8080` của container RyanPDF chạy trên cùng VPS — đơn giản hơn phải nối chung docker network)
 
-**Ví dụ với nginx**:
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    return 301 https://$server_name$request_uri;
-}
-
-server {
-    listen 443 ssl http2;
-    server_name your-domain.com;
-    
-    ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
-    
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-### 4.5 Chạy Container
+### 4.6 Chạy RyanPDF
 ```bash
-docker compose up -d
-
-# Kiểm tra logs
-docker compose logs -f stirling-pdf
+cd docker/compose
+docker compose -f docker-compose.yml up -d --build
+docker compose -f docker-compose.yml logs -f
 ```
 
-### 4.6 Kiểm Tra
+### 4.7 Kiểm Tra
 ```bash
-# Từ VPS local
-curl http://localhost:8080
-
-# Hoặc từ browser (qua reverse proxy)
-# https://your-domain.com
+curl http://localhost:8080/api/v1/info/status
+# Từ browser: https://your-domain.com
 ```
 
 ---
 
-## 5. Database & Backup Strategy
+## 5. Backup
 
-### Database Mặc Định: H2 File-Based
-- Vị trí: `/configs/stirling-pdf-DB-2.3.232...` (trong volume `/configs`)
-- Không cần config Postgres/Redis riêng
-- Embedded, nhẹ, phù hợp cho deployment cỡ vừa
-
-### Backup `/configs` Volume
 ```bash
-# Backup thủ công
-tar -czf stirling-pdf-config-backup-$(date +%Y%m%d).tar.gz ./stirling-pdf/config/
-
-# Hoặc backup tự động (daily cron)
-0 2 * * * tar -czf /backups/stirling-pdf-$(date +\%Y\%m\%d).tar.gz /home/user/stirling-pdf/config/
-
-# Kiểm tra backup
-ls -lh /backups/
+tar -czf ryanpdf-config-backup-$(date +%Y%m%d).tar.gz ryanpdf/latest/config/
+# cron 2h sáng hằng ngày:
+0 2 * * * tar -czf /backups/ryanpdf-$(date +\%Y\%m\%d).tar.gz /path/to/workPDF_Ryan/ryanpdf/latest/config/
 ```
 
 ---
 
-## 6. Giới Hạn Upload & Performance Tuning
+## 6. Cập Nhật Code Sau Khi Đã Deploy
 
-### File Size Limits
-```yaml
-environment:
-  SYSTEM_MAXFILESIZE: "100"  # 100 MB
-  # hoặc
-  SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE: "500MB"
-  SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE: "550MB"
-```
-
-### Memory/CPU
-- **Ultra-lite**: `-m 2g` (giới hạn 2 GB RAM)
-- **Standard**: `-m 4g`
-- **Fat**: `-m 6g`
-
-Thêm vào `docker-compose.yml`:
-```yaml
-services:
-  stirling-pdf:
-    # ...
-    deploy:
-      resources:
-        limits:
-          memory: 4G
-          cpus: '2'
-```
-
----
-
-## 7. 📜 License Boundaries
-
-### MIT Core (Miễn Phí)
-- **File location**: `LICENSE` (repository root)
-- **Modules**: `app/core`, `docker/embedded`, base Docker images
-- **Công cụ**: PDF edit, merge, split, OCR, convert, sign, compress, etc. (50+ tools)
-- **Deployment**: Tự host thoải mái, không giới hạn, không cần license
-
-### Proprietary Features (Trả Phí)
-- **File location**: `app/proprietary/LICENSE` ("RyanPDF User License")
-- **Modules**: `app/proprietary/`, `app/saas/`, `frontend/editor/src/proprietary/`, `frontend/editor/src/saas/`, `frontend/editor/src/cloud/`, `frontend/editor/src/desktop/`, `engine/`
-- **Công cụ**: SSO/SAML, advanced admin features, portal management, desktop client
-- **Deployment**: Trial/internal evaluation ONLY — production/quy mô lớn cần **paid license**
-
-### Kiểm Tra Bạn Dùng Phiên Bản Nào
+Dùng script có sẵn `docker/compose/deploy.sh` (pull code mới nhất + rebuild + restart):
 ```bash
-# Nếu `DISABLE_ADDITIONAL_FEATURES=true` → MIT Core ✓
-# Nếu `DISABLE_ADDITIONAL_FEATURES=false` hoặc không set → Proprietary (cần license cho production)
-
-# Hoặc check build
-grep -r "disableAdditional" build.gradle
-# gradle.ext.disableAdditional = true → Core only
+cd workPDF_Ryan
+chmod +x docker/compose/deploy.sh   # chỉ cần lần đầu
+./docker/compose/deploy.sh docker-compose.yml
+```
+Hoặc thủ công:
+```bash
+cd workPDF_Ryan
+git pull origin main
+cd docker/compose
+docker compose -f docker-compose.yml up -d --build
 ```
 
 ---
 
-## 8. Checklist Triển Khai
+## 7. Checklist Triển Khai
 
-- [ ] Chọn biến thể Docker phù hợp với VPS (ultra-lite/standard/fat)
-- [ ] **Bật login**: `SECURITY_ENABLELOGIN=true`
-- [ ] **Đổi credential**: `SECURITY_INITIALLOGIN_USERNAME`, `SECURITY_INITIALLOGIN_PASSWORD`
-- [ ] Tạo persistent volumes cho `/configs`, `/data`, `/logs`
-- [ ] **Setup reverse proxy** (Caddy/nginx) + HTTPS
-- [ ] Kiểm tra cổng 8080 **không expose** trực tiếp ra internet
-- [ ] Kiểm tra `/configs` volume được backup định kỳ
-- [ ] Chạy `docker compose up -d`
-- [ ] Test `https://your-domain.com` trên browser
-- [ ] Test login với tài khoản admin
-- [ ] Test một PDF tool (upload/merge/split/...)
-- [ ] Kiểm tra `docker compose logs` không có error
-- [ ] Xác nhận bạn đang dùng **MIT Core** (free) hoặc **đã mua license** nếu dùng Proprietary
+- [ ] Chọn biến thể Docker phù hợp với RAM VPS (ultra-lite/standard/fat)
+- [ ] Cài Docker + Docker Compose plugin
+- [ ] Clone repo `workPDF_Ryan`
+- [ ] Tạo `docker/compose/.env` với username/password thật (không commit)
+- [ ] Sửa `Caddyfile` với domain thật, chạy Caddy container
+- [ ] Trỏ DNS domain về IP VPS
+- [ ] `docker compose up -d --build`
+- [ ] Kiểm tra port 8080 **không expose** trực tiếp ra internet (chỉ localhost + Caddy dùng)
+- [ ] Test `https://your-domain.com`, login với tài khoản admin trong `.env`
+- [ ] Test upload/merge/split PDF
+- [ ] `docker compose logs` không có error
+- [ ] Setup cron backup `ryanpdf/latest/config/`
 
 ---
 
-## 9. Troubleshooting
+## 8. Troubleshooting
 
 ### Container không start
 ```bash
-docker compose logs stirling-pdf
+docker compose logs ryanpdf
 ```
 Kiểm tra: memory, disk space, port conflicts, volume permissions.
 
 ### Login không work
 ```bash
-# Kiểm tra biến môi trường được set không
-docker compose exec stirling-pdf env | grep SECURITY
+docker compose exec ryanpdf env | grep SECURITY
 ```
+Nếu rỗng → `.env` chưa được tạo/đọc đúng (phải nằm cùng thư mục `docker/compose/` với file compose đang chạy).
 
 ### File lớn upload lỗi
-```bash
-# Tăng file size limit
-docker compose exec stirling-pdf bash
-# Kiểm tra application.properties
-cat /app/resources/application.properties | grep multipart
+```yaml
+environment:
+  SYSTEM_MAXFILESIZE: "100"
+  SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE: "500MB"
+  SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE: "550MB"
 ```
 
 ### Database corrupt
 ```bash
-# Xóa DB cũ (nếu có backup)
-rm -rf ./stirling-pdf/config/stirling-pdf-DB-*
-docker compose restart stirling-pdf
-# Container sẽ tạo DB mới
+rm -rf ryanpdf/latest/config/ryanpdf-DB-*
+docker compose restart ryanpdf
 ```
 
 ---
 
-## 10. Tham Khảo Thêm
-
-- **Docker Hub**: https://hub.docker.com/r/stirlingtools/stirling-pdf
-- **Documentation**: https://docs.stirlingpdf.com
-- **GitHub Repo**: https://github.com/Stirling-Tools/Stirling-PDF
-- **Discord Community**: https://discord.gg/HYmhKj45pU
-
----
-
-**Phiên bản**: 2.3.232+ (cập nhật cuối)  
+**Repo**: https://github.com/luckyhoang1988/workPDF_Ryan
 **Cập nhật**: 2026-07-12
