@@ -4747,6 +4747,7 @@ title = "Protect sensitive information in your PDFs"
 
 [loginRequiredModal]
 body = "This tool needs a free RyanPDF account. Sign in (or create one) to continue - no payment required."
+createAccount = "Don't have an account? Create one for free"
 title = "Sign in to use this tool"
 
 [margin]

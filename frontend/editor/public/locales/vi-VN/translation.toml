@@ -4472,9 +4472,9 @@ tags = "xem,mở,hiển thị"
 title = "Đọc"
 
 [home.redact]
-desc = "Redacts a PDF based on selected text, drawn shapes and/or selected page(s)"
+desc = "Bôi đen (che) nội dung trong PDF dựa trên văn bản đã chọn, hình vẽ và/hoặc trang đã chọn"
 tags = "xóa nhạy cảm,che đen,ẩn"
-title = "Manual Redaction"
+title = "Bôi đen"
 
 [home.removeAnnotations]
 desc = "Xóa tất cả các bình luận/chú thích khỏi PDF"
@@ -4744,6 +4744,11 @@ title = "Giải pháp tất cả trong một cho mọi nhu cầu PDF của bạn
 alt = "Bảo mật PDF"
 subtitle = "Thêm mật khẩu, che nội dung và quản lý chứng chỉ dễ dàng."
 title = "Bảo vệ thông tin nhạy cảm trong PDF của bạn"
+
+[loginRequiredModal]
+body = "Công cụ này yêu cầu tài khoản RyanPDF miễn phí. Đăng nhập (hoặc tạo tài khoản mới) để tiếp tục - không cần thanh toán."
+createAccount = "Chưa có tài khoản? Tạo tài khoản miễn phí"
+title = "Đăng nhập để sử dụng công cụ này"
 
 [margin]
 large = "Lớn"
@@ -8384,9 +8389,9 @@ files = "Tệp"
 tags = "xem,mở,hiển thị"
 
 [redact]
-submit = "Manual Redaction"
-tags = "Redact,Hide,black out,black,marker,hidden,manual"
-title = "Manual Redaction"
+submit = "Bôi đen"
+tags = "Bôi đen,che,ẩn,xóa nhạy cảm,tự động,thủ công"
+title = "Bôi đen"
 
 [redact.auto]
 colorLabel = "Màu hộp"
