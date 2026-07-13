@@ -1,9 +1,9 @@
 import React from "react";
 import { Group, Tooltip } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import { Button } from "@app/ui/Button";
 import { ActionIcon } from "@app/ui/ActionIcon";
 import LocalIcon from "@app/components/shared/LocalIcon";
-import { useFilesModalContext } from "@app/contexts/FilesModalContext";
 import { useFileActionTerminology } from "@app/hooks/useFileActionTerminology";
 import { useFileActionIcons } from "@app/hooks/useFileActionIcons";
 import { useAppConfig } from "@app/contexts/AppConfigContext";
@@ -22,8 +22,8 @@ export function LandingActions({
   onMobileUploadClick,
   onFileSelect,
 }: LandingActionsProps) {
+  const { t } = useTranslation();
   const terminology = useFileActionTerminology();
-  const { openFilesModal } = useFilesModalContext();
   const icons = useFileActionIcons();
   const { config } = useAppConfig();
   const isMobile = useIsMobile();
@@ -49,25 +49,6 @@ export function LandingActions({
           {terminology.uploadFromComputer}
         </Button>
 
-        <Button
-          variant="secondary"
-          className="landing-btn-secondary"
-          leftSection={
-            <LocalIcon
-              icon="add"
-              width="1rem"
-              height="1rem"
-              className="text-[var(--accent-interactive)]"
-            />
-          }
-          onClick={(e) => {
-            e.stopPropagation();
-            openFilesModal();
-          }}
-        >
-          {terminology.addFiles}
-        </Button>
-
         {config?.enableMobileScanner && !isMobile && (
           <Tooltip label={terminology.mobileUpload} position="bottom">
             <ActionIcon
@@ -89,6 +70,9 @@ export function LandingActions({
           </Tooltip>
         )}
       </Group>
+      <p className="landing-upload-caption">
+        {t("landing.uploadSizeCaption", "Upload documents up to 100 MB")}
+      </p>
       <input
         ref={fileInputRef}
         type="file"

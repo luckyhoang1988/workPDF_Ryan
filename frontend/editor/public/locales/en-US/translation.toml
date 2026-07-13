@@ -4660,6 +4660,7 @@ mobileUpload = "Upload from Mobile"
 openFromComputer = "Open from computer"
 orDivider = "OR"
 uploadFromComputer = "Upload from computer"
+uploadSizeCaption = "Upload documents up to 100 MB"
 workbenchEmptyStateHero = "Drop a PDF anywhere"
 
 [language]

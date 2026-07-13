@@ -4649,9 +4649,18 @@ welcomeTitle = "Bạn đã được mời!"
 
 [landing]
 addFiles = "Thêm tệp"
+checklistBullet1 = "Hoạt động trực tiếp trên trình duyệt"
+checklistBullet2 = "Giữ nguyên định dạng và chất lượng gốc"
+checklistBullet3 = "Tệp được xử lý và lưu trữ cục bộ"
+checklistBullet4 = "Sẵn sàng chỉ trong vài giây"
+dropFilesHereTitle = "Thả tệp vào đây"
+heroSubtitle = "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+heroTitle = "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một"
 mobileUpload = "Tải lên từ Di động"
 openFromComputer = "Mở từ máy tính"
+orDivider = "HOẶC"
 uploadFromComputer = "Tải lên từ máy tính"
+uploadSizeCaption = "Tải lên tài liệu tối đa 100 MB"
 workbenchEmptyStateHero = "Thả PDF vào bất kỳ đâu"
 
 [language]
