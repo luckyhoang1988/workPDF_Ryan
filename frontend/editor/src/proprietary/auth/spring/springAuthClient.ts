@@ -510,6 +510,53 @@ class SpringAuthClient {
   }
 
   /**
+   * Request a password reset email for the given username/email. The backend
+   * always returns success regardless of whether the account exists, to
+   * avoid leaking account existence.
+   */
+  async forgotPassword(
+    username: string,
+  ): Promise<{ error: AuthError | null }> {
+    try {
+      await http().post(
+        "/api/v1/auth/forgot-password",
+        { username: username.trim() },
+        { withCredentials: true },
+      );
+      return { error: null };
+    } catch (error: unknown) {
+      console.error("[SpringAuth] forgotPassword error:", error);
+      return {
+        error: {
+          message: getErrorMessage(error, "Failed to send reset email"),
+        },
+      };
+    }
+  }
+
+  /**
+   * Complete a password reset using the token emailed by forgotPassword.
+   */
+  async resetPassword(
+    token: string,
+    newPassword: string,
+  ): Promise<{ error: AuthError | null }> {
+    try {
+      await http().post(
+        "/api/v1/auth/reset-password",
+        { token, newPassword },
+        { withCredentials: true },
+      );
+      return { error: null };
+    } catch (error: unknown) {
+      console.error("[SpringAuth] resetPassword error:", error);
+      return {
+        error: { message: getErrorMessage(error, "Failed to reset password") },
+      };
+    }
+  }
+
+  /**
    * Sign in with OAuth/SAML provider (GitHub, Google, Authentik, etc.)
    * This redirects to the Spring OAuth2/SAML2 authorization endpoint
    *

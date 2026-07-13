@@ -260,6 +260,60 @@ public class EmailService {
         sendPlainEmail(to, subject, body, true);
     }
 
+    /**
+     * Sends a password reset link email to a user who requested one.
+     *
+     * @param to The recipient email address
+     * @param resetUrl The full URL for resetting the password
+     * @param expiresAt The expiration timestamp
+     * @throws MessagingException If there is an issue with creating or sending the email.
+     */
+    @Async
+    public void sendPasswordResetEmail(String to, String resetUrl, String expiresAt)
+            throws MessagingException {
+        String subject = "Reset your RyanPDF password";
+
+        String body =
+                """
+                <html><body style="margin: 0; padding: 0;">
+                <div style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px;">
+                  <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0;">
+                    <!-- Logo -->
+                    <div style="text-align: center; padding: 20px; background-color: #222;">
+                      <img src="https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling-transparent.svg" alt="RyanPDF" style="max-height: 60px;">
+                    </div>
+                    <!-- Content -->
+                    <div style="padding: 30px; color: #333;">
+                      <h2 style="color: #222; margin-top: 0;">Reset your password</h2>
+                      <p>Hi there,</p>
+                      <p>We received a request to reset the password for your RyanPDF account. Click the button below to choose a new password:</p>
+                      <!-- CTA Button -->
+                      <div style="text-align: center; margin: 30px 0;">
+                        <a href="%s" style="display: inline-block; background-color: #007bff; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
+                      </div>
+                      <p style="font-size: 14px; color: #666;">Or copy and paste this link in your browser:</p>
+                      <div style="background-color: #f8f9fa; padding: 12px; margin: 15px 0; border-radius: 4px; word-break: break-all; font-size: 13px; color: #555;">
+                        %s
+                      </div>
+                      <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px;">
+                        <p style="margin: 0; color: #856404; font-size: 14px;"><strong>⚠️ Important:</strong> This link will expire on %s.</p>
+                      </div>
+                      <p>If you didn't request a password reset, you can safely ignore this email — your password will not be changed.</p>
+                      <p style="margin-bottom: 0;">— The RyanPDF Team</p>
+                    </div>
+                    <!-- Footer -->
+                    <div style="text-align: center; padding: 15px; font-size: 12px; color: #777; background-color: #f0f0f0;">
+                      &copy; 2025 RyanPDF. All rights reserved.
+                    </div>
+                  </div>
+                </div>
+                </body></html>
+                """
+                        .formatted(resetUrl, resetUrl, expiresAt);
+
+        sendPlainEmail(to, subject, body, true);
+    }
+
     @Async
     public void sendPasswordChangedNotification(
             String to, String username, String newPassword, String loginUrl)

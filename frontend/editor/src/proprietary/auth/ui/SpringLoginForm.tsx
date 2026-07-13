@@ -29,6 +29,8 @@ interface SpringLoginFormProps {
   aboveError?: ReactNode;
   /** Slot rendered between the divider and the email form (editor: toggle). */
   beforeEmailForm?: ReactNode;
+  /** Slot rendered right after the email/password form (editor: forgot-password link). */
+  afterEmailForm?: ReactNode;
   /** Slot rendered after the form (editor: first-time-setup credentials hint). */
   footer?: ReactNode;
 }
@@ -49,6 +51,7 @@ export default function SpringLoginForm({
   submitButtonText,
   aboveError,
   beforeEmailForm,
+  afterEmailForm,
   footer,
 }: SpringLoginFormProps) {
   const { t } = useTranslation();
@@ -134,6 +137,7 @@ export default function SpringLoginForm({
             isSubmitting={isSubmitting}
             submitButtonText={submitLabel}
           />
+          {afterEmailForm}
         </div>
       )}
 

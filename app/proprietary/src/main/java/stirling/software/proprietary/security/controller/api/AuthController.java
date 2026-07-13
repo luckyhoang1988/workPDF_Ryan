@@ -1,7 +1,10 @@
 package stirling.software.proprietary.security.controller.api;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +38,16 @@ import stirling.software.proprietary.audit.AuditEventType;
 import stirling.software.proprietary.audit.AuditLevel;
 import stirling.software.proprietary.audit.Audited;
 import stirling.software.proprietary.security.model.AuthenticationType;
+import stirling.software.proprietary.security.model.PasswordResetToken;
 import stirling.software.proprietary.security.model.User;
+import stirling.software.proprietary.security.model.api.user.ForgotPasswordRequest;
 import stirling.software.proprietary.security.model.api.user.MfaCodeRequest;
+import stirling.software.proprietary.security.model.api.user.ResetPasswordRequest;
 import stirling.software.proprietary.security.model.api.user.UsernameAndPassMfa;
 import stirling.software.proprietary.security.model.exception.AuthenticationFailureException;
+import stirling.software.proprietary.security.repository.PasswordResetTokenRepository;
 import stirling.software.proprietary.security.service.CustomUserDetailsService;
+import stirling.software.proprietary.security.service.EmailService;
 import stirling.software.proprietary.security.service.JwtServiceInterface;
 import stirling.software.proprietary.security.service.LoginAttemptService;
 import stirling.software.proprietary.security.service.MfaService;
@@ -68,6 +77,12 @@ public class AuthController {
     private final AiUserDataService aiUserDataService;
     private final ResourceAccessService resourceAccessService;
     private final TeamLeadLookup teamLeadLookup;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
+    private final Optional<EmailService> emailService;
+
+    private static final int PASSWORD_RESET_TOKEN_EXPIRY_HOURS = 1;
+    private static final String GENERIC_FORGOT_PASSWORD_MESSAGE =
+            "If an account exists for that username, a password reset link has been sent.";
 
     /**
      * Login endpoint - replaces Supabase signInWithPassword
@@ -246,6 +261,133 @@ public class AuthController {
             log.error("Login error for user: {}", request.getUsername(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Map.of("error", "Internal server error"));
+        }
+    }
+
+    /**
+     * Request a password reset link via email. Always returns a generic success message, regardless
+     * of whether the username exists, to avoid leaking account existence.
+     *
+     * @param request The username (email) to send the reset link to
+     * @param httpRequest The HTTP request (used to derive the frontend base URL as a fallback)
+     * @return Generic success message
+     */
+    @PostMapping("/forgot-password")
+    @Audited(type = AuditEventType.SETTINGS_CHANGED, level = AuditLevel.BASIC)
+    @Transactional
+    public ResponseEntity<?> forgotPassword(
+            @RequestBody ForgotPasswordRequest request, HttpServletRequest httpRequest) {
+        try {
+            String username = request.getUsername() == null ? null : request.getUsername().trim();
+            if (username == null || username.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("error", "Username is required"));
+            }
+
+            if (emailService.isEmpty() || !applicationProperties.getMail().isEnabled()) {
+                log.warn("Password reset requested but email is not configured");
+                return ResponseEntity.ok(Map.of("message", GENERIC_FORGOT_PASSWORD_MESSAGE));
+            }
+
+            Optional<User> userOpt = userService.findByUsernameIgnoreCase(username);
+            if (userOpt.isPresent()) {
+                User user = userOpt.get();
+                if (user.isEnabled()
+                        && AuthenticationType.WEB
+                                .name()
+                                .equalsIgnoreCase(user.getAuthenticationType())) {
+                    passwordResetTokenRepository.deleteActiveTokensForUsername(user.getUsername());
+
+                    String token = UUID.randomUUID().toString();
+                    LocalDateTime expiresAt =
+                            LocalDateTime.now().plusHours(PASSWORD_RESET_TOKEN_EXPIRY_HOURS);
+
+                    PasswordResetToken resetToken = new PasswordResetToken();
+                    resetToken.setToken(token);
+                    resetToken.setUsername(user.getUsername());
+                    resetToken.setExpiresAt(expiresAt);
+                    passwordResetTokenRepository.save(resetToken);
+
+                    String baseUrl = resolveFrontendBaseUrl(httpRequest);
+                    String resetUrl = baseUrl + "/reset-password?token=" + token;
+
+                    try {
+                        emailService
+                                .get()
+                                .sendPasswordResetEmail(
+                                        user.getUsername(), resetUrl, expiresAt.toString());
+                        log.info("Sent password reset email to: {}", user.getUsername());
+                    } catch (Exception emailEx) {
+                        log.error(
+                                "Failed to send password reset email to {}: {}",
+                                user.getUsername(),
+                                emailEx.getMessage());
+                    }
+                } else {
+                    log.debug(
+                            "Password reset requested for disabled/non-web account: {}", username);
+                }
+            } else {
+                log.debug("Password reset requested for unknown username: {}", username);
+            }
+
+            return ResponseEntity.ok(Map.of("message", GENERIC_FORGOT_PASSWORD_MESSAGE));
+        } catch (Exception e) {
+            log.error("Forgot password error", e);
+            return ResponseEntity.ok(Map.of("message", GENERIC_FORGOT_PASSWORD_MESSAGE));
+        }
+    }
+
+    /**
+     * Complete a password reset using a token emailed by {@link #forgotPassword}.
+     *
+     * @param request The reset token and new password
+     * @return Success or error response
+     */
+    @PostMapping("/reset-password")
+    @Audited(type = AuditEventType.SETTINGS_CHANGED, level = AuditLevel.BASIC)
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request) {
+        try {
+            String token = request.getToken();
+            String newPassword = request.getNewPassword();
+
+            if (token == null || token.isBlank()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("error", "Reset token is required"));
+            }
+            if (newPassword == null || newPassword.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("error", "New password is required"));
+            }
+
+            Optional<PasswordResetToken> tokenOpt = passwordResetTokenRepository.findByToken(token);
+            if (tokenOpt.isEmpty() || !tokenOpt.get().isValid()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("error", "Invalid or expired reset link"));
+            }
+
+            PasswordResetToken resetToken = tokenOpt.get();
+            Optional<User> userOpt = userService.findByUsernameIgnoreCase(resetToken.getUsername());
+            if (userOpt.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("error", "Invalid or expired reset link"));
+            }
+
+            User user = userOpt.get();
+            userService.changePassword(user, newPassword);
+            userService.invalidateUserSessions(user.getUsername());
+
+            resetToken.setUsed(true);
+            resetToken.setUsedAt(LocalDateTime.now());
+            passwordResetTokenRepository.save(resetToken);
+
+            log.info("Password reset completed for user: {}", user.getUsername());
+
+            return ResponseEntity.ok(Map.of("message", "Password has been reset successfully"));
+        } catch (Exception e) {
+            log.error("Reset password error", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "Failed to reset password"));
         }
     }
 
@@ -746,6 +888,34 @@ public class AuthController {
             log.warn("SHA-256 not available, using hashCode for token tracking", e);
             return String.valueOf(token.hashCode());
         }
+    }
+
+    /**
+     * Resolves the base URL to build user-facing links from: system.frontendUrl → configured
+     * backendUrl → the incoming request's own scheme/host/port. Mirrors InviteLinkController's
+     * baseUrl resolution so invite and password-reset links behave consistently.
+     */
+    private String resolveFrontendBaseUrl(HttpServletRequest request) {
+        String baseUrl;
+        String configuredFrontendUrl = applicationProperties.getSystem().getFrontendUrl();
+        String configuredBackendUrl = applicationProperties.getSystem().getBackendUrl();
+        if (configuredFrontendUrl != null && !configuredFrontendUrl.trim().isEmpty()) {
+            baseUrl = configuredFrontendUrl.trim();
+        } else if (configuredBackendUrl != null && !configuredBackendUrl.trim().isEmpty()) {
+            baseUrl = configuredBackendUrl.trim();
+        } else {
+            baseUrl =
+                    request.getScheme()
+                            + "://"
+                            + request.getServerName()
+                            + (request.getServerPort() != 80 && request.getServerPort() != 443
+                                    ? ":" + request.getServerPort()
+                                    : "");
+        }
+        if (baseUrl.endsWith("/")) {
+            baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
+        }
+        return baseUrl;
     }
 
     private ResponseEntity<?> ensureWebAuth(User user) {

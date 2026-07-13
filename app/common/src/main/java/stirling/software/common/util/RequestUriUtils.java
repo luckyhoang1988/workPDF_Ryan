@@ -186,6 +186,8 @@ public class RequestUriUtils {
                         || trimmedUri.startsWith("/api/v1/auth/login")
                         || trimmedUri.startsWith("/api/v1/auth/refresh")
                         || trimmedUri.startsWith("/api/v1/auth/logout")
+                        || trimmedUri.startsWith("/api/v1/auth/forgot-password")
+                        || trimmedUri.startsWith("/api/v1/auth/reset-password")
                         || trimmedUri.startsWith(
                                 "/api/v1/proprietary/ui-data/login") // Login page config (SSO
                         // providers +

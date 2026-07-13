@@ -513,8 +513,35 @@ export default function Login() {
             </div>
           ) : undefined
         }
+        afterEmailForm={
+          isUserPassAllowed ? (
+            <Button
+              type="button"
+              variant="tertiary"
+              onClick={() => navigate("/forgot-password")}
+              className="auth-link-black"
+              style={{ fontSize: "0.8125rem", marginTop: "0.25rem" }}
+            >
+              {t("login.forgotPassword", "Forgot your password?")}
+            </Button>
+          ) : undefined
+        }
         footer={
-          isFirstTimeSetup && showDefaultCredentials && isUserPassAllowed ? (
+          <>
+            {isUserPassAllowed && (
+              <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                <Button
+                  type="button"
+                  variant="tertiary"
+                  onClick={() => navigate("/signup")}
+                  className="auth-link-black"
+                  style={{ fontSize: "0.875rem" }}
+                >
+                  {t("login.createAccount", "Create an account")}
+                </Button>
+              </div>
+            )}
+            {isFirstTimeSetup && showDefaultCredentials && isUserPassAllowed && (
             <Alert color="blue" variant="light" radius="md" mt="xl">
               <Stack gap="xs" align="center">
                 <Text
@@ -566,7 +593,8 @@ export default function Login() {
                 </Text>
               </Stack>
             </Alert>
-          ) : undefined
+            )}
+          </>
         }
       />
     </AuthLayout>

@@ -8,6 +8,8 @@ import { ThemeProvider } from "@app/components/shared/ThemeProvider";
 import Landing from "@app/routes/Landing";
 import Login from "@app/routes/Login";
 import Signup from "@app/routes/Signup";
+import ForgotPassword from "@app/routes/ForgotPassword";
+import ResetPassword from "@app/routes/ResetPassword";
 import AuthCallback from "@app/routes/AuthCallback";
 import InviteAccept from "@app/routes/InviteAccept";
 import ShareLinkPage from "@app/routes/ShareLinkPage";
@@ -85,6 +87,8 @@ export default function App() {
                 <Routes>
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/auth/callback" element={<AuthCallback />} />
                   <Route path="/invite/:token" element={<InviteAccept />} />
                   <Route path="/share/:token" element={<ShareLinkPage />} />
