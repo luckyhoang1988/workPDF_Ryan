@@ -30,7 +30,7 @@ RyanPDF is a powerful, open-source PDF editing platform. Run it as a personal de
 - **Automation & workflows** - No-code pipelines direct in UI with APIs to process millions of PDFs.
 - **Enterprise‑grade** - SSO, auditing, and flexible on‑prem deployments.
 - **Developer platform** - REST APIs available for nearly all tools to integrate into your existing systems.
-- **Global UI** - Interface available in 40+ languages.
+- **Global UI** - Interface available in English and Vietnamese, with a language switcher built in.
 
 For a full feature list, see the docs: **https://docs.stirlingpdf.com**
 

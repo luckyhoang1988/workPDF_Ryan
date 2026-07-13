@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "@mantine/core";
 import { Button } from "@app/ui/Button";
-import { ActionIcon } from "@app/ui/ActionIcon";
+import { ActionIcon, type ActionIconSize } from "@app/ui/ActionIcon";
 import { Tooltip } from "@app/components/shared/Tooltip";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages, setUserLanguage } from "@app/i18n";
@@ -15,6 +15,8 @@ interface LanguageSelectorProps {
   offset?: number;
   compact?: boolean; // icon-only trigger
   tooltip?: string; // tooltip text for compact mode
+  size?: ActionIconSize; // ActionIcon size for compact mode (default "md")
+  iconSize?: string; // icon width/height for compact mode (default "1.5rem")
 }
 
 interface LanguageOption {
@@ -140,6 +142,8 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   offset = 8,
   compact = false,
   tooltip,
+  size = "md",
+  iconSize = "1.5rem",
 }) => {
   const { i18n, ready } = useTranslation();
   const [opened, setOpened] = useState(false);
@@ -252,11 +256,12 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
             <ActionIcon
               variant="tertiary"
               accent="neutral"
+              size={size}
               data-testid="language-selector-button"
               title={!opened && tooltip ? tooltip : undefined}
               aria-label={tooltip ?? currentLanguage}
             >
-              <LocalIcon icon="language" width="1.5rem" height="1.5rem" />
+              <LocalIcon icon="language" width={iconSize} height={iconSize} />
             </ActionIcon>
           ) : (
             <Button

@@ -1619,7 +1619,7 @@ admin = "Admin"
 title = "User Control Settings"
 
 [agents]
-stirling_name = "RyanPDF"
+ryanpdf_name = "RyanPDF"
 
 [analytics]
 learnMore = "Learn more about our analytics"
@@ -3700,7 +3700,9 @@ expand = "Expand sidebar"
 files = "Files"
 googleDrive = "Google Drive"
 googleDriveDisabled = "Google Drive is not configured"
+language = "Language"
 leaveMyFiles = "Leave My Files"
+logout = "Log out"
 myFiles = "My Files"
 noFiles = "No files yet"
 openFileManager = "Browse all files & folders"
@@ -7126,7 +7128,7 @@ label = "Bring your own key (BYOK)"
 description = "Keys never leave your KMS. RyanPDF holds only ciphertext."
 label = "Hold your own key (HYOK)"
 
-[portal.infrastructure.security.access.stirling]
+[portal.infrastructure.security.access.ryanpdf]
 description = "RyanPDF manages encryption keys. Simplest — zero key ops on your side."
 label = "RyanPDF-held keys"
 

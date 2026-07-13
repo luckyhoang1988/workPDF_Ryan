@@ -1619,7 +1619,7 @@ admin = "Quản trị viên"
 title = "Cài đặt kiểm soát người dùng"
 
 [agents]
-stirling_name = "RyanPDF"
+ryanpdf_name = "RyanPDF"
 
 [analytics]
 learnMore = "Tìm hiểu thêm"
@@ -3700,7 +3700,9 @@ expand = "Mở rộng thanh bên"
 files = "Tệp"
 googleDrive = "Google Drive"
 googleDriveDisabled = "Google Drive chưa được cấu hình"
+language = "Ngôn ngữ"
 leaveMyFiles = "Rời Tệp của tôi"
+logout = "Đăng xuất"
 myFiles = "Tệp của tôi"
 noFiles = "Chưa có tệp nào"
 openFileManager = "Mở trình quản lý tệp"
@@ -7131,7 +7133,7 @@ label = "Mang khóa của riêng bạn (BYOK)"
 description = "Khóa không bao giờ rời khỏi KMS của bạn. RyanPDF chỉ giữ ciphertext."
 label = "Giữ khóa của riêng bạn (HYOK)"
 
-[portal.infrastructure.security.access.stirling]
+[portal.infrastructure.security.access.ryanpdf]
 description = "RyanPDF quản lý khóa mã hóa. Đơn giản nhất — phía bạn không cần vận hành khóa."
 label = "Khóa do RyanPDF giữ"
 

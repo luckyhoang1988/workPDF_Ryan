@@ -33,6 +33,7 @@ import { accountService } from "@app/services/accountService";
 import { GoogleDriveIcon } from "@app/components/shared/CloudStorageIcons";
 import { Wordmark } from "@app/components/shared/Wordmark";
 import { AppSwitcher } from "@app/components/shared/AppSwitcher";
+import LanguageSelector from "@app/components/shared/LanguageSelector";
 import type { StirlingFileStub } from "@app/types/fileContext";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -1388,6 +1389,21 @@ const FileSidebar = forwardRef<HTMLDivElement, FileSidebarProps>(
               <span className="file-sidebar-bottom-name sidebar-content-fade">
                 {displayName}
               </span>
+            )}
+            {!collapsed && (
+              <div
+                className="file-sidebar-bottom-actions"
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
+              >
+                <LanguageSelector
+                  compact
+                  position="top-start"
+                  tooltip={t("fileSidebar.language", "Language")}
+                  size="sm"
+                  iconSize="1.1rem"
+                />
+              </div>
             )}
             {!collapsed && config?.enableLogin && (
               <div className="file-sidebar-bottom-actions">
