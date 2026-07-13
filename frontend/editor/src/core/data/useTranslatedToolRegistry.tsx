@@ -92,11 +92,11 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
             height="1.5rem"
           />
         ),
-        name: t("home.pdfTextEditor.title", "PDF Text Editor"),
+        name: t("home.pdfTextEditor.title", "Edit PDF"),
         component: lazy(() => import("@app/tools/pdfTextEditor/PdfTextEditor")),
         description: t(
           "home.pdfTextEditor.desc",
-          "Review and edit text and images in PDFs with grouped text editing and PDF regeneration",
+          "Edit text, images, annotations, signatures, redactions, and pages from one PDF workspace",
         ),
         categoryId: ToolCategoryId.RECOMMENDED_TOOLS,
         subcategoryId: SubcategoryId.GENERAL,

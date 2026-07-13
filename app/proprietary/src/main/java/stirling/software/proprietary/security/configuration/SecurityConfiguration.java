@@ -41,6 +41,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import stirling.software.common.configuration.AppConfig;
 import stirling.software.common.model.ApplicationProperties;
+import stirling.software.common.util.AgentSecurityDebugLog;
 import stirling.software.common.util.RequestUriUtils;
 import stirling.software.proprietary.security.CustomAuthenticationFailureHandler;
 import stirling.software.proprietary.security.CustomAuthenticationSuccessHandler;
@@ -217,6 +218,21 @@ public class SecurityConfiguration {
         cfg.setAllowCredentials(true);
         cfg.setMaxAge(3600L);
 
+        // #region agent log
+        AgentSecurityDebugLog.log(
+                "security-audit-pre-fix",
+                "H1",
+                "SecurityConfiguration.java:corsConfigurationSource",
+                "Self-hosted CORS configuration built",
+                java.util.Map.of(
+                        "configuredOriginsPresent",
+                        configuredOrigins != null && !configuredOrigins.isEmpty(),
+                        "allowedOriginPatterns",
+                        cfg.getAllowedOriginPatterns(),
+                        "allowCredentials",
+                        cfg.getAllowCredentials()));
+        // #endregion
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
         return source;
@@ -266,6 +282,23 @@ public class SecurityConfiguration {
         }
 
         http.csrf(CsrfConfigurer::disable);
+
+        // #region agent log
+        AgentSecurityDebugLog.log(
+                "security-audit-pre-fix",
+                "H2",
+                "SecurityConfiguration.java:configureSecurity",
+                "Self-hosted security chain configuring auth posture",
+                java.util.Map.of(
+                        "loginEnabled",
+                        loginEnabledValue,
+                        "sessionPolicy",
+                        sessionPolicy.name(),
+                        "csrfDisabled",
+                        true,
+                        "runningProOrHigher",
+                        runningProOrHigher));
+        // #endregion
 
         // Configure X-Frame-Options based on settings.yml configuration
         // When login is disabled, automatically disable X-Frame-Options to allow embedding

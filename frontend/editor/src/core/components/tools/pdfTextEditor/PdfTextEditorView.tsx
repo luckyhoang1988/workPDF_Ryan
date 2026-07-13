@@ -24,6 +24,7 @@ import {
 } from "@mantine/core";
 import { Button } from "@app/ui/Button";
 import { ActionIcon } from "@app/ui/ActionIcon";
+import LocalIcon from "@app/components/shared/LocalIcon";
 import { Dropzone } from "@mantine/dropzone";
 import { useTranslation } from "react-i18next";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
@@ -414,7 +415,8 @@ const PdfTextEditorView = ({ data }: PdfTextEditorViewProps) => {
     isSavingToWorkbench: _isSavingToWorkbench,
     isConverting,
     conversionProgress,
-    hasChanges: _hasChanges,
+    hasChanges,
+    modeActions,
     forceSingleTextElement: _forceSingleTextElement,
     groupingMode: externalGroupingMode,
     autoScaleText,
@@ -1786,6 +1788,62 @@ const PdfTextEditorView = ({ data }: PdfTextEditorViewProps) => {
               />
             )}
           </Group>
+
+          <Card withBorder radius="md" padding="md">
+            <Stack gap="sm">
+              <Group justify="space-between" align="flex-start" gap="md">
+                <Box style={{ flex: "1 1 16rem" }}>
+                  <Text fw={600} size="sm">
+                    {t("pdfTextEditor.unifiedToolbar.title", "Edit PDF")}
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    {hasChanges
+                      ? t(
+                          "pdfTextEditor.unifiedToolbar.pendingChanges",
+                          "Text/image changes will be applied before opening another editing mode.",
+                        )
+                      : t(
+                          "pdfTextEditor.unifiedToolbar.description",
+                          "Use one workspace for text, images, annotations, signing, redaction, pages, and export.",
+                        )}
+                  </Text>
+                </Box>
+                <Badge color={hasChanges ? "yellow" : "green"} variant="light">
+                  {hasChanges
+                    ? t("pdfTextEditor.unifiedToolbar.unsaved", "Unsaved edits")
+                    : t("pdfTextEditor.unifiedToolbar.ready", "Ready")}
+                </Badge>
+              </Group>
+              <Group gap="xs" wrap="wrap">
+                {modeActions.map((action) => (
+                  <Tooltip
+                    key={action.id}
+                    label={action.description}
+                    withinPortal
+                  >
+                    <Button
+                      variant={action.id === "text" ? "primary" : "secondary"}
+                      size="sm"
+                      leftSection={
+                        <LocalIcon
+                          icon={action.icon}
+                          width="1rem"
+                          height="1rem"
+                        />
+                      }
+                      loading={action.loading}
+                      disabled={action.disabled}
+                      onClick={() => {
+                        void action.onOpen();
+                      }}
+                    >
+                      {action.label}
+                    </Button>
+                  </Tooltip>
+                ))}
+              </Group>
+            </Stack>
+          </Card>
 
           <Modal
             opened={showWelcomeBanner}

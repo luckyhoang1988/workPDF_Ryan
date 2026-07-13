@@ -184,6 +184,16 @@ export interface ConversionProgress {
   total?: number;
 }
 
+export interface PdfTextEditorModeAction {
+  id: string;
+  label: string;
+  description: string;
+  icon: string;
+  disabled?: boolean;
+  loading?: boolean;
+  onOpen: () => void | Promise<void>;
+}
+
 export interface PdfTextEditorViewData {
   document: PdfJsonDocument | null;
   groupsByPage: TextGroup[][];
@@ -199,6 +209,7 @@ export interface PdfTextEditorViewData {
   isConverting: boolean;
   conversionProgress: ConversionProgress | null;
   hasChanges: boolean;
+  modeActions: PdfTextEditorModeAction[];
   forceSingleTextElement: boolean;
   groupingMode: "auto" | "paragraph" | "singleLine";
   autoScaleText: boolean;

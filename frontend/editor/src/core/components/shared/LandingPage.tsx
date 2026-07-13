@@ -4,10 +4,12 @@ import { Dropzone } from "@mantine/dropzone";
 import { useTranslation } from "react-i18next";
 import { useFileHandler } from "@app/hooks/useFileHandler";
 import { useFileActionTerminology } from "@app/hooks/useFileActionTerminology";
+import { useToolWorkflow } from "@app/contexts/ToolWorkflowContext";
 import MobileUploadModal from "@app/components/shared/MobileUploadModal";
 import { openFilesFromDisk } from "@app/services/openFilesFromDisk";
 import { LandingDocumentStack } from "@app/components/shared/LandingDocumentStack";
 import { LandingActions } from "@app/components/shared/LandingActions";
+import { LandingChecklist } from "@app/components/shared/LandingChecklist";
 import "@app/components/shared/LandingPage.css";
 
 const LandingPage = () => {
@@ -16,6 +18,7 @@ const LandingPage = () => {
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const terminology = useFileActionTerminology();
   const [mobileUploadModalOpen, setMobileUploadModalOpen] = useState(false);
+  const { selectedTool } = useToolWorkflow();
 
   const handleFileDrop = async (files: File[]) => {
     await addFiles(files);
@@ -47,6 +50,52 @@ const LandingPage = () => {
     }
   };
 
+  const dropzone = (
+    <Dropzone
+      onDrop={handleFileDrop}
+      multiple
+      activateOnClick={false}
+      enablePointerEvents
+      aria-label={terminology.dropFilesHere}
+      className={`landing-dropzone flex min-h-0 flex-1 cursor-default flex-col items-center justify-center border-none bg-transparent px-4 py-8 shadow-none outline-none${selectedTool ? " landing-dropzone-card" : ""}`}
+      styles={{
+        root: {
+          border: "none !important",
+          backgroundColor: "transparent",
+          overflow: "visible",
+        },
+        inner: {
+          overflow: "visible",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+        },
+      }}
+    >
+      <LandingDocumentStack />
+
+      <h3 className="landing-title">
+        {selectedTool
+          ? t("landing.dropFilesHereTitle", "Drop files here")
+          : t("landing.workbenchEmptyStateHero", "Drop a PDF anywhere")}
+      </h3>
+
+      {selectedTool && (
+        <div className="landing-divider">
+          <span>{t("landing.orDivider", "OR")}</span>
+        </div>
+      )}
+
+      <LandingActions
+        fileInputRef={fileInputRef}
+        onUploadClick={() => void handleNativeUploadClick()}
+        onMobileUploadClick={() => setMobileUploadModalOpen(true)}
+        onFileSelect={handleFileSelect}
+      />
+    </Dropzone>
+  );
+
   return (
     <Container
       size="70rem"
@@ -55,40 +104,22 @@ const LandingPage = () => {
       className="flex min-h-0 flex-col"
       style={{ position: "relative" }}
     >
-      <Dropzone
-        onDrop={handleFileDrop}
-        multiple
-        activateOnClick={false}
-        enablePointerEvents
-        aria-label={terminology.dropFilesHere}
-        className="landing-dropzone flex min-h-0 flex-1 cursor-default flex-col items-center justify-center border-none bg-transparent px-4 py-8 shadow-none outline-none"
-        styles={{
-          root: {
-            border: "none !important",
-            backgroundColor: "transparent",
-            overflow: "visible",
-          },
-          inner: {
-            overflow: "visible",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100%",
-          },
-        }}
-      >
-        <LandingDocumentStack />
-
-        <h3 className="landing-title">
-          {t("landing.workbenchEmptyStateHero", "Drop a PDF anywhere")}
-        </h3>
-        <LandingActions
-          fileInputRef={fileInputRef}
-          onUploadClick={() => void handleNativeUploadClick()}
-          onMobileUploadClick={() => setMobileUploadModalOpen(true)}
-          onFileSelect={handleFileSelect}
-        />
-      </Dropzone>
+      {selectedTool ? (
+        <div className="landing-hero-grid">
+          <div className="landing-hero-copy">
+            <h1 className="landing-hero-title">{selectedTool.name}</h1>
+            {selectedTool.description && (
+              <p className="landing-hero-subtitle">
+                {selectedTool.description}
+              </p>
+            )}
+            <LandingChecklist />
+          </div>
+          <div className="landing-hero-upload">{dropzone}</div>
+        </div>
+      ) : (
+        dropzone
+      )}
 
       <MobileUploadModal
         opened={mobileUploadModalOpen}

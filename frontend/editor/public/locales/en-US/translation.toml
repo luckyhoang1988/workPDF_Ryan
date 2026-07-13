@@ -4455,9 +4455,9 @@ tags = "organize,rearrange,reorder,arrange pages,sort,move pages,delete pages,re
 title = "Organize"
 
 [home.pdfTextEditor]
-desc = "Edit existing text and images inside PDFs"
-tags = "edit text,modify text,change text,edit content,update text,rewrite,correct,amend,redline,revise,text editor,content editor"
-title = "PDF Text Editor"
+desc = "Edit text, images, annotations, signatures, redactions, and pages from one PDF workspace"
+tags = "edit pdf,pdf editor,edit text,modify text,change text,edit content,add image,annotate,highlight,draw,sign,redact,erase,crop,delete pages,page editor,text editor,content editor"
+title = "Edit PDF"
 
 [home.pdfToSinglePage]
 desc = "Merges all PDF pages into one large single page"
@@ -4647,8 +4647,14 @@ welcomeTitle = "You've been invited!"
 
 [landing]
 addFiles = "Add Files"
+checklistBullet1 = "Works directly in your browser"
+checklistBullet2 = "Keeps original formatting and quality"
+checklistBullet3 = "Files are processed and stored locally"
+checklistBullet4 = "Ready in seconds"
+dropFilesHereTitle = "Drop files here"
 mobileUpload = "Upload from Mobile"
 openFromComputer = "Open from computer"
+orDivider = "OR"
 uploadFromComputer = "Upload from computer"
 workbenchEmptyStateHero = "Drop a PDF anywhere"
 
@@ -5621,8 +5627,8 @@ imageLabel = "Placed image"
 noTextOnPage = "No editable text was detected on this page."
 pagePreviewAlt = "Page preview"
 pageSummary = "Page {{number}} of {{total}}"
-tags = "edit text,modify text,change text,edit content,update text,rewrite,correct,amend,redline,revise,text editor,content editor"
-title = "PDF Text Editor"
+tags = "edit pdf,pdf editor,edit text,modify text,change text,edit content,add image,annotate,highlight,draw,sign,redact,erase,crop,delete pages,page editor,text editor,content editor"
+title = "Edit PDF"
 viewLabel = "PDF Editor"
 
 [pdfTextEditor.actions]
@@ -5683,6 +5689,34 @@ confirm = "Reset and Change Mode"
 title = "Confirm Mode Change"
 warning = "Changing the text grouping mode will reset all unsaved changes. Are you sure you want to continue?"
 
+[pdfTextEditor.modes.annotate]
+description = "Highlight, draw, add shapes, notes, and review markup in the PDF viewer."
+label = "Annotate"
+
+[pdfTextEditor.modes.erase]
+description = "Use redaction mode to permanently remove sensitive areas."
+label = "Erase"
+
+[pdfTextEditor.modes.export]
+description = "Apply text and image edits back to the workbench as a new PDF version."
+label = "Done"
+
+[pdfTextEditor.modes.image]
+description = "Add a new image overlay to the PDF using the viewer placement tools."
+label = "Image"
+
+[pdfTextEditor.modes.pages]
+description = "Reorder, rotate, delete, split, and export pages in the page editor."
+label = "Pages"
+
+[pdfTextEditor.modes.sign]
+description = "Place a typed, drawn, or uploaded signature on the document."
+label = "Sign"
+
+[pdfTextEditor.modes.text]
+description = "Edit existing text boxes and reposition embedded images in this workspace."
+label = "Text"
+
 [pdfTextEditor.options.advanced]
 title = "Advanced Settings"
 
@@ -5722,6 +5756,13 @@ title = "Preview Variance"
 [pdfTextEditor.tooltip.textFocus]
 text = "This workspace focuses on editing text and repositioning embedded images. Complex page artwork, form widgets, and layered graphics are preserved for export but are not fully editable here."
 title = "Text and Image Focus"
+
+[pdfTextEditor.unifiedToolbar]
+description = "Use one workspace for text, images, annotations, signing, redaction, pages, and export."
+pendingChanges = "Text/image changes will be applied before opening another editing mode."
+ready = "Ready"
+title = "Edit PDF"
+unsaved = "Unsaved edits"
 
 [pdfTextEditor.welcomeBanner]
 bestFor = "Works Best With:"

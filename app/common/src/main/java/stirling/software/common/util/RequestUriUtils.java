@@ -174,7 +174,8 @@ public class RequestUriUtils {
                         : requestURI;
 
         // Public auth endpoints that don't require authentication
-        return trimmedUri.startsWith("/login")
+        boolean isPublic =
+                trimmedUri.startsWith("/login")
                 || trimmedUri.startsWith("/auth/")
                 || trimmedUri.startsWith("/oauth2")
                 || trimmedUri.startsWith("/saml2")
@@ -203,6 +204,26 @@ public class RequestUriUtils {
                 || trimmedUri.startsWith("/api/v1/workflow/participant/")
                 // Share-link SPA bootstrap; data APIs remain protected
                 || trimmedUri.matches("^/share/[^/]+/?$");
+        // #region agent log
+        if (isPublic
+                && (trimmedUri.startsWith("/api/")
+                        || trimmedUri.startsWith("/share/")
+                        || trimmedUri.startsWith("/auth/")
+                        || trimmedUri.startsWith("/oauth2")
+                        || trimmedUri.startsWith("/saml2"))) {
+            AgentSecurityDebugLog.log(
+                    "security-audit-pre-fix",
+                    "H3,H5",
+                    "RequestUriUtils.java:isPublicAuthEndpoint",
+                    "Request matched public auth endpoint",
+                    java.util.Map.of(
+                            "trimmedUri",
+                            trimmedUri,
+                            "contextPathPresent",
+                            contextPath != null && !contextPath.isBlank()));
+        }
+        // #endregion
+        return isPublic;
     }
 
     private static String stripContextPath(String contextPath, String requestURI) {

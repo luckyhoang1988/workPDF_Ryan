@@ -46,6 +46,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import stirling.software.common.model.ApplicationProperties;
+import stirling.software.common.util.AgentSecurityDebugLog;
 import stirling.software.common.util.RequestUriUtils;
 import stirling.software.proprietary.security.model.User;
 import stirling.software.proprietary.security.service.TeamService;
@@ -156,6 +157,22 @@ public class SupabaseSecurityConfig {
     @Bean
     JwtDecoder jwtDecoder() {
         String issuerError = validateIssuer(issuer);
+        // #region agent log
+        AgentSecurityDebugLog.log(
+                "security-audit-pre-fix",
+                "H4",
+                "SupabaseSecurityConfig.java:jwtDecoder",
+                "SaaS JWT decoder configuration evaluated",
+                Map.of(
+                        "issuerConfigured",
+                        issuer != null && !issuer.isBlank(),
+                        "issuerValid",
+                        issuerError == null,
+                        "expectedAudienceConfigured",
+                        expectedAud != null && !expectedAud.isBlank(),
+                        "clockSkewSeconds",
+                        clockSkewSeconds));
+        // #endregion
         if (issuerError != null) {
             log.warn(
                     "{} saas profile is active but JWTs cannot be validated. Set SAAS_DB_PROJECT_REF"
@@ -316,6 +333,22 @@ public class SupabaseSecurityConfig {
         cfg.setExposedHeaders(List.of("WWW-Authenticate"));
         cfg.setAllowCredentials(true);
         cfg.setMaxAge(3600L);
+        // #region agent log
+        AgentSecurityDebugLog.log(
+                "security-audit-pre-fix",
+                "H1",
+                "SupabaseSecurityConfig.java:corsConfigurationSource",
+                "SaaS CORS configuration built",
+                Map.of(
+                        "operatorOverride",
+                        operatorOverride,
+                        "allowedOriginPatterns",
+                        origins,
+                        "containsWildcard",
+                        origins.stream().anyMatch(o -> o.contains("*")),
+                        "allowCredentials",
+                        cfg.getAllowCredentials()));
+        // #endregion
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
         return source;

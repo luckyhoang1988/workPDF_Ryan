@@ -148,3 +148,120 @@
   outline: 2px dashed var(--mantine-color-red-6);
   outline-offset: 4px;
 }
+
+/* ============================================================
+   Tool-aware two-column hero (shown when a tool is selected).
+   ============================================================ */
+
+.landing-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+  overflow: auto;
+}
+
+.landing-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.landing-hero-title {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.landing-hero-subtitle {
+  margin: 0 0 1.5rem;
+  max-width: 32rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.landing-hero-upload {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  align-items: stretch;
+}
+
+/* Card variant of the dropzone used inside the two-column hero */
+.landing-dropzone-card {
+  border: 2px dashed var(--border-default) !important;
+  border-radius: 1rem !important;
+  background-color: var(--bg-surface) !important;
+  padding: 2.5rem 1.5rem !important;
+}
+
+.landing-dropzone-card .landing-stack {
+  transform: scale(0.7);
+  margin-bottom: -1.5rem;
+}
+
+/* ── Checklist ────────────────────────────────────────────── */
+.landing-hero-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.landing-hero-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.landing-hero-checklist-icon {
+  flex-shrink: 0;
+  color: var(--accent-interactive);
+}
+
+/* ── OR divider ───────────────────────────────────────────── */
+.landing-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 18rem;
+  margin: 1rem 0;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.landing-divider::before,
+.landing-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-default);
+}
+
+/* ── Mobile: stack hero above upload card ────────────────── */
+@media (max-width: 640px) {
+  .landing-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .landing-hero-copy {
+    align-items: center;
+    text-align: center;
+  }
+}
