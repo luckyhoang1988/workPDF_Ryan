@@ -177,6 +177,11 @@ class RequestUriUtilsTest {
     }
 
     @Test
+    void testIsPublicAuthEndpoint_selfRegistration() {
+        assertTrue(RequestUriUtils.isPublicAuthEndpoint("/api/v1/user/register", ""));
+    }
+
+    @Test
     void testIsPublicAuthEndpoint_withContextPath() {
         assertTrue(RequestUriUtils.isPublicAuthEndpoint("/app/login", "/app"));
     }
