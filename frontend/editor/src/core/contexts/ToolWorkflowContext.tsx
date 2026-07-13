@@ -29,6 +29,8 @@ import {
   isBaseWorkbench,
 } from "@app/types/workbench";
 import { useNavigationUrlSync } from "@app/hooks/useUrlSync";
+import { useAuth } from "@app/auth/UseSession";
+import { useAppConfig } from "@app/contexts/AppConfigContext";
 import { filterToolRegistryByQuery } from "@app/utils/toolSearch";
 import { useToolHistory } from "@app/hooks/tools/useUserToolActivity";
 import {
@@ -196,6 +198,14 @@ export function ToolWorkflowProvider({ children }: ToolWorkflowProviderProps) {
   const { toolRegistry, getSelectedTool, toolAvailability } =
     useToolManagement();
   const { allTools } = useToolRegistry();
+
+  // Auth gate for tools marked `requiresAuth: false === false` (i.e. requires
+  // login). Only enforced when the server actually has login enabled - a core
+  // OSS/no-auth deployment must never block tool selection on a session that
+  // can never exist.
+  const { session, loading: authLoading } = useAuth();
+  const { config: appConfig } = useAppConfig();
+  const loginActive = appConfig?.enableLogin === true;
 
   // Tool history hook
   const { favoriteTools, toggleFavorite, isFavorite } = useToolHistory();
@@ -449,6 +459,19 @@ export function ToolWorkflowProvider({ children }: ToolWorkflowProviderProps) {
         return;
       }
 
+      // Guard: gated tools need a signed-in session. Only enforced while the
+      // server has login enabled and the session has finished resolving -
+      // never block on a still-loading or non-existent auth state.
+      if (loginActive && !authLoading && !session) {
+        const tool = getSelectedTool(toolId);
+        if (tool?.requiresAuth !== false) {
+          window.dispatchEvent(
+            new CustomEvent("ryanpdf:loginRequired", { detail: { toolId } }),
+          );
+          return;
+        }
+      }
+
       // Guard: if there are unsaved changes and we're switching away from the current tool,
       // show the save modal before proceeding.
       const hasUnsavedChanges = navigationState.hasUnsavedChanges;
@@ -515,6 +538,9 @@ export function ToolWorkflowProvider({ children }: ToolWorkflowProviderProps) {
       setReaderMode,
       setSearchQuery,
       toolAvailability,
+      loginActive,
+      authLoading,
+      session,
     ],
   );
 

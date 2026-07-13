@@ -77,6 +77,9 @@ export type ToolRegistryEntry = {
   versionStatus?: "alpha" | "beta";
   // Whether this tool requires premium access
   requiresPremium?: boolean;
+  // Whether this tool requires the user to be logged in. Defaults to true
+  // (requires login) when unset - only explicitly free tools opt out.
+  requiresAuth?: boolean;
 };
 
 export type RegularToolRegistry = Record<RegularToolId, ToolRegistryEntry>;

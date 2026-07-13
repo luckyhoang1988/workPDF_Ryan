@@ -176,34 +176,54 @@ public class RequestUriUtils {
         // Public auth endpoints that don't require authentication
         boolean isPublic =
                 trimmedUri.startsWith("/login")
-                || trimmedUri.startsWith("/auth/")
-                || trimmedUri.startsWith("/oauth2")
-                || trimmedUri.startsWith("/saml2")
-                || trimmedUri.contains("/login/oauth2/code/") // Spring Security OAuth2 callback
-                || trimmedUri.contains("/oauth2/authorization/") // OAuth2 authorization endpoint
-                || trimmedUri.startsWith("/api/v1/auth/login")
-                || trimmedUri.startsWith("/api/v1/auth/refresh")
-                || trimmedUri.startsWith("/api/v1/auth/logout")
-                || trimmedUri.startsWith(
-                        "/api/v1/proprietary/ui-data/login") // Login page config (SSO providers +
-                // enableLogin)
-                || trimmedUri.startsWith(
-                        "/api/v1/ui-data/footer-info") // Public footer configuration
-                || trimmedUri.startsWith("/api/v1/invite/validate")
-                || trimmedUri.startsWith("/api/v1/invite/accept")
-                // Health Endpoints
-                || trimmedUri.startsWith("/actuator/health")
-                || trimmedUri.startsWith("/health")
-                || trimmedUri.startsWith("/healthz")
-                || trimmedUri.startsWith("/liveness")
-                || trimmedUri.startsWith("/readiness")
-                || trimmedUri.startsWith(
-                        "/api/v1/mobile-scanner/") // Mobile scanner endpoints (no auth)
-                || trimmedUri.startsWith("/v1/api-docs")
-                // Workflow participant endpoints - access controlled by share tokens, not login
-                || trimmedUri.startsWith("/api/v1/workflow/participant/")
-                // Share-link SPA bootstrap; data APIs remain protected
-                || trimmedUri.matches("^/share/[^/]+/?$");
+                        || trimmedUri.startsWith("/auth/")
+                        || trimmedUri.startsWith("/oauth2")
+                        || trimmedUri.startsWith("/saml2")
+                        || trimmedUri.contains(
+                                "/login/oauth2/code/") // Spring Security OAuth2 callback
+                        || trimmedUri.contains(
+                                "/oauth2/authorization/") // OAuth2 authorization endpoint
+                        || trimmedUri.startsWith("/api/v1/auth/login")
+                        || trimmedUri.startsWith("/api/v1/auth/refresh")
+                        || trimmedUri.startsWith("/api/v1/auth/logout")
+                        || trimmedUri.startsWith(
+                                "/api/v1/proprietary/ui-data/login") // Login page config (SSO
+                        // providers +
+                        // enableLogin)
+                        || trimmedUri.startsWith(
+                                "/api/v1/ui-data/footer-info") // Public footer configuration
+                        || trimmedUri.startsWith("/api/v1/invite/validate")
+                        || trimmedUri.startsWith("/api/v1/invite/accept")
+                        // Health Endpoints
+                        || trimmedUri.startsWith("/actuator/health")
+                        || trimmedUri.startsWith("/health")
+                        || trimmedUri.startsWith("/healthz")
+                        || trimmedUri.startsWith("/liveness")
+                        || trimmedUri.startsWith("/readiness")
+                        || trimmedUri.startsWith(
+                                "/api/v1/mobile-scanner/") // Mobile scanner endpoints (no auth)
+                        || trimmedUri.startsWith("/v1/api-docs")
+                        // Workflow participant endpoints - access controlled by share tokens, not
+                        // login
+                        || trimmedUri.startsWith("/api/v1/workflow/participant/")
+                        // Share-link SPA bootstrap; data APIs remain protected
+                        || trimmedUri.matches("^/share/[^/]+/?$")
+                        // Free-tier tool endpoints (light PDFBox ops, no login required). Keep this
+                        // list
+                        // in sync with the frontend tools marked `requiresAuth: false` in
+                        // toolsTaxonomy.ts.
+                        || trimmedUri.equals("/api/v1/general/merge-pdfs")
+                        // Split (all methods the Split tool can invoke)
+                        || trimmedUri.equals("/api/v1/general/split-pages")
+                        || trimmedUri.equals("/api/v1/general/split-pdf-by-sections")
+                        || trimmedUri.equals("/api/v1/general/split-by-size-or-count")
+                        || trimmedUri.equals("/api/v1/general/split-pdf-by-chapters")
+                        || trimmedUri.equals("/api/v1/general/split-for-poster-print")
+                        || trimmedUri.equals("/api/v1/misc/auto-split-pdf")
+                        || trimmedUri.equals("/api/v1/general/rotate-pdf")
+                        || trimmedUri.equals("/api/v1/general/crop")
+                        || trimmedUri.equals("/api/v1/general/rearrange-pages")
+                        || trimmedUri.equals("/api/v1/general/remove-pages");
         // #region agent log
         if (isPublic
                 && (trimmedUri.startsWith("/api/")

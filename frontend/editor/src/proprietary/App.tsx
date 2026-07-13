@@ -18,6 +18,7 @@ import WatchedFoldersRegistration from "@app/components/watchedFolders/WatchedFo
 import { WATCHED_FOLDERS_ENABLED } from "@app/constants/featureFlags";
 import { getAdminRouteExtensions } from "@app/routes/adminRouteExtensions";
 import { LoginLandingRedirect } from "@app/components/LoginLandingRedirect";
+import LoginRequiredBootstrap from "@app/components/LoginRequiredBootstrap";
 
 // Import global styles
 import "@app/styles/tailwind.css";
@@ -80,6 +81,7 @@ export default function App() {
             <AppProviders>
               <AppLayout>
                 <LoginLandingRedirect />
+                <LoginRequiredBootstrap />
                 <Routes>
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />

@@ -148,6 +148,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         subcategoryId: SubcategoryId.GENERAL,
         maxFiles: -1,
         endpoints: ["merge-pdfs"],
+        requiresAuth: false,
         operationConfig: asRegistryConfig(mergeOperationConfig),
         automationSettings: lazySettings(
           () => import("@app/components/tools/merge/MergeSettings"),
@@ -548,6 +549,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         categoryId: ToolCategoryId.STANDARD_TOOLS,
         subcategoryId: SubcategoryId.DOCUMENT_REVIEW,
         endpoints: ["view-pdf"],
+        requiresAuth: false,
         synonyms: getSynonyms(t, "read"),
         supportsAutomate: false,
         automationSettings: null,
@@ -608,6 +610,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         subcategoryId: SubcategoryId.PAGE_FORMATTING,
         maxFiles: -1,
         endpoints: ["crop"],
+        requiresAuth: false,
         operationConfig: asRegistryConfig(cropOperationConfig),
         automationSettings: lazySettings(
           () => import("@app/components/tools/crop/CropAutomationSettings"),
@@ -628,6 +631,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         subcategoryId: SubcategoryId.PAGE_FORMATTING,
         maxFiles: -1,
         endpoints: ["rotate-pdf"],
+        requiresAuth: false,
         operationConfig: asRegistryConfig(rotateOperationConfig),
         automationSettings: lazySettings(
           () => import("@app/components/tools/rotate/RotateAutomationSettings"),
@@ -648,6 +652,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         categoryId: ToolCategoryId.STANDARD_TOOLS,
         subcategoryId: SubcategoryId.PAGE_FORMATTING,
         endpoints: Array.from(new Set(Object.values(SPLIT_ENDPOINT_NAMES))),
+        requiresAuth: false,
         operationConfig: asRegistryConfig(splitOperationConfig),
         automationSettings: lazySettings(
           () => import("@app/components/tools/split/SplitAutomationSettings"),
@@ -667,6 +672,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         categoryId: ToolCategoryId.STANDARD_TOOLS,
         subcategoryId: SubcategoryId.PAGE_FORMATTING,
         endpoints: ["rearrange-pages"],
+        requiresAuth: false,
         operationConfig: asRegistryConfig(reorganizePagesOperationConfig),
         synonyms: getSynonyms(t, "reorganizePages"),
         automationSettings: null,
@@ -823,6 +829,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         ),
         operationConfig: asRegistryConfig(extractPagesOperationConfig),
         endpoints: ["rearrange-pages"],
+        requiresAuth: false,
       },
       extractImages: {
         icon: (
@@ -870,6 +877,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         subcategoryId: SubcategoryId.REMOVAL,
         maxFiles: 1,
         endpoints: ["remove-pages"],
+        requiresAuth: false,
         synonyms: getSynonyms(t, "removePages"),
         operationConfig: asRegistryConfig(removePagesOperationConfig),
         automationSettings: lazySettings(

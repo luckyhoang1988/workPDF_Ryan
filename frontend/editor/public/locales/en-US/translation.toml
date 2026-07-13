@@ -4742,6 +4742,10 @@ alt = "Secure PDFs"
 subtitle = "Add passwords, redact content, and manage certificates with ease."
 title = "Protect sensitive information in your PDFs"
 
+[loginRequiredModal]
+body = "This tool needs a free RyanPDF account. Sign in (or create one) to continue - no payment required."
+title = "Sign in to use this tool"
+
 [margin]
 large = "Large"
 medium = "Medium"

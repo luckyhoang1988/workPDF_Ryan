@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@app/auth/UseSession";
 import { useAppConfig } from "@app/contexts/AppConfigContext";
 import HomePage from "@app/pages/HomePage";
@@ -10,11 +10,10 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@app/ui/Button";
 
 /**
- * Landing component - Smart router based on authentication status
- *
- * If login is disabled: Show HomePage directly (anonymous mode)
- * If user is authenticated: Show HomePage
- * If user is not authenticated: Show Login or redirect to /login
+ * Landing component - shows HomePage whether or not there is a session.
+ * Anonymous visitors can use the tools marked `requiresAuth: false`; everyone
+ * else is prompted to sign in at tool-selection time (LoginRequiredBootstrap),
+ * not by blocking the route here.
  */
 export default function Landing() {
   const { session, loading: authLoading } = useAuth();
@@ -163,17 +162,8 @@ export default function Landing() {
     );
   }
 
-  // If we have a session, show the main app
-  // Note: First login password change is now handled by the onboarding flow
-  if (session) {
-    return <HomePage />;
-  }
-
-  // No session - redirect to login page
-  // This ensures the URL always shows /login when not authenticated
-  return config?.enableLogin === true && !backendProbe.loginDisabled ? (
-    <Navigate to="/login" replace state={{ from: location }} />
-  ) : (
-    <HomePage />
-  );
+  // Show the main app regardless of session. A curated set of tools stays
+  // usable anonymously; everything else is gated at tool-selection time by
+  // LoginRequiredBootstrap, not by blocking the whole app here.
+  return <HomePage />;
 }
