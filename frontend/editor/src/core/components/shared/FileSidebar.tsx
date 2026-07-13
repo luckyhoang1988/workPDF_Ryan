@@ -22,6 +22,8 @@ import {
 import { useViewer } from "@app/contexts/ViewerContext";
 import { useFileHandler } from "@app/hooks/useFileHandler";
 import { useAuth } from "@app/auth/UseSession";
+import { useAccountLogout } from "@app/extensions/accountLogout";
+import { withBasePath } from "@app/constants/app";
 import { useProfilePictureUrl } from "@app/hooks/useProfilePictureUrl";
 import {
   useIndexedDB,
@@ -250,10 +252,20 @@ const FileSidebar = forwardRef<HTMLDivElement, FileSidebarProps>(
     // Each auth layer derives its own displayName from its native user shape.
     // Fall back to the proprietary REST endpoint only when the auth
     // context yields nothing - then to "User" as a generic last resort.
-    const { displayName: authDisplayName, isAnonymous } = useAuth();
+    const { displayName: authDisplayName, isAnonymous, signOut } = useAuth();
     const [accountUsername, setAccountUsername] = useState<string | null>(null);
     const displayName =
       authDisplayName ?? accountUsername ?? t("auth.displayName.user", "User");
+
+    // Direct sidebar logout - same signOut/redirect flow as the Account
+    // settings page, so users don't have to open Settings just to sign out.
+    const accountLogout = useAccountLogout();
+    const redirectToLogin = useCallback(() => {
+      window.location.assign(withBasePath("/login"));
+    }, []);
+    const handleLogout = useCallback(async () => {
+      await accountLogout({ signOut, redirectToLogin });
+    }, [accountLogout, redirectToLogin, signOut]);
 
     const profilePictureUrl = useProfilePictureUrl();
     const [pictureFailed, setPictureFailed] = useState(false);
@@ -1377,9 +1389,32 @@ const FileSidebar = forwardRef<HTMLDivElement, FileSidebarProps>(
                 {displayName}
               </span>
             )}
-            {onOpenSettings && !collapsed && (
-              <div className="file-sidebar-bottom-settings">
-                <SettingsIcon sx={{ fontSize: "1.1rem" }} />
+            {!collapsed && config?.enableLogin && (
+              <div className="file-sidebar-bottom-actions">
+                <Tooltip
+                  label={t("fileSidebar.logout", "Log out")}
+                  position="top"
+                  withinPortal
+                >
+                  <ActionIcon
+                    variant="quiet"
+                    accent="neutral"
+                    size="sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      void handleLogout();
+                    }}
+                    aria-label={t("fileSidebar.logout", "Log out")}
+                    data-testid="sidebar-logout-button"
+                  >
+                    <LocalIcon icon="logout-rounded" width="1.1rem" height="1.1rem" />
+                  </ActionIcon>
+                </Tooltip>
+                {onOpenSettings && (
+                  <div className="file-sidebar-bottom-settings">
+                    <SettingsIcon sx={{ fontSize: "1.1rem" }} />
+                  </div>
+                )}
               </div>
             )}
           </div>

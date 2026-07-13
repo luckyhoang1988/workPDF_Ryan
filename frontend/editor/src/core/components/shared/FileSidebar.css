@@ -631,6 +631,14 @@
   outline-offset: -2px;
 }
 
+.file-sidebar-bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .file-sidebar-bottom-settings {
   display: flex;
   align-items: center;
@@ -641,8 +649,8 @@
   color: var(--text-muted);
   padding: 0;
   flex-shrink: 0;
-  margin-left: auto;
 }
+
 
 .file-sidebar[data-collapsed="true"] .file-sidebar-bottom-settings {
   width: 32px;
