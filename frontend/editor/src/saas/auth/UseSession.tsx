@@ -62,6 +62,12 @@ interface AuthContextType {
   displayName: string | null;
   /** Whether the current session is an anonymous (Supabase `is_anonymous`) guest. */
   isAnonymous: boolean;
+  /**
+   * Whether the current user holds an admin role. SaaS end-user sessions have
+   * no per-session admin concept (team/workspace admin is a separate portal
+   * capability, not exposed here) - always `false`.
+   */
+  isAdmin: boolean;
   loading: boolean;
   error: AuthError | null;
   isPro: boolean | null;
@@ -79,6 +85,7 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   displayName: null,
   isAnonymous: false,
+  isAdmin: false,
   loading: true,
   error: null,
   isPro: null,
@@ -493,6 +500,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     displayName: deriveDisplayName(user, t),
     isAnonymous: Boolean(user?.is_anonymous),
+    isAdmin: false,
     loading,
     error,
     isPro,

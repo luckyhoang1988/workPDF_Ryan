@@ -80,6 +80,9 @@ export type ToolRegistryEntry = {
   // Whether this tool requires the user to be logged in. Defaults to true
   // (requires login) when unset - only explicitly free tools opt out.
   requiresAuth?: boolean;
+  // Whether this tool is only visible to admin accounts (e.g. self-hosted
+  // config/docs links). Defaults to false (visible to everyone) when unset.
+  requiresAdmin?: boolean;
 };
 
 export type RegularToolRegistry = Record<RegularToolId, ToolRegistryEntry>;

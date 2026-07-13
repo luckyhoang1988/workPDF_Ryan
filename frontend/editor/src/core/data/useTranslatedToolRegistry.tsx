@@ -1200,6 +1200,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         synonyms: getSynonyms(t, "showJS"),
         supportsAutomate: false,
         automationSettings: null,
+        requiresAdmin: true,
       },
       devApi: {
         icon: (
@@ -1220,6 +1221,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         synonyms: getSynonyms(t, "devApi"),
         supportsAutomate: false,
         automationSettings: null,
+        requiresAdmin: true,
       },
       devFolderScanning: {
         icon: (
@@ -1243,6 +1245,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         synonyms: getSynonyms(t, "devFolderScanning"),
         supportsAutomate: false,
         automationSettings: null,
+        requiresAdmin: true,
       },
       devSsoGuide: {
         icon: (
@@ -1263,6 +1266,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         synonyms: getSynonyms(t, "devSsoGuide"),
         supportsAutomate: false,
         automationSettings: null,
+        requiresAdmin: true,
       },
       devAirgapped: {
         icon: (
@@ -1286,6 +1290,7 @@ export function useTranslatedToolCatalog(): TranslatedToolCatalog {
         synonyms: getSynonyms(t, "devAirgapped"),
         supportsAutomate: false,
         automationSettings: null,
+        requiresAdmin: true,
       },
 
       // Recommended Tools

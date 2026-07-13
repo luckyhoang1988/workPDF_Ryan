@@ -22,6 +22,12 @@ export interface AuthContextType {
    * actions (cloud folders, MCP) without reaching into a layer-specific user.
    */
   isAnonymous: boolean;
+  /**
+   * Whether the current user holds an admin role. Each layer derives this
+   * from its own native user shape (Spring `ROLE_ADMIN` in proprietary).
+   * Always `false` in core OSS, which has no auth context.
+   */
+  isAdmin: boolean;
   loading: boolean;
   error: Error | null;
   signOut: () => Promise<void>;
@@ -38,6 +44,7 @@ export function useAuth(): AuthContextType {
     user: null,
     displayName: null,
     isAnonymous: false,
+    isAdmin: false,
     loading: false,
     error: null,
     signOut: async () => {},

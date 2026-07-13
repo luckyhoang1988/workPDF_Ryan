@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { useAuth } from "@app/auth/UseSession";
 import { useToolRegistry } from "@app/contexts/ToolRegistryContext";
 import { usePreferences } from "@app/contexts/PreferencesContext";
 import {
@@ -42,6 +43,7 @@ export const useToolManagement = (): ToolManagementResult => {
   const baseRegistry = allTools;
   const { preferences } = usePreferences();
   const isSaaSMode = useSaaSMode();
+  const { isAdmin } = useAuth();
 
   const allEndpoints = useMemo(
     () => getAllEndpoints(baseRegistry),
@@ -162,6 +164,7 @@ export const useToolManagement = (): ToolManagementResult => {
     (Object.keys(baseRegistry) as ToolId[]).forEach((toolKey) => {
       const baseTool = baseRegistry[toolKey];
       if (!baseTool) return;
+      if (baseTool.requiresAdmin && !isAdmin) return;
       const availabilityInfo = toolAvailability[toolKey];
       const isAvailable = availabilityInfo
         ? availabilityInfo.available !== false
@@ -180,7 +183,7 @@ export const useToolManagement = (): ToolManagementResult => {
       availableToolRegistry[toolKey] = baseTool;
     });
     return availableToolRegistry;
-  }, [baseRegistry, preferences.hideUnavailableTools, toolAvailability]);
+  }, [baseRegistry, preferences.hideUnavailableTools, toolAvailability, isAdmin]);
 
   const getSelectedTool = useCallback(
     (toolKey: ToolId | null): ToolRegistryEntry | null => {
