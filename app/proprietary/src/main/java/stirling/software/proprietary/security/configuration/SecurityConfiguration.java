@@ -387,12 +387,29 @@ public class SecurityConfiguration {
                                             req -> {
                                                 String uri = req.getRequestURI();
                                                 String contextPath = req.getContextPath();
-                                                // Check if it's a public auth endpoint or static
-                                                // resource
+                                                // Check if it's a public auth endpoint, static
+                                                // resource, or (GET/HEAD only) a frontend SPA
+                                                // route. The SPA shell itself is safe to serve
+                                                // pre-auth - it's just HTML/JS, no data - actual
+                                                // data comes from /api/* calls which stay
+                                                // protected below. Mirrors
+                                                // UserAuthenticationFilter#shouldNotFilter, which
+                                                // already assumes frontend routes load without a
+                                                // session; without this, anonymous visitors get a
+                                                // raw 401 instead of the app shell (including on
+                                                // "/" itself).
+                                                boolean isGetOrHead =
+                                                        "GET".equalsIgnoreCase(req.getMethod())
+                                                                || "HEAD"
+                                                                        .equalsIgnoreCase(
+                                                                                req.getMethod());
                                                 return RequestUriUtils.isStaticResource(
                                                                 contextPath, uri)
                                                         || RequestUriUtils.isPublicAuthEndpoint(
-                                                                uri, contextPath);
+                                                                uri, contextPath)
+                                                        || (isGetOrHead
+                                                                && RequestUriUtils.isFrontendRoute(
+                                                                        contextPath, uri));
                                             })
                                     .permitAll()
                                     .anyRequest()
