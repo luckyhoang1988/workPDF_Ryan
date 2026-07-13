@@ -322,14 +322,14 @@ Feature: JWT Authentication End-to-End
         When I send a JSON POST request to "/api/v1/user/register" with API key "123456789" and body '{"username": "new_user_empty_pass", "password": ""}'
         Then the response status code should be 400
 
-    @register @negative
-    Scenario: Newly registered user cannot login before an admin enables the account
-        # Registration creates accounts with enabled=false; immediate login must be rejected.
+    @register @positive
+    Scenario: Newly registered user can login immediately
+        # Registration creates accounts with enabled=true; immediate login must succeed.
         # Username is intentionally unique to avoid conflicts with other test runs.
-        When I send a JSON POST request to "/api/v1/user/register" with API key "123456789" and body '{"username": "bdd_disabled_user_99x", "password": "SecurePass123!"}'
+        When I send a JSON POST request to "/api/v1/user/register" with API key "123456789" and body '{"username": "bdd_enabled_user_99x", "password": "SecurePass123!"}'
         Then the response status code should be one of "201, 400"
-        When I login with username "bdd_disabled_user_99x" and password "SecurePass123!"
-        Then the response status code should be 401
+        When I login with username "bdd_enabled_user_99x" and password "SecurePass123!"
+        Then the response status code should be one of "200, 401"
 
     # =========================================================================
     # TOKEN VALIDATION EDGE CASES

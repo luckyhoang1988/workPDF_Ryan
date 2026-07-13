@@ -112,11 +112,7 @@ public class UserController {
             }
             Team team = teamRepository.findByName(TeamService.DEFAULT_TEAM_NAME).orElse(null);
             SaveUserRequest.Builder builder =
-                    SaveUserRequest.builder()
-                            .username(username)
-                            .password(password)
-                            .team(team)
-                            .enabled(false);
+                    SaveUserRequest.builder().username(username).password(password).team(team);
             User user = userService.saveUserCore(builder.build());
 
             log.info("User registered successfully: {}", username);
