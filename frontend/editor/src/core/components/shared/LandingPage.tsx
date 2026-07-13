@@ -57,7 +57,7 @@ const LandingPage = () => {
       activateOnClick={false}
       enablePointerEvents
       aria-label={terminology.dropFilesHere}
-      className={`landing-dropzone flex min-h-0 flex-1 cursor-default flex-col items-center justify-center border-none bg-transparent px-4 py-8 shadow-none outline-none${selectedTool ? " landing-dropzone-card" : ""}`}
+      className="landing-dropzone landing-dropzone-card flex min-h-0 flex-1 cursor-default flex-col items-center justify-center border-none bg-transparent px-4 py-8 shadow-none outline-none"
       styles={{
         root: {
           border: "none !important",
@@ -81,11 +81,9 @@ const LandingPage = () => {
           : t("landing.workbenchEmptyStateHero", "Drop a PDF anywhere")}
       </h3>
 
-      {selectedTool && (
-        <div className="landing-divider">
-          <span>{t("landing.orDivider", "OR")}</span>
-        </div>
-      )}
+      <div className="landing-divider">
+        <span>{t("landing.orDivider", "OR")}</span>
+      </div>
 
       <LandingActions
         fileInputRef={fileInputRef}
@@ -104,22 +102,23 @@ const LandingPage = () => {
       className="flex min-h-0 flex-col"
       style={{ position: "relative" }}
     >
-      {selectedTool ? (
-        <div className="landing-hero-grid">
-          <div className="landing-hero-copy">
-            <h1 className="landing-hero-title">{selectedTool.name}</h1>
-            {selectedTool.description && (
-              <p className="landing-hero-subtitle">
-                {selectedTool.description}
-              </p>
-            )}
-            <LandingChecklist />
-          </div>
-          <div className="landing-hero-upload">{dropzone}</div>
+      <div className="landing-hero-grid">
+        <div className="landing-hero-copy">
+          <h1 className="landing-hero-title">
+            {selectedTool?.name ??
+              t("landing.heroTitle", "Your all-in-one PDF editor & converter")}
+          </h1>
+          <p className="landing-hero-subtitle">
+            {selectedTool?.description ??
+              t(
+                "landing.heroSubtitle",
+                "Edit, convert, and sign PDFs in seconds — no installation, no account needed.",
+              )}
+          </p>
+          <LandingChecklist />
         </div>
-      ) : (
-        dropzone
-      )}
+        <div className="landing-hero-upload">{dropzone}</div>
+      </div>
 
       <MobileUploadModal
         opened={mobileUploadModalOpen}
