@@ -32,12 +32,13 @@ interface ToolPickerProps {
 
 const EMPTY_FILTERED_TOOLS: ToolPickerProps["filteredTools"] = [];
 const HEADER_TEXT_STYLE: React.CSSProperties = {
-  fontSize: "0.68rem",
-  fontWeight: 600,
-  padding: "0.25rem 0 0.35rem 0.5rem",
+  fontSize: "0.7rem",
+  fontWeight: 700,
+  padding: "0.25rem 0 0.4rem 0.5rem",
+  marginTop: "0.5rem",
   textTransform: "uppercase",
-  letterSpacing: "0.06em",
-  color: "var(--text-muted)",
+  letterSpacing: "0.07em",
+  color: "var(--text-secondary)",
 };
 const SCROLLABLE_STYLE: React.CSSProperties = {
   flex: 1,
