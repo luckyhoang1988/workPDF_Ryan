@@ -13,6 +13,8 @@ import java.io.File;
 import java.nio.file.Files;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +32,9 @@ import org.springframework.mock.web.MockMultipartFile;
 import stirling.software.SPDF.model.api.converters.PdfToPresentationRequest;
 import stirling.software.SPDF.model.api.converters.PdfToTextOrRTFRequest;
 import stirling.software.SPDF.model.api.converters.PdfToWordRequest;
+import stirling.software.SPDF.pdf.parser.PdfModels.Bounds;
+import stirling.software.SPDF.pdf.parser.PdfModels.TableFragment;
+import stirling.software.SPDF.pdf.parser.TabulaTableParser;
 import stirling.software.common.configuration.RuntimePathConfig;
 import stirling.software.common.model.api.PDFFile;
 import stirling.software.common.service.CustomPDFDocumentFactory;
@@ -56,6 +61,7 @@ class ConvertPDFToOfficeTest {
     @Mock private CustomPDFDocumentFactory pdfDocumentFactory;
     @Mock private TempFileManager tempFileManager;
     @Mock private RuntimePathConfig runtimePathConfig;
+    @Mock private TabulaTableParser tabulaTableParser;
 
     @InjectMocks private ConvertPDFToOffice controller;
 
@@ -156,6 +162,86 @@ class ConvertPDFToOfficeTest {
         PdfToTextOrRTFRequest request = new PdfToTextOrRTFRequest();
         request.setOutputFormat("rtf");
         assertEquals("rtf", request.getOutputFormat());
+    }
+
+    @Test
+    void processPdfToWord_editableWithoutTable_producesParagraphs() throws Exception {
+        MockMultipartFile pdfFile = createPdfFile();
+        PdfToWordRequest request = new PdfToWordRequest();
+        request.setFileInput(pdfFile);
+        request.setOutputFormat("docx");
+        request.setEditable(true);
+
+        PDDocument realDoc = new PDDocument();
+        realDoc.addPage(new org.apache.pdfbox.pdmodel.PDPage());
+        when(pdfDocumentFactory.load(request)).thenReturn(realDoc);
+        when(tabulaTableParser.parse(realDoc, 1)).thenReturn(java.util.List.of());
+
+        try (MockedStatic<GeneralUtils> guMock = Mockito.mockStatic(GeneralUtils.class)) {
+            guMock.when(() -> GeneralUtils.removeExtension("document.pdf")).thenReturn("document");
+
+            ResponseEntity<Resource> response = controller.processPdfToWord(request);
+
+            assertEquals(200, response.getStatusCode().value());
+            try (XWPFDocument doc = new XWPFDocument(response.getBody().getInputStream())) {
+                assertNotNull(doc.getParagraphs());
+                assertEquals(0, doc.getTables().size());
+            }
+        }
+    }
+
+    @Test
+    void processPdfToWord_editableWithTable_producesWordTable() throws Exception {
+        MockMultipartFile pdfFile = createPdfFile();
+        PdfToWordRequest request = new PdfToWordRequest();
+        request.setFileInput(pdfFile);
+        request.setOutputFormat("docx");
+        request.setEditable(true);
+
+        PDDocument realDoc = new PDDocument();
+        realDoc.addPage(new org.apache.pdfbox.pdmodel.PDPage());
+        when(pdfDocumentFactory.load(request)).thenReturn(realDoc);
+
+        TableFragment fragment =
+                new TableFragment(
+                        "tbl-p1-0",
+                        1,
+                        new Bounds(0, 0, 100, 50),
+                        java.util.List.of(),
+                        java.util.List.of(),
+                        java.util.List.of(
+                                java.util.List.of("Date", "Amount"),
+                                java.util.List.of("20/08/2025", "105,000")),
+                        2,
+                        1.0f,
+                        java.util.List.of(),
+                        null);
+        when(tabulaTableParser.parse(realDoc, 1)).thenReturn(java.util.List.of(fragment));
+
+        try (MockedStatic<GeneralUtils> guMock = Mockito.mockStatic(GeneralUtils.class)) {
+            guMock.when(() -> GeneralUtils.removeExtension("document.pdf")).thenReturn("document");
+
+            ResponseEntity<Resource> response = controller.processPdfToWord(request);
+
+            assertEquals(200, response.getStatusCode().value());
+            try (XWPFDocument doc = new XWPFDocument(response.getBody().getInputStream())) {
+                assertEquals(1, doc.getTables().size());
+                XWPFTable table = doc.getTables().get(0);
+                assertEquals(2, table.getRows().size());
+                assertEquals("Date", table.getRow(0).getCell(0).getText());
+                assertEquals("105,000", table.getRow(1).getCell(1).getText());
+            }
+        }
+    }
+
+    @Test
+    void processPdfToWord_notEditable_ignoresTableParser() {
+        // Non-editable / non-docx requests must not touch TabulaTableParser at all.
+        PdfToWordRequest request = new PdfToWordRequest();
+        request.setOutputFormat("odt");
+        request.setEditable(true);
+        assertEquals("odt", request.getOutputFormat());
+        Mockito.verifyNoInteractions(tabulaTableParser);
     }
 
     @Test

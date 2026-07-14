@@ -3203,6 +3203,11 @@ tags = "transform,change,convert,PDF to Word,PDF to Excel,PDF to image,Word to P
 targetFormatPlaceholder = "Target format"
 title = "Convert"
 webOptions = "Web to PDF Options"
+wordModeEditable = "Editable text/tables"
+wordModeEditableDescription = "Rebuilds the document as real paragraphs and Word tables you can edit normally. Exact visual layout is not preserved."
+wordModeLayout = "Keep original layout"
+wordModeLayoutDescription = "Looks identical to the PDF, but text/tables are placed in fixed positions and won't reflow when edited."
+wordOutputMode = "Output mode"
 zoomLevel = "Zoom Level"
 
 [convert.ebookOptions]

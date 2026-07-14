@@ -16,4 +16,12 @@ public class PdfToWordRequest extends PDFFile {
             requiredMode = Schema.RequiredMode.REQUIRED,
             allowableValues = {"doc", "docx", "odt"})
     private String outputFormat;
+
+    @Schema(
+            description =
+                    "Generate an editable document (real paragraphs and tables) instead of a"
+                            + " visual-fidelity layout. Only applies when outputFormat is docx;"
+                            + " ignored otherwise.",
+            defaultValue = "false")
+    private boolean editable;
 }

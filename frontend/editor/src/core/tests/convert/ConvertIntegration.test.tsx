@@ -160,6 +160,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -254,6 +257,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -316,6 +322,9 @@ describe("Convert Tool Integration Tests", () => {
         smartDetectionType: "none",
         htmlOptions: {
           zoomLevel: 0,
+        },
+        wordOptions: {
+          editable: false,
         },
         emailOptions: {
           includeAttachments: false,
@@ -385,6 +394,9 @@ describe("Convert Tool Integration Tests", () => {
         smartDetectionType: "none",
         htmlOptions: {
           zoomLevel: 0,
+        },
+        wordOptions: {
+          editable: false,
         },
         emailOptions: {
           includeAttachments: false,
@@ -461,6 +473,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -536,6 +551,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -608,6 +626,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -671,6 +692,9 @@ describe("Convert Tool Integration Tests", () => {
         smartDetectionType: "none",
         htmlOptions: {
           zoomLevel: 0,
+        },
+        wordOptions: {
+          editable: false,
         },
         emailOptions: {
           includeAttachments: false,
@@ -742,6 +766,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -805,6 +832,9 @@ describe("Convert Tool Integration Tests", () => {
         smartDetectionType: "none",
         htmlOptions: {
           zoomLevel: 0,
+        },
+        wordOptions: {
+          editable: false,
         },
         emailOptions: {
           includeAttachments: false,
@@ -875,6 +905,9 @@ describe("Convert Tool Integration Tests", () => {
         htmlOptions: {
           zoomLevel: 0,
         },
+        wordOptions: {
+          editable: false,
+        },
         emailOptions: {
           includeAttachments: false,
           maxAttachmentSizeMB: 0,
@@ -943,6 +976,9 @@ describe("Convert Tool Integration Tests", () => {
         smartDetectionType: "none",
         htmlOptions: {
           zoomLevel: 0,
+        },
+        wordOptions: {
+          editable: false,
         },
         emailOptions: {
           includeAttachments: false,

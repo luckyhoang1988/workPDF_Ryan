@@ -85,6 +85,7 @@ export const buildConvertFormData = (
     toExtension,
     imageOptions,
     htmlOptions,
+    wordOptions,
     emailOptions,
     pdfaOptions,
     pdfxOptions,
@@ -107,6 +108,9 @@ export const buildConvertFormData = (
     formData.append("singleOrMultiple", imageOptions.singleOrMultiple);
   } else if (fromExtension === "pdf" && ["docx", "odt"].includes(toExtension)) {
     formData.append("outputFormat", toExtension);
+    if (toExtension === "docx") {
+      formData.append("editable", wordOptions.editable.toString());
+    }
   } else if (fromExtension === "pdf" && ["pptx", "odp"].includes(toExtension)) {
     formData.append("outputFormat", toExtension);
   } else if (fromExtension === "pdf" && ["txt", "rtf"].includes(toExtension)) {

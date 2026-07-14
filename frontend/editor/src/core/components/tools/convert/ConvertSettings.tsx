@@ -29,6 +29,7 @@ import ConvertToCbrSettings from "@app/components/tools/convert/ConvertToCbrSett
 import ConvertFromEbookSettings from "@app/components/tools/convert/ConvertFromEbookSettings";
 import ConvertFromSvgSettings from "@app/components/tools/convert/ConvertFromSvgSettings";
 import ConvertToEpubSettings from "@app/components/tools/convert/ConvertToEpubSettings";
+import ConvertToWordSettings from "@app/components/tools/convert/ConvertToWordSettings";
 import { ConvertParameters } from "@app/hooks/tools/convert/useConvertParameters";
 import {
   FROM_FORMAT_OPTIONS,
@@ -193,6 +194,9 @@ const ConvertSettings = ({
       downloadHtml: false,
       includeAllRecipients: false,
     });
+    onParameterChange("wordOptions", {
+      editable: false,
+    });
     onParameterChange("pdfaOptions", {
       outputFormat: "pdfa-2b",
       strict: false,
@@ -284,6 +288,9 @@ const ConvertSettings = ({
       maxAttachmentSizeMB: 10,
       downloadHtml: false,
       includeAllRecipients: false,
+    });
+    onParameterChange("wordOptions", {
+      editable: false,
     });
     onParameterChange("pdfaOptions", {
       outputFormat: "pdfa-2b",
@@ -399,6 +406,18 @@ const ConvertSettings = ({
           />
         </>
       ) : null}
+
+      {/* PDF to Word options */}
+      {parameters.fromExtension === "pdf" && parameters.toExtension === "docx" && (
+        <>
+          <Divider />
+          <ConvertToWordSettings
+            parameters={parameters}
+            onParameterChange={onParameterChange}
+            disabled={disabled}
+          />
+        </>
+      )}
 
       {/* SVG to PDF options */}
       {parameters.fromExtension === "svg" &&

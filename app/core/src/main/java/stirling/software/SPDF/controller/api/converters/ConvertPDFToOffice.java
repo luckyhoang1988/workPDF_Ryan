@@ -1,11 +1,19 @@
 package stirling.software.SPDF.controller.api.converters;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.poi.xwpf.usermodel.BreakType;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 import stirling.software.SPDF.model.api.converters.PdfToPresentationRequest;
 import stirling.software.SPDF.model.api.converters.PdfToTextOrRTFRequest;
 import stirling.software.SPDF.model.api.converters.PdfToWordRequest;
+import stirling.software.SPDF.pdf.parser.PdfModels.TableFragment;
+import stirling.software.SPDF.pdf.parser.TabulaTableParser;
 import stirling.software.common.annotations.AutoJobPostMapping;
 import stirling.software.common.annotations.api.ConvertApi;
 import stirling.software.common.configuration.RuntimePathConfig;
@@ -38,6 +48,7 @@ public class ConvertPDFToOffice {
     private final CustomPDFDocumentFactory pdfDocumentFactory;
     private final TempFileManager tempFileManager;
     private final RuntimePathConfig runtimePathConfig;
+    private final TabulaTableParser tabulaTableParser;
 
     @AutoJobPostMapping(
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
@@ -101,10 +112,100 @@ public class ConvertPDFToOffice {
                             + " Output:WORD Type:SISO")
     public ResponseEntity<Resource> processPdfToWord(@ModelAttribute PdfToWordRequest request)
             throws IOException, InterruptedException {
+        if (request.isEditable() && "docx".equalsIgnoreCase(request.getOutputFormat())) {
+            return processPdfToEditableWord(request);
+        }
         MultipartFile inputFile = request.getFileInput();
         String outputFormat = request.getOutputFormat();
         PDFToFile pdfToFile = new PDFToFile(tempFileManager, runtimePathConfig);
         return pdfToFile.processPdfToOfficeFormat(inputFile, outputFormat, "writer_pdf_import");
+    }
+
+    /**
+     * Builds a DOCX with real paragraphs and tables instead of LibreOffice's visual-fidelity import
+     * (which places every line in an absolutely-positioned text frame, so the result can't be
+     * edited/reflowed like a normal Word document). Pages with a detected table render as a Word
+     * table; pages without one render as plain paragraphs.
+     */
+    private ResponseEntity<Resource> processPdfToEditableWord(PdfToWordRequest request)
+            throws IOException {
+        String baseName =
+                GeneralUtils.removeExtension(request.getFileInput().getOriginalFilename());
+
+        TempFile tempOut = tempFileManager.createManagedTempFile(".docx");
+        try (PDDocument document = pdfDocumentFactory.load(request);
+                XWPFDocument wordDocument = new XWPFDocument()) {
+
+            int totalPages = document.getNumberOfPages();
+            for (int pageNum = 1; pageNum <= totalPages; pageNum++) {
+                List<TableFragment> tables = tabulaTableParser.parse(document, pageNum);
+
+                if (tables.isEmpty()) {
+                    addPageText(wordDocument, document, pageNum);
+                } else {
+                    for (TableFragment table : tables) {
+                        addTable(wordDocument, table);
+                        wordDocument.createParagraph();
+                    }
+                }
+
+                if (pageNum < totalPages) {
+                    wordDocument.createParagraph().createRun().addBreak(BreakType.PAGE);
+                }
+            }
+
+            try (OutputStream os = Files.newOutputStream(tempOut.getPath())) {
+                wordDocument.write(os);
+            }
+        } catch (Exception e) {
+            tempOut.close();
+            throw e;
+        }
+
+        MediaType mediaType =
+                MediaType.parseMediaType(
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        return WebResponseUtils.fileToWebResponse(tempOut, baseName + ".docx", mediaType);
+    }
+
+    private void addPageText(XWPFDocument wordDocument, PDDocument document, int pageNum)
+            throws IOException {
+        PDFTextStripper stripper = new PDFTextStripper();
+        stripper.setStartPage(pageNum);
+        stripper.setEndPage(pageNum);
+        String text = stripper.getText(document);
+        if (text == null || text.isBlank()) {
+            return;
+        }
+        for (String line : text.split("\\r?\\n")) {
+            XWPFParagraph paragraph = wordDocument.createParagraph();
+            if (!line.isBlank()) {
+                paragraph.createRun().setText(line.trim());
+            }
+        }
+    }
+
+    private void addTable(XWPFDocument wordDocument, TableFragment fragment) {
+        List<List<String>> rows = fragment.rawRows();
+        if (rows.isEmpty()) {
+            return;
+        }
+        int colCount = fragment.columnCount() > 0 ? fragment.columnCount() : rows.get(0).size();
+        colCount = Math.max(colCount, 1);
+
+        XWPFTable table = wordDocument.createTable(rows.size(), colCount);
+        for (int r = 0; r < rows.size(); r++) {
+            List<String> row = rows.get(r);
+            XWPFTableRow tableRow = table.getRow(r);
+            for (int c = 0; c < colCount; c++) {
+                String text = c < row.size() ? row.get(c) : "";
+                XWPFTableCell cell = tableRow.getCell(c);
+                if (cell == null) {
+                    cell = tableRow.createCell();
+                }
+                cell.setText(text);
+            }
+        }
     }
 
     @AutoJobPostMapping(

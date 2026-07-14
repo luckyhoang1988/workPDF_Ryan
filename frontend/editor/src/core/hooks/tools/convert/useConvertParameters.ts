@@ -36,6 +36,9 @@ export interface ConvertParameters extends BaseParameters {
   htmlOptions: {
     zoomLevel: number;
   };
+  wordOptions: {
+    editable: boolean;
+  };
   emailOptions: {
     includeAttachments: boolean;
     maxAttachmentSizeMB: number;
@@ -97,6 +100,9 @@ export const defaultParameters: ConvertParameters = {
   },
   htmlOptions: {
     zoomLevel: 1.0,
+  },
+  wordOptions: {
+    editable: false,
   },
   emailOptions: {
     includeAttachments: true,
