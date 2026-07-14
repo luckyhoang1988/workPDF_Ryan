@@ -159,7 +159,7 @@ class ReactRoutingControllerTest {
     void forwardRootPaths_servesIndexHtml() throws Exception {
         controller.init();
 
-        ResponseEntity<String> response = controller.forwardRootPaths(request);
+        ResponseEntity<String> response = controller.forwardRootPaths("some-route", request);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
@@ -169,7 +169,8 @@ class ReactRoutingControllerTest {
     void forwardNestedPaths_servesIndexHtml() throws Exception {
         controller.init();
 
-        ResponseEntity<String> response = controller.forwardNestedPaths(request);
+        ResponseEntity<String> response =
+                controller.forwardNestedPaths("some-route", "sub-route", request);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());

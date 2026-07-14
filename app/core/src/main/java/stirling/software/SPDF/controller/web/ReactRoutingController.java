@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.util.HtmlUtils;
 import org.springframework.web.util.JavaScriptUtils;
 
@@ -245,15 +246,49 @@ public class ReactRoutingController {
     // excluded by the leading `api` token in the same regex.)
     @GetMapping(
             "/{path:^(?!api|static|robots\\.txt|favicon\\.ico|manifest.*\\.json|pipeline|pdfjs|pdfjs-legacy|pdfium|vendor|fonts|images|css|js|assets|locales|modern-logo|classic-logo|Login|og_images|samples)[^\\.]*$}")
-    public ResponseEntity<String> forwardRootPaths(HttpServletRequest request) throws IOException {
-        return serveIndexHtml(request);
+    public ResponseEntity<String> forwardRootPaths(
+            @PathVariable String path, HttpServletRequest request) throws IOException {
+        return servePrerenderedOrIndexHtml(request, path + ".html");
     }
 
     @GetMapping(
             "/{path:^(?!api|static|pipeline|pdfjs|pdfjs-legacy|pdfium|vendor|fonts|images|css|js|assets|locales|modern-logo|classic-logo|Login|og_images|samples)[^\\.]*}/{subpath:^(?!.*\\.).*$}")
-    public ResponseEntity<String> forwardNestedPaths(HttpServletRequest request)
+    public ResponseEntity<String> forwardNestedPaths(
+            @PathVariable String path, @PathVariable String subpath, HttpServletRequest request)
             throws IOException {
+        return servePrerenderedOrIndexHtml(request, path + "/" + subpath + ".html");
+    }
+
+    /**
+     * Vite's og-prerender build step (see frontend/editor/scripts/og-prerender.mjs) bakes a
+     * route-specific title/description/canonical/OG tags into a static file per tool page (e.g.
+     * compress.html). Serve that file verbatim for its clean URL (/compress) when present, so
+     * link-unfurling crawlers and search engines see the tool's own metadata instead of the generic
+     * SPA shell; routes with no prerendered file (dynamic routes, unknown paths) keep falling back
+     * to the normal index.html.
+     */
+    private ResponseEntity<String> servePrerenderedOrIndexHtml(
+            HttpServletRequest request, String relativeHtmlPath) throws IOException {
+        Resource prerendered = getPrerenderedRouteResource(relativeHtmlPath);
+        if (prerendered != null) {
+            try (InputStream inputStream = prerendered.getInputStream()) {
+                String html = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+                return ResponseEntity.ok()
+                        .cacheControl(CacheControl.noCache().mustRevalidate())
+                        .contentType(MediaType.TEXT_HTML)
+                        .body(html);
+            }
+        }
         return serveIndexHtml(request);
+    }
+
+    private Resource getPrerenderedRouteResource(String relativeHtmlPath) {
+        Path externalPath = Path.of(InstallationPathConfig.getStaticPath(), relativeHtmlPath);
+        if (Files.exists(externalPath) && Files.isReadable(externalPath)) {
+            return new FileSystemResource(externalPath.toFile());
+        }
+        ClassPathResource resource = new ClassPathResource("static/" + relativeHtmlPath);
+        return resource.exists() ? resource : null;
     }
 
     private String buildFallbackHtml() {

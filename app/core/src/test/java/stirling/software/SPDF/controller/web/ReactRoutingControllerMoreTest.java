@@ -157,4 +157,80 @@ class ReactRoutingControllerMoreTest {
             assertThat(response.getBody()).contains("RyanPDF");
         }
     }
+
+    @Nested
+    @DisplayName("prerendered per-tool route pages")
+    class PrerenderedRoutePages {
+
+        @Test
+        @DisplayName("forwardRootPaths serves the tool's prerendered file when one exists")
+        void servesFlatPrerenderedFile(@TempDir Path staticDir) throws Exception {
+            Files.writeString(
+                    staticDir.resolve("compress.html"),
+                    "<html><head><title>Nen - RyanPDF</title></head><body></body></html>",
+                    StandardCharsets.UTF_8);
+
+            try (MockedStatic<InstallationPathConfig> paths =
+                    mockStatic(InstallationPathConfig.class)) {
+                paths.when(InstallationPathConfig::getStaticPath)
+                        .thenReturn(staticDir.toString() + "/");
+
+                ReactRoutingController controller = newController("/");
+                controller.init();
+
+                ResponseEntity<String> response =
+                        controller.forwardRootPaths("compress", mock(HttpServletRequest.class));
+
+                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+                assertThat(response.getBody()).contains("Nen - RyanPDF");
+            }
+        }
+
+        @Test
+        @DisplayName("forwardRootPaths falls back to the SPA shell when no prerendered file exists")
+        void fallsBackWhenNoPrerenderedFile(@TempDir Path staticDir) throws Exception {
+            try (MockedStatic<InstallationPathConfig> paths =
+                    mockStatic(InstallationPathConfig.class)) {
+                paths.when(InstallationPathConfig::getStaticPath)
+                        .thenReturn(staticDir.toString() + "/");
+
+                ReactRoutingController controller = newController("/");
+                controller.init();
+
+                ResponseEntity<String> response =
+                        controller.forwardRootPaths(
+                                "some-unknown-route", mock(HttpServletRequest.class));
+
+                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+                assertThat(response.getBody()).contains("RyanPDF");
+                assertThat(response.getBody()).doesNotContain("Nen - RyanPDF");
+            }
+        }
+
+        @Test
+        @DisplayName("forwardNestedPaths serves the nested prerendered file when one exists")
+        void servesNestedPrerenderedFile(@TempDir Path staticDir) throws Exception {
+            Files.createDirectories(staticDir.resolve("settings"));
+            Files.writeString(
+                    staticDir.resolve("settings").resolve("people.html"),
+                    "<html><head><title>People Settings - RyanPDF</title></head><body></body></html>",
+                    StandardCharsets.UTF_8);
+
+            try (MockedStatic<InstallationPathConfig> paths =
+                    mockStatic(InstallationPathConfig.class)) {
+                paths.when(InstallationPathConfig::getStaticPath)
+                        .thenReturn(staticDir.toString() + "/");
+
+                ReactRoutingController controller = newController("/");
+                controller.init();
+
+                ResponseEntity<String> response =
+                        controller.forwardNestedPaths(
+                                "settings", "people", mock(HttpServletRequest.class));
+
+                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+                assertThat(response.getBody()).contains("People Settings - RyanPDF");
+            }
+        }
+    }
 }
