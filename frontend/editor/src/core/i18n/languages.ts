@@ -5,7 +5,6 @@
 
 /** Supported languages, keyed by BCP-47-ish code → native display name. */
 export const supportedLanguages: Record<string, string> = {
-  "en-US": "English (US)",
   "en-GB": "English (UK)",
   "vi-VN": "Tiếng Việt",
 };

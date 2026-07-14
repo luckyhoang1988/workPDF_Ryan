@@ -16,6 +16,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { parse as parseToml } from "smol-toml";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -62,7 +63,8 @@ const urlToTool = {};
 for (const m of mapSrc.matchAll(/"([^"]+)":\s*"([^"]+)"/g))
   urlToTool[m[1]] = m[2];
 
-// --- parse English title/description fallbacks ------------------------------
+// --- parse English title/description fallbacks (used only if vi-VN is missing
+// a string, e.g. a brand-new tool not yet translated) ------------------------
 const regSrc = read("src/core/data/useTranslatedToolRegistry.tsx");
 const titleById = {};
 const descById = {};
@@ -75,6 +77,11 @@ for (const m of regSrc.matchAll(
   new RegExp('t\\(\\s*"home\\.([A-Za-z0-9_]+)\\.desc"\\s*,\\s*' + STR, "g"),
 ))
   descById[m[1]] = m[2];
+
+// --- parse Vietnamese title/description (site's actual language: <html
+// lang="vi">, Vietnamese homepage) - this is the primary source for per-tool
+// SEO/OG copy, not the English t() fallback strings above. -------------------
+const viHome = parseToml(read("public/locales/vi-VN/translation.toml")).home || {};
 
 // --- available images -------------------------------------------------------
 const imageDir = "public/og_images";
@@ -108,8 +115,20 @@ const humanize = (id) =>
     .replace(/^./, (c) => c.toUpperCase())
     .replace(/\s+/g, " ")
     .trim();
-const titleFor = (id) => `${titleById[id] || humanize(id)} - ${SITE_NAME}`;
-const descFor = (id) => descById[id] || SITE_DESC;
+
+// Translation keys are usually the camelCase tool id, but a few (e.g.
+// "overlay-pdfs") use the kebab-case slug instead - try both.
+function viStringFor(id, field) {
+  for (const key of [id, canonicalPath(id).slice(1)]) {
+    const value = viHome[key]?.[field];
+    if (value) return value;
+  }
+  return null;
+}
+
+const titleFor = (id) =>
+  `${viStringFor(id, "title") || titleById[id] || humanize(id)} - ${SITE_NAME}`;
+const descFor = (id) => viStringFor(id, "desc") || descById[id] || SITE_DESC;
 
 // --- build outputs ----------------------------------------------------------
 const ogImageMap = {}; // toolId -> basename (only tools with art)

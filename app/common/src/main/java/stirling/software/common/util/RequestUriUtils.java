@@ -78,7 +78,8 @@ public class RequestUriUtils {
                 || normalizedUri.endsWith(".mjs")
                 || normalizedUri.endsWith(".html")
                 || normalizedUri.endsWith(".toml")
-                || normalizedUri.endsWith(".wasm");
+                || normalizedUri.endsWith(".wasm")
+                || normalizedUri.endsWith(".xml");
     }
 
     public static boolean isFrontendRoute(String contextPath, String requestURI) {

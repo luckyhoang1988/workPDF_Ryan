@@ -94,10 +94,13 @@ function prerenderOgPlugin(): PluginOption {
     apply: "build" as const,
     async closeBundle() {
       const { prerenderOg } = await import("./scripts/og-prerender.mjs");
+      // RyanPDF's only production domain - used for canonical/sitemap/OG absolute
+      // URLs when no override is given, so a bare `docker build` still produces
+      // correct SEO tags without extra deploy-time config.
       const ogBase = (
         process.env.VITE_OG_BASE_URL ||
         process.env.CF_PAGES_URL ||
-        ""
+        "https://pdf.ryanapp.online"
       ).replace(/\/+$/, "");
       // Absolute deploy base for nested routes' <base href> (matches vite `base`).
       const subpath = (process.env.RUN_SUBPATH || "").replace(/^\/+|\/+$/g, "");
@@ -124,6 +127,18 @@ function prerenderOgPlugin(): PluginOption {
           (ogBase
             ? ` (absolute URLs, base=${ogBase})`
             : " (root-relative URLs)"),
+      );
+
+      const { generateSitemap } = await import("./scripts/generate-sitemap.mjs");
+      const urlCount = await generateSitemap({
+        distDir,
+        manifest,
+        siteUrl: ogBase,
+      });
+      console.log(
+        urlCount
+          ? `[generate-sitemap] wrote sitemap.xml with ${urlCount} URLs`
+          : "[generate-sitemap] skipped (no site URL known)",
       );
     },
   };

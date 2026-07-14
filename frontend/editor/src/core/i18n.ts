@@ -29,7 +29,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en-US",
+    fallbackLng: "en-GB",
     supportedLngs: Object.keys(supportedLanguages),
     load: "currentOnly",
     nonExplicitSupportedLngs: false,
@@ -57,8 +57,8 @@ i18n
       order: ["localStorage", "navigator", "htmlTag"],
       caches: [], // Don't cache auto-detected language - only cache when user manually selects
       convertDetectedLanguage: (lng: string) => {
-        // Map bare en to en-US
-        if (lng === "en") return "en-US";
+        // Map bare en to en-GB
+        if (lng === "en") return "en-GB";
         return lng;
       },
     },
@@ -139,7 +139,7 @@ export function setUserLanguage(language: string): void {
  * Updates the supported languages list dynamically based on config
  * If configLanguages is null/empty, all languages remain available
  * Otherwise, only the specified languages are enabled with the first valid
- * option (preferring en-US when present) used as the fallback language.
+ * option (preferring en-GB when present) used as the fallback language.
  *
  * @param configLanguages - Optional array of language codes from server config (ui.languages)
  * @param defaultLocale - Optional default language for new users (system.defaultLocale)
@@ -175,12 +175,12 @@ export function updateSupportedLanguages(
     return;
   }
 
-  // Determine fallback: prefer validDefault if in the list, then en-US, then first valid language
+  // Determine fallback: prefer validDefault if in the list, then en-GB, then first valid language
   const fallback =
     validDefault && validLanguages.includes(validDefault)
       ? validDefault
-      : validLanguages.includes("en-US")
-        ? "en-US"
+      : validLanguages.includes("en-GB")
+        ? "en-GB"
         : validLanguages[0];
 
   i18n.options.supportedLngs = validLanguages;

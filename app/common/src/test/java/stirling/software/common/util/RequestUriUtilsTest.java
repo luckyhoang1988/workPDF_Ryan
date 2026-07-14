@@ -54,6 +54,11 @@ class RequestUriUtilsTest {
     }
 
     @Test
+    void testIsStaticResource_xmlExtension() {
+        assertTrue(RequestUriUtils.isStaticResource("/sitemap.xml"));
+    }
+
+    @Test
     void testIsStaticResource_apiRoute_notStatic() {
         assertFalse(RequestUriUtils.isStaticResource("/api/v1/convert"));
     }

@@ -29,6 +29,7 @@ export function buildOgTags(entry, { ogBase = "", pageUrlPath = null } = {}) {
     : null;
   const lines = [
     "<!-- og:start -->",
+    pageUrl ? `<link rel="canonical" href="${pageUrl}" />` : null,
     '<meta property="og:type" content="website" />',
     '<meta property="og:site_name" content="RyanPDF" />',
     `<meta property="og:title" content="${title}" />`,
@@ -65,7 +66,38 @@ export function injectOg(html, entry, opts = {}) {
     .replace("</head>", `  ${buildOgTags(entry, opts)}</head>`);
 }
 
+/** Build the JSON-LD WebApplication block for the home page (rich-result eligibility). */
+function buildJsonLd(entry, ogBase) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "RyanPDF",
+    url: ogBase || undefined,
+    description: entry.description,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
+  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  return `<script type="application/ld+json">${json}</script>`;
+}
+
 const BASE_HREF_RE = /<base\s+href="[^"]*"\s*\/?>/i;
+
+// Same kebab-case formula generate-og-metadata.mjs uses to derive a tool's
+// primary URL from its id (e.g. "pdfToSinglePage" -> "/pdf-to-single-page").
+const canonicalToolPath = (id) => "/" + id.replace(/([A-Z])/g, "-$1").toLowerCase();
+
+/**
+ * A `byPath` value is either a tool id (canonical path or one of its aliases -
+ * see urlMapping.ts) or, for non-tool app routes, the route path itself
+ * (self-mapped in generate-og-metadata.mjs). Resolve either case to the one
+ * canonical URL that route's content should consolidate under, so alias pages
+ * (e.g. /split-pdfs) point their canonical tag at the primary URL (/split)
+ * instead of self-referencing and competing with it for ranking.
+ */
+const resolveCanonicalPath = (id) =>
+  id.startsWith("/") ? id : canonicalToolPath(id);
 
 /**
  * Write the root index.html (home preview) plus one file per route in the
@@ -87,13 +119,11 @@ export async function prerenderOg({
 }) {
   const template = await fs.readFile(path.join(distDir, "index.html"), "utf8");
 
-  await fs.writeFile(
-    path.join(distDir, "index.html"),
-    injectOg(template, manifest.default, {
-      ogBase,
-      pageUrlPath: ogBase ? "/" : null,
-    }),
-  );
+  const homeHtml = injectOg(template, manifest.default, {
+    ogBase,
+    pageUrlPath: ogBase ? "/" : null,
+  }).replace("</head>", `  ${buildJsonLd(manifest.default, ogBase)}\n  </head>`);
+  await fs.writeFile(path.join(distDir, "index.html"), homeHtml);
 
   let count = 0;
   for (const [routePath, id] of Object.entries(manifest.byPath || {})) {
@@ -104,7 +134,7 @@ export async function prerenderOg({
     const entry = manifest.byTool[id] ?? manifest.default;
     let html = injectOg(template, entry, {
       ogBase,
-      pageUrlPath: ogBase ? routePath : null,
+      pageUrlPath: ogBase ? resolveCanonicalPath(id) : null,
     });
     const nested = segments.length > 1;
     if (nested)

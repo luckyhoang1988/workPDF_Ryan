@@ -7,298 +7,298 @@
   "byTool": {
     "certSign": {
       "image": "/og_images/certSign.png",
-      "title": "Certificate Sign - RyanPDF",
-      "description": "Sign PDF documents using digital certificates"
+      "title": "Ký bằng chứng chỉ - RyanPDF",
+      "description": "Ký PDF bằng Chứng chỉ/Khóa (PEM/P12)"
     },
     "sign": {
       "image": "/og_images/sign.png",
-      "title": "Sign - RyanPDF",
-      "description": "Adds signature to PDF by drawing, text or image"
+      "title": "Ký - RyanPDF",
+      "description": "Thêm chữ ký vào PDF bằng cách vẽ, văn bản hoặc hình ảnh"
     },
     "sharedSign": {
       "image": "/og_images/home.png",
-      "title": "Shared Signing - RyanPDF",
-      "description": "Request signatures from others and track signing sessions"
+      "title": "Ký cộng tác - RyanPDF",
+      "description": "Yêu cầu người khác ký và theo dõi các phiên ký"
     },
     "addText": {
       "image": "/og_images/add-text.png",
-      "title": "Add Text - RyanPDF",
-      "description": "Add custom text anywhere in your PDF"
+      "title": "Thêm văn bản - RyanPDF",
+      "description": "Thêm văn bản tùy chỉnh ở bất kỳ đâu trong PDF"
     },
     "addPassword": {
       "image": "/og_images/add-password.png",
-      "title": "Add Password - RyanPDF",
-      "description": "Add password protection and restrictions to PDF files"
+      "title": "Thêm mật khẩu - RyanPDF",
+      "description": "Mã hóa tài liệu PDF của bạn bằng mật khẩu."
     },
     "removePassword": {
       "image": "/og_images/remove-password.png",
-      "title": "Remove Password - RyanPDF",
-      "description": "Remove password protection from PDF documents"
+      "title": "Xóa mật khẩu - RyanPDF",
+      "description": "Xóa bảo vệ mật khẩu khỏi tài liệu PDF của bạn."
     },
     "removePages": {
       "image": "/og_images/remove.png",
-      "title": "Remove Pages - RyanPDF",
-      "description": "Remove specific pages from a PDF document"
+      "title": "Xóa - RyanPDF",
+      "description": "Xóa các trang không mong muốn khỏi tài liệu PDF của bạn."
     },
     "removeBlanks": {
       "image": "/og_images/remove-blank-pages.png",
-      "title": "Remove Blank Pages - RyanPDF",
-      "description": "Remove blank pages from PDF documents"
+      "title": "Xóa trang trống - RyanPDF",
+      "description": "Phát hiện và xóa các trang trống khỏi tài liệu"
     },
     "removeAnnotations": {
       "image": "/og_images/remove-annotations.png",
-      "title": "Remove Annotations - RyanPDF",
-      "description": "Remove annotations and comments from PDF documents"
+      "title": "Xóa chú thích - RyanPDF",
+      "description": "Xóa tất cả các bình luận/chú thích khỏi PDF"
     },
     "removeImage": {
       "image": "/og_images/remove-image.png",
-      "title": "Remove Images - RyanPDF",
-      "description": "Remove all images from a PDF document"
+      "title": "Xóa ảnh - RyanPDF",
+      "description": "Xóa ảnh khỏi PDF để giảm kích thước tệp"
     },
     "changePermissions": {
       "image": "/og_images/change-permissions.png",
-      "title": "Change Permissions - RyanPDF",
-      "description": "Change document restrictions and permissions"
+      "title": "Thay đổi quyền - RyanPDF",
+      "description": "Thay đổi hạn chế và quyền của tài liệu"
     },
     "watermark": {
       "image": "/og_images/add-watermark.png",
-      "title": "Add Watermark - RyanPDF",
-      "description": "Add a custom watermark to your PDF document."
+      "title": "Thêm hình mờ - RyanPDF",
+      "description": "Thêm hình mờ tùy chỉnh vào tài liệu PDF của bạn."
     },
     "sanitize": {
       "image": "/og_images/sanitize.png",
-      "title": "Sanitize - RyanPDF",
-      "description": "Remove potentially harmful elements from PDF files"
+      "title": "Làm sạch - RyanPDF",
+      "description": "Gỡ bỏ các thành phần có thể gây hại khỏi tệp PDF"
     },
     "split": {
       "image": "/og_images/split.png",
-      "title": "Split - RyanPDF",
-      "description": "Split PDFs into multiple documents"
+      "title": "Tách - RyanPDF",
+      "description": "Tách PDF thành nhiều tài liệu"
     },
     "merge": {
       "image": "/og_images/mergePdfs.png",
-      "title": "Merge - RyanPDF",
-      "description": "Merge multiple PDFs into a single document"
+      "title": "Ghép nối - RyanPDF",
+      "description": "Dễ dàng ghép nối nhiều PDF thành một."
     },
     "convert": {
       "image": "/og_images/convert.png",
-      "title": "Convert - RyanPDF",
-      "description": "Convert files to and from PDF format"
+      "title": "Chuyển đổi - RyanPDF",
+      "description": "Chuyển đổi tệp giữa các định dạng khác nhau"
     },
     "ocr": {
       "image": "/og_images/ocr.png",
-      "title": "OCR - RyanPDF",
-      "description": "Extract text from scanned PDFs using Optical Character Recognition"
+      "title": "OCR / Dọn dẹp bản quét - RyanPDF",
+      "description": "Dọn dẹp bản quét và phát hiện văn bản từ hình ảnh trong PDF và thêm lại dưới dạng văn bản."
     },
     "addImage": {
       "image": "/og_images/add-image.png",
-      "title": "Add Image - RyanPDF",
-      "description": "Add images anywhere in your PDF"
+      "title": "Thêm hình ảnh - RyanPDF",
+      "description": "Thêm hình ảnh vào vị trí cố định trên PDF"
     },
     "rotate": {
       "image": "/og_images/rotate.png",
-      "title": "Rotate - RyanPDF",
-      "description": "Easily rotate your PDFs."
+      "title": "Xoay - RyanPDF",
+      "description": "Dễ dàng xoay PDF của bạn."
     },
     "annotate": {
       "image": "/og_images/annotate.png",
-      "title": "Annotate - RyanPDF",
-      "description": "Highlight, draw, add notes, and shapes directly in the viewer"
+      "title": "Chú thích - RyanPDF",
+      "description": "Tô sáng, vẽ, thêm ghi chú và hình dạng trong trình xem"
     },
     "scannerImageSplit": {
       "image": "/og_images/detect-split-scanned-photos.png",
-      "title": "Detect & Split Scanned Photos - RyanPDF",
-      "description": "Detect and split scanned photos into separate pages"
+      "title": "Phát hiện & Chia ảnh đã quét - RyanPDF",
+      "description": "Phát hiện và chia ảnh đã quét thành các trang riêng"
     },
     "editTableOfContents": {
       "image": "/og_images/edit-table-of-contents.png",
-      "title": "Edit Table of Contents - RyanPDF",
-      "description": "Add or edit bookmarks and table of contents in PDF documents"
+      "title": "Chỉnh sửa Mục lục - RyanPDF",
+      "description": "Thêm hoặc chỉnh sửa dấu trang và mục lục trong tài liệu PDF"
     },
     "scannerEffect": {
       "image": "/og_images/scanner-effect.png",
-      "title": "Scanner Effect - RyanPDF",
-      "description": "Create a PDF that looks like it was scanned"
+      "title": "Hiệu ứng máy quét - RyanPDF",
+      "description": "Tạo PDF trông như được quét"
     },
     "autoRename": {
       "image": "/og_images/auto-rename-pdf-file.png",
-      "title": "Auto Rename PDF File - RyanPDF",
-      "description": "Automatically rename PDF files based on their content"
+      "title": "Tự động đổi tên tệp PDF - RyanPDF",
+      "description": "Tự động đổi tên tệp PDF dựa trên tiêu đề được phát hiện"
     },
     "pageLayout": {
       "image": "/og_images/multi-page-layout.png",
-      "title": "Multi-Page Layout - RyanPDF",
-      "description": "Merge multiple pages of a PDF document into a single page"
+      "title": "Bố cục nhiều trang - RyanPDF",
+      "description": "Ghép nhiều trang của tài liệu PDF thành một trang duy nhất"
     },
     "scalePages": {
       "image": "/og_images/adjust-page-size-scale.png",
-      "title": "Adjust page size/scale - RyanPDF",
-      "description": "Change the size/scale of a page and/or its contents."
+      "title": "Điều chỉnh kích thước/tỷ lệ trang - RyanPDF",
+      "description": "Thay đổi kích thước/tỷ lệ của trang và/hoặc nội dung của nó."
     },
     "adjustContrast": {
       "image": "/og_images/adjust-colors-contrast.png",
-      "title": "Adjust Colors/Contrast - RyanPDF",
-      "description": "Adjust colors and contrast of PDF documents"
+      "title": "Điều chỉnh màu sắc/tương phản - RyanPDF",
+      "description": "Điều chỉnh độ tương phản, độ bão hòa và độ sáng của PDF"
     },
     "crop": {
       "image": "/og_images/cropPdf.png",
-      "title": "Crop PDF - RyanPDF",
-      "description": "Crop a PDF to reduce its size (maintains text!)"
+      "title": "Cắt PDF - RyanPDF",
+      "description": "Cắt PDF để giảm kích thước (giữ nguyên văn bản!)"
     },
     "pdfToSinglePage": {
       "image": "/og_images/single-large-page.png",
-      "title": "PDF to Single Large Page - RyanPDF",
-      "description": "Merges all PDF pages into one large single page"
+      "title": "PDF sang một trang lớn - RyanPDF",
+      "description": "Ghép tất cả các trang PDF thành một trang lớn duy nhất"
     },
     "repair": {
       "image": "/og_images/repair.png",
-      "title": "Repair - RyanPDF",
-      "description": "Repair corrupted or damaged PDF files"
+      "title": "Sửa chữa - RyanPDF",
+      "description": "Cố gắng sửa chữa PDF bị hỏng/lỗi"
     },
     "compare": {
       "image": "/og_images/compare.png",
-      "title": "Compare - RyanPDF",
-      "description": "Compare two PDF documents and highlight differences"
+      "title": "So sánh - RyanPDF",
+      "description": "So sánh và hiển thị sự khác biệt giữa 2 tài liệu PDF"
     },
     "addPageNumbers": {
       "image": "/og_images/add-page-numbers.png",
-      "title": "Add Page Numbers - RyanPDF",
-      "description": "Add Page numbers throughout a document in a set location"
+      "title": "Thêm số trang - RyanPDF",
+      "description": "Thêm số trang xuyên suốt tài liệu ở vị trí cố định"
     },
     "redact": {
       "image": "/og_images/redact.png",
-      "title": "Redact - RyanPDF",
-      "description": "Permanently remove sensitive information from PDF documents"
+      "title": "Bôi đen - RyanPDF",
+      "description": "Bôi đen (che) nội dung trong PDF dựa trên văn bản đã chọn, hình vẽ và/hoặc trang đã chọn"
     },
     "flatten": {
       "image": "/og_images/flatten.png",
-      "title": "Flatten - RyanPDF",
-      "description": "Remove all interactive elements and forms from a PDF"
+      "title": "Làm phẳng - RyanPDF",
+      "description": "Xóa tất cả các phần tử tương tác và biểu mẫu từ PDF"
     },
     "removeCertSign": {
       "image": "/og_images/remove-certificate-sign.png",
-      "title": "Remove Certificate Sign - RyanPDF",
-      "description": "Remove digital signature from PDF documents"
+      "title": "Xóa chữ ký chứng chỉ - RyanPDF",
+      "description": "Xóa chữ ký chứng chỉ khỏi PDF"
     },
     "unlockPDFForms": {
       "image": "/og_images/unlock-pdf-forms.png",
-      "title": "Unlock PDF Forms - RyanPDF",
-      "description": "Remove read-only property of form fields in a PDF document."
+      "title": "Mở khóa Biểu mẫu PDF - RyanPDF",
+      "description": "Gỡ thuộc tính chỉ đọc của các trường biểu mẫu trong tài liệu PDF."
     },
     "compress": {
       "image": "/og_images/compress.png",
-      "title": "Compress - RyanPDF",
-      "description": "Compress PDFs to reduce their file size."
+      "title": "Nén - RyanPDF",
+      "description": "Nén PDF để giảm kích thước tệp."
     },
     "extractPages": {
       "image": "/og_images/extract-pages.png",
-      "title": "Extract Pages - RyanPDF",
-      "description": "Extract specific pages from a PDF document"
+      "title": "Trích xuất trang - RyanPDF",
+      "description": "Trích xuất các trang cụ thể từ tài liệu PDF"
     },
     "reorganizePages": {
       "image": "/og_images/reorganize-pages.png",
-      "title": "Reorganize Pages - RyanPDF",
-      "description": "Rearrange, duplicate, or delete PDF pages with visual drag-and-drop control."
+      "title": "Sắp xếp lại Trang - RyanPDF",
+      "description": "Sắp xếp lại, nhân bản hoặc xóa trang PDF bằng thao tác kéo thả trực quan."
     },
     "extractImages": {
       "image": "/og_images/extract-images.png",
-      "title": "Extract Images - RyanPDF",
-      "description": "Extract images from PDF documents"
+      "title": "Trích xuất hình ảnh - RyanPDF",
+      "description": "Trích xuất tất cả hình ảnh từ PDF và lưu chúng vào tệp zip"
     },
     "addStamp": {
       "image": "/og_images/add-stamp.png",
-      "title": "Add Stamp to PDF - RyanPDF",
-      "description": "Add text or add image stamps at set locations"
+      "title": "Thêm con dấu vào PDF - RyanPDF",
+      "description": "Thêm văn bản hoặc hình ảnh đóng dấu tại các vị trí đã định"
     },
     "addAttachments": {
       "image": "/og_images/add-attachments.png",
-      "title": "Add Attachments - RyanPDF",
-      "description": "Add or remove embedded files (attachments) to/from a PDF"
+      "title": "Thêm tệp đính kèm - RyanPDF",
+      "description": "Thêm hoặc xóa tệp nhúng (tệp đính kèm) vào/khỏi PDF"
     },
     "changeMetadata": {
       "image": "/og_images/change-metadata.png",
-      "title": "Change Metadata - RyanPDF",
-      "description": "Change/Remove/Add metadata from a PDF document"
+      "title": "Thay đổi Metadata - RyanPDF",
+      "description": "Thay đổi/Xóa/Thêm metadata từ tài liệu PDF"
     },
     "overlayPdfs": {
       "image": "/og_images/overlay-pdfs.png",
-      "title": "Overlay Pdfs - RyanPDF",
-      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
+      "title": "Chồng lớp PDF - RyanPDF",
+      "description": "Chồng lớp PDF lên trên PDF khác"
     },
     "getPdfInfo": {
       "image": "/og_images/get-all-info-on-pdf.png",
-      "title": "Get ALL Info on PDF - RyanPDF",
-      "description": "Grabs any and all information possible on PDFs"
+      "title": "Lấy TẤT CẢ thông tin về PDF - RyanPDF",
+      "description": "Lấy bất kỳ và tất cả thông tin có thể về PDF"
     },
     "validateSignature": {
       "image": "/og_images/validate-pdf-signature.png",
-      "title": "Validate PDF Signature - RyanPDF",
-      "description": "Verify digital signatures and certificates in PDF documents"
+      "title": "Xác thực chữ ký PDF - RyanPDF",
+      "description": "Xác minh chữ ký số và chứng chỉ trong tài liệu PDF"
     },
     "timestampPdf": {
       "image": "/og_images/timestamp-pdf.png",
-      "title": "Timestamp PDF - RyanPDF",
-      "description": "Add an RFC 3161 document timestamp to prove when your PDF existed"
+      "title": "Đóng dấu thời gian PDF - RyanPDF",
+      "description": "Thêm dấu thời gian tài liệu theo RFC 3161 để chứng minh thời điểm PDF của bạn tồn tại"
     },
     "replaceColor": {
       "image": "/og_images/replace-and-invert-color.png",
-      "title": "Replace & Invert Color - RyanPDF",
-      "description": "Replace or invert colors in PDF documents"
+      "title": "Thay thế & Đảo ngược Màu - RyanPDF",
+      "description": "Thay thế hoặc đảo ngược màu trong tài liệu PDF"
     },
     "showJS": {
       "image": "/og_images/show-javascript.png",
-      "title": "Show JavaScript - RyanPDF",
-      "description": "Extract and display JavaScript code from PDF documents"
+      "title": "Hiển thị Javascript - RyanPDF",
+      "description": "Tìm kiếm và hiển thị bất kỳ JS nào được chèn vào PDF"
     },
     "bookletImposition": {
       "image": "/og_images/booklet-imposition.png",
-      "title": "Booklet Imposition - RyanPDF",
-      "description": "Create booklets with proper page ordering and multi-page layout for printing and binding"
+      "title": "Dàn trang Booklet - RyanPDF",
+      "description": "Tạo booklet với thứ tự trang chuẩn và bố cục nhiều trang để in và đóng gáy"
     },
     "pdfTextEditor": {
       "image": "/og_images/pdf-text-editor.png",
-      "title": "Edit PDF - RyanPDF",
-      "description": "Edit text, images, annotations, signatures, redactions, and pages from one PDF workspace"
+      "title": "Trình chỉnh sửa văn bản PDF - RyanPDF",
+      "description": "Xem và chỉnh sửa xuất JSON của RyanPDF với chỉnh sửa văn bản theo nhóm và tái tạo PDF"
     },
     "formFill": {
       "image": "/og_images/form-fill.png",
-      "title": "Fill Form - RyanPDF",
-      "description": "Fill PDF form fields interactively with a visual editor"
+      "title": "Điền biểu mẫu - RyanPDF",
+      "description": "Điền các trường biểu mẫu PDF một cách tương tác bằng trình chỉnh sửa trực quan"
     },
     "multiTool": {
       "image": "/og_images/multi-tool.png",
-      "title": "Multi-Tool - RyanPDF",
-      "description": "Use multiple tools on a single PDF document"
+      "title": "Đa công cụ PDF - RyanPDF",
+      "description": "Ghép nối, Xoay, Sắp xếp lại và Xóa trang"
     },
     "read": {
       "image": "/og_images/read.png",
-      "title": "Read - RyanPDF",
-      "description": "View and annotate PDFs. Highlight text, draw, or insert comments for review and collaboration."
+      "title": "Đọc - RyanPDF",
+      "description": "Xem và chú thích PDF. Tô sáng văn bản, vẽ hoặc chèn bình luận để xem xét và cộng tác."
     },
     "automate": {
       "image": "/og_images/automate.png",
-      "title": "Automate - RyanPDF",
-      "description": "Build multi-step workflows by chaining together PDF actions. Ideal for recurring tasks."
+      "title": "Tự động hóa - RyanPDF",
+      "description": "Xây dựng quy trình nhiều bước bằng cách xâu chuỗi các thao tác PDF. Lý tưởng cho các tác vụ lặp lại."
     },
     "devApi": {
       "image": "/og_images/dev-api.png",
       "title": "API - RyanPDF",
-      "description": "Link to API documentation"
+      "description": "Liên kết tới tài liệu API"
     },
     "devFolderScanning": {
       "image": "/og_images/dev-folder-scanning.png",
-      "title": "Automated Folder Scanning - RyanPDF",
-      "description": "Link to automated folder scanning guide"
+      "title": "Quét thư mục tự động - RyanPDF",
+      "description": "Liên kết tới hướng dẫn quét thư mục tự động"
     },
     "devSsoGuide": {
       "image": "/og_images/dev-sso-guide.png",
-      "title": "SSO Guide - RyanPDF",
-      "description": "Link to SSO guide"
+      "title": "Hướng dẫn SSO - RyanPDF",
+      "description": "Liên kết tới hướng dẫn SSO"
     },
     "devAirgapped": {
       "image": "/og_images/dev-airgapped.png",
-      "title": "Air-gapped Setup - RyanPDF",
-      "description": "Link to air-gapped setup guide"
+      "title": "Thiết lập cách ly mạng - RyanPDF",
+      "description": "Liên kết tới hướng dẫn thiết lập cách ly mạng"
     },
     "/login": {
       "image": "/og_images/home.png",

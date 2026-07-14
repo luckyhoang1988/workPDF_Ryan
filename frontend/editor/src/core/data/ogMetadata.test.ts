@@ -155,4 +155,47 @@ describe("prerenderOg (flat + nested route files)", () => {
 
     await fs.rm(dir, { recursive: true, force: true });
   });
+
+  it("points a URL alias's canonical tag at the tool's primary path, not itself", async () => {
+    const dir = await fs.mkdtemp(path.join(os.tmpdir(), "og-prerender-"));
+    await fs.writeFile(path.join(dir, "index.html"), TEMPLATE);
+    const manifest = {
+      default: {
+        image: "/og_images/home.png",
+        title: "Stirling PDF",
+        description: "d",
+      },
+      byTool: {
+        split: {
+          image: "/og_images/split.png",
+          title: "Split - Stirling PDF",
+          description: "s",
+        },
+      },
+      byPath: {
+        "/split": "split",
+        "/split-pdfs": "split",
+      },
+    };
+
+    await prerenderOg({
+      distDir: dir,
+      manifest,
+      ogBase: "https://pdf.ryanapp.online",
+      baseHref: "/",
+    });
+
+    const primary = await fs.readFile(path.join(dir, "split.html"), "utf8");
+    expect(primary).toContain(
+      '<link rel="canonical" href="https://pdf.ryanapp.online/split" />',
+    );
+
+    const alias = await fs.readFile(path.join(dir, "split-pdfs.html"), "utf8");
+    expect(alias).toContain(
+      '<link rel="canonical" href="https://pdf.ryanapp.online/split" />',
+    );
+    expect(alias).not.toContain("href=\"https://pdf.ryanapp.online/split-pdfs\"");
+
+    await fs.rm(dir, { recursive: true, force: true });
+  });
 });
