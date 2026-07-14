@@ -30,7 +30,7 @@ export function buildOgTags(entry, { ogBase = "", pageUrlPath = null } = {}) {
   const lines = [
     "<!-- og:start -->",
     '<meta property="og:type" content="website" />',
-    '<meta property="og:site_name" content="Stirling PDF" />',
+    '<meta property="og:site_name" content="RyanPDF" />',
     `<meta property="og:title" content="${title}" />`,
     `<meta property="og:description" content="${description}" />`,
     pageUrl ? `<meta property="og:url" content="${pageUrl}" />` : null,
