@@ -43,6 +43,7 @@ tasks:
   prepare:og:
     internal: true
     run: when_changed
+    deps: [install]
     desc: "Regenerate OG/social-preview metadata from the tool registry"
     cmds:
       - node editor/scripts/generate-og-metadata.mjs
@@ -50,6 +51,7 @@ tasks:
       - editor/src/core/types/toolId.ts
       - editor/src/core/utils/urlMapping.ts
       - editor/src/core/data/useTranslatedToolRegistry.tsx
+      - editor/public/locales/vi-VN/translation.toml
       - editor/public/og_images/*.png
     generates:
       - editor/src/core/data/ogImageMap.json
@@ -340,6 +342,7 @@ tasks:
 
   og:check:
     desc: "Fail if committed OG/social-preview metadata is out of date"
+    deps: [install]
     cmds:
       - node editor/scripts/generate-og-metadata.mjs --check
 
