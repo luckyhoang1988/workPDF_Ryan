@@ -785,6 +785,29 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/admin/logoutUser/{username}")
+    @Audited(type = AuditEventType.SETTINGS_CHANGED, level = AuditLevel.BASIC)
+    public ResponseEntity<?> logoutUser(
+            @PathVariable("username") String username, Authentication authentication) {
+        if (!userService.usernameExistsIgnoreCase(username)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("error", "User not found."));
+        }
+        String currentUsername = authentication.getName();
+        if (currentUsername.equalsIgnoreCase(username)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("error", "Cannot force logout your own account."));
+        }
+        List<SessionInformation> sessionsInformations =
+                sessionRegistry.getAllSessions(username, false);
+        for (SessionInformation sessionsInformation : sessionsInformations) {
+            sessionRegistry.expireSession(sessionsInformation.getSessionId());
+            sessionRegistry.removeSessionInformation(sessionsInformation.getSessionId());
+        }
+        return ResponseEntity.ok(Map.of("message", "User logged out successfully"));
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/admin/deleteUser/{username}")
     @Audited(type = AuditEventType.USER_PROFILE_UPDATE, level = AuditLevel.BASIC)
     public ResponseEntity<?> deleteUser(

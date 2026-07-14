@@ -15,6 +15,8 @@ import {
   Tooltip,
   Avatar,
   Box,
+  Pagination,
+  Checkbox,
   type ComboboxItem,
 } from "@mantine/core";
 import { Button } from "@app/ui/Button";
@@ -37,6 +39,8 @@ import { useLicense } from "@app/contexts/LicenseContext";
 import ChangeUserPasswordModal from "@app/components/shared/ChangeUserPasswordModal";
 import { useAuth } from "@app/auth/UseSession";
 
+const PEOPLE_PAGE_SIZE = 20;
+
 export default function PeopleSection() {
   const { t } = useTranslation();
   const { config } = useAppConfig();
@@ -48,6 +52,9 @@ export default function PeopleSection() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [roleFilter, setRoleFilter] = useState<string>("ALL");
+  const [statusFilter, setStatusFilter] = useState<string>("ALL");
+  const [activePage, setActivePage] = useState(1);
   const [inviteModalOpened, setInviteModalOpened] = useState(false);
   const [editUserModalOpened, setEditUserModalOpened] = useState(false);
   const [changePasswordModalOpened, setChangePasswordModalOpened] =
@@ -57,6 +64,10 @@ export default function PeopleSection() {
   const [processing, setProcessing] = useState(false);
   const [mailEnabled, setMailEnabled] = useState(false);
   const [lockedUsers, setLockedUsers] = useState<string[]>([]);
+  const [selectedUsernames, setSelectedUsernames] = useState<Set<string>>(
+    new Set(),
+  );
+  const [bulkProcessing, setBulkProcessing] = useState(false);
 
   // License information
   const [licenseInfo, setLicenseInfo] = useState<{
@@ -118,6 +129,11 @@ export default function PeopleSection() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setActivePage(1);
+    setSelectedUsernames(new Set());
+  }, [searchQuery, roleFilter, statusFilter]);
 
   useEffect(() => {
     if (config) {
@@ -330,6 +346,131 @@ export default function PeopleSection() {
     }
   };
 
+  const handleForceLogoutUser = async (user: User) => {
+    const confirmMessage = t(
+      "workspace.people.confirmForceLogout",
+      "Are you sure you want to log this user out of all their active sessions?",
+    );
+    if (!window.confirm(`${confirmMessage}\n\nUser: ${user.username}`)) {
+      return;
+    }
+
+    try {
+      await userManagementService.forceLogoutUser(user.username);
+      alert({
+        alertType: "success",
+        title: t(
+          "workspace.people.forceLogoutSuccess",
+          "User logged out successfully",
+        ),
+      });
+      fetchData();
+    } catch (error: unknown) {
+      console.error("[PeopleSection] Failed to force logout user:", error);
+      const errorMessage = isAxiosError(error)
+        ? error.response?.data?.message ||
+          error.response?.data?.error ||
+          error.message
+        : (error instanceof Error ? error.message : undefined) ||
+          t("workspace.people.forceLogoutError", "Failed to log out user");
+      alert({ alertType: "error", title: errorMessage });
+    }
+  };
+
+  const handleBulkToggleEnabled = async (enabled: boolean) => {
+    const targets = Array.from(selectedUsernames);
+    if (targets.length === 0) return;
+
+    const confirmMessage = enabled
+      ? t(
+          "workspace.people.confirmBulkEnable",
+          "Are you sure you want to enable {{count}} selected user(s)?",
+          { count: targets.length },
+        )
+      : t(
+          "workspace.people.confirmBulkDisable",
+          "Are you sure you want to disable {{count}} selected user(s)?",
+          { count: targets.length },
+        );
+    if (!window.confirm(confirmMessage)) return;
+
+    setBulkProcessing(true);
+    try {
+      const results = await Promise.allSettled(
+        targets.map((username) =>
+          userManagementService.toggleUserEnabled(username, enabled),
+        ),
+      );
+      const failed = results.filter((r) => r.status === "rejected").length;
+      if (failed === 0) {
+        alert({
+          alertType: "success",
+          title: t(
+            "workspace.people.bulkActionSuccess",
+            "{{count}} user(s) updated successfully",
+            { count: targets.length },
+          ),
+        });
+      } else {
+        alert({
+          alertType: "error",
+          title: t(
+            "workspace.people.bulkActionPartialError",
+            "{{success}} succeeded, {{failed}} failed",
+            { success: targets.length - failed, failed },
+          ),
+        });
+      }
+      setSelectedUsernames(new Set());
+      fetchData();
+    } finally {
+      setBulkProcessing(false);
+    }
+  };
+
+  const handleBulkDeleteUsers = async () => {
+    const targets = Array.from(selectedUsernames);
+    if (targets.length === 0) return;
+
+    const confirmMessage = t(
+      "workspace.people.confirmBulkDelete",
+      "Are you sure you want to delete {{count}} selected user(s)? This action cannot be undone.",
+      { count: targets.length },
+    );
+    if (!window.confirm(confirmMessage)) return;
+
+    setBulkProcessing(true);
+    try {
+      const results = await Promise.allSettled(
+        targets.map((username) => userManagementService.deleteUser(username)),
+      );
+      const failed = results.filter((r) => r.status === "rejected").length;
+      if (failed === 0) {
+        alert({
+          alertType: "success",
+          title: t(
+            "workspace.people.bulkDeleteSuccess",
+            "{{count}} user(s) deleted successfully",
+            { count: targets.length },
+          ),
+        });
+      } else {
+        alert({
+          alertType: "error",
+          title: t(
+            "workspace.people.bulkActionPartialError",
+            "{{success}} succeeded, {{failed}} failed",
+            { success: targets.length - failed, failed },
+          ),
+        });
+      }
+      setSelectedUsernames(new Set());
+      fetchData();
+    } finally {
+      setBulkProcessing(false);
+    }
+  };
+
   const handleUnlockUser = async (user: User) => {
     const confirmMessage = t(
       "workspace.people.confirmUnlock",
@@ -392,9 +533,59 @@ export default function PeopleSection() {
     });
   };
 
-  const filteredUsers = users.filter((user) =>
-    user.username.toLowerCase().includes(searchQuery.toLowerCase()),
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch = user.username
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesRole =
+      roleFilter === "ALL" || getUserRoleId(user) === roleFilter;
+    const matchesStatus =
+      statusFilter === "ALL" ||
+      (statusFilter === "ENABLED" && user.enabled) ||
+      (statusFilter === "DISABLED" && !user.enabled);
+    return matchesSearch && matchesRole && matchesStatus;
+  });
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredUsers.length / PEOPLE_PAGE_SIZE),
   );
+  const pagedUsers = filteredUsers.slice(
+    (activePage - 1) * PEOPLE_PAGE_SIZE,
+    activePage * PEOPLE_PAGE_SIZE,
+  );
+
+  const selectableUsers = pagedUsers.filter((user) => !isCurrentUser(user));
+  const allOnPageSelected =
+    selectableUsers.length > 0 &&
+    selectableUsers.every((user) => selectedUsernames.has(user.username));
+  const someOnPageSelected = selectableUsers.some((user) =>
+    selectedUsernames.has(user.username),
+  );
+
+  const toggleSelectAllOnPage = () => {
+    setSelectedUsernames((prev) => {
+      const next = new Set(prev);
+      if (allOnPageSelected) {
+        selectableUsers.forEach((user) => next.delete(user.username));
+      } else {
+        selectableUsers.forEach((user) => next.add(user.username));
+      }
+      return next;
+    });
+  };
+
+  const toggleSelectUser = (username: string) => {
+    setSelectedUsernames((prev) => {
+      const next = new Set(prev);
+      if (next.has(username)) {
+        next.delete(username);
+      } else {
+        next.add(username);
+      }
+      return next;
+    });
+  };
 
   const roleOptions = [
     {
@@ -448,6 +639,20 @@ export default function PeopleSection() {
     value: team.id.toString(),
     label: team.name,
   }));
+
+  const roleFilterOptions = [
+    { value: "ALL", label: t("workspace.people.allRoles", "All roles") },
+    ...Array.from(new Set(users.map(getUserRoleId))).map((roleId) => ({
+      value: roleId,
+      label: getRoleLabel(roleId),
+    })),
+  ];
+
+  const statusFilterOptions = [
+    { value: "ALL", label: t("workspace.people.allStatuses", "All statuses") },
+    { value: "ENABLED", label: t("workspace.people.active", "Active") },
+    { value: "DISABLED", label: t("workspace.people.disabled", "Disabled") },
+  ];
 
   if (loading) {
     return (
@@ -556,14 +761,40 @@ export default function PeopleSection() {
       )}
 
       {/* Header Actions */}
-      <Group justify="space-between">
-        <TextInput
-          placeholder={t("workspace.people.searchMembers")}
-          leftSection={<LocalIcon icon="search" width="1rem" height="1rem" />}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.currentTarget.value)}
-          style={{ maxWidth: 300 }}
-        />
+      <Group justify="space-between" wrap="wrap">
+        <Group gap="sm" wrap="wrap">
+          <TextInput
+            placeholder={t("workspace.people.searchMembers")}
+            leftSection={
+              <LocalIcon icon="search" width="1rem" height="1rem" />
+            }
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.currentTarget.value)}
+            style={{ maxWidth: 300 }}
+          />
+          <Select
+            data={roleFilterOptions}
+            value={roleFilter}
+            onChange={(value) => setRoleFilter(value || "ALL")}
+            allowDeselect={false}
+            style={{ width: 160 }}
+            comboboxProps={{
+              withinPortal: true,
+              zIndex: Z_INDEX_OVER_CONFIG_MODAL,
+            }}
+          />
+          <Select
+            data={statusFilterOptions}
+            value={statusFilter}
+            onChange={(value) => setStatusFilter(value || "ALL")}
+            allowDeselect={false}
+            style={{ width: 160 }}
+            comboboxProps={{
+              withinPortal: true,
+              zIndex: Z_INDEX_OVER_CONFIG_MODAL,
+            }}
+          />
+        </Group>
         <Tooltip
           label={addMemberTooltip || undefined}
           disabled={
@@ -587,6 +818,62 @@ export default function PeopleSection() {
         </Tooltip>
       </Group>
 
+      {/* Bulk actions toolbar */}
+      {selectedUsernames.size > 0 && (
+        <Group
+          justify="space-between"
+          wrap="wrap"
+          p="sm"
+          style={{
+            backgroundColor: "var(--mantine-color-gray-0)",
+            borderRadius: "var(--mantine-radius-sm)",
+          }}
+        >
+          <Text size="sm" fw={500}>
+            {t(
+              "workspace.people.selectedCount",
+              "{{count}} selected",
+              { count: selectedUsernames.size },
+            )}
+          </Text>
+          <Group gap="xs" wrap="wrap">
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => handleBulkToggleEnabled(true)}
+              disabled={!loginEnabled || bulkProcessing}
+            >
+              {t("workspace.people.enable", "Enable")}
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => handleBulkToggleEnabled(false)}
+              disabled={!loginEnabled || bulkProcessing}
+            >
+              {t("workspace.people.disable", "Disable")}
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              accent="danger"
+              onClick={handleBulkDeleteUsers}
+              disabled={!loginEnabled || bulkProcessing}
+            >
+              {t("workspace.people.deleteUser", "Delete")}
+            </Button>
+            <Button
+              size="sm"
+              variant="tertiary"
+              onClick={() => setSelectedUsernames(new Set())}
+              disabled={bulkProcessing}
+            >
+              {t("workspace.people.clearSelection", "Clear selection")}
+            </Button>
+          </Group>
+        </Group>
+      )}
+
       {/* Members Table */}
       <Table
         horizontalSpacing="md"
@@ -600,6 +887,18 @@ export default function PeopleSection() {
       >
         <Table.Thead>
           <Table.Tr style={{ backgroundColor: "var(--mantine-color-gray-0)" }}>
+            <Table.Th w={40}>
+              <Checkbox
+                checked={allOnPageSelected}
+                indeterminate={someOnPageSelected && !allOnPageSelected}
+                onChange={toggleSelectAllOnPage}
+                disabled={!loginEnabled || selectableUsers.length === 0}
+                aria-label={t(
+                  "workspace.people.selectAll",
+                  "Select all",
+                )}
+              />
+            </Table.Th>
             <Table.Th
               style={{ fontWeight: 600, color: "var(--mantine-color-gray-7)" }}
               fz="sm"
@@ -626,16 +925,16 @@ export default function PeopleSection() {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
-          {filteredUsers.length === 0 ? (
+          {pagedUsers.length === 0 ? (
             <Table.Tr>
-              <Table.Td colSpan={4}>
+              <Table.Td colSpan={5}>
                 <Text ta="center" c="dimmed" py="xl">
                   {t("workspace.people.noMembersFound")}
                 </Text>
               </Table.Td>
             </Table.Tr>
           ) : (
-            filteredUsers.map((user) => (
+            pagedUsers.map((user) => (
               <Table.Tr
                 key={user.id}
                 style={
@@ -644,6 +943,18 @@ export default function PeopleSection() {
                     : undefined
                 }
               >
+                <Table.Td>
+                  <Checkbox
+                    checked={selectedUsernames.has(user.username)}
+                    onChange={() => toggleSelectUser(user.username)}
+                    disabled={!loginEnabled || isCurrentUser(user)}
+                    aria-label={t(
+                      "workspace.people.selectUser",
+                      "Select {{username}}",
+                      { username: user.username },
+                    )}
+                  />
+                </Table.Td>
                 <Table.Td>
                   <Group gap="xs" wrap="nowrap">
                     <Tooltip
@@ -849,6 +1160,24 @@ export default function PeopleSection() {
                               )}
                             </Menu.Item>
                           )}
+                          {!isCurrentUser(user) && user.isActive && (
+                            <Menu.Item
+                              leftSection={
+                                <LocalIcon
+                                  icon="logout"
+                                  width="1rem"
+                                  height="1rem"
+                                />
+                              }
+                              onClick={() => handleForceLogoutUser(user)}
+                              disabled={!loginEnabled}
+                            >
+                              {t(
+                                "workspace.people.forceLogout",
+                                "Force logout",
+                              )}
+                            </Menu.Item>
+                          )}
                           {!isCurrentUser(user) && (
                             <Menu.Item
                               leftSection={
@@ -976,6 +1305,17 @@ export default function PeopleSection() {
           )}
         </Table.Tbody>
       </Table>
+
+      {totalPages > 1 && (
+        <Group justify="center">
+          <Pagination
+            total={totalPages}
+            value={activePage}
+            onChange={setActivePage}
+            size="sm"
+          />
+        </Group>
+      )}
 
       {/* Invite Members Modal (reusable) */}
       <InviteMembersModal

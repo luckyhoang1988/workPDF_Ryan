@@ -328,6 +328,15 @@ export const userManagementService = {
   },
 
   /**
+   * Force logout a user by expiring all of their active sessions (admin only)
+   */
+  async forceLogoutUser(username: string): Promise<void> {
+    await apiClient.post(`/api/v1/user/admin/logoutUser/${username}`, null, {
+      suppressErrorToast: true,
+    });
+  },
+
+  /**
    * Disable MFA for a user (admin only)
    */
   async disableMfaByAdmin(username: string): Promise<void> {

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, useParams, Navigate } from "react-router-dom";
 import { AppProviders } from "@app/components/AppProviders";
 import { AppLayout } from "@app/components/AppLayout";
 import { LoadingFallback } from "@app/components/shared/LoadingFallback";
@@ -92,6 +92,14 @@ export default function App() {
                   <Route path="/auth/callback" element={<AuthCallback />} />
                   <Route path="/invite/:token" element={<InviteAccept />} />
                   <Route path="/share/:token" element={<ShareLinkPage />} />
+                  {/* Dedicated admin URL, kept as a thin alias to the People
+                      tab of the Settings modal rather than a standalone page
+                      shell - reuses the existing deep-link/back-button/
+                      unsaved-changes handling in AppConfigModal. */}
+                  <Route
+                    path="/admin/users"
+                    element={<Navigate to="/settings/people" replace />}
+                  />
                   {/* Main app routes - Landing handles auth logic */}
                   <Route path="/*" element={<Landing />} />
                 </Routes>
