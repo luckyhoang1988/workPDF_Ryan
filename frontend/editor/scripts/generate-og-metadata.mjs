@@ -24,8 +24,7 @@ const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
 const SITE_NAME = "RyanPDF";
 const SITE_TITLE =
   "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt";
-const SITE_DESC =
-  "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản.";
+const SITE_DESC = SITE_TITLE;
 const DEFAULT_IMAGE_BASENAME = "home";
 
 // Tools whose art exists under a legacy v1 filename that does not match the

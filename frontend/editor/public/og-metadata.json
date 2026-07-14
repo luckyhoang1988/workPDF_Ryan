@@ -2,7 +2,7 @@
   "default": {
     "image": "/og_images/home.png",
     "title": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt",
-    "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+    "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
   },
   "byTool": {
     "certSign": {
@@ -223,7 +223,7 @@
     "overlayPdfs": {
       "image": "/og_images/overlay-pdfs.png",
       "title": "Overlay Pdfs - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "getPdfInfo": {
       "image": "/og_images/get-all-info-on-pdf.png",
@@ -303,207 +303,207 @@
     "/login": {
       "image": "/og_images/home.png",
       "title": "Sign In - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/signup": {
       "image": "/og_images/home.png",
       "title": "Sign Up - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/mobile-scanner": {
       "image": "/og_images/home.png",
       "title": "Mobile Scanner - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/files": {
       "image": "/og_images/home.png",
       "title": "Files - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings": {
       "image": "/og_images/home.png",
       "title": "Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/preferences": {
       "image": "/og_images/home.png",
       "title": "Preferences Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/notifications": {
       "image": "/og_images/home.png",
       "title": "Notifications Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/connections": {
       "image": "/og_images/home.png",
       "title": "Connections Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/account": {
       "image": "/og_images/home.png",
       "title": "Account Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/general": {
       "image": "/og_images/home.png",
       "title": "General Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/people": {
       "image": "/og_images/home.png",
       "title": "People Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/teams": {
       "image": "/og_images/home.png",
       "title": "Teams Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/security": {
       "image": "/og_images/home.png",
       "title": "Security Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/identity": {
       "image": "/og_images/home.png",
       "title": "Identity Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/plan": {
       "image": "/og_images/home.png",
       "title": "Plan Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/payments": {
       "image": "/og_images/home.png",
       "title": "Payments Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/requests": {
       "image": "/og_images/home.png",
       "title": "Requests Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/developer": {
       "image": "/og_images/home.png",
       "title": "Developer Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/api-keys": {
       "image": "/og_images/home.png",
       "title": "Api Keys Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/hotkeys": {
       "image": "/og_images/home.png",
       "title": "Hotkeys Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminGeneral": {
       "image": "/og_images/home.png",
       "title": "Admin General Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminSecurity": {
       "image": "/og_images/home.png",
       "title": "Admin Security Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminConnections": {
       "image": "/og_images/home.png",
       "title": "Admin Connections Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminPrivacy": {
       "image": "/og_images/home.png",
       "title": "Admin Privacy Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminDatabase": {
       "image": "/og_images/home.png",
       "title": "Admin Database Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminAdvanced": {
       "image": "/og_images/home.png",
       "title": "Admin Advanced Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminLegal": {
       "image": "/og_images/home.png",
       "title": "Admin Legal Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminPremium": {
       "image": "/og_images/home.png",
       "title": "Admin Premium Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminFeatures": {
       "image": "/og_images/home.png",
       "title": "Admin Features Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminPlan": {
       "image": "/og_images/home.png",
       "title": "Admin Plan Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminAudit": {
       "image": "/og_images/home.png",
       "title": "Admin Audit Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminUsage": {
       "image": "/og_images/home.png",
       "title": "Admin Usage Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminEndpoints": {
       "image": "/og_images/home.png",
       "title": "Admin Endpoints Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminStorageSharing": {
       "image": "/og_images/home.png",
       "title": "Admin Storage Sharing Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/adminMcp": {
       "image": "/og_images/home.png",
       "title": "Admin Mcp Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/help": {
       "image": "/og_images/home.png",
       "title": "Help Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/legal": {
       "image": "/og_images/home.png",
       "title": "Legal Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/backendThirdPartyLicenses": {
       "image": "/og_images/home.png",
       "title": "Backend Third Party Licenses Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/frontendThirdPartyLicenses": {
       "image": "/og_images/home.png",
       "title": "Frontend Third Party Licenses Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/payg": {
       "image": "/og_images/home.png",
       "title": "Payg Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     },
     "/settings/account-link": {
       "image": "/og_images/home.png",
       "title": "Account Link Settings - RyanPDF",
-      "description": "Chỉnh sửa, chuyển đổi và ký PDF chỉ trong vài giây — không cần cài đặt, không cần tài khoản."
+      "description": "Trình chỉnh sửa và chuyển đổi PDF tất cả trong một - Chỉ trong vài giây - không cần cài đặt"
     }
   },
   "byPath": {
