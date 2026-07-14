@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState, useRef } from "react";
-import { Modal, Stack, Text, Badge, Box, Alert } from "@mantine/core";
+import { Modal, Stack, Text, Badge, Box, Alert, Loader } from "@mantine/core";
 import { QRCodeSVG } from "qrcode.react";
 import { useTranslation } from "react-i18next";
 import { useAppConfig } from "@app/contexts/AppConfigContext";
@@ -12,6 +12,13 @@ import { BASE_PATH } from "@app/constants/app";
 import { buildMobileScannerUrl } from "@app/utils/mobileScannerUrl";
 import { convertImageToPdf, isImageFile } from "@app/utils/imageToPdfUtils";
 import apiClient from "@app/services/apiClient";
+import { useToolRegistry } from "@app/contexts/ToolRegistryContext";
+import { executeAutomationSequence } from "@app/utils/automationExecutor";
+import {
+  COLOR_TYPES,
+  OUTPUT_OPTIONS,
+  FIT_OPTIONS,
+} from "@app/constants/convertConstants";
 
 interface MobileUploadModalProps {
   opened: boolean;
@@ -73,6 +80,7 @@ export default function MobileUploadModal({
 }: MobileUploadModalProps) {
   const { t } = useTranslation();
   const { config } = useAppConfig();
+  const { allTools } = useToolRegistry();
 
   const [sessionId, setSessionId] = useState(() => generateSessionId());
   const [sessionInfo, setSessionInfo] = useState<SessionInfo | null>(null);
@@ -80,9 +88,11 @@ export default function MobileUploadModal({
   const [error, setError] = useState<string | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [showExpiryWarning, setShowExpiryWarning] = useState(false);
+  const [isCombining, setIsCombining] = useState(false);
   const pollIntervalRef = useRef<number | null>(null);
   const timerIntervalRef = useRef<number | null>(null);
   const processedFiles = useRef<Set<string>>(new Set());
+  const isCombiningRef = useRef(false);
 
   // Build the QR-code URL the phone opens. It must land on the public
   // /mobile-scanner route under the app's base path, otherwise the phone hits
@@ -135,8 +145,143 @@ export default function MobileUploadModal({
     createSession(newSessionId);
   }, [createSession]);
 
+  // Fallback path: convert each photo to its own single-page PDF, no OCR.
+  const convertImagesIndividually = useCallback(
+    async (imageFiles: File[]) => {
+      for (const rawFile of imageFiles) {
+        let file = rawFile;
+        if (config?.mobileScannerConvertToPdf !== false) {
+          try {
+            file = await convertImageToPdf(rawFile, {
+              imageResolution: config?.mobileScannerImageResolution as
+                | "full"
+                | "reduced"
+                | undefined,
+              pageFormat: config?.mobileScannerPageFormat as
+                | "keep"
+                | "A4"
+                | "letter"
+                | undefined,
+              stretchToFit: config?.mobileScannerStretchToFit,
+            });
+          } catch (convertError) {
+            console.warn(
+              "[MobileUploadModal] Failed to convert image to PDF, using original file:",
+              convertError,
+            );
+            // Continue with original image file if conversion fails
+          }
+        }
+        setFilesReceived((prev) => prev + 1);
+        onFilesReceived([file]);
+      }
+    },
+    [config, onFilesReceived],
+  );
+
+  // Combine every photo from this upload batch into one multi-page PDF, then
+  // OCR it, so the user gets a single searchable file instead of N loose scans.
+  const combineAndOcrImages = useCallback(
+    async (imageFiles: File[]) => {
+      const automation = {
+        name: "mobile-scan",
+        operations: [
+          {
+            operation: "convert",
+            parameters: {
+              fromExtension: "image",
+              toExtension: "pdf",
+              imageOptions: {
+                colorType: COLOR_TYPES.COLOR,
+                dpi: 300,
+                singleOrMultiple: OUTPUT_OPTIONS.MULTIPLE,
+                fitOption: config?.mobileScannerStretchToFit
+                  ? FIT_OPTIONS.FILL_PAGE
+                  : FIT_OPTIONS.MAINTAIN_ASPECT,
+                autoRotate: true,
+                combineImages: true,
+              },
+            },
+          },
+          {
+            operation: "ocr",
+            parameters: {
+              languages: config?.mobileScannerOcrLanguages || [],
+              ocrType: "skip-text",
+              ocrRenderType: "hocr",
+              additionalOptions: [],
+            },
+          },
+        ],
+      };
+
+      const resultFiles = await executeAutomationSequence(
+        automation,
+        imageFiles,
+        allTools,
+      );
+      if (resultFiles.length === 0) {
+        throw new Error("Combine & OCR produced no output file");
+      }
+
+      const combined = new File(
+        [resultFiles[0]],
+        `scan-${Date.now()}.pdf`,
+        { type: "application/pdf" },
+      );
+      setFilesReceived((prev) => prev + imageFiles.length);
+      onFilesReceived([combined]);
+    },
+    [config, allTools, onFilesReceived],
+  );
+
+  const processDownloadedFiles = useCallback(
+    async (downloadedFiles: File[]) => {
+      const imageFiles = downloadedFiles.filter(isImageFile);
+      const otherFiles = downloadedFiles.filter((f) => !isImageFile(f));
+
+      otherFiles.forEach((file) => {
+        setFilesReceived((prev) => prev + 1);
+        onFilesReceived([file]);
+      });
+
+      if (imageFiles.length === 0) return;
+
+      const autoOcrReady =
+        config?.mobileScannerAutoOcr &&
+        (config?.mobileScannerOcrLanguages?.length ?? 0) > 0;
+
+      if (!autoOcrReady) {
+        await convertImagesIndividually(imageFiles);
+        return;
+      }
+
+      isCombiningRef.current = true;
+      setIsCombining(true);
+      try {
+        await combineAndOcrImages(imageFiles);
+      } catch (combineError) {
+        console.error(
+          "[MobileUploadModal] Combine & OCR failed, falling back to per-photo PDFs:",
+          combineError,
+        );
+        setError(
+          t(
+            "mobileUpload.combineOcrError",
+            "Auto-combine & OCR failed. Photos were added as separate PDFs instead.",
+          ),
+        );
+        await convertImagesIndividually(imageFiles);
+      } finally {
+        isCombiningRef.current = false;
+        setIsCombining(false);
+      }
+    },
+    [config, convertImagesIndividually, combineAndOcrImages, onFilesReceived, t],
+  );
+
   const pollForFiles = useCallback(async () => {
-    if (!opened) return;
+    if (!opened || isCombiningRef.current) return;
 
     try {
       const response = await apiClient.get(
@@ -155,6 +300,8 @@ export default function MobileUploadModal({
       );
 
       if (newFiles.length > 0) {
+        const downloadedFiles: File[] = [];
+
         for (const fileMetadata of newFiles) {
           try {
             const downloadResponse = await apiClient.get(
@@ -166,44 +313,11 @@ export default function MobileUploadModal({
 
             if (downloadResponse.status === 200) {
               const blob = downloadResponse.data;
-              let file = new File([blob], fileMetadata.filename, {
+              const file = new File([blob], fileMetadata.filename, {
                 type: fileMetadata.contentType || "image/jpeg",
               });
-
-              // Convert images to PDF if enabled
-              if (
-                isImageFile(file) &&
-                config?.mobileScannerConvertToPdf !== false
-              ) {
-                try {
-                  file = await convertImageToPdf(file, {
-                    imageResolution: config?.mobileScannerImageResolution as
-                      | "full"
-                      | "reduced"
-                      | undefined,
-                    pageFormat: config?.mobileScannerPageFormat as
-                      | "keep"
-                      | "A4"
-                      | "letter"
-                      | undefined,
-                    stretchToFit: config?.mobileScannerStretchToFit,
-                  });
-                  console.log(
-                    "[MobileUploadModal] Converted image to PDF:",
-                    file.name,
-                  );
-                } catch (convertError) {
-                  console.warn(
-                    "[MobileUploadModal] Failed to convert image to PDF, using original file:",
-                    convertError,
-                  );
-                  // Continue with original image file if conversion fails
-                }
-              }
-
               processedFiles.current.add(fileMetadata.filename);
-              setFilesReceived((prev) => prev + 1);
-              onFilesReceived([file]);
+              downloadedFiles.push(file);
             }
           } catch (err) {
             console.error(
@@ -227,12 +341,14 @@ export default function MobileUploadModal({
             cleanupErr,
           );
         }
+
+        await processDownloadedFiles(downloadedFiles);
       }
     } catch (err) {
       console.error("[MobileUploadModal] Error polling for files:", err);
       setError(t("mobileUpload.pollingError", "Error checking for files"));
     }
-  }, [opened, sessionId, onFilesReceived, t]);
+  }, [opened, sessionId, processDownloadedFiles, t]);
 
   // Create session when modal opens
   useEffect(() => {
@@ -399,6 +515,20 @@ export default function MobileUploadModal({
           >
             <QRCodeSVG value={mobileUrl} size={256} level="H" includeMargin />
           </Box>
+
+          {isCombining && (
+            <Badge
+              variant="filled"
+              color="blue"
+              size="lg"
+              leftSection={<Loader size="xs" color="white" />}
+            >
+              {t(
+                "mobileUpload.combiningAndOcr",
+                "Combining photos & running OCR...",
+              )}
+            </Badge>
+          )}
 
           {filesReceived > 0 && (
             <Badge

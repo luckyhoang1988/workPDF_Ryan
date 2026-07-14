@@ -24,6 +24,7 @@ import PendingBadge from "@app/components/shared/config/PendingBadge";
 import { SettingsStickyFooter } from "@app/components/shared/config/SettingsStickyFooter";
 import { Z_INDEX_OVER_CONFIG_MODAL } from "@app/styles/zIndex";
 import ProviderCard from "@app/components/shared/config/configSections/ProviderCard";
+import LanguagePicker from "@app/components/tools/ocr/LanguagePicker";
 import {
   Provider,
   useAllProviders,
@@ -141,6 +142,8 @@ interface ConnectionsSettingsData {
   mobileScannerImageResolution?: string;
   mobileScannerPageFormat?: string;
   mobileScannerStretchToFit?: boolean;
+  mobileScannerAutoOcr?: boolean;
+  mobileScannerOcrLanguages?: string[];
   googleDriveEnabled?: boolean;
   googleDriveClientId?: string;
   googleDriveApiKey?: string;
@@ -207,6 +210,10 @@ export default function AdminConnectionsSection() {
           systemData.mobileScannerSettings?.pageFormat || "A4",
         mobileScannerStretchToFit:
           systemData.mobileScannerSettings?.stretchToFit || false,
+        mobileScannerAutoOcr:
+          systemData.mobileScannerSettings?.autoOcr || false,
+        mobileScannerOcrLanguages:
+          systemData.mobileScannerSettings?.ocrLanguages || [],
         googleDriveEnabled:
           premiumData.proFeatures?.googleDrive?.enabled || false,
         googleDriveClientId:
@@ -261,6 +268,16 @@ export default function AdminConnectionsSection() {
       ) {
         pendingBlock.mobileScannerStretchToFit =
           systemData._pending.mobileScannerSettings.stretchToFit;
+      }
+      if (systemData._pending?.mobileScannerSettings?.autoOcr !== undefined) {
+        pendingBlock.mobileScannerAutoOcr =
+          systemData._pending.mobileScannerSettings.autoOcr;
+      }
+      if (
+        systemData._pending?.mobileScannerSettings?.ocrLanguages !== undefined
+      ) {
+        pendingBlock.mobileScannerOcrLanguages =
+          systemData._pending.mobileScannerSettings.ocrLanguages;
       }
       if (
         premiumData._pending?.proFeatures?.googleDrive?.enabled !== undefined
@@ -370,6 +387,14 @@ export default function AdminConnectionsSection() {
       if (currentSettings?.mobileScannerStretchToFit !== undefined) {
         deltaSettings["system.mobileScannerSettings.stretchToFit"] =
           currentSettings.mobileScannerStretchToFit;
+      }
+      if (currentSettings?.mobileScannerAutoOcr !== undefined) {
+        deltaSettings["system.mobileScannerSettings.autoOcr"] =
+          currentSettings.mobileScannerAutoOcr;
+      }
+      if (currentSettings?.mobileScannerOcrLanguages !== undefined) {
+        deltaSettings["system.mobileScannerSettings.ocrLanguages"] =
+          currentSettings.mobileScannerOcrLanguages;
       }
 
       // Google Drive settings
@@ -917,6 +942,75 @@ export default function AdminConnectionsSection() {
                         />
                       </Group>
                     </div>
+
+                    {/* Auto OCR after combining */}
+                    <div>
+                      <Text size="sm" fw={500} mb="xs">
+                        {t(
+                          "admin.settings.connections.mobileScannerAutoOcr",
+                          "Auto-combine & OCR",
+                        )}
+                      </Text>
+                      <Text size="xs" c="dimmed" mb="sm">
+                        {t(
+                          "admin.settings.connections.mobileScannerAutoOcrDesc",
+                          "Combine all photos from one upload batch into a single multi-page PDF and run OCR on it automatically, instead of adding one PDF per photo. Requires OCR tools (OCRmyPDF/Tesseract) to be installed on the server.",
+                        )}
+                      </Text>
+                      <Group gap="xs">
+                        <Switch
+                          checked={settings?.mobileScannerAutoOcr || false}
+                          onChange={(e) => {
+                            if (!loginEnabled) return;
+                            setSettings({
+                              ...settings,
+                              mobileScannerAutoOcr: e.target.checked,
+                            });
+                          }}
+                          disabled={!loginEnabled}
+                        />
+                        <PendingBadge
+                          show={isFieldPending("mobileScannerAutoOcr")}
+                        />
+                      </Group>
+                    </div>
+
+                    {/* OCR Languages - Only show when auto-OCR is enabled */}
+                    {settings?.mobileScannerAutoOcr && (
+                      <div>
+                        <Text size="sm" fw={500} mb="xs">
+                          {t(
+                            "admin.settings.connections.mobileScannerOcrLanguages",
+                            "OCR Languages",
+                          )}
+                        </Text>
+                        <Text size="xs" c="dimmed" mb="sm">
+                          {t(
+                            "admin.settings.connections.mobileScannerOcrLanguagesDesc",
+                            "Languages used to recognise text when auto-OCR runs. At least one language is required.",
+                          )}
+                        </Text>
+                        <Group gap="xs" align="flex-start">
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <LanguagePicker
+                              value={settings?.mobileScannerOcrLanguages || []}
+                              onChange={(langs) => {
+                                if (!loginEnabled) return;
+                                setSettings({
+                                  ...settings,
+                                  mobileScannerOcrLanguages: langs,
+                                });
+                              }}
+                              disabled={!loginEnabled}
+                              autoFillFromBrowserLanguage={false}
+                            />
+                          </div>
+                          <PendingBadge
+                            show={isFieldPending("mobileScannerOcrLanguages")}
+                          />
+                        </Group>
+                      </div>
+                    )}
                   </>
                 )}
               </Stack>

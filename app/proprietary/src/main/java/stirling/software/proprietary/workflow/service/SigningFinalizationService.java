@@ -368,9 +368,7 @@ public class SigningFinalizationService {
                     }
                 } catch (Exception e) {
                     // Fallback: just draw the name as text
-                    log.debug(
-                            "Could not load RyanPDF logo for summary page: {}",
-                            e.getMessage());
+                    log.debug("Could not load RyanPDF logo for summary page: {}", e.getMessage());
                     cs.setNonStrokingColor(Color.WHITE);
                     cs.beginText();
                     cs.setFont(fontBold, 13);

@@ -307,8 +307,7 @@ public class GetInfoOnPDF {
 
     /**
      * Info-dictionary keys exposed above via typed getters; any other key in the dictionary is
-     * surfaced as custom metadata (e.g. the classification policy's RyanPDFClassification
-     * entry).
+     * surfaced as custom metadata (e.g. the classification policy's RyanPDFClassification entry).
      */
     private static final java.util.Set<String> STANDARD_INFO_KEYS =
             java.util.Set.of(

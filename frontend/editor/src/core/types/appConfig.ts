@@ -38,6 +38,8 @@ export interface AppConfig {
   mobileScannerImageResolution?: string;
   mobileScannerPageFormat?: string;
   mobileScannerStretchToFit?: boolean;
+  mobileScannerAutoOcr?: boolean;
+  mobileScannerOcrLanguages?: string[];
   appVersion?: string;
   machineType?: string;
   activeSecurity?: boolean;

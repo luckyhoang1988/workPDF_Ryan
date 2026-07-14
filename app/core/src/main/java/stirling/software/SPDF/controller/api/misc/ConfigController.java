@@ -209,6 +209,12 @@ public class ConfigController {
             configData.put(
                     "mobileScannerStretchToFit",
                     applicationProperties.getSystem().getMobileScannerSettings().isStretchToFit());
+            configData.put(
+                    "mobileScannerAutoOcr",
+                    applicationProperties.getSystem().getMobileScannerSettings().isAutoOcr());
+            configData.put(
+                    "mobileScannerOcrLanguages",
+                    applicationProperties.getSystem().getMobileScannerSettings().getOcrLanguages());
 
             // Extract values from ApplicationProperties
             configData.put("appNameNavbar", applicationProperties.getUi().getAppNameNavbar());

@@ -925,12 +925,13 @@ public class ApplicationProperties {
             private String imageResolution = "full"; // Options: "full", "reduced"
             private String pageFormat = "A4"; // Options: "keep", "A4", "letter"
             private boolean stretchToFit = false; // Whether to stretch image to fill page
+            private boolean autoOcr = false; // Combine batch into one PDF and OCR it automatically
+            private List<String> ocrLanguages = new ArrayList<>(); // Tesseract language codes
         }
 
         @Data
         public static class ServerCertificate {
-            private boolean enabled =
-                    true; // Enable server-side "Sign with RyanPDF" certificate
+            private boolean enabled = true; // Enable server-side "Sign with RyanPDF" certificate
             private String organizationName = "RyanPDF Inc";
             private int validity = 365; // Certificate validity in days
             private boolean regenerateOnStartup =
@@ -1394,9 +1395,7 @@ public class ApplicationProperties {
                 }
 
                 public String getProducer() {
-                    return producer == null || producer.trim().isEmpty()
-                            ? "RyanPDF"
-                            : producer;
+                    return producer == null || producer.trim().isEmpty() ? "RyanPDF" : producer;
                 }
             }
         }
