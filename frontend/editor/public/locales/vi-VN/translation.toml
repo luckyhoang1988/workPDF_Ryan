@@ -5700,6 +5700,34 @@ confirm = "Đặt lại và đổi chế độ"
 title = "Xác nhận đổi chế độ"
 warning = "Đổi chế độ nhóm văn bản sẽ đặt lại mọi thay đổi chưa lưu. Bạn có chắc muốn tiếp tục?"
 
+[pdfTextEditor.modes.annotate]
+description = "Tô sáng, vẽ, thêm hình dạng, ghi chú và xem lại các đánh dấu trong trình xem PDF."
+label = "Chú thích"
+
+[pdfTextEditor.modes.erase]
+description = "Dùng chế độ ẩn danh để xóa vĩnh viễn các vùng nhạy cảm."
+label = "Xóa"
+
+[pdfTextEditor.modes.export]
+description = "Áp dụng các thay đổi văn bản và hình ảnh trở lại không gian làm việc dưới dạng phiên bản PDF mới."
+label = "Hoàn tất"
+
+[pdfTextEditor.modes.image]
+description = "Thêm lớp phủ hình ảnh mới vào PDF bằng công cụ đặt vị trí của trình xem."
+label = "Hình ảnh"
+
+[pdfTextEditor.modes.pages]
+description = "Sắp xếp lại, xoay, xóa, tách và xuất trang trong trình chỉnh sửa trang."
+label = "Trang"
+
+[pdfTextEditor.modes.sign]
+description = "Đặt chữ ký được gõ, vẽ hoặc tải lên vào tài liệu."
+label = "Ký"
+
+[pdfTextEditor.modes.text]
+description = "Chỉnh sửa các hộp văn bản hiện có và thay đổi vị trí hình ảnh nhúng trong không gian làm việc này."
+label = "Văn bản"
+
 [pdfTextEditor.options.advanced]
 title = "Cài đặt nâng cao"
 
@@ -5739,6 +5767,13 @@ title = "Sai lệch khi xem trước"
 [pdfTextEditor.tooltip.textFocus]
 text = "Không gian làm việc này tập trung vào chỉnh sửa văn bản và thay đổi vị trí hình ảnh nhúng. Tác phẩm trang phức tạp, tiện ích biểu mẫu và đồ họa nhiều lớp sẽ được giữ lại khi xuất nhưng không thể chỉnh sửa đầy đủ tại đây."
 title = "Tập trung Văn bản và Hình ảnh"
+
+[pdfTextEditor.unifiedToolbar]
+description = "Sử dụng một không gian làm việc duy nhất cho văn bản, hình ảnh, chú thích, ký tên, ẩn danh, trang và xuất."
+pendingChanges = "Các thay đổi văn bản/hình ảnh sẽ được áp dụng trước khi mở chế độ chỉnh sửa khác."
+ready = "Sẵn sàng"
+title = "Chỉnh sửa PDF"
+unsaved = "Có chỉnh sửa chưa lưu"
 
 [pdfTextEditor.welcomeBanner]
 bestFor = "Tốt nhất cho:"
