@@ -173,10 +173,10 @@ jobs:
       - name: Rename JAR
         run: |
           echo "Version from determine-matrix: ${{ needs.determine-matrix.outputs.version }}"
-          echo "Looking for: app/core/build/libs/stirling-pdf-${{ needs.determine-matrix.outputs.version }}.jar"
+          echo "Looking for: app/core/build/libs/ryanpdf-${{ needs.determine-matrix.outputs.version }}.jar"
           ls -la app/core/build/libs/
           mkdir -p ./jar-dist
-          cp app/core/build/libs/stirling-pdf-${{ needs.determine-matrix.outputs.version }}.jar ./jar-dist/Stirling-PDF${{ matrix.variant.file_suffix }}.jar
+          cp app/core/build/libs/ryanpdf-${{ needs.determine-matrix.outputs.version }}.jar ./jar-dist/RyanPDF${{ matrix.variant.file_suffix }}.jar
 
       - name: Upload JAR artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -505,7 +505,7 @@ jobs:
 
       # Verify the MSI (outer wrapper users download) AND the inner exe extracted
       # from it (what actually gets installed and what AV scans). We don't check
-      # target/.../release/stirling-pdf.exe - that's Tauri's intermediate build
+      # target/.../release/RyanPDF.exe - that's Tauri's intermediate build
       # artifact. Tauri signs a COPY when bundling into the MSI and leaves the raw
       # cargo output unsigned, so checking it produces false negatives.
       - name: Verify Windows Code Signature
@@ -536,7 +536,7 @@ jobs:
           if (Test-Path $extractDir) { Remove-Item $extractDir -Recurse -Force }
           $proc = Start-Process msiexec.exe -ArgumentList '/a', $msi, '/qn', "TARGETDIR=$extractDir" -Wait -PassThru -NoNewWindow
           if ($proc.ExitCode -eq 0) {
-            $innerExe = Get-ChildItem -Path $extractDir -Filter "stirling-pdf.exe" -Recurse -File | Select-Object -First 1
+            $innerExe = Get-ChildItem -Path $extractDir -Filter "RyanPDF.exe" -Recurse -File | Select-Object -First 1
             if ($innerExe) {
               $sig = Get-AuthenticodeSignature -FilePath $innerExe.FullName
               Write-Host "Inner EXE (from MSI): Status=$($sig.Status), Signer=$($sig.SignerCertificate.Subject)"
@@ -545,7 +545,7 @@ jobs:
                 $allSigned = $false
               }
             } else {
-              Write-Host "[ERROR] Could not find stirling-pdf.exe inside MSI"
+              Write-Host "[ERROR] Could not find RyanPDF.exe inside MSI"
               $allSigned = $false
             }
           } else {
@@ -597,30 +597,30 @@ jobs:
           # createUpdaterArtifacts:true signs the native installers in place;
           # each <bundle> ships with a sibling <bundle>.sig consumed by latest.json.
           if [ "${{ matrix.platform }}" = "windows-latest" ]; then
-            find . -name "*.msi" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.msi" \;
-            find . -name "*.msi.sig" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.msi.sig" \;
+            find . -name "*.msi" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.msi" \;
+            find . -name "*.msi.sig" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.msi.sig" \;
           elif [ "${{ matrix.platform }}" = "macos-15" ]; then
             # DMG = manual install; .app.tar.gz (+ .sig) = updater payload.
             # Raw .app is intentionally not shipped (hundreds of MB of uncompressed input).
-            find . -name "*.dmg" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.dmg" \;
-            find . -name "*.app.tar.gz" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.app.tar.gz" \;
-            find . -name "*.app.tar.gz.sig" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.app.tar.gz.sig" \;
+            find . -name "*.dmg" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.dmg" \;
+            find . -name "*.app.tar.gz" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.app.tar.gz" \;
+            find . -name "*.app.tar.gz.sig" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.app.tar.gz.sig" \;
           else
             # The raw .AppImage IS its updater payload (signed -> .AppImage.sig),
             # not a .tar.gz wrapper - that's only produced under v1Compatible.
-            find . -name "*.deb" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.deb" \;
-            find . -name "*.deb.sig" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.deb.sig" \;
-            find . -name "*.rpm" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.rpm" \;
-            find . -name "*.rpm.sig" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.rpm.sig" \;
-            find . -name "*.AppImage" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.AppImage" \;
-            find . -name "*.AppImage.sig" -exec cp {} "$DIST/Stirling-PDF-${{ matrix.name }}.AppImage.sig" \;
+            find . -name "*.deb" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.deb" \;
+            find . -name "*.deb.sig" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.deb.sig" \;
+            find . -name "*.rpm" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.rpm" \;
+            find . -name "*.rpm.sig" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.rpm.sig" \;
+            find . -name "*.AppImage" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.AppImage" \;
+            find . -name "*.AppImage.sig" -exec cp {} "$DIST/RyanPDF-${{ matrix.name }}.AppImage.sig" \;
           fi
 
       - name: Upload build artifacts
         if: always() && steps.digicert-setup.conclusion != 'failure'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: Stirling-PDF-${{ matrix.name }}
+          name: RyanPDF-${{ matrix.name }}
           path: ./dist/*
           retention-days: 1
 
@@ -648,7 +648,7 @@ jobs:
       - name: Download all Tauri artifacts
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          pattern: Stirling-PDF-*
+          pattern: RyanPDF-*
           path: ./artifacts/tauri
 
       - name: Download JAR artifact (default)
@@ -698,23 +698,23 @@ jobs:
           # arches from the one .app.tar.gz.
           PLATFORM_MAP = [
               {
-                  'bundles': ['Stirling-PDF-linux-x86_64.deb'],
+                  'bundles': ['RyanPDF-linux-x86_64.deb'],
                   'targets': ['linux-x86_64-deb'],
               },
               {
-                  'bundles': ['Stirling-PDF-linux-x86_64.rpm'],
+                  'bundles': ['RyanPDF-linux-x86_64.rpm'],
                   'targets': ['linux-x86_64-rpm'],
               },
               {
-                  'bundles': ['Stirling-PDF-linux-x86_64.AppImage'],
+                  'bundles': ['RyanPDF-linux-x86_64.AppImage'],
                   'targets': ['linux-x86_64-appimage'],
               },
               {
-                  'bundles': ['Stirling-PDF-windows-x86_64.msi'],
+                  'bundles': ['RyanPDF-windows-x86_64.msi'],
                   'targets': ['windows-x86_64-msi', 'windows-x86_64'],
               },
               {
-                  'bundles': ['Stirling-PDF-macos-universal.app.tar.gz'],
+                  'bundles': ['RyanPDF-macos-universal.app.tar.gz'],
                   'targets': ['darwin-x86_64', 'darwin-aarch64'],
               },
           ]

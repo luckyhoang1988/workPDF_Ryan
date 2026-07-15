@@ -58,7 +58,7 @@ jobs:
           MAVEN_USER: ${{ secrets.MAVEN_USER }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           MAVEN_PUBLIC_URL: ${{ secrets.MAVEN_PUBLIC_URL }}
-        run: ./gradlew :stirling-pdf:bootJar -PnoSpotless --no-daemon
+        run: ./gradlew :ryanpdf:bootJar -PnoSpotless --no-daemon
 
       - name: Locate built JAR
         id: jar

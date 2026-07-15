@@ -340,7 +340,6 @@ function checkLicenseCompatibility(licenseSummary, licenseArray) {
     "Ruby",
     "MPL-2.0",
     "CC-BY-4.0",
-    "SEE LICENSE IN https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/refs/heads/main/proprietary/LICENSE",
     "SEE LICENSE IN LICENSE https://github.com/PostHog/posthog-js/blob/main/LICENSE",
   ]);
 

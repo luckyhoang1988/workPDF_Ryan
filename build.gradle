@@ -75,7 +75,7 @@ if (rootProject.ext.mavenUrl.isEmpty()) {
 jar {
     enabled = false
     manifest {
-        attributes "Implementation-Title": "Stirling-PDF",
+        attributes "Implementation-Title": "RyanPDF",
             "Implementation-Version": project.version
     }
 }
@@ -102,8 +102,8 @@ def appVersionStr = project.version.toString()
 def tauriConfigPath = layout.projectDirectory.file('frontend/editor/src-tauri/tauri.conf.json').asFile.path
 def sim1Path = layout.projectDirectory.file('frontend/editor/src/core/testing/serverExperienceSimulations.ts').asFile.path
 def sim2Path = layout.projectDirectory.file('frontend/editor/src/proprietary/testing/serverExperienceSimulations.ts').asFile.path
-def aurDesktopPkgbuildPath = layout.projectDirectory.file('.github/aur/stirling-pdf-desktop/PKGBUILD').asFile.path
-def aurServerPkgbuildPath = layout.projectDirectory.file('.github/aur/stirling-pdf-server-bin/PKGBUILD').asFile.path
+def aurDesktopPkgbuildPath = layout.projectDirectory.file('.github/aur/ryanpdf-desktop/PKGBUILD').asFile.path
+def aurServerPkgbuildPath = layout.projectDirectory.file('.github/aur/ryanpdf-server-bin/PKGBUILD').asFile.path
 
 tasks.register('syncAppVersion') {
     group = 'versioning'
@@ -178,7 +178,7 @@ subprojects {
         }
     }
 
-    if (project.name != "stirling-pdf") {
+    if (project.name != "ryanpdf") {
         bootJar {
             enabled = false
         }
@@ -414,7 +414,7 @@ subprojects {
         dependsOn(rootProject.tasks.writeVersion)
     }
 
-    if (name == 'stirling-pdf') {
+    if (name == 'ryanpdf') {
         apply plugin: 'org.springdoc.openapi-gradle-plugin'
 
         openApi {
@@ -539,11 +539,11 @@ licenseReport {
     configurations = [ "productionRuntimeClasspath", "runtimeClasspath" ]
 }
 
-// Configure the forked spring boot run task to properly delegate to the stirling-pdf module
+// Configure the forked spring boot run task to properly delegate to the ryanpdf module
 tasks.named('forkedSpringBootRun') {
-    dependsOn ':stirling-pdf:bootRun'
+    dependsOn ':ryanpdf:bootRun'
     doFirst {
-        println "Delegating forkedSpringBootRun to :stirling-pdf:bootRun"
+        println "Delegating forkedSpringBootRun to :ryanpdf:bootRun"
     }
 }
 
@@ -564,8 +564,8 @@ spotless {
 
 sonar {
     properties {
-        property "sonar.projectKey", "Stirling-Tools_Stirling-PDF"
-        property "sonar.organization", "stirling-tools"
+        property "sonar.projectKey", "luckyhoang1988_workPDF_Ryan"
+        property "sonar.organization", "luckyhoang1988"
 
         property "sonar.exclusions", "**/build-wrapper-dump.json, **/src/main/java/org/apache/**, **/src/main/resources/static/pdfjs/**, **/src/main/resources/static/pdfjs-legacy/**, **/src/main/resources/static/js/thirdParty/**"
         property "sonar.coverage.exclusions", "**/src/main/java/org/apache/**, **/src/main/resources/static/pdfjs/**, **/src/main/resources/static/pdfjs-legacy/**, **/src/main/resources/static/js/thirdParty/**"
@@ -575,7 +575,7 @@ sonar {
 
 swaggerhubUpload {
     // dependsOn = generateOpenApiDocs  // Depends on your task generating Swagger docs
-    api = "Stirling-PDF"  // The name of your API on SwaggerHub
+    api = "RyanPDF"  // The name of your API on SwaggerHub
     owner = "${System.getenv().getOrDefault('SWAGGERHUB_USER', 'Frooodle')}"  // Your SwaggerHub username (or organization name)
     version = project.version  // The version of your API
     inputFile = file("SwaggerDoc.json")  // The path to your Swagger docs
@@ -603,7 +603,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(':stirling-pdf')
+    implementation project(':ryanpdf')
     implementation project(':common')
     if (rootProject.ext.isSecurityDisabled()) {
         implementation project(':proprietary')
@@ -631,21 +631,21 @@ tasks.register('printVersion') {
 
 tasks.named('bootRun') {
     group = 'application'
-    description = 'Delegates to :stirling-pdf:bootRun'
-    dependsOn ':stirling-pdf:bootRun'
+    description = 'Delegates to :ryanpdf:bootRun'
+    dependsOn ':ryanpdf:bootRun'
 
     doFirst {
-        println "Delegating to :stirling-pdf:bootRun"
+        println "Delegating to :ryanpdf:bootRun"
     }
 }
 
 tasks.named('build') {
     group = 'build'
-    description = 'Delegates to :stirling-pdf:bootJar'
-    dependsOn ':stirling-pdf:bootJar', 'buildRestartHelper', 'syncAppVersion'
+    description = 'Delegates to :ryanpdf:bootJar'
+    dependsOn ':ryanpdf:bootJar', 'buildRestartHelper', 'syncAppVersion'
 
     doFirst {
-        println "Delegating to :stirling-pdf:bootJar"
+        println "Delegating to :ryanpdf:bootJar"
     }
 }
 

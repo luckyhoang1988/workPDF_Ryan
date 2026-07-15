@@ -1,10 +1,10 @@
 [package]
-name = "stirling-pdf"
+name = "ryanpdf"
 version = "0.1.0"
-description = "Stirling-PDF Desktop Application"
-authors = ["Stirling-PDF Contributors"]
-license = ""
-repository = ""
+description = "RyanPDF Desktop Application"
+authors = ["RyanPDF Contributors"]
+license = "MIT"
+repository = "https://github.com/luckyhoang1988/workPDF_Ryan"
 edition = "2021"
 rust-version = "1.77.2"
 

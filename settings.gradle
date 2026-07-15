@@ -109,9 +109,9 @@ if (enableSaas && disableAdditional) {
 gradle.ext.disableAdditional = disableAdditional
 gradle.ext.enableSaas = enableSaas
 
-include 'stirling-pdf', 'common', 'proprietary'
+include 'ryanpdf', 'common', 'proprietary'
 
-project(':stirling-pdf').projectDir = file('app/core')
+project(':ryanpdf'     ).projectDir = file('app/core')
 project(':common'      ).projectDir = file('app/common')
 project(':proprietary' ).projectDir = file('app/proprietary')
 

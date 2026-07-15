@@ -4,7 +4,7 @@ Thank you for your interest in contributing to RyanPDF! There are many ways to c
 
 ## Issue Guidelines
 
-Issues can be used to report bugs, request features, or ask questions. If you have a question, you could also ask us in our [Discord](https://discord.gg/FJUSXUSYec).
+Issues can be used to report bugs, request features, or ask questions.
 
 Before opening an issue, please check to make sure someone hasn't already opened an issue about it.
 
@@ -42,13 +42,13 @@ If you would like to add or modify a translation, please see [How to add new lan
 
 ## Docs
 
-Documentation for RyanPDF is handled in a separate repository. Please see [Docs repository](https://github.com/Stirling-Tools/Stirling-Tools.github.io) or use the "edit this page"-button at the bottom of each page at [https://docs.stirlingpdf.com/](https://docs.stirlingpdf.com/).
+Documentation for RyanPDF currently lives alongside the code — see the [Developer Guide](DeveloperGuide.md) and [devGuide/](devGuide/).
 
 ## Fixing Bugs or Adding a New Feature
 
 First, make sure you've read the section [Pull Requests](#pull-requests).
 
-If, at any point in time, you have a question, please feel free to ask in the same issue thread or in our [Discord](https://discord.gg/FJUSXUSYec).
+If, at any point in time, you have a question, please feel free to ask in the same issue thread.
 
 ## Developer Documentation
 

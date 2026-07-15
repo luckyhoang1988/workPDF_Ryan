@@ -45,9 +45,9 @@ tasks:
     env:
       SERVER_PORT: '{{.PORT}}'
     cmds:
-      - cmd: '{{if .AIENGINE_URL}}AIENGINE_URL={{.AIENGINE_URL}} AIENGINE_ENABLED={{.AIENGINE_ENABLED}} AIENGINE_TIMEOUTSECONDS={{.AIENGINE_TIMEOUTSECONDS}} {{end}}{{if .SECURITY_ENABLELOGIN}}SECURITY_ENABLELOGIN={{.SECURITY_ENABLELOGIN}} {{end}}{{if .POLICIES_ENABLED}}POLICIES_ENABLED={{.POLICIES_ENABLED}} {{end}}cmd /c ".\gradlew.bat :stirling-pdf:bootRun"'
+      - cmd: '{{if .AIENGINE_URL}}AIENGINE_URL={{.AIENGINE_URL}} AIENGINE_ENABLED={{.AIENGINE_ENABLED}} AIENGINE_TIMEOUTSECONDS={{.AIENGINE_TIMEOUTSECONDS}} {{end}}{{if .SECURITY_ENABLELOGIN}}SECURITY_ENABLELOGIN={{.SECURITY_ENABLELOGIN}} {{end}}{{if .POLICIES_ENABLED}}POLICIES_ENABLED={{.POLICIES_ENABLED}} {{end}}cmd /c ".\gradlew.bat :ryanpdf:bootRun"'
         platforms: [windows]
-      - cmd: '{{if .AIENGINE_URL}}AIENGINE_URL={{.AIENGINE_URL}} AIENGINE_ENABLED={{.AIENGINE_ENABLED}} AIENGINE_TIMEOUTSECONDS={{.AIENGINE_TIMEOUTSECONDS}} {{end}}{{if .SECURITY_ENABLELOGIN}}SECURITY_ENABLELOGIN={{.SECURITY_ENABLELOGIN}} {{end}}{{if .POLICIES_ENABLED}}POLICIES_ENABLED={{.POLICIES_ENABLED}} {{end}}./gradlew :stirling-pdf:bootRun'
+      - cmd: '{{if .AIENGINE_URL}}AIENGINE_URL={{.AIENGINE_URL}} AIENGINE_ENABLED={{.AIENGINE_ENABLED}} AIENGINE_TIMEOUTSECONDS={{.AIENGINE_TIMEOUTSECONDS}} {{end}}{{if .SECURITY_ENABLELOGIN}}SECURITY_ENABLELOGIN={{.SECURITY_ENABLELOGIN}} {{end}}{{if .POLICIES_ENABLED}}POLICIES_ENABLED={{.POLICIES_ENABLED}} {{end}}./gradlew :ryanpdf:bootRun'
         platforms: [linux, darwin]
 
   dev:bundled:
@@ -79,9 +79,9 @@ tasks:
       AIENGINE_ENABLED: '{{.AIENGINE_ENABLED}}'
       AIENGINE_TIMEOUTSECONDS: '{{.AIENGINE_TIMEOUTSECONDS}}'
     cmds:
-      - cmd: cmd /c ".\gradlew.bat :stirling-pdf:bootRun {{if .PROFILES}}--args=\"--spring.profiles.include={{.PROFILES}}\"{{end}}"
+      - cmd: cmd /c ".\gradlew.bat :ryanpdf:bootRun {{if .PROFILES}}--args=\"--spring.profiles.include={{.PROFILES}}\"{{end}}"
         platforms: [windows]
-      - cmd: ./gradlew :stirling-pdf:bootRun {{if .PROFILES}}--args='--spring.profiles.include={{.PROFILES}}'{{end}}
+      - cmd: ./gradlew :ryanpdf:bootRun {{if .PROFILES}}--args='--spring.profiles.include={{.PROFILES}}'{{end}}
         platforms: [linux, darwin]
 
   build:
@@ -140,9 +140,9 @@ tasks:
   swagger:
     desc: "Generate OpenAPI docs"
     cmds:
-      - cmd: cmd /c ".\gradlew.bat :stirling-pdf:copySwaggerDoc"
+      - cmd: cmd /c ".\gradlew.bat :ryanpdf:copySwaggerDoc"
         platforms: [windows]
-      - cmd: ./gradlew :stirling-pdf:copySwaggerDoc
+      - cmd: ./gradlew :ryanpdf:copySwaggerDoc
         platforms: [linux, darwin]
     sources:
       - app/core/src/main/java/**/*.java

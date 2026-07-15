@@ -100,7 +100,7 @@ jobs:
         run: |
           echo "127.0.0.1 kubernetes.docker.internal" | sudo tee -a /etc/hosts
 
-      # Helper function used by all phases — boots `:stirling-pdf:bootRun`
+      # Helper function used by all phases — boots `:ryanpdf:bootRun`
       # with the React frontend baked in (-PbuildWithFrontend=true) so the
       # SPA serves on :8080 and OAuth/SAML callbacks land on the same host
       # that the browser is interacting with.
@@ -121,7 +121,7 @@ jobs:
             echo '    kill "$(cat /tmp/backend.pid)" 2>/dev/null || true'
             echo '    rm -f /tmp/backend.pid'
             echo '  fi'
-            echo '  pkill -f "gradlew :stirling-pdf:bootRun" 2>/dev/null || true'
+            echo '  pkill -f "gradlew :ryanpdf:bootRun" 2>/dev/null || true'
             echo '  for i in $(seq 1 30); do'
             echo '    curl -fsS http://localhost:8080/api/v1/info/status >/dev/null 2>&1 || return 0'
             echo '    sleep 1'
@@ -162,7 +162,7 @@ jobs:
           SECURITY_OAUTH2_CLIENT_KEYCLOAK_SCOPES: "openid,profile,email"
         run: |
           source /tmp/helpers.sh
-          nohup ./gradlew :stirling-pdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
+          nohup ./gradlew :ryanpdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
           echo $! > /tmp/backend.pid
           wait_for_backend
       - name: Run enterprise OAuth Playwright tests
@@ -237,7 +237,7 @@ jobs:
           SECURITY_SAML2_SP_SLS: "http://localhost:8080/logout/saml2/slo"
         run: |
           source /tmp/helpers.sh
-          nohup ./gradlew :stirling-pdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
+          nohup ./gradlew :ryanpdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
           echo $! > /tmp/backend.pid
           wait_for_backend
       - name: Run enterprise SAML Playwright tests
@@ -269,7 +269,7 @@ jobs:
           SECURITY_LOGINMETHOD: "all"
         run: |
           source /tmp/helpers.sh
-          nohup ./gradlew :stirling-pdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
+          nohup ./gradlew :ryanpdf:bootRun -PbuildWithFrontend=true > /tmp/backend.log 2>&1 &
           echo $! > /tmp/backend.pid
           wait_for_backend
       - name: Run enterprise feature Playwright tests

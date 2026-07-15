@@ -1,25 +1,10 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Stirling-Tools/Stirling-PDF/main/docs/stirling.png" width="80" alt="RyanPDF logo">
+  <img src="frontend/editor/src/core/assets/brand/modern-logo/RyanPDFLogoNoTextDark.svg" width="80" alt="RyanPDF logo">
 </p>
 
 <h1 align="center">RyanPDF - The Open-Source PDF Platform</h1>
 
 RyanPDF is a powerful, open-source PDF editing platform. Run it as a personal desktop app, in the browser, or deploy it on your own servers with a private API. Edit, sign, redact, convert, and automate PDFs without sending documents to external services.
-
-<p align="center">
-  <a href="https://hub.docker.com/r/stirlingtools/stirling-pdf">
-    <img src="https://img.shields.io/docker/pulls/frooodle/s-pdf" alt="Docker Pulls">
-  </a>
-  <a href="https://discord.gg/HYmhKj45pU">
-    <img src="https://img.shields.io/discord/1068636748814483718?label=Discord" alt="Discord">
-  </a>
-  <a href="https://scorecard.dev/viewer/?uri=github.com/Stirling-Tools/Stirling-PDF">
-    <img src="https://api.scorecard.dev/projects/github.com/Stirling-Tools/Stirling-PDF/badge" alt="OpenSSF Scorecard">
-  </a>
-  <a href="https://github.com/Stirling-Tools/stirling-pdf">
-    <img src="https://img.shields.io/github/stars/stirling-tools/stirling-pdf?style=social" alt="GitHub Repo stars">
-  </a>
-</p>
 
 ![RyanPDF - Dashboard](images/home-light.png)
 
@@ -32,29 +17,27 @@ RyanPDF is a powerful, open-source PDF editing platform. Run it as a personal de
 - **Developer platform** - REST APIs available for nearly all tools to integrate into your existing systems.
 - **Global UI** - Interface available in English and Vietnamese, with a language switcher built in.
 
-For a full feature list, see the docs: **https://docs.stirlingpdf.com**
+For a full feature list, see the [Developer Guide](DeveloperGuide.md).
 
 ## Quick Start
 
 ```bash
-docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf
+task docker:build
+task docker:up
 ```
 
 Then open: http://localhost:8080
 
-For full installation options (including desktop and Kubernetes), see our [Documentation Guide](https://docs.stirlingpdf.com/#documentation-guide).
+For full installation options (including desktop and Kubernetes), see our [Developer Guide](DeveloperGuide.md).
 
 ## Resources
 
-- [**Documentation**](https://docs.stirlingpdf.com)
-- [**Homepage**](https://stirling.com)
-- [**API Docs**](https://registry.scalar.com/@stirlingpdf/apis/stirling-pdf-processing-api/)
-- [**Server Plan & Enterprise**](https://docs.stirlingpdf.com/Paid-Offerings)
+- [**Developer Guide**](DeveloperGuide.md)
+- [**Contributing**](CONTRIBUTING.md)
 
 ## Support
 
-- **Community**: [Discord](https://discord.gg/HYmhKj45pU)
-- **Bug Reports**: [GitHub Issues](https://github.com/Stirling-Tools/Stirling-PDF/issues)
+- **Bug Reports**: [GitHub Issues](https://github.com/luckyhoang1988/workPDF_Ryan/issues)
 
 ## Contributing
 

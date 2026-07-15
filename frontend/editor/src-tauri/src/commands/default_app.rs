@@ -1,6 +1,6 @@
 use crate::utils::add_log;
 
-/// Check if Stirling PDF is the default PDF handler
+/// Check if RyanPDF is the default PDF handler
 #[tauri::command]
 pub fn is_default_pdf_handler() -> Result<bool, String> {
     add_log("🔍 Checking if app is default PDF handler".to_string());
@@ -21,7 +21,7 @@ pub fn is_default_pdf_handler() -> Result<bool, String> {
     }
 }
 
-/// Attempt to set/prompt for Stirling PDF as default PDF handler
+/// Attempt to set/prompt for RyanPDF as default PDF handler
 #[tauri::command]
 pub fn set_as_default_pdf_handler() -> Result<String, String> {
     add_log("⚙️ Attempting to set as default PDF handler".to_string());
@@ -89,9 +89,9 @@ fn check_default_windows() -> Result<bool, String> {
 
             add_log(format!("Windows PDF handler ProgID: {}", default_str));
 
-            // Check if it contains "Stirling" (case-insensitive)
+            // Check if it contains "RyanPDF" (case-insensitive)
             // Note: This checks the ProgID registered by the installer
-            let is_default = default_str.to_lowercase().contains("stirling");
+            let is_default = default_str.to_lowercase().contains("ryanpdf");
             Ok(is_default)
         })();
 
@@ -160,7 +160,7 @@ fn check_default_macos() -> Result<bool, String> {
         add_log(format!("macOS PDF handler: {}", handler_str));
 
         // Check if it's our bundle identifier
-        let is_default = handler_str == "stirling.pdf.dev";
+        let is_default = handler_str == "com.ryanpdf.app";
         Ok(is_default)
     }
 }
@@ -186,7 +186,7 @@ fn set_default_macos() -> Result<String, String> {
     unsafe {
         // Set our app as the default handler for PDF files
         let pdf_uti = CFString::new("com.adobe.pdf");
-        let our_bundle_id = CFString::new("stirling.pdf.dev");
+        let our_bundle_id = CFString::new("com.ryanpdf.app");
 
         let status = LSSetDefaultRoleHandlerForContentType(
             pdf_uti.as_concrete_TypeRef(),
@@ -223,7 +223,7 @@ fn check_default_linux() -> Result<bool, String> {
     add_log(format!("Linux PDF handler: {}", handler.trim()));
 
     // Check if it's our .desktop file
-    let is_default = handler.trim() == "stirling-pdf.desktop";
+    let is_default = handler.trim() == "ryanpdf.desktop";
     Ok(is_default)
 }
 
@@ -233,7 +233,7 @@ fn set_default_linux() -> Result<String, String> {
 
     // Use xdg-mime to set the default application for PDF files
     let result = Command::new("xdg-mime")
-        .args(["default", "stirling-pdf.desktop", "application/pdf"])
+        .args(["default", "ryanpdf.desktop", "application/pdf"])
         .output()
         .map_err(|e| format!("Failed to set default app: {}", e))?;
 

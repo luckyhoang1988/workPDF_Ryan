@@ -52,7 +52,7 @@ async function flushMicrotasks() {
   }
 }
 
-const AUTO_FAILURE_KEY = "stirling-pdf-updater:autoFailedAt";
+const AUTO_FAILURE_KEY = "ryanpdf-updater:autoFailedAt";
 
 /**
  * Run the hook through its startup timer + async chain. The post-render
@@ -92,7 +92,7 @@ describe("useDesktopUpdatePopup — auto mode", () => {
     canInstallUpdatesMock.mockResolvedValue({
       canInstall: true,
       reason: null,
-      installDir: "C:/Program Files/Stirling-PDF",
+      installDir: "C:/Program Files/RyanPDF",
     });
     listenMock.mockResolvedValue(() => undefined);
   });

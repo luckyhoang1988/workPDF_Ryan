@@ -3,7 +3,7 @@
  * verifies the fixes landed in this branch.
  *
  * Skipped automatically if the backend isn't reachable — CI doesn't boot one. To run locally:
- *   STIRLING_FLAVOR=saas ./gradlew :stirling-pdf:bootRun --args="--server.port=18083 --spring.profiles.include=dev"
+ *   STIRLING_FLAVOR=saas ./gradlew :ryanpdf:bootRun --args="--server.port=18083 --spring.profiles.include=dev"
  *   STIRLING_SAAS_URL=http://localhost:18083 npx playwright test --project=stubbed saas-backend-smoke
  */
 import { test, expect, request } from "@playwright/test";

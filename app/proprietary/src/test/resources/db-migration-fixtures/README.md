@@ -34,7 +34,7 @@ which for each fixture:
 
 1. Copies the fixture into `configs/stirling-pdf-DB-2.3.232.mv.db` of a clean
    working directory.
-2. Boots the current `:stirling-pdf:bootJar` against it on a free port.
+2. Boots the current `:ryanpdf:bootJar` against it on a free port.
 3. Waits for Spring to start (no `SchemaManagementException` in the log).
 4. POSTs `{"username":"admin","password":"stirling"}` to `/api/v1/auth/login`
    and asserts the response is `200 OK`.

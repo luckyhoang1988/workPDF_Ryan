@@ -51,7 +51,7 @@ jobs:
           gradle-version: 9.6.0
 
       - name: Generate Swagger documentation
-        run: ./gradlew :stirling-pdf:generateOpenApiDocs
+        run: ./gradlew :ryanpdf:generateOpenApiDocs
 
       - name: Upload Swagger Documentation to SwaggerHub
         run: ./gradlew swaggerhubUpload

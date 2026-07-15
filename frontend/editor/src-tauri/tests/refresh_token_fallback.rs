@@ -63,7 +63,7 @@ fn refresh_token_fallback_proof() {
     // the file save_refresh_token's disk fallback writes is readable by
     // get_refresh_token's disk fallback.
     let tmp = std::env::temp_dir().join(format!(
-        "stirling_pdf_refresh_token_test_{}.json",
+        "ryanpdf_refresh_token_test_{}.json",
         std::process::id()
     ));
     let token = "test-refresh-token-disk-roundtrip-abc-123";

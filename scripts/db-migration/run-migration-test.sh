@@ -9,7 +9,7 @@
 #
 # Inputs:
 #   STIRLING_JAR  - path to a pre-built Stirling-PDF .jar (defaults to the
-#                   :stirling-pdf:bootJar output)
+#                   :ryanpdf:bootJar output)
 #   JAVA_BIN      - override the Java executable used to launch the JAR
 #                   (defaults to MIGRATION_TEST_JAVA, JAVA_HOME, then PATH)
 #   FIXTURE_DIR   - override the fixture directory (rarely needed)
@@ -83,7 +83,7 @@ find_jar() {
     else
         candidate=$(find "$REPO_ROOT/app/core/build/libs" -maxdepth 1 -name 'Stirling-PDF*.jar' -o -name 'stirling-pdf*.jar' 2>/dev/null \
             | grep -vE '(-plain|-sources)\.jar$' | head -n 1 || true)
-        [[ -n "$candidate" ]] || fail "No JAR under app/core/build/libs - run './gradlew :stirling-pdf:bootJar' first"
+        [[ -n "$candidate" ]] || fail "No JAR under app/core/build/libs - run './gradlew :ryanpdf:bootJar' first"
     fi
     # Resolve to an absolute path: test_fixture pushd's into a temp workdir
     # before launching java, so a relative path here would dangle.

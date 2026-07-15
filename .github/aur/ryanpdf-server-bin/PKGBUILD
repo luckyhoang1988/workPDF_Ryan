@@ -1,0 +1,76 @@
+# Maintainer: RyanPDF Inc <hoangtruonghd88@gmail.com>
+pkgname=ryanpdf-server-bin
+pkgver=2.14.1
+pkgrel=1
+pkgdesc="Locally hosted, web-based PDF manipulation tool (server JAR, prebuilt)"
+arch=('any')
+url="https://github.com/luckyhoang1988/workPDF_Ryan"
+license=('MIT')
+depends=('java-runtime>=25')
+provides=('ryanpdf-server')
+conflicts=('ryanpdf-server' 'ryanpdf-server-git')
+backup=('etc/ryanpdf-server/settings.yml')
+
+source=("RyanPDF-with-login-${pkgver}.jar::https://github.com/luckyhoang1988/workPDF_Ryan/releases/download/v${pkgver}/RyanPDF-with-login.jar")
+sha256sums=('PLACEHOLDER_JAR_SHA256')
+
+package() {
+    # JAR
+    install -Dm644 "RyanPDF-with-login-${pkgver}.jar" \
+        "${pkgdir}/usr/share/ryanpdf-server/ryanpdf-server.jar"
+
+    # Wrapper script
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ryanpdf-server" << 'EOF'
+#!/bin/sh
+exec java $JAVA_OPTS -jar /usr/share/ryanpdf-server/ryanpdf-server.jar "$@"
+EOF
+
+    # systemd unit
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/ryanpdf-server.service" << 'EOF'
+[Unit]
+Description=RyanPDF Server
+After=network.target
+
+[Service]
+Type=simple
+User=ryanpdf
+Group=ryanpdf
+WorkingDirectory=/var/lib/ryanpdf-server
+ExecStart=/usr/bin/java -jar /usr/share/ryanpdf-server/ryanpdf-server.jar
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ryanpdf-server
+Environment=JAVA_OPTS=-Xmx512m
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    # sysusers
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/ryanpdf-server.conf" << 'EOF'
+u ryanpdf - "RyanPDF Server" /var/lib/ryanpdf-server -
+EOF
+
+    # tmpfiles
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/ryanpdf-server.conf" << 'EOF'
+d /var/lib/ryanpdf-server 0750 ryanpdf ryanpdf -
+d /var/log/ryanpdf-server 0750 ryanpdf ryanpdf -
+EOF
+
+    # Default config stub
+    install -dm755 "${pkgdir}/etc/ryanpdf-server"
+    install -Dm644 /dev/stdin "${pkgdir}/etc/ryanpdf-server/settings.yml" << 'EOF'
+# RyanPDF Server configuration
+# See https://github.com/luckyhoang1988/workPDF_Ryan for all options
+server:
+  port: 8080
+EOF
+
+    # License
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
+MIT License
+See https://github.com/luckyhoang1988/workPDF_Ryan/blob/main/LICENSE
+EOF
+}

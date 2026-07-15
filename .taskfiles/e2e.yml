@@ -61,7 +61,7 @@ tasks:
           set -e
           rm -rf "{{.BASE_DIR}}"
           mkdir -p "{{.BASE_DIR}}"
-          GRADLE_ARGS=":stirling-pdf:bootRun"
+          GRADLE_ARGS=":ryanpdf:bootRun"
           if [ -n "${COVERAGE:-}" ]; then
             # copyJacocoAgent is wired as a dependency of bootRun when
             # -PjacocoAgent=true, so we do not need to invoke it separately.
