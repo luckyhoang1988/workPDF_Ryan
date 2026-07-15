@@ -61,9 +61,6 @@ updates:
       mui:
         patterns:
           - "@mui/*"
-      tauri-js:
-        patterns:
-          - "@tauri-apps/*"
       emotion:
         patterns:
           - "@emotion/*"
@@ -125,35 +122,6 @@ updates:
           - "postcss-*"
         exclude-patterns:
           - "postcss-preset-mantine"
-
-  - package-ecosystem: cargo
-    directories:
-      - /frontend/editor/src-tauri
-      - /frontend/editor/src-tauri/thumbnail-handler
-      - /frontend/editor/src-tauri/provisioner
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 7
-    rebase-strategy: "auto"
-    groups:
-      tauri:
-        patterns:
-          - "tauri"
-          - "tauri-build"
-          - "tauri-plugin-*"
-      serde:
-        patterns:
-          - "serde"
-          - "serde_*"
-      tracing:
-        patterns:
-          - "tracing"
-          - "tracing-*"
-      tokio:
-        patterns:
-          - "tokio"
-          - "tokio-*"
 
   - package-ecosystem: pip
     directory: /testing/cucumber

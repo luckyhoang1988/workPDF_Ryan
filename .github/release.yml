@@ -22,7 +22,6 @@ changelog:
         - Java
         - Front End
         - Back End
-        - Tauri
 
     - title: Minor Enhancements
       labels:

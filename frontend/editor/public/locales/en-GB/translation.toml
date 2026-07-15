@@ -4985,17 +4985,10 @@ wrapUp = "You're all set! You can replay this tour anytime - just open <strong>S
 
 [onboarding.buttons]
 back = "Back"
-download = "Download →"
 next = "Next →"
 showMeAround = "Show me around"
 skipForNow = "Skip for now"
 skipTheTour = "Skip the tour"
-
-[onboarding.desktopInstall]
-body = "RyanPDF works best as a desktop app. You can use it offline, access documents faster, and make edits locally on your computer."
-selectOs = "Select operating system"
-title = "Download"
-titleWithOs = "Download for {{osLabel}}"
 
 [onboarding.mfa]
 authenticationCode = "Authentication code"

@@ -334,9 +334,6 @@ public class ConfigController {
                     "enableAnalytics", applicationProperties.getSystem().getEnableAnalytics());
             configData.put("enablePosthog", applicationProperties.getSystem().getEnablePosthog());
             configData.put("enableScarf", applicationProperties.getSystem().getEnableScarf());
-            configData.put(
-                    "enableDesktopInstallSlide",
-                    applicationProperties.getSystem().getEnableDesktopInstallSlide());
 
             // Full MIT build: all features unlocked; premiumEnabled reflects config only.
             configData.put("premiumEnabled", true);
@@ -356,13 +353,11 @@ public class ConfigController {
                     "serverCertificateEnabled",
                     serverCertificateService != null && serverCertificateService.isEnabled());
 
-            // Hardware-backed signing (Windows store / USB PKCS#11 tokens) is only viable on the
-            // desktop bundle, where the backend runs locally in the user's session. The Tauri
-            // bundle signals this via STIRLING_PDF_TAURI_MODE (machineType is Server-jar there);
-            // the bare-jar desktop launcher signals it via a Client-* machineType.
-            boolean hardwareSigningAvailable =
-                    Boolean.parseBoolean(System.getProperty("STIRLING_PDF_TAURI_MODE", "false"));
-            if (!hardwareSigningAvailable && applicationContext.containsBean("machineType")) {
+            // Hardware-backed signing (Windows store / USB PKCS#11 tokens) is only viable when the
+            // backend runs locally in the user's session (bare-jar local launch), signalled by a
+            // Client-* machineType.
+            boolean hardwareSigningAvailable = false;
+            if (applicationContext.containsBean("machineType")) {
                 String mt = applicationContext.getBean("machineType", String.class);
                 hardwareSigningAvailable = mt != null && mt.startsWith("Client-");
             }

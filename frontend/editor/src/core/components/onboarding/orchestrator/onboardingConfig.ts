@@ -2,7 +2,6 @@ export type OnboardingStepId =
   | "first-login"
   | "welcome"
   | "processor-intro"
-  | "desktop-install"
   | "security-check"
   | "admin-overview"
   | "tool-layout"
@@ -18,8 +17,6 @@ export interface OnboardingRuntimeState {
   tourRequested: boolean;
   // Open key into the tour registry (see tourRegistry.ts).
   tourType: string;
-  isDesktopApp: boolean;
-  desktopSlideEnabled: boolean;
   analyticsNotConfigured: boolean;
   analyticsEnabled: boolean;
   licenseNotice: {
@@ -47,7 +44,6 @@ export interface OnboardingStep {
     | "first-login"
     | "welcome"
     | "processor-intro"
-    | "desktop-install"
     | "security-check"
     | "admin-overview"
     | "server-license"
@@ -61,7 +57,6 @@ export const DEFAULT_RUNTIME_STATE: OnboardingRuntimeState = {
   selectedRole: null,
   tourRequested: false,
   tourType: "whatsnew",
-  isDesktopApp: false,
   analyticsNotConfigured: false,
   analyticsEnabled: false,
   licenseNotice: {
@@ -73,7 +68,6 @@ export const DEFAULT_RUNTIME_STATE: OnboardingRuntimeState = {
   requiresPasswordChange: false,
   firstLoginUsername: "",
   usingDefaultCredentials: false,
-  desktopSlideEnabled: true,
   requiresMfaSetup: false,
 };
 
@@ -88,8 +82,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     id: "welcome",
     type: "modal-slide",
     slideId: "welcome",
-    // Desktop has its own onboarding modal (DesktopOnboardingModal)
-    condition: (ctx) => !ctx.isDesktopApp,
+    condition: () => true,
   },
   {
     id: "processor-intro",
@@ -105,17 +98,10 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     condition: (ctx) => ctx.effectiveIsAdmin,
   },
   {
-    id: "desktop-install",
-    type: "modal-slide",
-    slideId: "desktop-install",
-    condition: (ctx) => !ctx.isDesktopApp && ctx.desktopSlideEnabled,
-  },
-  {
     id: "tour-overview",
     type: "modal-slide",
     slideId: "tour-overview",
-    condition: (ctx) =>
-      !ctx.effectiveIsAdmin && ctx.tourType !== "admin" && !ctx.isDesktopApp,
+    condition: (ctx) => !ctx.effectiveIsAdmin && ctx.tourType !== "admin",
   },
   {
     id: "server-license",

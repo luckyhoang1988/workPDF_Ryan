@@ -5004,7 +5004,6 @@ wrapUp = "You're all set! You can replay this tour anytime - just open <strong>S
 
 [onboarding.buttons]
 back = "Back"
-download = "Download →"
 next = "Next →"
 showMeAround = "Show me around"
 skipForNow = "Skip for now"
@@ -5013,10 +5012,6 @@ skipTheTour = "Skip the tour"
 [onboarding.checklist]
 dismiss = "Dismiss"
 title = "Set up RyanPDF"
-
-[onboarding.checklist.downloadDesktop]
-description = "Run RyanPDF natively on your machine"
-title = "Download RyanPDF for Desktop"
 
 [onboarding.checklist.inviteTeam]
 description = "Collaborate with your team"
@@ -5029,12 +5024,6 @@ title = "Share anonymous usage data"
 [onboarding.checklist.takeTour]
 description = "See how RyanPDF works in a quick walkthrough"
 title = "Take the tour"
-
-[onboarding.desktopInstall]
-body = "RyanPDF works best as a desktop app. You can use it offline, access documents faster, and make edits locally on your computer."
-selectOs = "Select operating system"
-title = "Download"
-titleWithOs = "Download for {{osLabel}}"
 
 [onboarding.mfa]
 authenticationCode = "Authentication code"
@@ -6831,11 +6820,10 @@ title = "Something went wrong on this page"
 
 [portal.home.download]
 back = "Back"
-body = "Download the desktop app or self-host the server."
+body = "Self-host the server."
 done = "Done"
 guide = "Open the {{name}} guide"
 openInBrowser = "Open in browser instead"
-sectionDesktop = "Desktop app"
 sectionSelfHosted = "Self-hosted"
 title = "Install the RyanPDF Editor"
 
@@ -6854,20 +6842,6 @@ note = "Add a PVC for /configs to persist settings."
 tagline = "Deploy to a cluster with Helm"
 title = "Kubernetes"
 
-[portal.home.download.linux]
-detailBody = "Native builds for your distribution."
-guideBtn = "View Linux install options"
-note = "AppImage, .deb and .rpm builds are available for common distros."
-tagline = "Native desktop app for your distro"
-title = "Linux"
-
-[portal.home.download.mac]
-altLabel = "Or via Homebrew"
-detailBody = "Run the installer, or use Homebrew."
-downloadBtn = "Download for macOS"
-tagline = "Native app for Apple silicon and Intel"
-title = "macOS"
-
 [portal.home.download.manual]
 detailBody = "Run the .jar on a bare metal server."
 downloadBtn = "Download the .jar"
@@ -6875,13 +6849,6 @@ note = "Requires Java 21+. Opens at :8080; default login admin / stirling."
 runLabel = "Then run it"
 tagline = "Run the .jar on a bare metal server"
 title = "Manual server setup"
-
-[portal.home.download.windows]
-altLabel = "Or via winget"
-detailBody = "Run the installer, or use a package manager."
-downloadBtn = "Download installer"
-tagline = "Native app for Microsoft Windows"
-title = "Windows"
 
 [portal.home.editor]
 activeUsers = "{{n}} active"

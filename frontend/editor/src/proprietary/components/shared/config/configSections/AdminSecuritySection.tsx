@@ -37,7 +37,6 @@ interface SecuritySettingsData {
   jwt?: {
     enableKeyCleanup?: boolean;
     tokenExpiryMinutes?: number;
-    desktopTokenExpiryMinutes?: number;
     allowedClockSkewSeconds?: number;
     refreshGraceMinutes?: number;
     secureCookie?: boolean;
@@ -164,8 +163,6 @@ export default function AdminSecuritySection() {
         "security.jwt.enableKeyCleanup": securitySettings.jwt?.enableKeyCleanup,
         "security.jwt.tokenExpiryMinutes":
           securitySettings.jwt?.tokenExpiryMinutes,
-        "security.jwt.desktopTokenExpiryMinutes":
-          securitySettings.jwt?.desktopTokenExpiryMinutes,
         "security.jwt.allowedClockSkewSeconds":
           securitySettings.jwt?.allowedClockSkewSeconds,
         "security.jwt.refreshGraceMinutes":
@@ -586,42 +583,6 @@ export default function AdminSecuritySection() {
                 }
                 min={1}
                 max={43200}
-                disabled={!loginEnabled}
-              />
-            </div>
-
-            <div>
-              <NumberInput
-                name="jwt_desktopTokenExpiryMinutes"
-                label={
-                  <Group component="span" gap="xs">
-                    <span>
-                      {t(
-                        "admin.settings.security.jwt.desktopTokenExpiryMinutes.label",
-                        "Desktop Token Expiry (minutes)",
-                      )}
-                    </span>
-                    <PendingBadge
-                      show={isFieldPending("jwt.desktopTokenExpiryMinutes")}
-                    />
-                  </Group>
-                }
-                description={t(
-                  "admin.settings.security.jwt.desktopTokenExpiryMinutes.description",
-                  "Access token lifetime in minutes for desktop clients. Desktop apps automatically detected via User-Agent and receive longer sessions for better UX (default: 43200 = 30 days)",
-                )}
-                value={settings?.jwt?.desktopTokenExpiryMinutes || 43200}
-                onChange={(value) =>
-                  setSettings({
-                    ...settings,
-                    jwt: {
-                      ...settings?.jwt,
-                      desktopTokenExpiryMinutes: Number(value),
-                    },
-                  })
-                }
-                min={1}
-                max={525600}
                 disabled={!loginEnabled}
               />
             </div>

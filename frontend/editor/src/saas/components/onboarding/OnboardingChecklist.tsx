@@ -6,7 +6,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useAuth } from "@app/auth/UseSession";
-import SaasOnboardingModal from "@app/components/onboarding/SaasOnboardingModal";
 import StaticOnboardingSlide from "@app/components/onboarding/StaticOnboardingSlide";
 import { DEFAULT_RUNTIME_STATE } from "@app/components/onboarding/orchestrator/onboardingConfig";
 import {
@@ -22,7 +21,6 @@ import ryanpdfMark from "@app/assets/brand/modern-logo/logo512.png";
 import styles from "@app/components/onboarding/OnboardingChecklist.module.css";
 
 const FLOW_ID = "saas-checklist";
-const STEP_DOWNLOAD_DESKTOP = "download-desktop";
 const STEP_INVITE_TEAM = "invite-team";
 const STEP_TAKE_TOUR = "take-tour";
 const STEP_SHARE_ANALYTICS = "share-analytics";
@@ -49,7 +47,6 @@ export function OnboardingChecklist() {
   const [dismissed, setDismissed] = useState(() => hasSeenFlow(FLOW_ID));
   const [done, setDone] = useState<string[]>(() => getFlowProgress(FLOW_ID));
   const [expanded, setExpanded] = useState(true);
-  const [downloadOpen, setDownloadOpen] = useState(false);
   const [analyticsOpen, setAnalyticsOpen] = useState(false);
 
   const markDone = useCallback((stepId: string) => {
@@ -73,14 +70,6 @@ export function OnboardingChecklist() {
 
   const items: ChecklistItem[] = useMemo(
     () => [
-      {
-        id: STEP_DOWNLOAD_DESKTOP,
-        titleKey: "onboarding.checklist.downloadDesktop.title",
-        titleFallback: "Download RyanPDF for Desktop",
-        descriptionKey: "onboarding.checklist.downloadDesktop.description",
-        descriptionFallback: "Run RyanPDF natively on your machine",
-        onClick: () => setDownloadOpen(true),
-      },
       {
         id: STEP_INVITE_TEAM,
         titleKey: "onboarding.checklist.inviteTeam.title",
@@ -117,13 +106,6 @@ export function OnboardingChecklist() {
     markFlowSeen(FLOW_ID);
     setDismissed(true);
   }, []);
-
-  // Both "skip" and "download" in the reused slide close the modal, and either
-  // one should complete the task.
-  const handleDownloadClose = useCallback(() => {
-    markDone(STEP_DOWNLOAD_DESKTOP);
-    setDownloadOpen(false);
-  }, [markDone]);
 
   const closeAnalytics = useCallback(() => {
     markDone(STEP_SHARE_ANALYTICS);
@@ -271,12 +253,6 @@ export function OnboardingChecklist() {
           </div>
         )}
       </div>
-
-      <SaasOnboardingModal
-        opened={downloadOpen}
-        onClose={handleDownloadClose}
-        slideIds={["desktop-install"]}
-      />
 
       {analyticsOpen && (
         <StaticOnboardingSlide

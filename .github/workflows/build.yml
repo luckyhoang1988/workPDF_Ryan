@@ -41,7 +41,6 @@ jobs:
       openapi: ${{ steps.changes.outputs.openapi }}
       frontend: ${{ steps.changes.outputs.frontend }}
       docker-base: ${{ steps.changes.outputs.docker-base }}
-      tauri: ${{ steps.changes.outputs.tauri }}
       engine: ${{ steps.changes.outputs.engine }}
       generated-models: ${{ steps.changes.outputs.generated-models }}
       proprietary: ${{ steps.changes.outputs.proprietary }}
@@ -154,15 +153,6 @@ jobs:
     with:
       docker-base-changed: ${{ needs.files-changed.outputs.docker-base }}
 
-  tauri-build:
-    if: needs.files-changed.outputs.tauri == 'true'
-    needs: [files-changed]
-    permissions:
-      contents: read
-      pull-requests: write
-    uses: ./.github/workflows/tauri-build.yml
-    secrets: inherit
-
   ai-engine:
     if: needs.files-changed.outputs.engine == 'true'
     needs: [files-changed]
@@ -241,7 +231,6 @@ jobs:
       - check-licence
       - docker-compose-tests
       - test-build-docker-images
-      - tauri-build
       - ai-engine
       - generated-models
       - pre-commit
@@ -267,7 +256,6 @@ jobs:
             check-licence=${{ needs.check-licence.result }}
             docker-compose-tests=${{ needs.docker-compose-tests.result }}
             test-build-docker-images=${{ needs.test-build-docker-images.result }}
-            tauri-build=${{ needs.tauri-build.result }}
             ai-engine=${{ needs.ai-engine.result }}
             generated-models=${{ needs.generated-models.result }}
             pre-commit=${{ needs.pre-commit.result }}

@@ -33,11 +33,9 @@ import stirling.software.proprietary.audit.AuditEventType;
 import stirling.software.proprietary.audit.AuditLevel;
 import stirling.software.proprietary.audit.Audited;
 import stirling.software.proprietary.security.model.AuthenticationType;
-import stirling.software.proprietary.security.oauth2.TauriOAuthUtils;
 import stirling.software.proprietary.security.service.JwtServiceInterface;
 import stirling.software.proprietary.security.service.LoginAttemptService;
 import stirling.software.proprietary.security.service.UserService;
-import stirling.software.proprietary.security.util.DesktopClientUtils;
 
 @AllArgsConstructor
 @Slf4j
@@ -194,25 +192,8 @@ public class CustomSaml2AuthenticationSuccessHandler
                     if (jwtService.isJwtEnabled()) {
                         Map<String, Object> claims = Map.of("authType", AuthenticationType.SAML2);
 
-                        // Detect desktop client and issue longer-lived tokens
-                        boolean isDesktopClient = DesktopClientUtils.isDesktopClient(request);
-                        String jwt;
-                        if (isDesktopClient) {
-                            // Desktop: Use configured desktop token expiry (default 30 days)
-                            int desktopExpiryMinutes =
-                                    DesktopClientUtils.getDesktopTokenExpiryMinutes(
-                                            applicationProperties);
-                            jwt = jwtService.generateToken(username, claims, desktopExpiryMinutes);
-                            log.info(
-                                    "Issued DESKTOP SAML token for user '{}': expiry={}min ({}d)",
-                                    username,
-                                    desktopExpiryMinutes,
-                                    desktopExpiryMinutes / 1440);
-                        } else {
-                            // Web: Use default expiry
-                            jwt = jwtService.generateToken(authentication, claims);
-                            log.debug("Issued WEB SAML token for user '{}'", username);
-                        }
+                        String jwt = jwtService.generateToken(authentication, claims);
+                        log.debug("Issued SAML token for user '{}'", username);
 
                         // Build context-aware redirect URL based on the original request
                         String redirectUrl =
@@ -252,16 +233,7 @@ public class CustomSaml2AuthenticationSuccessHandler
         String redirectPath = resolveRedirectPath(request, contextPath);
         String origin = resolveOrigin(request);
         clearRedirectCookie(response);
-        String url = origin + redirectPath + "#access_token=" + jwt;
-
-        String nonce = TauriSamlUtils.extractNonceFromRequest(request);
-        if (nonce != null) {
-            url +=
-                    "&nonce="
-                            + java.net.URLEncoder.encode(
-                                    nonce, java.nio.charset.StandardCharsets.UTF_8);
-        }
-        return url;
+        return origin + redirectPath + "#access_token=" + jwt;
     }
 
     /**
@@ -284,9 +256,6 @@ public class CustomSaml2AuthenticationSuccessHandler
     }
 
     private String resolveRedirectPath(HttpServletRequest request, String contextPath) {
-        if (TauriSamlUtils.isTauriRelayState(request)) {
-            return TauriOAuthUtils.defaultTauriCallbackPath(contextPath);
-        }
         return extractRedirectPathFromCookie(request)
                 .filter(path -> path.startsWith("/"))
                 .orElseGet(() -> defaultCallbackPath(contextPath));

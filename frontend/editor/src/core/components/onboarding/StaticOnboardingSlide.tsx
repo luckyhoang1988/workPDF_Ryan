@@ -45,8 +45,6 @@ export default function StaticOnboardingSlide({
     : base;
 
   const slideContent = definition.createSlide({
-    osLabel: "",
-    osUrl: "",
     selectedRole: null,
     onRoleSelect: () => {},
     ...params,

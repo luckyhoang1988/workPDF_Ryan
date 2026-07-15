@@ -133,21 +133,18 @@ The project structure is defined in `engine/pyproject.toml`. Any new dependencie
 - **Build Process**: DO NOT run build scripts manually - builds are handled by CI/CD pipelines
 - **Package Installation**: `task frontend:install`
 - **Deployment Options**:
-  - **Desktop App**: `task desktop:build`
   - **Web Server**: `task frontend:build` then serve dist/ folder
-  - **Development**: `task desktop:dev` for desktop dev mode
 
 #### Environment Variables
 - All `VITE_*` variables must be declared in the appropriate committed env file:
   - `frontend/editor/.env` — core and shared vars (base, loaded in every mode)
   - `frontend/editor/.env.proprietary` — proprietary-only vars, e.g. the admin portal's SaaS/account-link keys (layered on top of `.env` in proprietary mode)
   - `frontend/editor/.env.saas` — SaaS-only vars (layered on top of `.env` in SaaS mode)
-  - `frontend/editor/.env.desktop` — desktop (Tauri)-only vars (layered on top of `.env` in desktop mode)
 - These files are committed to Git and must not contain private keys
-- Local overrides (API keys, machine-specific settings) go in uncommitted sibling `.env.local` / `.env.saas.local` / `.env.desktop.local` files — Vite automatically layers them on top
+- Local overrides (API keys, machine-specific settings) go in uncommitted sibling `.env.local` / `.env.saas.local` files — Vite automatically layers them on top
 - Never use `|| 'hardcoded-fallback'` inline — put defaults in the committed env files
-- `task frontend:prepare` creates empty `.local` override files on first run; pass `MODE=saas` or `MODE=desktop` to also create the mode-specific `.local` file
-- Prepare runs automatically as a dependency of all `dev*`, `build*`, and `desktop*` tasks
+- `task frontend:prepare` creates empty `.local` override files on first run; pass `MODE=saas` to also create the mode-specific `.local` file
+- Prepare runs automatically as a dependency of all `dev*` and `build*` tasks
 - See `frontend/README.md#environment-variables` for full documentation
 
 #### Import Paths - CRITICAL
@@ -170,7 +167,7 @@ import { useFileContext } from "@proprietary/contexts/FileContext";
 - Building layer-specific override that wraps a lower layer's component
 - Example: `import { AppProviders as CoreAppProviders } from "@core/components/AppProviders"` when creating proprietary/AppProviders.tsx that extends the core version
 
-The `@app/*` alias automatically resolves to the correct layer based on build target (core/proprietary/saas/desktop/cloud) and handles the fallback cascade — see "Frontend `cloud/` Layer" below for the full per-flavor order.
+The `@app/*` alias automatically resolves to the correct layer based on build target (core/proprietary/saas/cloud) and handles the fallback cascade — see "Frontend `cloud/` Layer" below for the full per-flavor order.
 
 #### Frontend `cloud/` Layer
 
@@ -179,33 +176,29 @@ The `@app/*` alias automatically resolves to the correct layer based on build ta
 - **core** → core
 - **proprietary** → proprietary → core
 - **saas** → saas → cloud → proprietary → core
-- **desktop** → desktop → cloud → proprietary → core
 - **cloud** → cloud → proprietary → core
 
 What goes where:
 
 - **core** — OSS base.
 - **proprietary** — licensed / offline features.
-- **cloud** — the SHARED hosted/SaaS experience used by BOTH saas + desktop: PAYG, wallet, plan, billing, usage meters, cloud config/team/onboarding.
+- **cloud** — the shared hosted/SaaS experience used by the saas build: PAYG, wallet, plan, billing, usage meters, cloud config/team/onboarding.
 - **saas** — web-only: Supabase web auth, AuthCallback, avatar canvas, `window.location`.
-- **desktop** — Tauri-only: keyring authService, tauriHttpClient, native files/windows, backend routing.
 
-`cloud/` MUST NOT import `@supabase/*`, `@tauri-apps/*`, raw `fetch`, `window.location`, `localStorage`, `sessionStorage`, or `import.meta.env.VITE_*` (enforced by ESLint). It reaches platform-specific things only via `@app/*` seams: `services/apiClient`, `auth/session.getAccessToken`, `auth/supabase`, `platform/openExternal`, `services/billing`, `hooks/useSaaSMode` — each provided per-platform in `saas/` and `desktop/`.
+`cloud/` MUST NOT import `@supabase/*`, raw `fetch`, `window.location`, `localStorage`, `sessionStorage`, or `import.meta.env.VITE_*` (enforced by ESLint). It reaches platform-specific things only via `@app/*` seams: `services/apiClient`, `auth/session.getAccessToken`, `auth/supabase`, `platform/openExternal`, `services/billing`, `hooks/useSaaSMode` — each provided per-platform in `saas/`.
 
-Rule of thumb — **move, don't copy**: share via `cloud/`, override by shadowing the same `@app/*` path in a leaf (`saas/` or `desktop/`).
-
-**Cloud feature flags on desktop.** The local `AppConfigContext` reads `/api/v1/config/app-config` from the LOCAL bundled backend, so cloud-only flags (`aiEngineEnabled`, `premiumEnabled`, …) are never seen on desktop. To read the cloud's view, use `useSaasAppConfig()` (`desktop/hooks/useSaasAppConfig.ts`, backed by the general `saasAppConfigService` — SaaS-mode-only, public endpoint, native HTTP, 5-min cache). It returns `null` outside SaaS mode, so cloud features stay off in local/self-hosted and the server keeps the on/off switch (no desktop release needed to flip a flag). Gate a feature behind a per-platform seam — e.g. `useAiEngineEnabled()` (core reads `useAppConfig()`, desktop reads `useSaasAppConfig()`) — rather than hardcoding the flag on.
+Rule of thumb — **move, don't copy**: share via `cloud/`, override by shadowing the same `@app/*` path in the `saas/` leaf.
 
 #### Component Override Pattern (Stub/Shadow)
-Use this pattern for desktop-specific or proprietary-specific features WITHOUT runtime checks or conditionals.
+Use this pattern for saas-specific or proprietary-specific features WITHOUT runtime checks or conditionals.
 
 **How it works:**
 1. Core defines stub component (returns null or no-op)
-2. Desktop/proprietary overrides with same path/name
+2. Saas/proprietary overrides with same path/name
 3. Core imports via `@app/*` - higher layer "shadows" core in those builds
-4. No `@ts-ignore`, no `isTauri()` checks, no runtime conditionals!
+4. No `@ts-ignore`, no runtime conditionals!
 
-**Example - Desktop-specific footer:**
+**Example - SaaS-specific footer:**
 
 ```typescript
 // core/components/workbenchBar/WorkbenchBarFooterExtensions.tsx (stub)
@@ -219,7 +212,7 @@ export function WorkbenchBarFooterExtensions(_props: WorkbenchBarFooterExtension
 ```
 
 ```tsx
-// desktop/components/workbenchBar/WorkbenchBarFooterExtensions.tsx (real implementation)
+// saas/components/workbenchBar/WorkbenchBarFooterExtensions.tsx (real implementation)
 import { Box } from '@mantine/core';
 import { BackendHealthIndicator } from '@app/components/BackendHealthIndicator';
 
@@ -243,8 +236,8 @@ import { WorkbenchBarFooterExtensions } from '@app/components/workbenchBar/Workb
 export function WorkbenchBar() {
   return (
     <div>
-      {/* In web builds: renders nothing (stub returns null) */}
-      {/* In desktop builds: renders BackendHealthIndicator */}
+      {/* In core/proprietary builds: renders nothing (stub returns null) */}
+      {/* In saas builds: renders BackendHealthIndicator */}
       <WorkbenchBarFooterExtensions className="workbench-bar-footer" />
     </div>
   );
@@ -253,7 +246,7 @@ export function WorkbenchBar() {
 
 **Build resolution:**
 - **Core build**: `@app/*` → `core/*` → Gets stub (returns null)
-- **Desktop build**: `@app/*` → `desktop/*` → Gets real implementation (shadows core)
+- **SaaS build**: `@app/*` → `saas/*` → Gets real implementation (shadows core)
 
 **Benefits:**
 - No runtime checks or feature flags
@@ -373,7 +366,7 @@ return useToolOperation({
   - Follow pattern: `@RestController` + `@RequestMapping("/api/v1/...")`
 
 ### Key Components
-- **SPDFApplication.java**: Main application class with desktop UI and browser launching logic
+- **SPDFApplication.java**: Main application class with browser launching logic
 - **ConfigInitializer**: Handles runtime configuration and settings files
 - **Pipeline System**: Automated PDF processing workflows via `PipelineController`
 - **Security Layer**: Authentication, authorization, and user management (when enabled)
@@ -399,9 +392,7 @@ The frontend is organized with a clear separation of concerns:
   - **`core/data/`**: Static data (tool taxonomy, etc.)
   - **`core/services/`**: Business logic services (PDF processing, storage, etc.)
 
-- **`frontend/editor/src/desktop/`**: Desktop-specific (Tauri) code
 - **`frontend/editor/src/proprietary/`**: Proprietary/licensed features
-- **`frontend/editor/src-tauri/`**: Tauri (Rust) native desktop application code
 - **`frontend/editor/public/`**: Static assets served directly
   - `public/locales/`: Translation JSON files
 

@@ -17,7 +17,6 @@ import {
   useServerLicenseRequest,
   useTourRequest,
 } from "@app/components/onboarding/useOnboardingEffects";
-import { useOnboardingDownload } from "@app/components/onboarding/useOnboardingDownload";
 import {
   SLIDE_DEFINITIONS,
   type SlideId,
@@ -46,8 +45,6 @@ export default function Onboarding() {
   const onAuthRoute = isAuthRoute(location.pathname);
   const { currentStep, isActive, isLoading, runtimeState, activeFlow } = state;
 
-  const { osInfo, osOptions, setSelectedDownloadUrl, handleDownloadSelected } =
-    useOnboardingDownload();
   const {
     showLicenseSlide,
     licenseNotice: externalLicenseNotice,
@@ -150,10 +147,6 @@ export default function Onboarding() {
         case "close":
           actions.skip();
           break;
-        case "download-selected":
-          handleDownloadSelected();
-          actions.complete();
-          break;
         case "security-next":
           if (!runtimeState.selectedRole) return;
           if (runtimeState.selectedRole !== "admin") {
@@ -204,7 +197,6 @@ export default function Onboarding() {
     [
       actions,
       handleAnalyticsChoice,
-      handleDownloadSelected,
       navigate,
       runtimeState.selectedRole,
       serverExperience.effectiveIsAdmin,
@@ -327,10 +319,6 @@ export default function Onboarding() {
   const currentSlideContent = useMemo(() => {
     if (!currentSlideDefinition) return null;
     return currentSlideDefinition.createSlide({
-      osLabel: osInfo.label,
-      osUrl: osInfo.url,
-      osOptions,
-      onDownloadUrlChange: setSelectedDownloadUrl,
       selectedRole: runtimeState.selectedRole,
       onRoleSelect: handleRoleSelect,
       licenseNotice: runtimeState.licenseNotice,
@@ -346,13 +334,10 @@ export default function Onboarding() {
     analyticsError,
     analyticsLoading,
     currentSlideDefinition,
-    osInfo,
-    osOptions,
     runtimeState.selectedRole,
     runtimeState.licenseNotice,
     handleRoleSelect,
     serverExperience.loginEnabled,
-    setSelectedDownloadUrl,
     runtimeState.firstLoginUsername,
     handlePasswordChanged,
     handleMfaSetupComplete,
@@ -458,8 +443,6 @@ export default function Onboarding() {
           licenseNotice: effectiveLicenseNotice,
         }}
         params={{
-          osOptions: [],
-          onDownloadUrlChange: () => {},
           licenseNotice: effectiveLicenseNotice,
           loginEnabled: serverExperience.loginEnabled,
         }}

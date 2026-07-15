@@ -25,15 +25,6 @@ import {
 // Sensible defaults for every slide factory; individual stories override the
 // few fields their slide actually reads.
 const BASE_PARAMS: SlideFactoryParams = {
-  osLabel: "macOS (Apple Silicon)",
-  osUrl: "#",
-  osOptions: [
-    { label: "macOS (Apple Silicon)", url: "#", value: "mac-arm" },
-    { label: "macOS (Intel)", url: "#", value: "mac-intel" },
-    { label: "Windows", url: "#", value: "windows" },
-    { label: "Linux", url: "#", value: "linux" },
-  ],
-  onDownloadUrlChange: () => {},
   selectedRole: null,
   onRoleSelect: () => {},
   licenseNotice: {
@@ -136,9 +127,6 @@ export const FirstLoginDefaultCredentials: Story = {
     params: { usingDefaultCredentials: true },
   },
 };
-
-/** Desktop app download prompt with an OS picker (dual-icon hero). */
-export const DesktopInstall: Story = { args: { slideId: "desktop-install" } };
 
 /** Role confirmation — the "Next" button stays disabled until a role is picked. */
 export const SecurityCheck: Story = { args: { slideId: "security-check" } };

@@ -7,8 +7,6 @@ import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Method;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -29,29 +27,11 @@ import stirling.software.common.model.ApplicationProperties;
 @DisplayName("SPDFApplication extra coverage")
 class SPDFApplicationMoreTest {
 
-    private static final String TAURI_PROP = "STIRLING_PDF_TAURI_MODE";
     private static final String BROWSER_OPEN = "BROWSER_OPEN";
 
     @Mock private AppConfig appConfig;
     @Mock private Environment env;
     @Mock private ApplicationProperties applicationProperties;
-
-    private String originalTauri;
-
-    @BeforeEach
-    void setUp() {
-        originalTauri = System.getProperty(TAURI_PROP);
-        System.clearProperty(TAURI_PROP);
-    }
-
-    @AfterEach
-    void tearDown() {
-        if (originalTauri == null) {
-            System.clearProperty(TAURI_PROP);
-        } else {
-            System.setProperty(TAURI_PROP, originalTauri);
-        }
-    }
 
     private static Object invokeStatic(String name, Class<?>[] sig, Object... args)
             throws Exception {
@@ -219,9 +199,8 @@ class SPDFApplicationMoreTest {
         }
 
         @Test
-        @DisplayName("init in Tauri mode logs parent pid and sets static URLs")
-        void initTauriMode() {
-            System.setProperty(TAURI_PROP, "true");
+        @DisplayName("init sets static URLs without opening a browser")
+        void initSetsStaticUrls() {
             when(appConfig.getBackendUrl()).thenReturn("http://localhost");
             when(appConfig.getContextPath()).thenReturn("/");
             when(appConfig.getServerPort()).thenReturn("8080");

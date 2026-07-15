@@ -4,7 +4,7 @@
 
 <h1 align="center">RyanPDF - The Open-Source PDF Platform</h1>
 
-RyanPDF is a powerful, open-source PDF editing platform. Run it as a personal desktop app, in the browser, or deploy it on your own servers with a private API. Edit, sign, redact, convert, and automate PDFs without sending documents to external services.
+RyanPDF is a powerful, open-source PDF editing platform. Use it in the browser, or deploy it on your own servers with a private API. Edit, sign, redact, convert, and automate PDFs without sending documents to external services.
 
 ![RyanPDF - Dashboard](images/home-light.png)
 

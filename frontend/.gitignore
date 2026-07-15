@@ -29,7 +29,6 @@
 # mock env is injected via .storybook/main.ts, not a file).
 !/editor/.env
 !/editor/.env.proprietary
-!/editor/.env.desktop
 !/editor/.env.saas
 
 npm-debug.log*
@@ -42,9 +41,3 @@ test-results
 # auto-generated files
 /editor/src/assets/material-symbols-icons.json
 /editor/src/assets/material-symbols-icons.d.ts
-
-# dev update testing - keys, built bundles, screenshots, and generated config override
-/scripts/dev-update-test/.keys/
-/scripts/dev-update-test/.update-dist/
-/scripts/dev-update-test/screenshots/
-/editor/src-tauri/tauri.conf.dev-update.json

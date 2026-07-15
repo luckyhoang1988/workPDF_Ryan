@@ -22,7 +22,7 @@ import stirling.software.common.model.ApplicationProperties;
 /**
  * Remaining static-helper and lifecycle coverage for {@link SPDFApplication} that the existing
  * {@code SPDFApplicationMoreTest} does not reach: profile selection, classpath probing, the
- * setServerPortStatic auto/explicit branches and the non-Tauri init path.
+ * setServerPortStatic auto/explicit branches and the init path.
  */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -129,13 +129,12 @@ class SPDFApplicationExtraTest {
     }
 
     @Nested
-    @DisplayName("init (non-Tauri, browser disabled)")
-    class InitNonTauri {
+    @DisplayName("init (browser disabled)")
+    class InitBrowserDisabled {
 
         @Test
         @DisplayName("populates the static URL fields without opening a browser")
         void initBrowserDisabled() {
-            System.clearProperty("STIRLING_PDF_TAURI_MODE");
             when(appConfig.getBackendUrl()).thenReturn("http://localhost");
             when(appConfig.getContextPath()).thenReturn("/app");
             when(appConfig.getServerPort()).thenReturn("9000");

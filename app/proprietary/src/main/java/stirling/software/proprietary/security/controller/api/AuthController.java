@@ -54,7 +54,6 @@ import stirling.software.proprietary.security.service.MfaService;
 import stirling.software.proprietary.security.service.RefreshRateLimitService;
 import stirling.software.proprietary.security.service.TotpService;
 import stirling.software.proprietary.security.service.UserService;
-import stirling.software.proprietary.security.util.DesktopClientUtils;
 import stirling.software.proprietary.service.AiUserDataService;
 
 /** REST API Controller for authentication operations. */
@@ -198,42 +197,19 @@ public class AuthController {
             claims.put("authType", AuthenticationType.WEB.toString());
             claims.put("role", user.getRolesAsString());
 
-            // Detect desktop client and issue longer-lived tokens for better UX
-            // Desktop apps run on personal devices with OS-level encryption (secure storage)
-            boolean isDesktopClient = DesktopClientUtils.isDesktopClient(httpRequest);
-            String token;
+            String token = jwtService.generateToken(user.getUsername(), claims);
             int keyRetentionDays = securityProperties.getJwt().getKeyRetentionDays();
-            if (isDesktopClient) {
-                // Desktop: Use configured desktop token expiry (default 30 days)
-                int desktopExpiryMinutes =
-                        DesktopClientUtils.getDesktopTokenExpiryMinutes(applicationProperties);
-                token = jwtService.generateToken(user.getUsername(), claims, desktopExpiryMinutes);
-                log.info(
-                        "Issued DESKTOP token for user '{}': expiry={}min ({}d), keyRetention={}d",
-                        username,
-                        desktopExpiryMinutes,
-                        desktopExpiryMinutes / 1440,
-                        keyRetentionDays);
-            } else {
-                // Web: Use configured web expiry (default 24 hours)
-                token = jwtService.generateToken(user.getUsername(), claims);
-                int webExpiryMinutes =
-                        DesktopClientUtils.getWebTokenExpiryMinutes(applicationProperties);
-                log.info(
-                        "Issued WEB token for user '{}': expiry={}min ({}d), keyRetention={}d",
-                        username,
-                        webExpiryMinutes,
-                        webExpiryMinutes / 1440,
-                        keyRetentionDays);
-            }
+            long expirySeconds = getTokenExpirySeconds();
+            log.info(
+                    "Issued token for user '{}': expiry={}min ({}d), keyRetention={}d",
+                    username,
+                    expirySeconds / 60,
+                    expirySeconds / 86400,
+                    keyRetentionDays);
 
             // Record successful login
             loginAttemptService.loginSucceeded(username);
-            log.info(
-                    "Login successful for user: {} from IP: {} (desktop: {})",
-                    username,
-                    ip,
-                    isDesktopClient);
+            log.info("Login successful for user: {} from IP: {}", username, ip);
 
             return ResponseEntity.ok(
                     Map.of(
@@ -243,7 +219,7 @@ public class AuthController {
                                             "access_token",
                                             token,
                                             "expires_in",
-                                            getTokenExpirySeconds(isDesktopClient))));
+                                            getTokenExpirySeconds())));
 
         } catch (UsernameNotFoundException e) {
             String username = request.getUsername();
@@ -511,28 +487,13 @@ public class AuthController {
             newClaims.put("authType", user.getAuthenticationType());
             newClaims.put("role", user.getRolesAsString());
 
-            // Detect desktop client and issue longer-lived tokens
-            boolean isDesktopClient = DesktopClientUtils.isDesktopClient(request);
-            String newToken;
-            if (isDesktopClient) {
-                int desktopExpiryMinutes =
-                        DesktopClientUtils.getDesktopTokenExpiryMinutes(applicationProperties);
-                newToken = jwtService.generateToken(username, newClaims, desktopExpiryMinutes);
-                log.info(
-                        "Refreshed DESKTOP token for user '{}': expiry={}min ({}d)",
-                        username,
-                        desktopExpiryMinutes,
-                        desktopExpiryMinutes / 1440);
-            } else {
-                newToken = jwtService.generateToken(username, newClaims);
-                int webExpiryMinutes =
-                        DesktopClientUtils.getWebTokenExpiryMinutes(applicationProperties);
-                log.info(
-                        "Refreshed WEB token for user '{}': expiry={}min ({}d)",
-                        username,
-                        webExpiryMinutes,
-                        webExpiryMinutes / 1440);
-            }
+            String newToken = jwtService.generateToken(username, newClaims);
+            long expirySeconds = getTokenExpirySeconds();
+            log.info(
+                    "Refreshed token for user '{}': expiry={}min ({}d)",
+                    username,
+                    expirySeconds / 60,
+                    expirySeconds / 86400);
 
             // Don't clear rate limit tracking - let it expire naturally after grace period
             // This prevents reusing the same expired token indefinitely
@@ -543,11 +504,7 @@ public class AuthController {
                     Map.of(
                             "user", buildUserResponse(user),
                             "session",
-                                    Map.of(
-                                            "access_token",
-                                            newToken,
-                                            "expires_in",
-                                            getTokenExpirySeconds(isDesktopClient))));
+                                    Map.of("access_token", newToken, "expires_in", expirySeconds)));
 
         } catch (AuthenticationFailureException e) {
             log.warn("Token refresh failed: {}", e.getMessage());
@@ -808,16 +765,6 @@ public class AuthController {
                         ? configuredMinutes
                         : JwtConstants.DEFAULT_TOKEN_EXPIRY_MINUTES;
         return expiryMinutes * JwtConstants.SECONDS_PER_MINUTE;
-    }
-
-    private long getTokenExpirySeconds(boolean isDesktop) {
-        if (isDesktop) {
-            // Desktop: use configured desktop token expiry
-            return DesktopClientUtils.getDesktopTokenExpiryMinutes(applicationProperties)
-                    * JwtConstants.SECONDS_PER_MINUTE;
-        }
-        // Web: use configured web value
-        return getTokenExpirySeconds();
     }
 
     private boolean isRefreshWithinGrace(Map<String, Object> claims) {

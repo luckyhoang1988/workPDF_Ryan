@@ -9,12 +9,6 @@ import type { ButtonAccent } from "@app/ui/Button";
  * interfaces were copy-pasted into each flow config.
  */
 
-export interface OSOption {
-  label: string;
-  url: string;
-  value: string;
-}
-
 export interface ButtonDefinition<Action extends string, State> {
   key: string;
   type: "button" | "icon";

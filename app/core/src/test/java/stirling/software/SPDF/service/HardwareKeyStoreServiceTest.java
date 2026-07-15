@@ -37,23 +37,6 @@ class HardwareKeyStoreServiceTest {
     }
 
     @Test
-    void isDesktop_trueInTauriModeEvenWithoutClientMachineType() {
-        // The Tauri bundle sets STIRLING_PDF_TAURI_MODE=true while machineType stays Server-jar.
-        String previous = System.getProperty("STIRLING_PDF_TAURI_MODE");
-        try {
-            System.setProperty("STIRLING_PDF_TAURI_MODE", "true");
-            assertTrue(service("Server-jar").isDesktop());
-            assertTrue(service(null).isDesktop());
-        } finally {
-            if (previous == null) {
-                System.clearProperty("STIRLING_PDF_TAURI_MODE");
-            } else {
-                System.setProperty("STIRLING_PDF_TAURI_MODE", previous);
-            }
-        }
-    }
-
-    @Test
     void capabilities_notDesktop_reportsUnavailable() {
         HardwareSigningCapabilities caps = service("Server-jar").capabilities();
         assertFalse(caps.desktop());

@@ -178,7 +178,6 @@ app/proprietary/build
 common/build
 proprietary/build
 stirling-pdf/build
-frontend/editor/src-tauri/provisioner/target
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

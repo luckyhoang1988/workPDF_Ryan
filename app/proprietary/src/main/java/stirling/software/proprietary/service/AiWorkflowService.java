@@ -56,7 +56,6 @@ import stirling.software.proprietary.policy.model.PipelineDefinition;
 import stirling.software.proprietary.policy.model.PipelineStep;
 import stirling.software.proprietary.policy.model.PolicyInputs;
 import stirling.software.proprietary.policy.progress.PolicyProgressListener;
-import stirling.software.proprietary.security.util.DesktopClientUtils;
 import stirling.software.proprietary.service.PdfContentExtractor.LoadedFile;
 import stirling.software.proprietary.service.PdfContentExtractor.PdfContentResult;
 import stirling.software.proprietary.service.PdfContentExtractor.WorkflowArtifact;
@@ -115,7 +114,13 @@ public class AiWorkflowService {
      * {@code expiresAt} so it's persistent.
      */
     private Duration personalDocTtl() {
-        int minutes = DesktopClientUtils.getWebTokenExpiryMinutes(applicationProperties);
+        int configuredMinutes =
+                applicationProperties.getSecurity().getJwt().getTokenExpiryMinutes();
+        int minutes =
+                configuredMinutes > 0
+                        ? configuredMinutes
+                        : stirling.software.common.constants.JwtConstants
+                                .DEFAULT_TOKEN_EXPIRY_MINUTES;
         return Duration.ofMinutes(minutes);
     }
 

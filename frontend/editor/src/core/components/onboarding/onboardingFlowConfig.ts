@@ -1,6 +1,5 @@
 import WelcomeSlide from "@app/components/onboarding/slides/WelcomeSlide";
 import ProcessorIntroSlide from "@app/components/onboarding/slides/ProcessorIntroSlide";
-import DesktopInstallSlide from "@app/components/onboarding/slides/DesktopInstallSlide";
 import SecurityCheckSlide from "@app/components/onboarding/slides/SecurityCheckSlide";
 import PlanOverviewSlide from "@app/components/onboarding/slides/PlanOverviewSlide";
 import ServerLicenseSlide from "@app/components/onboarding/slides/ServerLicenseSlide";
@@ -10,19 +9,15 @@ import AnalyticsChoiceSlide from "@app/components/onboarding/slides/AnalyticsCho
 import MFASetupSlide from "@app/components/onboarding/slides/MFASetupSlide";
 import { LicenseNotice } from "@app/types/types";
 import type {
-  OSOption,
   ButtonDefinition as ButtonDefinitionBase,
   HeroDefinition as HeroDefinitionBase,
   SlideDefinition as SlideDefinitionBase,
 } from "@app/components/onboarding/onboardingSlideTypes";
 
-export type { OSOption };
-
 export type SlideId =
   | "first-login"
   | "welcome"
   | "processor-intro"
-  | "desktop-install"
   | "security-check"
   | "admin-overview"
   | "server-license"
@@ -44,7 +39,6 @@ export type ButtonAction =
   | "prev"
   | "close"
   | "complete-close"
-  | "download-selected"
   | "security-next"
   | "launch-admin"
   | "launch-tools"
@@ -61,10 +55,6 @@ export interface FlowState {
 }
 
 export interface SlideFactoryParams {
-  osLabel: string;
-  osUrl: string;
-  osOptions?: OSOption[];
-  onDownloadUrlChange?: (url: string) => void;
   selectedRole: "admin" | "user" | null;
   onRoleSelect: (role: "admin" | "user" | null) => void;
   licenseNotice?: LicenseNotice;
@@ -148,37 +138,6 @@ export const SLIDE_DEFINITIONS: Record<SlideId, SlideDefinition> = {
         variant: "primary",
         group: "right",
         action: "open-processor",
-      },
-    ],
-  },
-  "desktop-install": {
-    id: "desktop-install",
-    createSlide: ({ osLabel, osUrl, osOptions, onDownloadUrlChange }) =>
-      DesktopInstallSlide({ osLabel, osUrl, osOptions, onDownloadUrlChange }),
-    hero: { type: "dual-icon" },
-    buttons: [
-      {
-        key: "desktop-back",
-        type: "icon",
-        icon: "chevron-left",
-        group: "left",
-        action: "prev",
-      },
-      {
-        key: "desktop-skip",
-        type: "button",
-        label: "onboarding.buttons.skipForNow",
-        variant: "secondary",
-        group: "left",
-        action: "next",
-      },
-      {
-        key: "desktop-download",
-        type: "button",
-        label: "onboarding.buttons.download",
-        variant: "primary",
-        group: "right",
-        action: "download-selected",
       },
     ],
   },

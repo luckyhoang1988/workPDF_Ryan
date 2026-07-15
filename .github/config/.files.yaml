@@ -51,7 +51,6 @@ frontend: &frontend
   - testing/**
   - docker/**
   - scripts/translations/*.py
-  - .taskfiles/desktop.yml
   - scripts/convert_cff_to_ttf.py
   - scripts/harvest_type3_fonts.py
   - scripts/ignore_translation.toml
@@ -62,19 +61,6 @@ frontend: &frontend
   - Taskfile.yml
   - .taskfiles/frontend.yml
   - .taskfiles/e2e.yml
-
-# Files that affect the Tauri desktop bundle. Gate the multi-OS Tauri build
-# job on changes to any of these.
-tauri: &tauri
-  - frontend/editor/src-tauri/**
-  - frontend/editor/src/desktop/**
-  - frontend/editor/tsconfig.desktop.vite.json
-  - frontend/package.json
-  - frontend/package-lock.json
-  - frontend/editor/vite.config.ts
-  - .github/workflows/tauri-build.yml
-  - Taskfile.yml
-  - .taskfiles/desktop.yml
 
 # Files that affect the AI engine (Python tool models, fixers, tests). Gate
 # the engine validation job on changes to engine sources or to the Java

@@ -4,59 +4,16 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * Utility class for Tauri desktop OAuth flow handling. Centralizes common logic for OAuth state
- * management, nonce validation, and callback path construction.
+ * Utility class for OAuth2 SPA redirect handling. Centralizes common logic for callback path
+ * construction and the redirect-target cookie.
  */
-public final class TauriOAuthUtils {
+public final class OAuthRedirectUtils {
 
-    public static final String TAURI_STATE_PREFIX = "tauri:";
     public static final String SPA_REDIRECT_COOKIE = "stirling_redirect_path";
     public static final String DEFAULT_CALLBACK_PATH = "/auth/callback";
-    public static final String TAURI_CALLBACK_SUFFIX = "/tauri";
 
-    private TauriOAuthUtils() {
+    private OAuthRedirectUtils() {
         // Utility class - prevent instantiation
-    }
-
-    /**
-     * Extracts nonce from OAuth state parameter for CSRF validation. State format:
-     * tauri:<original-state>:<nonce>
-     *
-     * @param state The state parameter value
-     * @return The nonce if present, null otherwise
-     */
-    public static String extractNonceFromState(String state) {
-        if (state == null || !state.startsWith(TAURI_STATE_PREFIX)) {
-            return null;
-        }
-        // Split by ':' and get the last part (nonce)
-        String[] parts = state.split(":");
-        if (parts.length >= 3) {
-            return parts[parts.length - 1];
-        }
-        return null;
-    }
-
-    /**
-     * Extracts nonce from request's state parameter.
-     *
-     * @param request The HTTP request
-     * @return The nonce if present, null otherwise
-     */
-    public static String extractNonceFromRequest(HttpServletRequest request) {
-        String state = request.getParameter("state");
-        return extractNonceFromState(state);
-    }
-
-    /**
-     * Checks if the request has a Tauri state parameter (desktop OAuth flow).
-     *
-     * @param request The HTTP request
-     * @return true if this is a Tauri desktop OAuth flow, false otherwise
-     */
-    public static boolean isTauriState(HttpServletRequest request) {
-        String state = request.getParameter("state");
-        return state != null && state.startsWith(TAURI_STATE_PREFIX);
     }
 
     /**
@@ -73,16 +30,6 @@ public final class TauriOAuthUtils {
             return DEFAULT_CALLBACK_PATH;
         }
         return contextPath + DEFAULT_CALLBACK_PATH;
-    }
-
-    /**
-     * Builds the Tauri-specific callback path (includes /tauri suffix).
-     *
-     * @param contextPath The application context path
-     * @return The full Tauri callback path
-     */
-    public static String defaultTauriCallbackPath(String contextPath) {
-        return defaultCallbackPath(contextPath) + TAURI_CALLBACK_SUFFIX;
     }
 
     /**

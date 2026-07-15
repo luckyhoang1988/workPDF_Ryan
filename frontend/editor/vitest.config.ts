@@ -85,24 +85,6 @@ export default defineConfig({
       },
       {
         test: {
-          name: "desktop",
-          include: ["src/desktop/**/*.test.{ts,tsx}"],
-          environment: "jsdom",
-          globals: true,
-          setupFiles: ["./src/core/setupTests.ts"],
-        },
-        plugins: [
-          react(),
-          tsconfigPaths({
-            projects: ["./tsconfig.desktop.vite.json"],
-          }),
-        ],
-        esbuild: {
-          target: "es2020",
-        },
-      },
-      {
-        test: {
           name: "saas",
           // src/saas = editor-saas layer; src/portal-saas = the portal's saas
           // overrides (sibling to src/portal). Both build under the saas flavor,

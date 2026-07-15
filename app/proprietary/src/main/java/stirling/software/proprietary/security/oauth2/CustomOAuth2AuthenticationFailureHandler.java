@@ -66,25 +66,7 @@ public class CustomOAuth2AuthenticationFailureHandler
                     exception);
             String errorValue = errorCode != null ? errorCode : "oauth2AuthenticationError";
             clearRedirectCookie(response);
-            boolean tauriState = TauriOAuthUtils.isTauriState(request);
-            String redirectUrl;
-            if (tauriState) {
-                String basePath =
-                        TauriOAuthUtils.defaultTauriCallbackPath(request.getContextPath());
-                redirectUrl = basePath;
-                String stateParam = request.getParameter("state");
-                if (stateParam != null && !stateParam.isBlank()) {
-                    redirectUrl = appendQueryParam(redirectUrl, "state", stateParam);
-                    // Extract and pass nonce for CSRF validation
-                    String nonce = TauriOAuthUtils.extractNonceFromState(stateParam);
-                    if (nonce != null) {
-                        redirectUrl = appendQueryParam(redirectUrl, "nonce", nonce);
-                    }
-                }
-                redirectUrl = appendQueryParam(redirectUrl, "errorOAuth", errorValue);
-            } else {
-                redirectUrl = buildFailureRedirectUrl(request, errorValue);
-            }
+            String redirectUrl = buildFailureRedirectUrl(request, errorValue);
             getRedirectStrategy().sendRedirect(request, response, redirectUrl);
             return;
         }
@@ -94,22 +76,21 @@ public class CustomOAuth2AuthenticationFailureHandler
 
     private String buildFailureRedirectUrl(HttpServletRequest request, String errorValue) {
         String contextPath = request.getContextPath();
-        String cookiePath = TauriOAuthUtils.extractRedirectPathFromCookie(request);
+        String cookiePath = OAuthRedirectUtils.extractRedirectPathFromCookie(request);
         String redirectPath =
-                cookiePath != null ? cookiePath : TauriOAuthUtils.defaultCallbackPath(contextPath);
-        if (TauriOAuthUtils.isTauriState(request)) {
-            redirectPath = appendQueryParam(redirectPath, "tauri", "1");
-        }
+                cookiePath != null
+                        ? cookiePath
+                        : OAuthRedirectUtils.defaultCallbackPath(contextPath);
         String resolvedPath =
                 redirectPath.startsWith("/")
-                        ? TauriOAuthUtils.normalizeContextPath(contextPath) + redirectPath
-                        : TauriOAuthUtils.normalizeContextPath(contextPath) + "/" + redirectPath;
+                        ? OAuthRedirectUtils.normalizeContextPath(contextPath) + redirectPath
+                        : OAuthRedirectUtils.normalizeContextPath(contextPath) + "/" + redirectPath;
         return appendQueryParam(resolvedPath, "errorOAuth", errorValue);
     }
 
     private void clearRedirectCookie(HttpServletResponse response) {
         ResponseCookie cookie =
-                ResponseCookie.from(TauriOAuthUtils.SPA_REDIRECT_COOKIE, "")
+                ResponseCookie.from(OAuthRedirectUtils.SPA_REDIRECT_COOKIE, "")
                         .path("/")
                         .sameSite("Lax")
                         .maxAge(0)

@@ -19,9 +19,6 @@ includes:
   docker:
     taskfile: .taskfiles/docker.yml
     dir: .
-  desktop:
-    taskfile: .taskfiles/desktop.yml
-    dir: frontend
   e2e:
     taskfile: .taskfiles/e2e.yml
     dir: .
@@ -44,7 +41,6 @@ tasks:
         echo "  task dev            Start backend & frontend on free ports"
         echo "  task backend:dev    Start backend on default port"
         echo "  task frontend:dev   Start frontend on default port"
-        echo "  task desktop:dev    Start desktop app"
         echo "  task check          Quality gate (lint, typecheck, test, etc.)"
 
   # ============================================================

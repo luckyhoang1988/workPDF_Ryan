@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "@app/auth/UseSession";
-import { useOs } from "@app/hooks/useOs";
 import { useWallet } from "@app/hooks/useWallet";
 import { useSaaSTeam } from "@app/contexts/SaaSTeamContext";
 import {
@@ -10,8 +9,6 @@ import {
   type SlideId,
 } from "@app/components/onboarding/saasOnboardingFlowConfig";
 import { resolveSaasFlow } from "@app/components/onboarding/saasFlowResolver";
-import { DOWNLOAD_URLS } from "@app/constants/downloads";
-import { openExternal } from "@app/platform/openExternal";
 
 interface UseSaasOnboardingStateResult {
   currentStep: number;
@@ -25,26 +22,17 @@ interface UseSaasOnboardingStateResult {
 interface UseSaasOnboardingStateProps {
   opened: boolean;
   onClose: () => void;
-  /**
-   * Drop the closing "desktop-install" slide. The desktop app reuses this
-   * flow but has no reason to pitch its own download. Defaults to false
-   * (slide shown) so the web (saas) flow is unchanged.
-   */
-  hideDesktopInstall?: boolean;
   slideIds?: SlideId[];
 }
 
 export function useSaasOnboardingState({
   opened,
   onClose,
-  hideDesktopInstall = false,
   slideIds,
 }: UseSaasOnboardingStateProps): UseSaasOnboardingStateResult | null {
   const { loading } = useAuth();
   const { wallet } = useWallet();
   const { isTeamLeader } = useSaaSTeam();
-  const osType = useOs();
-  const selectedDownloadUrlRef = useRef<string>("");
 
   const [currentStep, setCurrentStep] = useState<number>(0);
 
@@ -55,45 +43,14 @@ export function useSaasOnboardingState({
     }
   }, [opened]);
 
-  // Determine OS details for desktop download
-  const os = useMemo(() => {
-    switch (osType) {
-      case "windows":
-        return { label: "Windows", url: DOWNLOAD_URLS.WINDOWS };
-      case "mac":
-        return { label: "Mac", url: DOWNLOAD_URLS.MAC };
-      case "linux-x64":
-      case "linux-arm64":
-        return { label: "Linux", url: DOWNLOAD_URLS.LINUX_DOCS };
-      default:
-        return { label: "", url: "" };
-    }
-  }, [osType]);
-
-  const osOptions = useMemo(() => {
-    const options = [
-      { label: "Windows", url: DOWNLOAD_URLS.WINDOWS, value: "windows" },
-      { label: "Mac", url: DOWNLOAD_URLS.MAC, value: "mac" },
-      { label: "Linux", url: DOWNLOAD_URLS.LINUX_DOCS, value: "linux" },
-    ];
-    return options.filter((opt) => opt.url);
-  }, []);
-
-  // Store selected download URL
-  const handleDownloadUrlChange = useCallback((url: string) => {
-    selectedDownloadUrlRef.current = url;
-  }, []);
-
   // Usage meter only makes sense for free-tier wallets with allowance left;
   // the team slide is for leaders (anonymous guests are never leaders).
   const showUsageSlide = wallet?.status === "free" && wallet.freeRemaining > 0;
   const showTeamSlide = isTeamLeader;
 
   const flowSlideIds = useMemo(
-    () =>
-      slideIds ??
-      resolveSaasFlow({ showUsageSlide, showTeamSlide, hideDesktopInstall }),
-    [slideIds, showUsageSlide, showTeamSlide, hideDesktopInstall],
+    () => slideIds ?? resolveSaasFlow({ showUsageSlide, showTeamSlide }),
+    [slideIds, showUsageSlide, showTeamSlide],
   );
   const totalSteps = flowSlideIds.length;
   const maxIndex = Math.max(totalSteps - 1, 0);
@@ -112,13 +69,8 @@ export function useSaasOnboardingState({
   // Create slide with appropriate params - must be called before any early returns
   const currentSlide = useMemo(() => {
     if (!slideDefinition) return null;
-    return slideDefinition.createSlide({
-      osLabel: os.label,
-      osUrl: os.url,
-      osOptions,
-      onDownloadUrlChange: handleDownloadUrlChange,
-    });
-  }, [slideDefinition, os.label, os.url, osOptions, handleDownloadUrlChange]);
+    return slideDefinition.createSlide({});
+  }, [slideDefinition]);
 
   // Navigation functions
   const goNext = useCallback(() => {
@@ -147,27 +99,12 @@ export function useSaasOnboardingState({
         case "close":
           onClose();
           return;
-        case "download-selected": {
-          // Open the download URL in the user's browser via the platform seam
-          // (saas opens a new tab, desktop hands off to the OS shell).
-          const downloadUrl = selectedDownloadUrlRef.current || os.url;
-          if (downloadUrl) {
-            void openExternal(downloadUrl);
-          }
-          // Then advance to next slide or close if last
-          if (currentStep === maxIndex) {
-            onClose();
-          } else {
-            goNext();
-          }
-          return;
-        }
         default:
           console.warn(`Unhandled button action: ${action}`);
           return;
       }
     },
-    [currentStep, maxIndex, goNext, goPrev, onClose, os.url],
+    [currentStep, maxIndex, goNext, goPrev, onClose],
   );
 
   const flowState: FlowState = {};

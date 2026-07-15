@@ -120,15 +120,6 @@ tasks:
       - task: dev:_run
         vars: { MODE: saas, PORT: '{{.PORT}}', BACKEND_URL: '{{.BACKEND_URL}}', OPEN: '{{.OPEN}}' }
 
-  dev:desktop:
-    desc: "Start frontend dev server in desktop mode"
-    deps:
-      - task: prepare
-        vars: { MODE: desktop }
-    cmds:
-      - task: dev:_run
-        vars: { MODE: desktop, PORT: '{{.PORT}}', BACKEND_URL: '{{.BACKEND_URL}}', OPEN: '{{.OPEN}}' }
-
   dev:prototypes:
     desc: "Start frontend dev server in prototypes mode"
     deps: [prepare]
@@ -167,14 +158,6 @@ tasks:
         vars: { MODE: saas }
     cmds:
       - npx vite build editor --mode saas
-
-  build:desktop:
-    desc: "Build for desktop mode"
-    deps:
-      - task: prepare
-        vars: { MODE: desktop }
-    cmds:
-      - npx vite build editor --mode desktop
 
   build:prototypes:
     desc: "Build for prototypes mode"
@@ -279,15 +262,6 @@ tasks:
       - task: typecheck:_run
         vars: { PROJECT: editor/src/saas/tsconfig.json }
 
-  typecheck:desktop:
-    desc: "Typecheck desktop build variant"
-    deps:
-      - task: prepare
-        vars: { MODE: desktop }
-    cmds:
-      - task: typecheck:_run
-        vars: { PROJECT: editor/src/desktop/tsconfig.json }
-
   typecheck:cloud:
     desc: "Typecheck cloud shared layer (standalone)"
     deps: [prepare]
@@ -322,7 +296,6 @@ tasks:
       - task: typecheck:core
       - task: typecheck:proprietary
       - task: typecheck:saas
-      - task: typecheck:desktop
       - task: typecheck:cloud
       - task: typecheck:scripts
       - task: typecheck:prototypes

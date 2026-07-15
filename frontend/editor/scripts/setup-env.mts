@@ -1,13 +1,12 @@
 /**
- * Ensures `.env.local` (and mode-specific `.env.desktop.local` / `.env.saas.local`)
- * files exist so developers have a place to put overrides (API keys, machine-specific
- * settings) without touching the committed `.env` / `.env.desktop` / `.env.saas` files.
+ * Ensures `.env.local` (and mode-specific `.env.saas.local`) files exist so
+ * developers have a place to put overrides (API keys, machine-specific
+ * settings) without touching the committed `.env` / `.env.saas` files.
  *
  * Vite automatically layers these `.local` files on top of the committed ones.
  *
  * Usage:
  *   tsx scripts/setup-env.mts              # ensures .env.local
- *   tsx scripts/setup-env.mts --desktop    # also ensures .env.desktop.local
  *   tsx scripts/setup-env.mts --saas       # also ensures .env.saas.local
  *
  * Why .mts (and not .ts)?
@@ -29,7 +28,6 @@ import { fileURLToPath } from "url";
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(scriptDir, "..");
 const args = process.argv.slice(2);
-const isDesktop = args.includes("--desktop");
 const isSaas = args.includes("--saas");
 
 function template(parent: string): string {
@@ -52,5 +50,4 @@ function ensureLocalFile(localFile: string, parentFile: string): void {
 }
 
 ensureLocalFile(".env.local", ".env");
-if (isDesktop) ensureLocalFile(".env.desktop.local", ".env.desktop");
 if (isSaas) ensureLocalFile(".env.saas.local", ".env.saas");

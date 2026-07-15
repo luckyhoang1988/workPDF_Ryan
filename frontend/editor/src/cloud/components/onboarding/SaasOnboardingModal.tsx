@@ -15,12 +15,6 @@ import {
 interface SaasOnboardingModalProps {
   opened: boolean;
   onClose: () => void;
-  /**
-   * Drop the closing "desktop-install" slide. Set by the desktop app, which
-   * reuses this flow but has no reason to pitch its own download. Defaults to
-   * false (slide shown) so the web (saas) flow is unchanged.
-   */
-  hideDesktopInstall?: boolean;
   slideIds?: SlideId[];
 }
 
@@ -43,7 +37,7 @@ export default function SaasOnboardingModal(props: SaasOnboardingModalProps) {
 
   const heroType = slideDefinition.hero.type;
   const hero =
-    heroType === "dual-icon" || heroType === "logo" ? (
+    heroType === "logo" ? (
       <ShellHero appIcon />
     ) : (
       <ShellHero>

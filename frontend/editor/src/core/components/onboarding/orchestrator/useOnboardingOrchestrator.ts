@@ -161,15 +161,8 @@ export interface UseOnboardingOrchestratorResult {
   actions: OnboardingOrchestratorActions;
 }
 
-export interface UseOnboardingOrchestratorOptions {
-  /** Override the default runtime state (used by desktop to set isDesktopApp: true) */
-  defaultRuntimeState?: OnboardingRuntimeState;
-}
-
-export function useOnboardingOrchestrator(
-  options?: UseOnboardingOrchestratorOptions,
-): UseOnboardingOrchestratorResult {
-  const defaultState = options?.defaultRuntimeState ?? DEFAULT_RUNTIME_STATE;
+export function useOnboardingOrchestrator(): UseOnboardingOrchestratorResult {
+  const defaultState = DEFAULT_RUNTIME_STATE;
   const serverExperience = useServerExperience();
   const { config, loading: configLoading } = useAppConfig();
   const location = useLocation();
@@ -197,7 +190,6 @@ export function useOnboardingOrchestrator(
       ...prev,
       analyticsEnabled: config?.enableAnalytics === true,
       analyticsNotConfigured: config?.enableAnalytics == null,
-      desktopSlideEnabled: config?.enableDesktopInstallSlide ?? true,
       licenseNotice: {
         totalUsers: serverExperience.totalUsers,
         freeTierLimit: serverExperience.freeTierLimit,

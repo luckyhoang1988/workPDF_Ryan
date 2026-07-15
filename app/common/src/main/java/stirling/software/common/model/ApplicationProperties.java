@@ -764,21 +764,6 @@ public class ApplicationProperties {
             private int tokenExpiryMinutes = JwtConstants.DEFAULT_TOKEN_EXPIRY_MINUTES;
 
             /**
-             * JWT access token lifetime in minutes for desktop clients (Tauri app).
-             *
-             * <p>Desktop clients are automatically detected via User-Agent header and receive
-             * longer-lived tokens because they run on personal devices with OS-level encrypted
-             * storage (macOS Keychain, Windows Credential Manager, Linux Secret Service).
-             *
-             * <p>This provides better UX (login once per month) while maintaining security through
-             * device encryption and secure storage, matching the behavior of popular desktop apps
-             * like Slack, Discord, VS Code, etc.
-             *
-             * <p>Default: 43200 minutes (30 days).
-             */
-            private int desktopTokenExpiryMinutes = 43200;
-
-            /**
              * Allowed clock skew in seconds for JWT validation.
              *
              * <p>Tolerates small time drift between client and server clocks. Tokens that are
@@ -826,7 +811,7 @@ public class ApplicationProperties {
                 final int MINUTES_PER_DAY = 1440;
                 final double BUFFER_PERCENTAGE = 0.10; // 10% buffer
 
-                int maxTokenExpiryMinutes = Math.max(tokenExpiryMinutes, desktopTokenExpiryMinutes);
+                int maxTokenExpiryMinutes = tokenExpiryMinutes;
 
                 // Add 10% buffer (scales with token lifetime)
                 int bufferMinutes = (int) Math.ceil(maxTokenExpiryMinutes * BUFFER_PERCENTAGE);
@@ -898,7 +883,6 @@ public class ApplicationProperties {
         private Boolean enableAnalytics;
         private Boolean enablePosthog;
         private Boolean enableScarf;
-        private Boolean enableDesktopInstallSlide = true;
         private Datasource datasource;
         private boolean disableSanitize;
         private int maxDPI = 500;

@@ -1,8 +1,6 @@
 package stirling.software.SPDF.config;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -88,8 +86,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // "favicon.ico" lookup) against the unrelated legacy static/favicon.ico
         // instead of static/modern-logo/favicon.ico.
         registry.addResourceHandler("/modern-logo/**")
-                .addResourceLocations(
-                        staticPath + "modern-logo/", "classpath:/static/modern-logo/")
+                .addResourceLocations(staticPath + "modern-logo/", "classpath:/static/modern-logo/")
                 .setCacheControl(brandingCache)
                 .resourceChain(true)
                 .addResolver(new EncodedResourceResolver());
@@ -160,71 +157,22 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Check if running in Tauri mode
-        boolean isTauriMode =
-                Boolean.parseBoolean(System.getProperty("STIRLING_PDF_TAURI_MODE", "false"));
-
         // Check if user has configured custom origins
         boolean hasConfiguredOrigins =
                 applicationProperties.getSystem() != null
                         && applicationProperties.getSystem().getCorsAllowedOrigins() != null
                         && !applicationProperties.getSystem().getCorsAllowedOrigins().isEmpty();
 
-        if (isTauriMode) {
-            // Automatically enable CORS for Tauri desktop app
-            // Tauri v1 uses tauri://localhost, v2 uses http(s)://tauri.localhost
-            logger.info("Tauri mode detected - enabling CORS for Tauri protocols (v1 and v2)");
-            registry.addMapping("/**")
-                    .allowedOriginPatterns(
-                            "http://localhost:*",
-                            "https://localhost:*",
-                            "tauri://*", // Add this for Tauri apps
-                            "tauri://localhost",
-                            "http://tauri.localhost",
-                            "https://tauri.localhost")
-                    .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-                    .allowedHeaders(
-                            "Authorization",
-                            "Content-Type",
-                            "X-Requested-With",
-                            "Accept",
-                            "Origin",
-                            "X-API-KEY",
-                            "X-CSRF-TOKEN",
-                            "X-XSRF-TOKEN",
-                            "X-Browser-Id")
-                    .exposedHeaders(
-                            "WWW-Authenticate",
-                            "X-Total-Count",
-                            "X-Page-Number",
-                            "X-Page-Size",
-                            "Content-Disposition",
-                            "Content-Type")
-                    .allowCredentials(true)
-                    .maxAge(3600);
-        } else if (hasConfiguredOrigins) {
-            // Use user-configured origins + always include Tauri origins for desktop app support
+        if (hasConfiguredOrigins) {
             logger.info(
                     "Configuring CORS with allowed origins: {}",
                     applicationProperties.getSystem().getCorsAllowedOrigins());
 
-            // Combine user-configured origins with Tauri origins
-            List<String> allOrigins =
-                    new ArrayList<>(applicationProperties.getSystem().getCorsAllowedOrigins());
-
-            // Always include Tauri origins for desktop app compatibility
-            // Tauri v1 uses tauri://localhost, v2 uses http(s)://tauri.localhost
-            if (!allOrigins.contains("tauri://localhost")) {
-                allOrigins.add("tauri://localhost");
-            }
-            if (!allOrigins.contains("http://tauri.localhost")) {
-                allOrigins.add("http://tauri.localhost");
-            }
-            if (!allOrigins.contains("https://tauri.localhost")) {
-                allOrigins.add("https://tauri.localhost");
-            }
-
-            String[] allowedOrigins = allOrigins.toArray(new String[0]);
+            String[] allowedOrigins =
+                    applicationProperties
+                            .getSystem()
+                            .getCorsAllowedOrigins()
+                            .toArray(new String[0]);
 
             registry.addMapping("/**")
                     .allowedOriginPatterns(allowedOrigins)

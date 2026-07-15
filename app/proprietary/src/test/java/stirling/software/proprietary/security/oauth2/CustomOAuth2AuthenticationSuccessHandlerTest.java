@@ -26,7 +26,7 @@ import stirling.software.proprietary.service.UserLicenseSettingsService;
 class CustomOAuth2AuthenticationSuccessHandlerTest {
 
     @Test
-    void redirectsToTauriCallbackWhenStateMarked() throws Exception {
+    void redirectsToDefaultCallbackWithToken() throws Exception {
         LoginAttemptService loginAttemptService = mock(LoginAttemptService.class);
         UserService userService = mock(UserService.class);
         JwtServiceInterface jwtService = mock(JwtServiceInterface.class);
@@ -37,19 +37,13 @@ class CustomOAuth2AuthenticationSuccessHandlerTest {
         oauth2Props.setAutoCreateUser(true);
         oauth2Props.setBlockRegistration(false);
 
-        ApplicationProperties applicationProperties = new ApplicationProperties();
-        ApplicationProperties.Security securityProperties = new ApplicationProperties.Security();
-        securityProperties.setOauth2(oauth2Props);
-        applicationProperties.setSecurity(securityProperties);
-
         CustomOAuth2AuthenticationSuccessHandler handler =
                 new CustomOAuth2AuthenticationSuccessHandler(
                         loginAttemptService,
                         oauth2Props,
                         userService,
                         jwtService,
-                        licenseSettingsService,
-                        applicationProperties);
+                        licenseSettingsService);
 
         when(userService.usernameExistsIgnoreCase("user")).thenReturn(false);
         when(licenseSettingsService.isOAuthEligible(null)).thenReturn(true);
@@ -73,13 +67,12 @@ class CustomOAuth2AuthenticationSuccessHandlerTest {
         request.setScheme("http");
         request.setServerName("localhost");
         request.setServerPort(8080);
-        request.setParameter("state", "tauri:abc");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         handler.onAuthenticationSuccess(request, response, authentication);
 
         assertEquals(
-                "http://localhost:8080/auth/callback/tauri#access_token=jwt",
+                "http://localhost:8080/auth/callback#access_token=jwt",
                 response.getRedirectedUrl());
     }
 }

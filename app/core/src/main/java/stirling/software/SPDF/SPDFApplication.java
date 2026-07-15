@@ -136,13 +136,6 @@ public class SPDFApplication {
         serverPortStatic = serverPort;
         String url = buildFullUrl(baseUrlStatic, serverPortStatic, contextPathStatic);
 
-        // Log Tauri mode information
-        if (Boolean.parseBoolean(System.getProperty("STIRLING_PDF_TAURI_MODE", "false"))) {
-            String parentPid = System.getenv("TAURI_PARENT_PID");
-            log.info(
-                    "Running in Tauri mode. Parent process PID: {}",
-                    parentPid != null ? parentPid : "not set");
-        }
         // Standard browser opening logic
         String browserOpenEnv = env.getProperty("BROWSER_OPEN");
         boolean browserOpen = browserOpenEnv != null && "true".equalsIgnoreCase(browserOpenEnv);
@@ -182,7 +175,6 @@ public class SPDFApplication {
         if (port != null) {
             serverPortStatic = port;
         }
-        // Log the actual runtime port for Tauri to parse
         log.info("RyanPDF running on port: {}", serverPortStatic);
     }
 

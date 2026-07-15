@@ -59,7 +59,6 @@ security:
   jwt: # This feature is currently under development and not yet fully supported. Do not use in production.
     enableKeyCleanup: true # Set to 'true' to enable key pair cleanup
     tokenExpiryMinutes: 1440 # JWT access token lifetime in minutes for web clients (1 day).
-    desktopTokenExpiryMinutes: 43200 # JWT access token lifetime in minutes for desktop clients (30 days).
     allowedClockSkewSeconds: 60 # Allowed JWT validation clock skew in seconds to tolerate small client/server time drift.
     refreshGraceMinutes: 15 # Allow refresh using an expired access token only within this many minutes after expiry.
   validation: # PDF signature validation settings
@@ -173,7 +172,6 @@ system:
   customHTMLFiles: false # enable to have files placed in /customFiles/templates override the existing template HTML files
   tessdataDir: "" # path to the directory containing the Tessdata files. This setting is relevant for Windows systems. For Windows users, this path should be adjusted to point to the appropriate directory where the Tessdata files are stored.
   enableAnalytics: null # Master toggle for analytics: set to 'true' to enable all analytics, 'false' to disable all analytics, or leave as 'null' to prompt admin on first launch
-  enableDesktopInstallSlide: true # Set to 'false' to hide the desktop app installation slide in the onboarding flow
   enablePosthog: null # Enable PostHog analytics (open-source product analytics): set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
   enableScarf: null # Enable Scarf tracking pixel: set to 'true' to enable, 'false' to disable, or 'null' to enable by default when analytics is enabled
   enableUrlToPDF: false # Set to 'true' to enable URL to PDF, INTERNAL ONLY, known security issues, should not be used externally

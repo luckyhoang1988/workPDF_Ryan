@@ -77,15 +77,11 @@ public class HardwareKeyStoreService {
     // ---------------------------------------------------------------------
 
     /**
-     * True when running as the desktop bundle (local sidecar in the user's session). The Tauri
-     * bundle sets {@code STIRLING_PDF_TAURI_MODE=true} (with {@code BROWSER_OPEN=false}, so
-     * machineType is {@code Server-jar} there); the bare-jar desktop launcher instead yields a
-     * {@code Client-*} machineType. Accept either.
+     * True when running as a local jar launch (auto-opened browser), which is the only mode where
+     * the backend runs in the same session as the user's hardware token / Windows certificate
+     * store.
      */
     public boolean isDesktop() {
-        if (Boolean.parseBoolean(System.getProperty("STIRLING_PDF_TAURI_MODE", "false"))) {
-            return true;
-        }
         return machineType != null && machineType.startsWith("Client-");
     }
 

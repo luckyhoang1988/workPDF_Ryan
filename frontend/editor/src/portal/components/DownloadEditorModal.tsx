@@ -3,13 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Button, CodeBlock, Modal, SegmentedControl } from "@app/ui";
 import { EDITOR_URL } from "@portal/auth/editorUrl";
 import { markEditorInstalled } from "@portal/hooks/useEditorInstalled";
-import { DOWNLOAD_URLS } from "@app/constants/downloads";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import DnsRounded from "@mui/icons-material/DnsRounded";
 import LayersRounded from "@mui/icons-material/LayersRounded";
 import TerminalRounded from "@mui/icons-material/TerminalRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import OpenInNewRounded from "@mui/icons-material/OpenInNewRounded";
+import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import type { SvgIconComponent } from "@mui/icons-material";
 import "@portal/components/DownloadEditorModal.css";
 
@@ -17,8 +16,6 @@ import "@portal/components/DownloadEditorModal.css";
 /*  Install commands + guides (code isn't translated; only labels are)       */
 /* ──────────────────────────────────────────────────────────────────────── */
 
-const WINGET = "winget install RyanPDFTools.RyanPDF";
-const BREW = "brew install --cask ryanpdf-pdf";
 const dockerCmd = (tag: string) =>
   `docker run -d --name ryanpdf-pdf -p 8080:8080 \\\n  -v ./ryanpdf-data:/configs \\\n  ryanpdftools/ryanpdf-pdf:${tag}`;
 const HELM = `helm repo add ryanpdf-pdf https://ryanpdf-tools.github.io/RyanPDF/
@@ -29,24 +26,17 @@ const JAR =
   "java -Xmx2g -jar RyanPDF-with-login.jar\n# then open http://localhost:8080";
 
 const GUIDES = {
-  windows: "https://docs.stirlingpdf.com/Installation/Windows%20Installation/",
-  mac: "https://docs.stirlingpdf.com/Installation/Mac%20Installation/",
-  linux: DOWNLOAD_URLS.LINUX_DOCS,
   docker: "https://docs.stirlingpdf.com/Installation/Docker%20Install",
   kubernetes: "https://docs.stirlingpdf.com/Installation/Kubernetes",
-  manual: DOWNLOAD_URLS.LINUX_DOCS,
+  manual: "https://docs.stirlingpdf.com/Installation/Unix%20Installation/",
 } as const;
 
 type OptionId = keyof typeof GUIDES;
 type DockerVariant = "latest" | "latest-fat" | "latest-ultra-lite";
 
-const DESKTOP: OptionId[] = ["windows", "mac", "linux"];
 const SELF_HOSTED: OptionId[] = ["docker", "kubernetes", "manual"];
 
 const ICONS: Record<OptionId, SvgIconComponent> = {
-  windows: DownloadRounded,
-  mac: DownloadRounded,
-  linux: DownloadRounded,
   docker: DnsRounded,
   kubernetes: LayersRounded,
   manual: TerminalRounded,
@@ -109,40 +99,6 @@ export function DownloadEditorModal({ open, onClose }: Props) {
 
   function renderDetail(id: OptionId) {
     switch (id) {
-      case "windows":
-      case "mac": {
-        const url =
-          id === "windows" ? DOWNLOAD_URLS.WINDOWS : DOWNLOAD_URLS.MAC;
-        return (
-          <>
-            <Button
-              variant="primary"
-              leftSection={<DownloadRounded sx={{ fontSize: 16 }} />}
-              onClick={() => download(url)}
-            >
-              {t(`portal.home.download.${id}.downloadBtn`)}
-            </Button>
-            <p className="portal-install__eyebrow">
-              {t(`portal.home.download.${id}.altLabel`)}
-            </p>
-            <CodeBlock code={id === "windows" ? WINGET : BREW} lang="bash" />
-            {guideLink(id)}
-          </>
-        );
-      }
-      case "linux":
-        return (
-          <>
-            {note("linux")}
-            <Button
-              variant="secondary"
-              leftSection={<OpenInNewRounded sx={{ fontSize: 16 }} />}
-              onClick={() => openUrl(GUIDES.linux)}
-            >
-              {t("portal.home.download.linux.guideBtn")}
-            </Button>
-          </>
-        );
       case "docker":
         return (
           <>
@@ -267,10 +223,6 @@ export function DownloadEditorModal({ open, onClose }: Props) {
         <div className="portal-install__detail">{renderDetail(selected)}</div>
       ) : (
         <div className="portal-install__list">
-          <p className="portal-install__section">
-            {t("portal.home.download.sectionDesktop")}
-          </p>
-          {DESKTOP.map(renderRow)}
           <p className="portal-install__section">
             {t("portal.home.download.sectionSelfHosted")}
           </p>

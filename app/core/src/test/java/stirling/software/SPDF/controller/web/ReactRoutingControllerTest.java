@@ -98,7 +98,7 @@ class ReactRoutingControllerTest {
     // --- mobile scanner route ---
 
     @Test
-    void serveMobileScanner_webMode_servesSpaNotUploadPage() {
+    void serveMobileScanner_servesSpa() {
         controller.init();
 
         ResponseEntity<String> response = controller.serveMobileScanner(request);
@@ -107,50 +107,6 @@ class ReactRoutingControllerTest {
         String body = response.getBody();
         assertNotNull(body);
         assertFalse(body.contains("Take Photo"));
-    }
-
-    @Test
-    void serveMobileScanner_desktopMode_servesStaticUploadPage() {
-        controller.init();
-        System.setProperty("STIRLING_PDF_TAURI_MODE", "true");
-        try {
-            ResponseEntity<String> response = controller.serveMobileScanner(request);
-
-            assertEquals(HttpStatus.OK, response.getStatusCode());
-            assertEquals(MediaType.TEXT_HTML, response.getHeaders().getContentType());
-            String body = response.getBody();
-            assertNotNull(body);
-            assertTrue(body.contains("Mobile Upload"));
-            assertTrue(body.contains("Take Photo"));
-        } finally {
-            System.clearProperty("STIRLING_PDF_TAURI_MODE");
-        }
-    }
-
-    // --- tauri auth callback ---
-
-    @Test
-    void serveTauriAuthCallback_returnsCallbackHtml() {
-        controller.init();
-
-        ResponseEntity<String> response = controller.serveTauriAuthCallback(request);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(MediaType.TEXT_HTML, response.getHeaders().getContentType());
-        String body = response.getBody();
-        assertNotNull(body);
-        assertTrue(body.contains("Authentication"));
-    }
-
-    @Test
-    void serveTauriAuthCallback_containsDeepLinkScript() {
-        controller.init();
-
-        ResponseEntity<String> response = controller.serveTauriAuthCallback(request);
-
-        String body = response.getBody();
-        assertNotNull(body);
-        assertTrue(body.contains("stirlingpdf://auth/sso-complete"));
     }
 
     // --- forwarding routes ---
@@ -200,16 +156,5 @@ class ReactRoutingControllerTest {
         String body = response.getBody();
         assertNotNull(body);
         assertTrue(body.contains("/myapp/"));
-    }
-
-    @Test
-    void callbackHtml_containsBaseHref() {
-        controller.init();
-
-        ResponseEntity<String> response = controller.serveTauriAuthCallback(request);
-
-        String body = response.getBody();
-        assertNotNull(body);
-        assertTrue(body.contains("<base href="));
     }
 }

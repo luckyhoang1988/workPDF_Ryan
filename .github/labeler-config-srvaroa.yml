@@ -68,11 +68,6 @@ labels:
       - 'frontend/.*'
       - 'frontend/**/.*'
 
-  - label: 'Tauri'
-    files:
-      - 'frontend/editor/src-tauri/**'
-      - 'frontend/editor/src-tauri/.*'
-
   - label: 'engine'
     files:
       - 'engine/**'

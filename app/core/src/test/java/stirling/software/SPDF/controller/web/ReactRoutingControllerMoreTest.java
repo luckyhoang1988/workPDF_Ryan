@@ -108,34 +108,6 @@ class ReactRoutingControllerMoreTest {
                 assertThat(body).contains("window.STIRLING_PDF_API_BASE_URL = '/myapp/'");
             }
         }
-
-        @Test
-        @DisplayName("serves the static mobile-upload page in desktop mode")
-        void servesMobileUploadFromExternal(@TempDir Path staticDir) throws Exception {
-            Files.writeString(
-                    staticDir.resolve("mobile-upload.html"),
-                    "<html><body>EXTERNAL UPLOAD PAGE</body></html>",
-                    StandardCharsets.UTF_8);
-
-            try (MockedStatic<InstallationPathConfig> paths =
-                    mockStatic(InstallationPathConfig.class)) {
-                paths.when(InstallationPathConfig::getStaticPath)
-                        .thenReturn(staticDir.toString() + "/");
-
-                ReactRoutingController controller = newController("/");
-                controller.init();
-                System.setProperty("STIRLING_PDF_TAURI_MODE", "true");
-                try {
-                    ResponseEntity<String> response =
-                            controller.serveMobileScanner(mock(HttpServletRequest.class));
-
-                    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-                    assertThat(response.getBody()).contains("EXTERNAL UPLOAD PAGE");
-                } finally {
-                    System.clearProperty("STIRLING_PDF_TAURI_MODE");
-                }
-            }
-        }
     }
 
     @Nested

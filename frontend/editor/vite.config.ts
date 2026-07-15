@@ -178,14 +178,13 @@ function subpathBareRedirectPlugin(subpath: string): PluginOption {
 }
 
 // NOTE: cloud/ is a SHARED layer, not a runnable build flavor — it's compiled
-// into the saas and desktop builds. It has no entry here and no vite tsconfig;
+// into the saas build. It has no entry here and no vite tsconfig;
 // it is only typechecked standalone via editor/src/cloud/tsconfig.json
-// (task frontend:typecheck:cloud) to prove it carries no saas/desktop-only deps.
+// (task frontend:typecheck:cloud) to prove it carries no saas-only deps.
 const VALID_MODES = [
   "core",
   "proprietary",
   "saas",
-  "desktop",
   "prototypes",
 ] as const;
 type BuildMode = (typeof VALID_MODES)[number];
@@ -194,7 +193,6 @@ const TSCONFIG_MAP: Record<BuildMode, string> = {
   core: "./tsconfig.core.vite.json",
   proprietary: "./tsconfig.proprietary.vite.json",
   saas: "./tsconfig.saas.vite.json",
-  desktop: "./tsconfig.desktop.vite.json",
   prototypes: "./tsconfig.prototypes.vite.json",
 };
 
@@ -258,18 +256,15 @@ export default defineConfig(async ({ mode, command }) => {
 
   // Shared between `vite` (dev) and `vite preview` (production-build serve, used
   // in CI/E2E) so the live test suite still resolves /api → :8080.
-  const backendProxyConfig =
-    effectiveMode === "desktop"
-      ? undefined
-      : {
-          "/api": backendProxy,
-          "/oauth2": backendProxy,
-          "/saml2": backendProxy,
-          "/login/oauth2": backendProxy,
-          "/login/saml2": backendProxy,
-          "/swagger-ui": backendProxy,
-          "/v1/api-docs": backendProxy,
-        };
+  const backendProxyConfig = {
+    "/api": backendProxy,
+    "/oauth2": backendProxy,
+    "/saml2": backendProxy,
+    "/login/oauth2": backendProxy,
+    "/login/saml2": backendProxy,
+    "/swagger-ui": backendProxy,
+    "/v1/api-docs": backendProxy,
+  };
 
   return {
     define: {
@@ -351,15 +346,8 @@ export default defineConfig(async ({ mode, command }) => {
     server: {
       host: true,
       allowedHosts: allowedHosts.length > 0 ? allowedHosts : undefined,
-      // make sure this port matches the devUrl port in tauri.conf.json file
       port: 5173,
-      // Tauri expects a fixed port, fail if that port is not available
       strictPort: true,
-      watch: {
-        // tell vite to ignore watching `src-tauri`
-        ignored: ["**/src-tauri/**"],
-      },
-      // Only use proxy in web mode - Tauri handles backend connections directly
       proxy: backendProxyConfig,
     },
     preview: {

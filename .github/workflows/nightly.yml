@@ -56,16 +56,3 @@ jobs:
           name: playwright-report-nightly-${{ github.run_id }}
           path: frontend/playwright-report/
           retention-days: 14
-
-  # Builds all desktop platforms on a schedule so the Rust dependency cache is
-  # written on main, where PR and merge-queue tauri builds can restore it.
-  warm-tauri-cache:
-    name: Warm Tauri Rust cache
-    permissions:
-      contents: read
-      pull-requests: write
-    uses: ./.github/workflows/tauri-build.yml
-    with:
-      platform: all
-      sign: false
-    secrets: inherit

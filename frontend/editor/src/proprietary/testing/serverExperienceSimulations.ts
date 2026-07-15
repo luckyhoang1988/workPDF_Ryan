@@ -51,7 +51,6 @@ const BASE_NO_LOGIN_CONFIG: AppConfig = {
   appVersion: "2.14.1",
   serverCertificateEnabled: false,
   enableAlphaFunctionality: false,
-  enableDesktopInstallSlide: true,
   serverPort: 8080,
   premiumEnabled: false,
   runningProOrHigher: false,

@@ -79,7 +79,6 @@ class SecurityConfigurationTest {
                 null,
                 null,
                 null,
-                null,
                 licenseSettingsService,
                 passwordEncoder,
                 aiUserDataService);

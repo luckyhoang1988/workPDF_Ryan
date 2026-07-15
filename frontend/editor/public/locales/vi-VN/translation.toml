@@ -4999,7 +4999,6 @@ wrapUp = "Bạn đã sẵn sàng! Bạn đã biết về các khu vực chính c
 
 [onboarding.buttons]
 back = "Quay lại"
-download = "Tải xuống →"
 next = "Tiếp →"
 showMeAround = "Hướng dẫn nhanh"
 skipForNow = "Bỏ qua tạm thời"
@@ -5008,10 +5007,6 @@ skipTheTour = "Bỏ qua hướng dẫn"
 [onboarding.checklist]
 dismiss = "Bỏ qua"
 title = "Thiết lập RyanPDF"
-
-[onboarding.checklist.downloadDesktop]
-description = "Chạy RyanPDF gốc trên máy của bạn"
-title = "Tải RyanPDF cho Desktop"
 
 [onboarding.checklist.inviteTeam]
 description = "Cộng tác cùng nhóm của bạn"
@@ -5024,12 +5019,6 @@ title = "Chia sẻ dữ liệu sử dụng ẩn danh"
 [onboarding.checklist.takeTour]
 description = "Xem cách RyanPDF hoạt động qua hướng dẫn nhanh"
 title = "Xem hướng dẫn"
-
-[onboarding.desktopInstall]
-body = "RyanPDF hoạt động tốt nhất như ứng dụng desktop. Bạn có thể dùng offline, truy cập tài liệu nhanh hơn và chỉnh sửa trực tiếp trên máy."
-selectOs = "Chọn hệ điều hành"
-title = "Tải xuống"
-titleWithOs = "Tải cho {{osLabel}}"
 
 [onboarding.mfa]
 authenticationCode = "Mã xác thực"
@@ -6826,11 +6815,10 @@ title = "Đã xảy ra lỗi trên trang này"
 
 [portal.home.download]
 back = "Quay lại"
-body = "Tải ứng dụng desktop hoặc tự lưu trữ máy chủ."
+body = "Tự lưu trữ máy chủ."
 done = "Xong"
 guide = "Mở hướng dẫn {{name}}"
 openInBrowser = "Mở trong trình duyệt thay vào đó"
-sectionDesktop = "Ứng dụng desktop"
 sectionSelfHosted = "Tự lưu trữ"
 title = "Cài đặt RyanPDF Editor"
 
@@ -6849,20 +6837,6 @@ note = "Thêm PVC cho /configs để lưu cài đặt lâu dài."
 tagline = "Triển khai lên cluster bằng Helm"
 title = "Kubernetes"
 
-[portal.home.download.linux]
-detailBody = "Bản dựng gốc cho bản phân phối của bạn."
-guideBtn = "Xem tùy chọn cài đặt Linux"
-note = "Có sẵn bản dựng AppImage, .deb và .rpm cho các bản phân phối phổ biến."
-tagline = "Ứng dụng desktop gốc cho bản phân phối của bạn"
-title = "Linux"
-
-[portal.home.download.mac]
-altLabel = "Hoặc qua Homebrew"
-detailBody = "Chạy trình cài đặt, hoặc dùng Homebrew."
-downloadBtn = "Tải cho macOS"
-tagline = "Ứng dụng gốc cho Apple silicon và Intel"
-title = "macOS"
-
 [portal.home.download.manual]
 detailBody = "Chạy file .jar trên máy chủ vật lý (bare metal)."
 downloadBtn = "Tải file .jar"
@@ -6870,13 +6844,6 @@ note = "Yêu cầu Java 21+. Mở tại cổng :8080; đăng nhập mặc địn
 runLabel = "Sau đó chạy nó"
 tagline = "Chạy file .jar trên máy chủ vật lý"
 title = "Cài đặt máy chủ thủ công"
-
-[portal.home.download.windows]
-altLabel = "Hoặc qua winget"
-detailBody = "Chạy trình cài đặt, hoặc dùng trình quản lý gói."
-downloadBtn = "Tải trình cài đặt"
-tagline = "Ứng dụng gốc cho Microsoft Windows"
-title = "Windows"
 
 [portal.home.editor]
 activeUsers = "{{n}} đang hoạt động"

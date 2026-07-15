@@ -13,7 +13,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -38,31 +37,17 @@ import stirling.software.common.model.ApplicationProperties;
 @DisplayName("WebMvcConfig")
 class WebMvcConfigTest {
 
-    private static final String TAURI_PROP = "STIRLING_PDF_TAURI_MODE";
-
     @Mock private EndpointInterceptor endpointInterceptor;
     @Mock private PdfMetricsInterceptor pdfMetricsInterceptor;
     @Mock private ApplicationProperties applicationProperties;
     @Mock private ApplicationProperties.System system;
 
     private WebMvcConfig config;
-    private String originalTauriProp;
 
     @BeforeEach
     void setUp() {
-        originalTauriProp = System.getProperty(TAURI_PROP);
-        System.clearProperty(TAURI_PROP);
         config =
                 new WebMvcConfig(endpointInterceptor, pdfMetricsInterceptor, applicationProperties);
-    }
-
-    @AfterEach
-    void tearDown() {
-        if (originalTauriProp == null) {
-            System.clearProperty(TAURI_PROP);
-        } else {
-            System.setProperty(TAURI_PROP, originalTauriProp);
-        }
     }
 
     @Nested
@@ -134,21 +119,7 @@ class WebMvcConfigTest {
         }
 
         @Test
-        @DisplayName("Tauri mode adds a mapping with Tauri origin patterns")
-        void tauriModeBranch() {
-            System.setProperty(TAURI_PROP, "true");
-            // hasConfiguredOrigins is evaluated before the Tauri check, so getSystem() is
-            // consulted.
-            when(applicationProperties.getSystem()).thenReturn(system);
-            when(system.getCorsAllowedOrigins()).thenReturn(List.of());
-
-            config.addCorsMappings(registry);
-
-            verify(registry).addMapping("/**");
-        }
-
-        @Test
-        @DisplayName("uses configured origins and appends Tauri origins when present")
+        @DisplayName("uses configured origins when present")
         void configuredOriginsBranch() {
             when(applicationProperties.getSystem()).thenReturn(system);
             when(system.getCorsAllowedOrigins())
@@ -159,23 +130,6 @@ class WebMvcConfigTest {
             verify(registry).addMapping("/**");
             // origins consulted twice (presence check + value use)
             verify(system, atLeastOnce()).getCorsAllowedOrigins();
-        }
-
-        @Test
-        @DisplayName("configured origins keep an already-present Tauri origin unduplicated")
-        void configuredOriginsAlreadyContainTauri() {
-            when(applicationProperties.getSystem()).thenReturn(system);
-            when(system.getCorsAllowedOrigins())
-                    .thenReturn(
-                            new java.util.ArrayList<>(
-                                    List.of(
-                                            "tauri://localhost",
-                                            "http://tauri.localhost",
-                                            "https://tauri.localhost")));
-
-            config.addCorsMappings(registry);
-
-            verify(registry).addMapping("/**");
         }
 
         @Test

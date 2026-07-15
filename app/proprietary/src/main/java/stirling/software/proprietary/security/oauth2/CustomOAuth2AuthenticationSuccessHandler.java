@@ -36,7 +36,6 @@ import stirling.software.proprietary.security.model.AuthenticationType;
 import stirling.software.proprietary.security.service.JwtServiceInterface;
 import stirling.software.proprietary.security.service.LoginAttemptService;
 import stirling.software.proprietary.security.service.UserService;
-import stirling.software.proprietary.security.util.DesktopClientUtils;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -49,7 +48,6 @@ public class CustomOAuth2AuthenticationSuccessHandler
     private final JwtServiceInterface jwtService;
     private final stirling.software.proprietary.service.UserLicenseSettingsService
             licenseSettingsService;
-    private final ApplicationProperties applicationProperties;
 
     @Override
     @Audited(type = AuditEventType.USER_LOGIN, level = AuditLevel.BASIC)
@@ -154,25 +152,8 @@ public class CustomOAuth2AuthenticationSuccessHandler
                 if (jwtService.isJwtEnabled()) {
                     Map<String, Object> claims = Map.of("authType", AuthenticationType.OAUTH2);
 
-                    // Detect desktop client and issue longer-lived tokens
-                    boolean isDesktopClient = DesktopClientUtils.isDesktopClient(request);
-                    String jwt;
-                    if (isDesktopClient) {
-                        // Desktop: Use configured desktop token expiry (default 30 days)
-                        int desktopExpiryMinutes =
-                                DesktopClientUtils.getDesktopTokenExpiryMinutes(
-                                        applicationProperties);
-                        jwt = jwtService.generateToken(username, claims, desktopExpiryMinutes);
-                        log.info(
-                                "Issued DESKTOP OAuth2 token for user '{}': expiry={}min ({}d)",
-                                username,
-                                desktopExpiryMinutes,
-                                desktopExpiryMinutes / 1440);
-                    } else {
-                        // Web: Use default expiry
-                        jwt = jwtService.generateToken(authentication, claims);
-                        log.debug("Issued WEB OAuth2 token for user '{}'", username);
-                    }
+                    String jwt = jwtService.generateToken(authentication, claims);
+                    log.debug("Issued OAuth2 token for user '{}'", username);
 
                     // Build context-aware redirect URL based on the original request
                     String redirectUrl =
@@ -225,27 +206,15 @@ public class CustomOAuth2AuthenticationSuccessHandler
                                                 .orElseGet(() -> buildOriginFromRequest(request)));
         clearRedirectCookie(response);
 
-        // Extract nonce from state for CSRF validation in callback
-        String nonce = TauriOAuthUtils.extractNonceFromRequest(request);
-        String url = origin + redirectPath + "#access_token=" + jwt;
-        if (nonce != null) {
-            url +=
-                    "&nonce="
-                            + java.net.URLEncoder.encode(
-                                    nonce, java.nio.charset.StandardCharsets.UTF_8);
-        }
-        return url;
+        return origin + redirectPath + "#access_token=" + jwt;
     }
 
     private String resolveRedirectPath(HttpServletRequest request, String contextPath) {
-        if (TauriOAuthUtils.isTauriState(request)) {
-            return TauriOAuthUtils.defaultTauriCallbackPath(contextPath);
-        }
-        String cookiePath = TauriOAuthUtils.extractRedirectPathFromCookie(request);
+        String cookiePath = OAuthRedirectUtils.extractRedirectPathFromCookie(request);
         if (cookiePath != null && cookiePath.startsWith("/")) {
             return cookiePath;
         }
-        return TauriOAuthUtils.defaultCallbackPath(contextPath);
+        return OAuthRedirectUtils.defaultCallbackPath(contextPath);
     }
 
     private Optional<String> resolveForwardedOrigin(HttpServletRequest request) {
@@ -333,7 +302,7 @@ public class CustomOAuth2AuthenticationSuccessHandler
 
     private void clearRedirectCookie(HttpServletResponse response) {
         ResponseCookie cookie =
-                ResponseCookie.from(TauriOAuthUtils.SPA_REDIRECT_COOKIE, "")
+                ResponseCookie.from(OAuthRedirectUtils.SPA_REDIRECT_COOKIE, "")
                         .path("/")
                         .sameSite("Lax")
                         .maxAge(0)

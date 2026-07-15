@@ -48,12 +48,6 @@
     "@supabase/supabase-js": "^2.47.13",
     "@tailwindcss/postcss": "^4.1.13",
     "@tanstack/react-virtual": "^3.13.12",
-    "@tauri-apps/api": "^2.10.1",
-    "@tauri-apps/plugin-dialog": "2.7.0",
-    "@tauri-apps/plugin-fs": "2.5.0",
-    "@tauri-apps/plugin-http": "^2.5.7",
-    "@tauri-apps/plugin-notification": "^2.3.3",
-    "@tauri-apps/plugin-shell": "^2.3.5",
     "@userback/widget": "^0.3.12",
     "autoprefixer": "^10.4.21",
     "axios": "^1.15.0",
@@ -86,13 +80,7 @@
     "update:minor": "node scripts/update-minor.js",
     "update:major": "npx npm-check-updates -u && npm install",
     "update:interactive": "npx npm-check-updates -i",
-    "update:minor-strict": "npx npm-check-updates -u --target minor && npm install",
-    "tauri:setup-dev-update": "bash scripts/dev-update-test/setup-dev-updater.sh",
-    "tauri:build-dev-update": "bash scripts/dev-update-test/build-dev-update.sh",
-    "tauri:serve-dev-update": "bash scripts/dev-update-test/serve-update.sh",
-    "tauri:test-update-e2e": "bash scripts/dev-update-test/test-update-e2e.sh",
-    "tauri:test-update-e2e:install": "bash scripts/dev-update-test/test-update-e2e.sh --install",
-    "tauri:dev-with-update": "cd editor && npx tsx scripts/setup-env.mts --desktop && node scripts/generate-icons.js && npx tauri dev --config src-tauri/tauri.conf.dev-update.json"
+    "update:minor-strict": "npx npm-check-updates -u --target minor && npm install"
   },
   "browserslist": {
     "production": [
@@ -115,7 +103,6 @@
     "@storybook/addon-docs": "^9.1.20",
     "@storybook/addon-themes": "^9.1.20",
     "@storybook/react-vite": "^9.1.20",
-    "@tauri-apps/cli": "^2.9.6",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
