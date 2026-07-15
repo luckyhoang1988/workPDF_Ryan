@@ -66,17 +66,17 @@
   --background: 249 250 251;
   --border: 229 231 235;
 
-  /* Colors for Mantine integration */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  /* Colors for Mantine integration — navy brand scale, anchored at 500 = #1E3A5F */
+  --color-primary-50: #eef2f6;
+  --color-primary-100: #d7e0ea;
+  --color-primary-200: #b0c1d6;
+  --color-primary-300: #8098b8;
+  --color-primary-400: #4f6f92;
+  --color-primary-500: #1e3a5f;
+  --color-primary-600: #1a3252;
+  --color-primary-700: #152944;
+  --color-primary-800: #101f35;
+  --color-primary-900: #0b1524;
 
   /* Success (green) */
   --color-green-50: #f0fdf4;
@@ -191,7 +191,7 @@
   --bg-toolbar: #ffffff;
   --bg-file-manager: #f5f6f8;
   --bg-file-list: #ffffff;
-  --btn-open-file: #0a8bff;
+  --btn-open-file: #1e3a5f;
   --text-primary: #111827;
   --text-secondary: #4b5563;
   --text-muted: #6b7280;
@@ -211,7 +211,7 @@
   --icon-user-color: #ffffff;
   --icon-notifications-bg: #9ca3af;
   --icon-notifications-color: #ffffff;
-  --icon-tools-bg: #1e88e5;
+  --icon-tools-bg: #1e3a5f;
   --icon-tools-color: #ffffff;
   --icon-read-bg: #4caf50;
   --icon-read-color: #ffffff;
@@ -219,17 +219,17 @@
   --icon-sign-color: #ffffff;
   --icon-automate-bg: #a576e3;
   --icon-automate-color: #ffffff;
-  --icon-files-bg: #d3e7f7;
-  --icon-files-color: #0a8bff;
-  --icon-activity-bg: #d3e7f7;
-  --icon-activity-color: #0a8bff;
+  --icon-files-bg: #d7e0ea;
+  --icon-files-color: #1e3a5f;
+  --icon-activity-bg: #d7e0ea;
+  --icon-activity-color: #1e3a5f;
   --icon-config-bg: #9ca3af;
   --icon-config-color: #ffffff;
 
   /* Colors for tooltips */
-  --tooltip-title-bg: #dbefff;
-  --tooltip-title-color: #31528e;
-  --tooltip-header-bg: #31528e;
+  --tooltip-title-bg: #d7e0ea;
+  --tooltip-title-color: #1e3a5f;
+  --tooltip-header-bg: #1e3a5f;
   --tooltip-header-color: white;
   --tooltip-border: var(--border-default);
 
@@ -241,17 +241,17 @@
   --tools-text-and-icon-color: var(--text-primary);
 
   /* Tool picker sticky header variables (light mode) */
-  --tool-header-bg: #dbefff;
-  --tool-header-border: #bee2ff;
-  --tool-header-text: #1e88e5;
-  --tool-header-badge-bg: #c0ddff;
-  --tool-header-badge-text: #004e99;
+  --tool-header-bg: #d7e0ea;
+  --tool-header-border: #b0c1d6;
+  --tool-header-text: #1e3a5f;
+  --tool-header-badge-bg: #b0c1d6;
+  --tool-header-badge-text: #152944;
 
   /* Subcategory title styling (light mode) */
   --tool-subcategory-text-color: #9ca3af; /* lighter text */
   --tool-subcategory-rule-color: #e5e7eb; /* doubly lighter rule line */
-  --accent-interactive: #4a90e2;
-  --text-instruction: #4a90e2;
+  --accent-interactive: #1e3a5f;
+  --text-instruction: #1e3a5f;
   --text-brand: var(--color-gray-700);
   --text-brand-accent: #dc2626;
 
@@ -282,13 +282,13 @@
   --landing-drop-inner-paper-border: #90caf9;
 
   /* landing hero & stack */
-  --landing-hero-gradient: linear-gradient(135deg, #4c8bf5 0%, #3a7be8 100%);
-  --landing-checklist-icon-bg: #eef8ff;
+  --landing-hero-gradient: linear-gradient(135deg, #2f5680 0%, #152944 100%);
+  --landing-checklist-icon-bg: #eef2f6;
   --landing-stack-w: 224px;
   --landing-stack-h: 176px;
   --landing-stack-glow-bg: radial-gradient(
     circle,
-    rgba(74, 144, 226, 0.18) 0%,
+    rgba(30, 58, 95, 0.18) 0%,
     transparent 70%
   );
 
@@ -313,12 +313,12 @@
   --landing-action-shadow-hover:
     0 6px 18px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
   --landing-action-primary-shadow-idle:
-    0 10px 26px rgba(58, 123, 232, 0), 0 4px 12px rgba(0, 0, 0, 0);
+    0 10px 26px rgba(30, 58, 95, 0), 0 4px 12px rgba(0, 0, 0, 0);
   --landing-action-primary-shadow-hover:
-    0 10px 26px rgba(58, 123, 232, 0.42), 0 4px 12px rgba(0, 0, 0, 0.1);
+    0 10px 26px rgba(30, 58, 95, 0.42), 0 4px 12px rgba(0, 0, 0, 0.1);
 
   /* selected file header colors */
-  --header-selected-bg: #1e88e5; /* light mode selected header matches dark */
+  --header-selected-bg: #1e3a5f; /* light mode selected header matches dark */
   --header-selected-fg: #ffffff;
   --file-card-bg: #ffffff; /* file card background (light/dark paired) */
   --accordion-item-bg: #e8eaed; /* accordion item background - more distinguishable */
@@ -331,10 +331,10 @@
     drop-shadow(0 1.2rem 1rem rgba(0, 0, 0, 0.04));
 
   /* Light mode card hover and selection */
-  --header-hover-bg: #3b4b6e; /* same family as selected, a touch muted for hover */
-  --card-selected-border: #3fafff; /* slightly more blue than dark mode header */
-  --checkbox-border: #2f83bf;
-  --checkbox-checked-bg: #3fafff;
+  --header-hover-bg: #2c4468; /* same family as selected, a touch muted for hover */
+  --card-selected-border: #4f6f92; /* lighter navy than the selected header */
+  --checkbox-border: #1e3a5f;
+  --checkbox-checked-bg: #1e3a5f;
   --checkbox-tick: #ffffff;
 
   --information-text-bg: #eaeaea;
@@ -351,8 +351,8 @@
   --modal-nav-bg: #f5f6f8;
   --modal-nav-section-title: #6b7280;
   --modal-nav-item: #374151;
-  --modal-nav-item-active: #0a8bff;
-  --modal-nav-item-active-bg: rgba(10, 139, 255, 0.08);
+  --modal-nav-item-active: #1e3a5f;
+  --modal-nav-item-active-bg: rgba(30, 58, 95, 0.08);
   --modal-content-bg: #ffffff;
   --modal-header-border: rgba(0, 0, 0, 0.06);
 
@@ -537,7 +537,7 @@
   --bg-toolbar: #0d1120; /* portal --color-sidebar-bg — lifted off the canvas */
   --bg-file-manager: #0d1120; /* portal --color-sidebar-bg */
   --bg-file-list: #151c2e; /* portal --color-surface */
-  --btn-open-file: #4f8ef5;
+  --btn-open-file: #4f6f92;
   --text-primary: #e8eaf6;
   --text-secondary: #9299b0;
   --text-muted: #5b6280;
@@ -618,7 +618,7 @@
   --landing-button-hover-bg: var(--bg-raised);
 
   /* selected file header colors for dark */
-  --header-selected-bg: #2040a0;
+  --header-selected-bg: #2c4468;
   --header-selected-fg: #ffffff;
   /* file card background (dark) */
   --file-card-bg: #0d1120;
@@ -680,8 +680,8 @@
   --modal-nav-bg: #0d1020;
   --modal-nav-section-title: #5b6280;
   --modal-nav-item: #c2c8e0;
-  --modal-nav-item-active: #4f8ef5;
-  --modal-nav-item-active-bg: rgba(79, 142, 245, 0.15);
+  --modal-nav-item-active: #4f6f92;
+  --modal-nav-item-active-bg: rgba(79, 111, 146, 0.2);
   --modal-content-bg: #131729;
   --modal-header-border: rgba(255, 255, 255, 0.05);
 
@@ -755,12 +755,12 @@
 
 /* Plan section button colors */
 .plan-button:not(:disabled):not([data-disabled]) {
-  background-color: #0a8bff !important;
+  background-color: #1e3a5f !important;
 }
 
 [data-mantine-color-scheme="dark"]
   .plan-button:not(:disabled):not([data-disabled]) {
-  background-color: #2040a0 !important;
+  background-color: #4f6f92 !important;
 }
 
 /* Lighter grey for disabled plan buttons */
@@ -820,12 +820,12 @@
 }
 /* ── PDF Link Overlay (viewer) ── */
 :root {
-  --link-hover-bg: rgba(10, 139, 255, 0.1);
-  --link-hover-border: rgba(10, 139, 255, 0.32);
+  --link-hover-bg: rgba(30, 58, 95, 0.1);
+  --link-hover-border: rgba(30, 58, 95, 0.32);
   --link-hover-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.35),
-    0 1px 4px rgba(10, 139, 255, 0.12);
-  --link-focus-ring: rgba(10, 139, 255, 0.25);
+    0 1px 4px rgba(30, 58, 95, 0.12);
+  --link-focus-ring: rgba(30, 58, 95, 0.25);
   --link-toolbar-bg: rgba(15, 23, 42, 0.88);
   --link-toolbar-border: rgba(255, 255, 255, 0.1);
   --link-toolbar-shadow:
@@ -834,11 +834,11 @@
 }
 
 [data-mantine-color-scheme="dark"] {
-  --link-hover-bg: rgba(79, 130, 245, 0.14);
-  --link-hover-border: rgba(79, 130, 245, 0.38);
+  --link-hover-bg: rgba(79, 111, 146, 0.18);
+  --link-hover-border: rgba(79, 111, 146, 0.42);
   --link-hover-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 4px rgba(79, 142, 245, 0.18);
-  --link-focus-ring: rgba(79, 130, 245, 0.3);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 4px rgba(79, 111, 146, 0.22);
+  --link-focus-ring: rgba(79, 111, 146, 0.32);
   --link-toolbar-bg: rgba(9, 11, 24, 0.94);
   --link-toolbar-border: rgba(255, 255, 255, 0.07);
   --link-toolbar-shadow:
@@ -969,7 +969,7 @@
 }
 
 .pdf-link-toolbar-btn:hover .pdf-link-toolbar-label {
-  color: #60a5fa; /* Modern blue accent */
+  color: #8098b8; /* Navy brand accent */
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -1063,7 +1063,7 @@
   fill-opacity: 0.3;
 }
 .logo-icon-modern__path2 {
-  fill: #fc9999;
+  fill: #4f6f92;
   fill-opacity: 0.5;
 }
 [data-mantine-color-scheme="dark"] .logo-icon-modern__path1 {
@@ -1080,7 +1080,7 @@
   opacity: 0.2;
 }
 .logo-icon-classic__body {
-  fill: #ff4b4b;
+  fill: #1e3a5f;
 }
 .logo-icon-classic__flap {
   fill: #545454;
@@ -1115,13 +1115,13 @@
 [data-mantine-color-scheme="dark"] .wordmark__text--muted {
   fill-opacity: 1;
 }
-/* PDF text: dimmed red in light mode, standard red in dark */
+/* PDF text: dimmed navy in light mode, standard navy in dark */
 .wordmark__pdf--muted {
-  fill: #d62626;
+  fill: #1e3a5f;
   fill-opacity: 0.7;
 }
 [data-mantine-color-scheme="dark"] .wordmark__pdf--muted {
-  fill: #c56565;
+  fill: #8098b8;
   fill-opacity: 1;
 }
 

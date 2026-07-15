@@ -127,7 +127,7 @@
 .auth-checkbox {
   width: 1rem; /* 16px */
   height: 1rem; /* 16px */
-  accent-color: #af3434;
+  accent-color: #1e3a5f;
 }
 
 .auth-terms-label {
@@ -345,7 +345,7 @@
 }
 
 .oauth-button-vertical:focus-visible {
-  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline: 3px solid rgba(30, 58, 95, 0.5);
   outline-offset: 2px;
 }
 
@@ -637,7 +637,7 @@
 
 /* Email login button - red CTA style matching SaaS version */
 .auth-cta-button {
-  background-color: #af3434 !important;
+  background-color: #1e3a5f !important;
   color: white !important;
   border: none !important;
   font-weight: 600 !important;
@@ -648,7 +648,7 @@
 }
 
 .auth-cta-button:disabled {
-  background-color: #af3434 !important;
+  background-color: #1e3a5f !important;
   opacity: 0.6 !important;
 }
 
@@ -699,8 +699,8 @@
 }
 
 .auth-expandable-trigger--active {
-  border-color: #af3434 !important;
-  box-shadow: 0 0 0 3px rgba(175, 52, 52, 0.12);
+  border-color: #1e3a5f !important;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
 }
 
 /* ── Animated expand/collapse via grid-template-rows ───────────────── */

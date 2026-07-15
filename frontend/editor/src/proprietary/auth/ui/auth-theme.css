@@ -9,9 +9,9 @@
   --auth-input-border-light-only: #d1d5db;
   --auth-input-bg-light-only: #ffffff;
   --auth-input-text-light-only: #111827;
-  --auth-border-focus-light-only: #3b82f6;
-  --auth-focus-ring-light-only: rgba(59, 130, 246, 0.1);
-  --auth-button-bg-light-only: #af3434;
+  --auth-border-focus-light-only: #1e3a5f;
+  --auth-focus-ring-light-only: rgba(30, 58, 95, 0.1);
+  --auth-button-bg-light-only: #1e3a5f;
   --auth-button-text-light-only: #ffffff;
   --auth-magic-button-bg-light-only: #e5e7eb;
   --auth-magic-button-text-light-only: #374151;
@@ -31,9 +31,9 @@
   --auth-input-border-light-only: var(--border-default);
   --auth-input-bg-light-only: var(--bg-raised);
   --auth-input-text-light-only: var(--text-primary);
-  --auth-border-focus-light-only: #3b82f6;
-  --auth-focus-ring-light-only: rgba(59, 130, 246, 0.2);
-  --auth-button-bg-light-only: #af3434;
+  --auth-border-focus-light-only: #1e3a5f;
+  --auth-focus-ring-light-only: rgba(30, 58, 95, 0.2);
+  --auth-button-bg-light-only: #1e3a5f;
   --auth-button-text-light-only: #ffffff;
   --auth-magic-button-bg-light-only: var(--bg-raised);
   --auth-magic-button-text-light-only: var(--text-primary);

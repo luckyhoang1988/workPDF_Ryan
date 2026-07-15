@@ -59,19 +59,19 @@
   --_bd: #334155;
   --_tint: rgba(148, 163, 184, 0.16);
 }
-/* brand: Stirling red — a bespoke brand colour, not part of the token palette. */
+/* brand: RyanPDF navy — a bespoke brand colour, not part of the token palette. */
 .sui-acc-brand {
-  --_solid: #8e3131;
-  --_solid-hover: #7a2929;
+  --_solid: #1e3a5f;
+  --_solid-hover: #152944;
   --_on: #ffffff;
-  --_text: #8e3131;
-  --_bd: #d9a8a8;
-  --_tint: rgba(142, 49, 49, 0.09);
+  --_text: #1e3a5f;
+  --_bd: #b0c1d6;
+  --_tint: rgba(30, 58, 95, 0.09);
 }
 [data-theme="dark"] .sui-acc-brand {
-  --_text: #d98a8a;
-  --_bd: #5a2424;
-  --_tint: rgba(217, 138, 138, 0.16);
+  --_text: #8098b8;
+  --_bd: #2f5680;
+  --_tint: rgba(128, 152, 184, 0.16);
 }
 /* ai: multi-hue gradient for AI features — no single-colour token. */
 .sui-acc-ai {

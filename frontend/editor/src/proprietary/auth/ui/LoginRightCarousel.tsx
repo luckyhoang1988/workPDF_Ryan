@@ -1,6 +1,5 @@
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { CarouselDots } from "@app/ui/CarouselDots";
-import bgDefault from "@app/assets/login/LoginBackgroundPanel.png";
 
 export type ImageSlide = {
   src: string;
@@ -15,7 +14,7 @@ export type ImageSlide = {
 function LoginRightCarousel({
   imageSlides = [],
   showBackground = true,
-  backgroundSrc = bgDefault,
+  backgroundSrc,
   initialSeconds = 5,
   slideSeconds = 8,
 }: {
@@ -119,7 +118,7 @@ function LoginRightCarousel({
         height: "100%",
       }}
     >
-      {showBackground && (
+      {showBackground && backgroundSrc && (
         <img
           src={backgroundSrc}
           alt="Background panel"
@@ -129,6 +128,19 @@ function LoginRightCarousel({
             width: "100%",
             height: "100%",
             objectFit: "cover",
+          }}
+        />
+      )}
+
+      {showBackground && !backgroundSrc && (
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(160deg, #2f5680 0%, #1e3a5f 55%, #152944 100%)",
           }}
         />
       )}
