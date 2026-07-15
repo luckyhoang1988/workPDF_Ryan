@@ -93,8 +93,8 @@
 }
 
 .auth-expandable-trigger--active {
-  border-color: #1e3a5f !important;
-  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+  border-color: #00c375 !important;
+  box-shadow: 0 0 0 3px rgba(0, 195, 117, 0.12);
 }
 
 /* ── Animated expand/collapse via grid-template-rows ───────────────── */

@@ -33,9 +33,9 @@
   --auth-input-border: #e5e7eb;
   --auth-input-text: #1f2937;
   --auth-label-text: #2b3230;
-  --auth-button-bg: #1e3a5f;
+  --auth-button-bg: #00c375;
   --auth-button-text: #ffffff;
-  --auth-magic-button-bg: #1e3a5f;
+  --auth-magic-button-bg: #00c375;
   --auth-magic-button-text: #ffffff;
 
   /* Light-only auth colors (no dark mode equivalents) used for login/signup */
@@ -43,9 +43,9 @@
   --auth-input-border-light-only: #e5e7eb;
   --auth-input-text-light-only: #1f2937;
   --auth-label-text-light-only: #2b3230;
-  --auth-button-bg-light-only: #1e3a5f;
+  --auth-button-bg-light-only: #00c375;
   --auth-button-text-light-only: #ffffff;
-  --auth-magic-button-bg-light-only: #1e3a5f;
+  --auth-magic-button-bg-light-only: #00c375;
   --auth-magic-button-text-light-only: #ffffff;
   --auth-bg-color-light-only: #ffffff;
   --auth-card-bg-light-only: #ffffff;
@@ -53,7 +53,7 @@
   --auth-text-secondary-light-only: #1f2937;
   --auth-border-color-light-only: #e5e7eb;
   --auth-border-focus-light-only: #cbd5e1;
-  --auth-focus-ring-light-only: rgba(30, 58, 95, 0.15);
+  --auth-focus-ring-light-only: rgba(0, 195, 117, 0.15);
 
   /* App Config Modal colors (light mode) */
   --modal-nav-bg: #f5f6f8;
@@ -65,9 +65,9 @@
   --modal-header-border: rgba(0, 0, 0, 0.06);
 
   /* API usage progress bar colors (light mode) */
-  --usage-weekly-active: #1e3a5f;
+  --usage-weekly-active: #00c375;
   --usage-bought-active: #14b8a6;
-  --usage-total-used: #1e3a5f;
+  --usage-total-used: #00c375;
   --usage-inactive: #e5e7eb;
 
   /* API Keys section colors (light mode) */
@@ -106,9 +106,9 @@
   --auth-input-border-light-only: var(--border-default);
   --auth-input-bg-light-only: var(--bg-raised);
   --auth-input-text-light-only: var(--text-primary);
-  --auth-border-focus-light-only: #1e3a5f;
-  --auth-focus-ring-light-only: rgba(30, 58, 95, 0.2);
-  --auth-button-bg-light-only: #1e3a5f;
+  --auth-border-focus-light-only: #00c375;
+  --auth-focus-ring-light-only: rgba(0, 195, 117, 0.2);
+  --auth-button-bg-light-only: #00c375;
   --auth-button-text-light-only: #ffffff;
   --auth-magic-button-bg-light-only: var(--bg-raised);
   --auth-magic-button-text-light-only: var(--text-primary);

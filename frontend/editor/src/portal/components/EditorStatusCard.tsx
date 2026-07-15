@@ -28,7 +28,7 @@ function RyanPDFMark() {
       fill="none"
       aria-hidden
     >
-      <rect width="256" height="256" rx="58" fill="#1E3A5F" />
+      <rect width="256" height="256" rx="58" fill="#00c375" />
       <path
         d="M39.2638 127.834L155.374 32L155.375 121.499L39.2638 217.333L39.2638 127.834Z"
         fill="white"

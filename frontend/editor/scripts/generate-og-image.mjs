@@ -6,7 +6,7 @@
 //   node scripts/generate-og-image.mjs --name "Add Text" --desc "Add custom text anywhere" \
 //        --icon text-fields --out public/og_images/add-text.png
 //   # theme overrides, e.g. a different accent:
-//   node scripts/generate-og-image.mjs --name "Sign" --icon draw --bg-top "#1e3a5f" \
+//   node scripts/generate-og-image.mjs --name "Sign" --icon draw --bg-top "#00c375" \
 //        --bg-bottom "#3b6ea5" --rotate -3 --out /path/sign.png
 //
 // --icon is a material-symbols name (https://fonts.google.com/icons) resolved via iconify,

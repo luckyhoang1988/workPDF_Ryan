@@ -140,7 +140,7 @@ function LoginRightCarousel({
             inset: 0,
             width: "100%",
             height: "100%",
-            background: "linear-gradient(160deg, #2f5680 0%, #1e3a5f 55%, #152944 100%)",
+            background: "linear-gradient(160deg, #04aa68 0%, #00c375 55%, #097148 100%)",
           }}
         />
       )}

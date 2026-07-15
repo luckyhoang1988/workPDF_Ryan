@@ -59,19 +59,19 @@
   --_bd: #334155;
   --_tint: rgba(148, 163, 184, 0.16);
 }
-/* brand: RyanPDF navy — a bespoke brand colour, not part of the token palette. */
+/* brand: RyanPDF green — a bespoke brand colour, not part of the token palette. */
 .sui-acc-brand {
-  --_solid: #1e3a5f;
-  --_solid-hover: #152944;
+  --_solid: #00c375;
+  --_solid-hover: #097148;
   --_on: #ffffff;
-  --_text: #1e3a5f;
-  --_bd: #b0c1d6;
-  --_tint: rgba(30, 58, 95, 0.09);
+  --_text: #00c375;
+  --_bd: #9efad5;
+  --_tint: rgba(0, 195, 117, 0.09);
 }
 [data-theme="dark"] .sui-acc-brand {
-  --_text: #8098b8;
-  --_bd: #2f5680;
-  --_tint: rgba(128, 152, 184, 0.16);
+  --_text: #64f7bc;
+  --_bd: #04aa68;
+  --_tint: rgba(100, 247, 188, 0.16);
 }
 /* ai: multi-hue gradient for AI features — no single-colour token. */
 .sui-acc-ai {

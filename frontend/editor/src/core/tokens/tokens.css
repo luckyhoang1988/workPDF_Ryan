@@ -32,10 +32,10 @@
   --color-text-on-accent: #ffffff;
 
   /* Brand / status */
-  --color-blue: #1e3a5f;
-  --color-blue-dark: #152944;
-  --color-blue-light: #eef2f6;
-  --color-blue-border: #b0c1d6;
+  --color-blue: #00c375;
+  --color-blue-dark: #097148;
+  --color-blue-light: #ecfdf7;
+  --color-blue-border: #9efad5;
   --color-purple: #8b5cf6;
   --color-purple-light: #f5f3ff;
   --color-purple-border: #ddd6fe;
@@ -93,8 +93,8 @@
   --color-tooltip-text: #f8fafc;
 
   /* Navigation */
-  --color-nav-active: #eef2f6;
-  --color-nav-active-text: #1e3a5f;
+  --color-nav-active: #ecfdf7;
+  --color-nav-active-text: #00c375;
   --color-nav-text: #4b5563;
   --color-nav-hover: #f6f8fa;
   --color-nav-hover-text: #1a202c;
@@ -128,16 +128,16 @@
   --shadow-md: inset 0 0 0 1px #e3e8ee, 0 1px 2px rgba(15, 23, 42, 0.04);
   --shadow-lg: inset 0 0 0 1px #e3e8ee, 0 4px 12px rgba(15, 23, 42, 0.06);
   --shadow-blue:
-    0 1px 2px rgba(30, 58, 95, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 1px 2px rgba(0, 195, 117, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   --shadow-blue-hover:
-    0 2px 6px rgba(30, 58, 95, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 2px 6px rgba(0, 195, 117, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   /* Gradients */
   --grad-blue-btn: linear-gradient(
     180deg,
-    #4f6f92 0%,
-    #2f5680 50%,
-    #1e3a5f 100%
+    #10f99c 0%,
+    #04aa68 50%,
+    #00c375 100%
   );
   --grad-purple-btn: linear-gradient(
     180deg,
@@ -177,10 +177,10 @@
   --color-text-muted: #64748b;
   --color-text-placeholder: #475569;
 
-  --color-blue: #8098b8;
-  --color-blue-dark: #4f6f92;
+  --color-blue: #64f7bc;
+  --color-blue-dark: #10f99c;
   --color-blue-light: #1e293b;
-  --color-blue-border: #2f5680;
+  --color-blue-border: #04aa68;
   --color-purple: #a78bfa;
   --color-purple-light: #1e1b2e;
   --color-purple-border: #2e2650;
@@ -227,7 +227,7 @@
   --color-tooltip-text: #0f172a;
 
   --color-nav-active: #1a2c44;
-  --color-nav-active-text: #8098b8;
+  --color-nav-active-text: #64f7bc;
   --color-nav-text: #94a3b8;
   --color-nav-hover: #1c2640;
   --color-nav-hover-text: #e2e8f0;
@@ -257,15 +257,15 @@
   --shadow-md: inset 0 0 0 1px #283248, 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-lg: inset 0 0 0 1px #283248, 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-blue:
-    0 1px 3px rgba(79, 111, 146, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 1px 3px rgba(16, 249, 156, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   --shadow-blue-hover:
-    0 2px 8px rgba(79, 111, 146, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 2px 8px rgba(16, 249, 156, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 
   --grad-blue-btn: linear-gradient(
     180deg,
-    #4f6f92 0%,
-    #2f5680 50%,
-    #1e3a5f 100%
+    #10f99c 0%,
+    #04aa68 50%,
+    #00c375 100%
   );
   --grad-banner: linear-gradient(135deg, #0f172a 0%, #111827 50%, #1a1535 100%);
 }
