@@ -266,13 +266,7 @@ export function ServerExperienceProvider({
     await fetchUserCounts();
   }, [fetchUserCounts]);
 
-  const hasPaidLicense = useMemo(() => {
-    return (
-      config?.license === "SERVER" ||
-      config?.license === "PRO" ||
-      config?.license === "ENTERPRISE"
-    );
-  }, [config?.license]);
+  const hasPaidLicense = true;
 
   const licenseKeyValid = useMemo(() => {
     if (licenseInfo) {

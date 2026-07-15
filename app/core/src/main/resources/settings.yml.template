@@ -42,7 +42,7 @@ security:
     scopes: openid, profile, email # specify the scopes for which the application will request permissions
     provider: google # set this to your OAuth Provider's name, e.g., 'google' or 'keycloak'
   saml2:
-    enabled: false # Only enabled for paid enterprise clients (enterpriseEdition.enabled must be true)
+    enabled: false # Enable SAML2 SSO (configure IdP settings below)
     provider: "" # The name of your Provider
     autoCreateUser: true # set to 'true' to allow auto-creation of non-existing users
     blockRegistration: false # set to 'true' to deny login with SSO without prior registration by an admin
@@ -85,7 +85,7 @@ security:
 
 premium:
   key: 00000000-0000-0000-0000-000000000000
-  enabled: false # Enable license key checks for pro/enterprise features
+  enabled: false # Legacy flag; full MIT build unlocks features without a license key
   proFeatures:
     ssoAutoLogin: false
     customMetadata:

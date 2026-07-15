@@ -10,7 +10,6 @@ import java.util.UUID;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import stirling.software.common.model.ApplicationProperties;
 import stirling.software.proprietary.model.UserLicenseSettings;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
-import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
 import stirling.software.proprietary.security.model.User;
 import stirling.software.proprietary.security.repository.UserLicenseSettingsRepository;
 import stirling.software.proprietary.security.service.UserService;
@@ -49,7 +46,6 @@ public class UserLicenseSettingsService {
     private final UserLicenseSettingsRepository settingsRepository;
     private final UserService userService;
     private final ApplicationProperties applicationProperties;
-    private final ObjectProvider<LicenseKeyChecker> licenseKeyChecker;
 
     /**
      * Gets the current user license settings, creating them if they don't exist.
@@ -306,36 +302,7 @@ public class UserLicenseSettingsService {
      * @return Maximum number of users allowed (Integer.MAX_VALUE for unlimited)
      */
     public int calculateMaxAllowedUsers() {
-        validateSettingsIntegrity();
-        UserLicenseSettings settings = getOrCreateSettings();
-
-        int grandfatheredLimit = settings.getGrandfatheredUserCount();
-        if (grandfatheredLimit == 0) {
-            // Fallback if not initialized yet - should not happen with validation
-            log.warn("Grandfathered limit is 0, using default: {}", DEFAULT_USER_LIMIT);
-            grandfatheredLimit = DEFAULT_USER_LIMIT;
-        }
-
-        // No license: use grandfathered limit
-        if (!hasPaidLicense()) {
-            log.debug("No license: using grandfathered limit of {}", grandfatheredLimit);
-            return grandfatheredLimit;
-        }
-
-        int licenseMaxUsers = settings.getLicenseMaxUsers();
-
-        // SERVER license (maxUsers=0): unlimited users
-        if (licenseMaxUsers == 0) {
-            log.debug("SERVER license: unlimited users allowed");
-            return Integer.MAX_VALUE;
-        }
-
-        // ENTERPRISE license (maxUsers>0): license seats only (replaces grandfathering)
-        log.debug(
-                "ENTERPRISE license: {} seats (grandfathered {} not added)",
-                licenseMaxUsers,
-                grandfatheredLimit);
-        return licenseMaxUsers;
+        return Integer.MAX_VALUE;
     }
 
     /**
@@ -352,25 +319,7 @@ public class UserLicenseSettingsService {
      * @return true if the user can use OAuth/SAML
      */
     public boolean isOAuthEligible(User user) {
-        String username = (user != null) ? user.getUsername() : "<new user>";
-        log.info("OAuth eligibility check for user: {}", username);
-
-        // Check license first - if paying, they're eligible (no need to check grandfathering)
-        boolean hasPaid = hasPaidLicense();
-        if (hasPaid) {
-            log.debug("User {} eligible for OAuth via paid license", username);
-            return true;
-        }
-
-        // No license - check if grandfathered (fallback for V1 users)
-        if (user != null && user.isOauthGrandfathered()) {
-            log.info("User {} eligible for OAuth via grandfathering (no paid license)", username);
-            return true;
-        }
-
-        // Not grandfathered and no license
-        log.info("User {} NOT eligible for OAuth: no paid license and not grandfathered", username);
-        return false;
+        return true;
     }
 
     /**
@@ -387,29 +336,7 @@ public class UserLicenseSettingsService {
      * @return true if the user can use SAML
      */
     public boolean isSamlEligible(User user) {
-        String username = (user != null) ? user.getUsername() : "<new user>";
-        log.info("SAML2 eligibility check for user: {}", username);
-
-        // Check license first - if paying, they're eligible (no need to check grandfathering)
-        boolean hasEnterprise = hasEnterpriseLicense();
-        if (hasEnterprise) {
-            log.debug("User {} eligible for SAML2 via ENTERPRISE license", username);
-            return true;
-        }
-
-        // No license - check if grandfathered (fallback for V1 users)
-        if (user != null && user.isOauthGrandfathered()) {
-            log.info(
-                    "User {} eligible for SAML2 via grandfathering (no ENTERPRISE license)",
-                    username);
-            return true;
-        }
-
-        // Not grandfathered and no license
-        log.info(
-                "User {} NOT eligible for SAML2: no ENTERPRISE license and not grandfathered",
-                username);
-        return false;
+        return true;
     }
 
     /**
@@ -419,9 +346,7 @@ public class UserLicenseSettingsService {
      * @return true if the addition would exceed the limit
      */
     public boolean wouldExceedLimit(int newUsersCount) {
-        long currentUserCount = userService.getTotalUsersCount();
-        int maxAllowed = calculateMaxAllowedUsers();
-        return (currentUserCount + newUsersCount) > maxAllowed;
+        return false;
     }
 
     /**
@@ -547,42 +472,10 @@ public class UserLicenseSettingsService {
     }
 
     private boolean hasPaidLicense() {
-        LicenseKeyChecker checker = licenseKeyChecker.getIfAvailable();
-        if (checker == null) {
-            return false;
-        }
-
-        License license = checker.getPremiumLicenseEnabledResult();
-        boolean hasPaid = (license == License.SERVER || license == License.ENTERPRISE);
-        log.info("License check result: type={}, requiresPaid=true, hasPaid={}", license, hasPaid);
-
-        return hasPaid;
+        return true;
     }
 
-    /**
-     * Checks if the system has an ENTERPRISE license. Used for enterprise-only features like SSO
-     * (OAuth/SAML).
-     *
-     * @return true if ENTERPRISE license is active
-     */
     private boolean hasEnterpriseLicense() {
-        LicenseKeyChecker checker = licenseKeyChecker.getIfAvailable();
-        if (checker == null) {
-            return false;
-        }
-
-        License license = checker.getPremiumLicenseEnabledResult();
-        log.info(
-                "License check result: type={}, requiresEnterprise=true, hasEnterprise={}",
-                license,
-                (license == License.ENTERPRISE));
-
-        if (license != License.ENTERPRISE) {
-            log.warn(
-                    "SAML2 requires ENTERPRISE license but found: {}. SAML2 login will be blocked.",
-                    license);
-        }
-
-        return license == License.ENTERPRISE;
+        return true;
     }
 }

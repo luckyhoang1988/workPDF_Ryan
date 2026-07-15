@@ -13,7 +13,6 @@ import AdminPrivacySection from "@app/components/shared/config/configSections/Ad
 import AdminDatabaseSection from "@app/components/shared/config/configSections/AdminDatabaseSection";
 import AdminAdvancedSection from "@app/components/shared/config/configSections/AdminAdvancedSection";
 import AdminLegalSection from "@app/components/shared/config/configSections/AdminLegalSection";
-import AdminPlanSection from "@app/components/shared/config/configSections/AdminPlanSection";
 import AdminFeaturesSection from "@app/components/shared/config/configSections/AdminFeaturesSection";
 import AdminEndpointsSection from "@app/components/shared/config/configSections/AdminEndpointsSection";
 import AdminMcpSection from "@app/components/shared/config/configSections/AdminMcpSection";
@@ -187,18 +186,10 @@ export const useConfigNavSections = (
       ],
     });
 
-    // Licensing & Analytics
+    // Analytics (audit, usage, visit stats)
     sections.push({
-      title: t("settings.licensingAnalytics.title", "Licensing & Analytics"),
+      title: t("settings.analytics.title", "Analytics"),
       items: [
-        {
-          key: "adminPlan",
-          label: t("settings.licensingAnalytics.plan", "Plan"),
-          icon: "star-rounded",
-          component: <AdminPlanSection />,
-          disabled: requiresLogin,
-          disabledTooltip: requiresLogin ? enableLoginTooltip : undefined,
-        },
         {
           key: "adminAudit",
           label: t("settings.licensingAnalytics.audit", "Audit"),

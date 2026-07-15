@@ -86,7 +86,7 @@ export const useConfigNavSections = (
     "people", // Workspace section
     "adminGeneral", // Configuration section
     "adminSecurity", // Security & Authentication section
-    "adminPlan", // Licensing & Analytics section
+    "adminAudit", // Analytics section
     "adminLegal", // Policies & Privacy section
   ]);
 

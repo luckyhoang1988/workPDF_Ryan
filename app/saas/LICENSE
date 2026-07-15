@@ -1,51 +1,21 @@
-RyanPDF User License
+MIT License
 
 Copyright (c) 2025 RyanPDF Inc.
 
-License Scope & Usage Rights
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Production use of the RyanPDF Software is only permitted with a valid RyanPDF User License.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-For purposes of this license, "the Software" refers to the RyanPDF application and any associated documentation files
-provided by RyanPDF Inc. You or your organization may not use the Software in production, at scale, or for business-critical
-processes unless you have agreed to, and remain in compliance with, the RyanPDF Subscription Terms of Service
-(https://www.stirlingpdf.com/terms) or another valid agreement with RyanPDF, and hold an active User License subscription
-covering the appropriate number of licensed users.
-
-Trial and Minimal Use
-
-You may use the Software without a paid subscription for the sole purposes of internal trial, evaluation, or minimal use, provided that:
-* Use is limited to the capabilities and restrictions defined by the Software itself;
-* You do not copy, distribute, sublicense, reverse-engineer, or use the Software in client-facing or commercial contexts.
-
-Continued use beyond this scope requires a valid RyanPDF User License.
-
-Modifications and Derivative Works
-
-You may modify the Software only for development or internal testing purposes. Any such modifications or derivative works:
-
-* May not be deployed in production environments without a valid User License;
-* May not be distributed or sublicensed;
-* Remain the intellectual property of RyanPDF and/or its licensors;
-* May only be used, copied, or exploited in accordance with the terms of a valid RyanPDF User License subscription.
-
-Prohibited Actions
-
-Unless explicitly permitted by a paid license or separate agreement, you may not:
-
-* Use the Software in production environments;
-* Copy, merge, distribute, sublicense, or sell the Software;
-* Remove or alter any licensing or copyright notices;
-* Circumvent access restrictions or licensing requirements.
-
-Third-Party Components
-
-The RyanPDF Software may include components subject to separate open source licenses. Such components remain governed by
-their original license terms as provided by their respective owners.
-
-Disclaimer
-
-THE SOFTWARE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -70,10 +70,7 @@ export function useServerExperience(): ServerExperienceValue {
   // Commented out the previous self-reported admin path to avoid elevating users.
   // const effectiveIsAdmin = configIsAdmin || (!loginEnabled && selfReportedAdmin);
   const effectiveIsAdmin = loginEnabled ? configIsAdmin : false;
-  const hasPaidLicense =
-    config?.license === "SERVER" ||
-    config?.license === "PRO" ||
-    config?.license === "ENTERPRISE";
+  const hasPaidLicense = true;
 
   const setSelfReportedAdmin = useCallback((value: boolean) => {
     setSelfReportedAdminState(value);

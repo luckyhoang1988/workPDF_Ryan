@@ -34,7 +34,9 @@ import stirling.software.proprietary.security.model.AuthenticationType;
 import stirling.software.proprietary.security.model.Authority;
 import stirling.software.proprietary.security.model.User;
 import stirling.software.proprietary.security.model.api.user.UsernameAndPassMfa;
+import stirling.software.proprietary.security.repository.PasswordResetTokenRepository;
 import stirling.software.proprietary.security.service.CustomUserDetailsService;
+import stirling.software.proprietary.security.service.EmailService;
 import stirling.software.proprietary.security.service.JwtServiceInterface;
 import stirling.software.proprietary.security.service.LoginAttemptService;
 import stirling.software.proprietary.security.service.MfaService;
@@ -63,6 +65,8 @@ class AuthControllerMoreTest {
     @Mock private RefreshRateLimitService refreshRateLimitService;
     @Mock private ResourceAccessService resourceAccessService;
     @Mock private TeamLeadLookup teamLeadLookup;
+    @Mock private PasswordResetTokenRepository passwordResetTokenRepository;
+    @Mock private EmailService emailService;
 
     @BeforeEach
     void setUp() {
@@ -87,7 +91,9 @@ class AuthControllerMoreTest {
                         applicationProperties,
                         new stirling.software.proprietary.service.AiUserDataService(null),
                         resourceAccessService,
-                        teamLeadLookup);
+                        teamLeadLookup,
+                        passwordResetTokenRepository,
+                        Optional.of(emailService));
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 

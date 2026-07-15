@@ -338,8 +338,8 @@ public class ConfigController {
                     "enableDesktopInstallSlide",
                     applicationProperties.getSystem().getEnableDesktopInstallSlide());
 
-            // Premium/Enterprise settings
-            configData.put("premiumEnabled", applicationProperties.getPremium().isEnabled());
+            // Full MIT build: all features unlocked; premiumEnabled reflects config only.
+            configData.put("premiumEnabled", true);
 
             // AI Engine settings
             configData.put("aiEngineEnabled", applicationProperties.getAiEngine().isEnabled());

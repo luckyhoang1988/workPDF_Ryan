@@ -18,42 +18,33 @@ public class EEAppConfig {
 
     private final ApplicationProperties applicationProperties;
 
-    private final LicenseKeyChecker licenseKeyChecker;
-
-    public EEAppConfig(
-            ApplicationProperties applicationProperties, LicenseKeyChecker licenseKeyChecker) {
+    public EEAppConfig(ApplicationProperties applicationProperties) {
         this.applicationProperties = applicationProperties;
-        this.licenseKeyChecker = licenseKeyChecker;
         migrateEnterpriseSettingsToPremium(this.applicationProperties);
     }
 
     @Profile("security & !saas")
     @Bean(name = "runningProOrHigher")
     public boolean runningProOrHigher() {
-        License license = licenseKeyChecker.getPremiumLicenseEnabledResult();
-        return license == License.SERVER || license == License.ENTERPRISE;
+        return true;
     }
 
     @Profile("security & !saas")
     @Bean(name = "license")
     public String licenseType() {
-        return licenseKeyChecker.getPremiumLicenseEnabledResult().name();
+        return License.ENTERPRISE.name();
     }
 
     @Profile("security & !saas")
     @Bean(name = "runningEE")
     public boolean runningEnterprise() {
-        return licenseKeyChecker.getPremiumLicenseEnabledResult() == License.ENTERPRISE;
+        return true;
     }
 
     @Profile("security & !saas")
     @Bean(name = "SSOAutoLogin")
     public boolean ssoAutoLogin() {
-        boolean enabled = applicationProperties.getPremium().getProFeatures().isSsoAutoLogin();
-        if (enabled) {
-            licenseKeyChecker.requireProOrEnterprise("premium.proFeatures.ssoAutoLogin=true");
-        }
-        return enabled;
+        return applicationProperties.getPremium().getProFeatures().isSsoAutoLogin();
     }
 
     // TODO: Remove post migration

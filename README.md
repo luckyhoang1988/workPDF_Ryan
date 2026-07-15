@@ -66,4 +66,4 @@ For adding translations, see the [Translation Guide](devGuide/HowToAddNewLanguag
 
 ## License
 
-RyanPDF is open-core. See [LICENSE](LICENSE) for details.
+RyanPDF is fully open source under the [MIT License](LICENSE).

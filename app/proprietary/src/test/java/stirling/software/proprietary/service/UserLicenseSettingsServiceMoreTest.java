@@ -18,12 +18,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
-import org.springframework.beans.factory.ObjectProvider;
 
 import stirling.software.common.model.ApplicationProperties;
 import stirling.software.proprietary.model.UserLicenseSettings;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
-import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
 import stirling.software.proprietary.security.repository.UserLicenseSettingsRepository;
 import stirling.software.proprietary.security.service.UserService;
 
@@ -38,8 +35,6 @@ class UserLicenseSettingsServiceMoreTest {
 
     @Mock private UserLicenseSettingsRepository settingsRepository;
     @Mock private UserService userService;
-    @Mock private LicenseKeyChecker licenseKeyChecker;
-    @Mock private ObjectProvider<LicenseKeyChecker> licenseKeyCheckerProvider;
 
     private ApplicationProperties applicationProperties;
     private UserLicenseSettingsService service;
@@ -52,15 +47,9 @@ class UserLicenseSettingsServiceMoreTest {
 
         when(settingsRepository.save(any(UserLicenseSettings.class)))
                 .thenAnswer(inv -> inv.getArgument(0));
-        when(licenseKeyCheckerProvider.getIfAvailable()).thenReturn(licenseKeyChecker);
-        when(licenseKeyChecker.getPremiumLicenseEnabledResult()).thenReturn(License.NORMAL);
-
         service =
                 new UserLicenseSettingsService(
-                        settingsRepository,
-                        userService,
-                        applicationProperties,
-                        licenseKeyCheckerProvider);
+                        settingsRepository, userService, applicationProperties);
     }
 
     // Saves a freshly initialized + locked settings row with a valid signature.
@@ -181,17 +170,17 @@ class UserLicenseSettingsServiceMoreTest {
     class UpdateLicenseMaxUsers {
 
         @Test
-        @DisplayName("no paid license keeps licenseMaxUsers at 0")
-        void noLicense_keepsZero() {
+        @DisplayName("syncs licenseMaxUsers from application properties")
+        void syncsMaxUsersFromProperties() {
+            applicationProperties.getPremium().setMaxUsers(15);
             UserLicenseSettings s = new UserLicenseSettings();
             s.setIntegritySalt("salt");
             s.setLicenseMaxUsers(0);
             when(settingsRepository.findSettings()).thenReturn(Optional.of(s));
-            when(licenseKeyChecker.getPremiumLicenseEnabledResult()).thenReturn(License.NORMAL);
 
             service.updateLicenseMaxUsers();
 
-            assertThat(s.getLicenseMaxUsers()).isZero();
+            assertThat(s.getLicenseMaxUsers()).isEqualTo(15);
         }
 
         @Test
@@ -202,7 +191,6 @@ class UserLicenseSettingsServiceMoreTest {
             s.setIntegritySalt("salt");
             s.setLicenseMaxUsers(0);
             when(settingsRepository.findSettings()).thenReturn(Optional.of(s));
-            when(licenseKeyChecker.getPremiumLicenseEnabledResult()).thenReturn(License.ENTERPRISE);
 
             service.updateLicenseMaxUsers();
 
@@ -217,12 +205,10 @@ class UserLicenseSettingsServiceMoreTest {
             s.setIntegritySalt("salt");
             s.setLicenseMaxUsers(8);
             when(settingsRepository.findSettings()).thenReturn(Optional.of(s));
-            when(licenseKeyChecker.getPremiumLicenseEnabledResult()).thenReturn(License.SERVER);
 
             service.updateLicenseMaxUsers();
 
             assertThat(s.getLicenseMaxUsers()).isEqualTo(8);
-            // save only happens once during getOrCreateSettings path is bypassed here; never saved
             verify(settingsRepository, never()).save(any(UserLicenseSettings.class));
         }
     }
@@ -292,47 +278,24 @@ class UserLicenseSettingsServiceMoreTest {
     class SlotCalculations {
 
         @Test
-        @DisplayName("wouldExceedLimit true when adding pushes over the cap")
-        void wouldExceedLimit_true() {
+        @DisplayName("wouldExceedLimit is always false in full MIT build")
+        void wouldExceedLimit_neverBlocks() {
             lockedSettings(5);
             when(userService.getTotalUsersCount()).thenReturn(5L);
 
-            boolean result = service.wouldExceedLimit(1);
-
-            assertThat(result).isTrue();
+            assertThat(service.wouldExceedLimit(1)).isFalse();
+            assertThat(service.wouldExceedLimit(1000)).isFalse();
         }
 
         @Test
-        @DisplayName("wouldExceedLimit false when within the cap")
-        void wouldExceedLimit_false() {
-            lockedSettings(10);
-            when(userService.getTotalUsersCount()).thenReturn(5L);
-
-            boolean result = service.wouldExceedLimit(2);
-
-            assertThat(result).isFalse();
-        }
-
-        @Test
-        @DisplayName("getAvailableUserSlots returns remaining capacity")
-        void availableSlots_remaining() {
+        @DisplayName("getAvailableUserSlots is effectively unlimited")
+        void availableSlots_unlimited() {
             lockedSettings(10);
             when(userService.getTotalUsersCount()).thenReturn(4L);
 
             long slots = service.getAvailableUserSlots();
 
-            assertThat(slots).isEqualTo(6);
-        }
-
-        @Test
-        @DisplayName("getAvailableUserSlots never returns negative")
-        void availableSlots_clampedToZero() {
-            lockedSettings(5);
-            when(userService.getTotalUsersCount()).thenReturn(20L);
-
-            long slots = service.getAvailableUserSlots();
-
-            assertThat(slots).isZero();
+            assertThat(slots).isGreaterThan(1_000_000L);
         }
     }
 

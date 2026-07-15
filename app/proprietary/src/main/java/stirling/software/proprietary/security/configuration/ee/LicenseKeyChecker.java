@@ -69,24 +69,9 @@ public class LicenseKeyChecker {
     }
 
     private void evaluateLicense() {
-        if (!applicationProperties.getPremium().isEnabled()) {
-            premiumEnabledResult = License.NORMAL;
-        } else {
-            String licenseKey = getLicenseKeyContent(applicationProperties.getPremium().getKey());
-            if (licenseKey != null) {
-                premiumEnabledResult = licenseService.verifyLicense(licenseKey);
-                if (License.ENTERPRISE == premiumEnabledResult) {
-                    log.info("License key is Enterprise.");
-                } else if (License.SERVER == premiumEnabledResult) {
-                    log.info("License key is Server.");
-                } else {
-                    log.info("License key is invalid, defaulting to non pro license.");
-                }
-            } else {
-                log.error("Failed to obtain license key content.");
-                premiumEnabledResult = License.NORMAL;
-            }
-        }
+        // Full MIT build: no license key required; all features unlocked.
+        premiumEnabledResult = License.ENTERPRISE;
+        log.debug("Full MIT build: premium features unlocked without license key.");
     }
 
     private void synchronizeLicenseSettings() {
@@ -136,15 +121,8 @@ public class LicenseKeyChecker {
         return premiumEnabledResult;
     }
 
-    /**
-     * Throws {@link IllegalStateException} if the current license is not Pro or Enterprise. Used by
-     * boot-time gates to fail fast when an operator enables a premium-only setting without a valid
-     * license. {@code configuredAs} is the human-readable property path (e.g. {@code
-     * "storage.provider=s3"}) and appears in the exception message.
-     */
+    /** No-op in full MIT build — premium features are not license-gated. */
     public void requireProOrEnterprise(String configuredAs) {
-        if (premiumEnabledResult != License.SERVER && premiumEnabledResult != License.ENTERPRISE) {
-            throw new IllegalStateException(configuredAs + " requires a Pro or Enterprise license");
-        }
+        // intentionally empty
     }
 }
