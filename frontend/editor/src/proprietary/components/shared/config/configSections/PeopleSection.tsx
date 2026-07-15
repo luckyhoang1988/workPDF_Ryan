@@ -34,7 +34,6 @@ import InviteMembersModal from "@app/components/shared/InviteMembersModal";
 import { useLoginRequired } from "@app/hooks/useLoginRequired";
 import LoginRequiredBanner from "@app/components/shared/config/LoginRequiredBanner";
 import { useNavigate } from "react-router-dom";
-import UpdateSeatsButton from "@app/components/shared/UpdateSeatsButton";
 import { useLicense } from "@app/contexts/LicenseContext";
 import ChangeUserPasswordModal from "@app/components/shared/ChangeUserPasswordModal";
 import { useAuth } from "@app/auth/UseSession";
@@ -740,15 +739,6 @@ export default function PeopleSection() {
             </Badge>
           )}
 
-          {/* Enterprise Seat Management Button */}
-          {globalLicenseInfo?.licenseType === "ENTERPRISE" && (
-            <>
-              <Text size="sm" c="dimmed" span>
-                •
-              </Text>
-              <UpdateSeatsButton size="sm" onSuccess={fetchData} />
-            </>
-          )}
         </Group>
       )}
 

@@ -92,7 +92,8 @@ function prerenderOgPlugin(): PluginOption {
   return {
     name: "prerender-og",
     apply: "build" as const,
-    async closeBundle() {
+    enforce: "post",
+    async writeBundle() {
       const { prerenderOg } = await import("./scripts/og-prerender.mjs");
       // RyanPDF's only production domain - used for canonical/sitemap/OG absolute
       // URLs when no override is given, so a bare `docker build` still produces
