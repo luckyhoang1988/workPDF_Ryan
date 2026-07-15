@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigationState } from "@app/contexts/NavigationContext";
 import { useToolNavigation } from "@app/hooks/useToolNavigation";
 import { useToolWorkflow } from "@app/contexts/ToolWorkflowContext";
@@ -19,35 +20,48 @@ export interface SuggestedTool {
   onClick: (e: React.MouseEvent) => void;
 }
 
-const ALL_SUGGESTED_TOOLS: Omit<SuggestedTool, "href" | "onClick">[] = [
+interface SuggestedToolDefinition {
+  id: ToolId;
+  titleKey: string;
+  titleFallback: string;
+  icon: React.ComponentType<any>;
+}
+
+const ALL_SUGGESTED_TOOLS: SuggestedToolDefinition[] = [
   {
     id: "compress",
-    title: "Compress",
+    titleKey: "home.compress.title",
+    titleFallback: "Compress",
     icon: CompressIcon,
   },
   {
     id: "convert",
-    title: "Convert",
+    titleKey: "home.convert.title",
+    titleFallback: "Convert",
     icon: SwapHorizIcon,
   },
   {
     id: "sanitize",
-    title: "Sanitize",
+    titleKey: "home.sanitize.title",
+    titleFallback: "Sanitize",
     icon: CleaningServicesIcon,
   },
   {
     id: "split",
-    title: "Split",
+    titleKey: "home.split.title",
+    titleFallback: "Split",
     icon: CropIcon,
   },
   {
     id: "ocr",
-    title: "OCR",
+    titleKey: "home.ocr.title",
+    titleFallback: "OCR",
     icon: TextFieldsIcon,
   },
 ];
 
 export function useSuggestedTools(): SuggestedTool[] {
+  const { t } = useTranslation();
   const { selectedTool } = useNavigationState();
   const { getToolNavigation } = useToolNavigation();
   const { getSelectedTool } = useToolWorkflow();
@@ -56,7 +70,11 @@ export function useSuggestedTools(): SuggestedTool[] {
     // Filter out the current tool
     const filteredTools = ALL_SUGGESTED_TOOLS.filter(
       (tool) => tool.id !== selectedTool,
-    );
+    ).map((tool) => ({
+      id: tool.id,
+      icon: tool.icon,
+      title: t(tool.titleKey, tool.titleFallback),
+    }));
 
     // Add navigation props to each tool
     return filteredTools.map((tool) => {
@@ -78,5 +96,5 @@ export function useSuggestedTools(): SuggestedTool[] {
         ...navProps,
       };
     });
-  }, [selectedTool, getToolNavigation, getSelectedTool]);
+  }, [selectedTool, getToolNavigation, getSelectedTool, t]);
 }
