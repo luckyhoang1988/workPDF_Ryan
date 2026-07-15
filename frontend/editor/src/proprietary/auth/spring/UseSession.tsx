@@ -3,6 +3,7 @@ import { springAuth } from "@app/auth/spring/springAuthClient";
 import { getSpringAuthConfig } from "@app/auth/config";
 import { isAdminRole } from "@app/auth/roles";
 import { AuthContext } from "@app/auth/context";
+import { enforceLocalFileOwnership } from "@app/services/fileOwnershipGuard";
 import {
   defaultTranslate,
   type AuthContextValue,
@@ -72,6 +73,10 @@ export function SpringAuthProvider({
       timestamp: new Date().toISOString(),
     });
   }, [loading, session, error]);
+
+  useEffect(() => {
+    void enforceLocalFileOwnership(session?.user?.id ?? null);
+  }, [session?.user?.id]);
 
   const refreshSession = useCallback(async () => {
     try {

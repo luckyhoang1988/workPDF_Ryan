@@ -16,6 +16,7 @@ import type {
 import { getSupabaseClient } from "@app/auth/supabase/supabaseClient";
 import { AuthContext } from "@app/auth/context";
 import { isAdminRole } from "@app/auth/roles";
+import { enforceLocalFileOwnership } from "@app/services/fileOwnershipGuard";
 import {
   defaultTranslate,
   type AuthContextValue,
@@ -140,6 +141,10 @@ export function SupabaseAuthProvider({
       subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    void enforceLocalFileOwnership(session?.user?.id ?? null);
+  }, [session?.user?.id]);
 
   // Enrich with backend truth: grant-based portal access and team leadership
   // come from /api/v1/auth/me, not Supabase claims. Best-effort; the

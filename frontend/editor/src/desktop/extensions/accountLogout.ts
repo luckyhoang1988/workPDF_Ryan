@@ -1,4 +1,5 @@
 import { connectionModeService } from "@app/services/connectionModeService";
+import { clearLocalFileOwnership } from "@app/services/fileOwnershipGuard";
 
 type SignOutFn = () => Promise<void>;
 
@@ -16,6 +17,9 @@ export function useAccountLogout() {
     redirectToLogin,
   }: AccountLogoutDeps): Promise<void> => {
     try {
+      // Shared-machine hygiene: don't leave this user's local "My Files"
+      // cache visible to the next person who signs in on this device.
+      await clearLocalFileOwnership();
       await signOut();
 
       const currentConfig = await connectionModeService.getCurrentConfig();

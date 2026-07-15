@@ -1,3 +1,5 @@
+import { clearLocalFileOwnership } from "@app/services/fileOwnershipGuard";
+
 type SignOutFn = () => Promise<void>;
 
 interface AccountLogoutDeps {
@@ -23,6 +25,9 @@ export function useAccountLogout() {
       }
       await signOut();
     } finally {
+      // Shared-machine hygiene: don't leave this user's local "My Files"
+      // cache visible to the next person who signs in on this device.
+      await clearLocalFileOwnership();
       redirectToLogin();
     }
   };
