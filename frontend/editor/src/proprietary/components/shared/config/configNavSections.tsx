@@ -19,6 +19,7 @@ import AdminEndpointsSection from "@app/components/shared/config/configSections/
 import AdminMcpSection from "@app/components/shared/config/configSections/AdminMcpSection";
 import AdminAuditSection from "@app/components/shared/config/configSections/AdminAuditSection";
 import AdminUsageSection from "@app/components/shared/config/configSections/AdminUsageSection";
+import VisitStatsSection from "@core/components/shared/config/configSections/VisitStatsSection";
 import AdminStorageSharingSection from "@app/components/shared/config/configSections/AdminStorageSharingSection";
 import ApiKeys from "@app/components/shared/config/configSections/ApiKeys";
 import AccountSection from "@app/components/shared/config/configSections/AccountSection";
@@ -217,6 +218,14 @@ export const useConfigNavSections = (
           icon: "analytics-rounded",
           component: <AdminUsageSection />,
           // Same demo-preview story as adminAudit above.
+          disabled: requiresLogin,
+          disabledTooltip: requiresLogin ? enableLoginTooltip : undefined,
+        },
+        {
+          key: "visitStats",
+          label: t("settings.licensingAnalytics.visitStats", "Visit Statistics"),
+          icon: "bar-chart",
+          component: <VisitStatsSection />,
           disabled: requiresLogin,
           disabledTooltip: requiresLogin ? enableLoginTooltip : undefined,
         },

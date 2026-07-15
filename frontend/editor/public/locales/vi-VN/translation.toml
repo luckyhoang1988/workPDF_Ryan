@@ -9123,6 +9123,7 @@ audit = "Kiểm tra"
 plan = "Gói"
 title = "Giấy phép & Phân tích"
 usageAnalytics = "Phân tích sử dụng"
+visitStats = "Thống kê truy cập"
 
 [settings.planBilling]
 currentPlan = "Gói hiện tại"
@@ -10497,6 +10498,22 @@ closeSidebar = "Đóng thanh bên hình thu nhỏ"
 [viewPdf]
 tags = "xem,đọc,chú thích,văn bản,hình ảnh"
 title = "Xem/Chỉnh sửa PDF"
+
+[visitStats]
+dailyTitle = "Lượt truy cập theo ngày"
+description = "Số lượt truy cập trong 30 ngày qua, theo từng trang/công cụ. Chỉ admin xem được."
+error = "Lỗi khi tải thống kê truy cập"
+noData = "Chưa có dữ liệu"
+refresh = "Làm mới"
+tableTitle = "Trang/Công cụ được truy cập nhiều nhất"
+title = "Thống kê truy cập"
+totalEndpoints = "Số trang/công cụ khác nhau"
+totalVisits = "Tổng lượt truy cập"
+
+[visitStats.table]
+endpoint = "Trang/Công cụ"
+share = "Tỉ lệ"
+visits = "Lượt truy cập"
 
 [warning]
 tooltipTitle = "Cảnh báo"
