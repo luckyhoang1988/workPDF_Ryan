@@ -51,11 +51,6 @@ const SETTINGS_SEARCH_TRANSLATION_PREFIXES: Partial<Record<string, string[]>> =
       "settings.securityAuth",
       "settings.connection",
     ],
-    adminPlan: [
-      "settings.planBilling",
-      "admin.settings.premium",
-      "settings.licensingAnalytics",
-    ],
     adminAudit: ["settings.licensingAnalytics"],
     adminUsage: ["settings.licensingAnalytics"],
     adminLegal: ["admin.settings.legal"],

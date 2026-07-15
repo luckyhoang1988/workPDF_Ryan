@@ -464,18 +464,6 @@ export default function AdminDatabaseSection() {
                 )}
               </Text>
             </div>
-            <Badge
-              color="grape"
-              size="lg"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate("/settings/adminPlan")}
-              title={t(
-                "admin.settings.badge.clickToUpgrade",
-                "Click to view plan details",
-              )}
-            >
-              ENTERPRISE
-            </Badge>
           </Group>
         </div>
 

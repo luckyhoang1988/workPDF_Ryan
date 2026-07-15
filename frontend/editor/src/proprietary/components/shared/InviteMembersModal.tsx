@@ -338,7 +338,6 @@ export default function InviteMembersModal({
 
   const handleGoToPlan = () => {
     handleClose();
-    navigate("/settings/adminPlan");
   };
 
   const handlePrimaryAction = () => {

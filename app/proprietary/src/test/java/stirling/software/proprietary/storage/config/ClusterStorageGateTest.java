@@ -13,8 +13,8 @@ import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
 
 import stirling.software.common.model.ApplicationProperties;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
 import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
+import stirling.software.proprietary.security.configuration.ee.PremiumLicenseTier;
 
 class ClusterStorageGateTest {
 
@@ -106,7 +106,8 @@ class ClusterStorageGateTest {
     void clusterEnabled_nullStorageObject_passesProviderCheck_butArtifactStoreStillEvaluated() {
         ApplicationProperties props = new ApplicationProperties();
         props.setStorage(null);
-        ClusterStorageGate gate = new ClusterStorageGate(props, mockLicenseChecker(License.SERVER));
+        ClusterStorageGate gate =
+                new ClusterStorageGate(props, mockLicenseChecker(PremiumLicenseTier.SERVER));
         setClusterEnabled(gate, true);
         setClusterArtifactStore(gate, "s3");
         assertThatCode(gate::validate).doesNotThrowAnyException();
@@ -116,7 +117,7 @@ class ClusterStorageGateTest {
 
     @Test
     void storageProviderS3_withoutProLicense_throws() {
-        ClusterStorageGate gate = newGate(false, true, "s3", "local", License.NORMAL);
+        ClusterStorageGate gate = newGate(false, true, "s3", "local", PremiumLicenseTier.NORMAL);
         assertThatThrownBy(gate::validate)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("storage.provider=s3 requires a Pro or Enterprise license");
@@ -124,7 +125,8 @@ class ClusterStorageGateTest {
 
     @Test
     void storageProviderDatabase_withoutProLicense_throws() {
-        ClusterStorageGate gate = newGate(false, true, "database", "local", License.NORMAL);
+        ClusterStorageGate gate =
+                newGate(false, true, "database", "local", PremiumLicenseTier.NORMAL);
         assertThatThrownBy(gate::validate)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining(
@@ -133,25 +135,27 @@ class ClusterStorageGateTest {
 
     @Test
     void storageProviderS3_withServerLicense_passes() {
-        ClusterStorageGate gate = newGate(false, true, "s3", "local", License.SERVER);
+        ClusterStorageGate gate = newGate(false, true, "s3", "local", PremiumLicenseTier.SERVER);
         assertThatCode(gate::validate).doesNotThrowAnyException();
     }
 
     @Test
     void storageProviderS3_withEnterpriseLicense_passes() {
-        ClusterStorageGate gate = newGate(false, true, "s3", "local", License.ENTERPRISE);
+        ClusterStorageGate gate =
+                newGate(false, true, "s3", "local", PremiumLicenseTier.ENTERPRISE);
         assertThatCode(gate::validate).doesNotThrowAnyException();
     }
 
     @Test
     void storageProviderDatabase_withServerLicense_passes() {
-        ClusterStorageGate gate = newGate(false, true, "database", "local", License.SERVER);
+        ClusterStorageGate gate =
+                newGate(false, true, "database", "local", PremiumLicenseTier.SERVER);
         assertThatCode(gate::validate).doesNotThrowAnyException();
     }
 
     @Test
     void clusterArtifactStoreS3_withoutProLicense_throws() {
-        ClusterStorageGate gate = newGate(false, false, "local", "s3", License.NORMAL);
+        ClusterStorageGate gate = newGate(false, false, "local", "s3", PremiumLicenseTier.NORMAL);
         assertThatThrownBy(gate::validate)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining(
@@ -160,19 +164,19 @@ class ClusterStorageGateTest {
 
     @Test
     void clusterArtifactStoreS3_withServerLicense_passes() {
-        ClusterStorageGate gate = newGate(false, false, "local", "s3", License.SERVER);
+        ClusterStorageGate gate = newGate(false, false, "local", "s3", PremiumLicenseTier.SERVER);
         assertThatCode(gate::validate).doesNotThrowAnyException();
     }
 
     @Test
     void localOnly_normalLicense_passes_licenseNotChecked() {
-        ClusterStorageGate gate = newGate(false, true, "local", "local", License.NORMAL);
+        ClusterStorageGate gate = newGate(false, true, "local", "local", PremiumLicenseTier.NORMAL);
         assertThatCode(gate::validate).doesNotThrowAnyException();
     }
 
     @Test
     void storageDisabled_butArtifactStoreS3_withoutLicense_stillThrows() {
-        ClusterStorageGate gate = newGate(false, false, "local", "s3", License.NORMAL);
+        ClusterStorageGate gate = newGate(false, false, "local", "s3", PremiumLicenseTier.NORMAL);
         assertThatThrownBy(gate::validate)
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("cluster.artifactStore=s3");
@@ -187,7 +191,11 @@ class ClusterStorageGateTest {
         // rules independently of license) continue to pass. License-specific tests below build
         // gates with explicit license tiers.
         return newGate(
-                clusterEnabled, storageEnabled, provider, clusterArtifactStore, License.SERVER);
+                clusterEnabled,
+                storageEnabled,
+                provider,
+                clusterArtifactStore,
+                PremiumLicenseTier.SERVER);
     }
 
     private static ClusterStorageGate newGate(
@@ -195,7 +203,7 @@ class ClusterStorageGateTest {
             boolean storageEnabled,
             String provider,
             String clusterArtifactStore,
-            License license) {
+            PremiumLicenseTier license) {
         ApplicationProperties props = new ApplicationProperties();
         ApplicationProperties.Storage storage = new ApplicationProperties.Storage();
         storage.setEnabled(storageEnabled);
@@ -208,10 +216,10 @@ class ClusterStorageGateTest {
         return gate;
     }
 
-    private static LicenseKeyChecker mockLicenseChecker(License license) {
+    private static LicenseKeyChecker mockLicenseChecker(PremiumLicenseTier license) {
         LicenseKeyChecker checker = mock(LicenseKeyChecker.class);
         when(checker.getPremiumLicenseEnabledResult()).thenReturn(license);
-        if (license == License.SERVER || license == License.ENTERPRISE) {
+        if (license == PremiumLicenseTier.SERVER || license == PremiumLicenseTier.ENTERPRISE) {
             doNothing().when(checker).requireProOrEnterprise(anyString());
         } else {
             // Mirror real LicenseKeyChecker.requireProOrEnterprise so message assertions match.

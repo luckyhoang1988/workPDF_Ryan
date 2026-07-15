@@ -29,8 +29,8 @@ import lombok.extern.slf4j.Slf4j;
 import stirling.software.common.configuration.InstallationPathConfig;
 import stirling.software.common.model.ApplicationProperties;
 import stirling.software.common.service.ServerCertificateServiceInterface;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
 import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
+import stirling.software.proprietary.security.configuration.ee.PremiumLicenseTier;
 
 @Service
 @Slf4j
@@ -67,8 +67,8 @@ public class ServerCertificateService implements ServerCertificateServiceInterfa
     }
 
     private boolean hasProOrEnterpriseAccess() {
-        License license = licenseKeyChecker.getPremiumLicenseEnabledResult();
-        return license == License.SERVER || license == License.ENTERPRISE;
+        PremiumLicenseTier license = licenseKeyChecker.getPremiumLicenseEnabledResult();
+        return license == PremiumLicenseTier.SERVER || license == PremiumLicenseTier.ENTERPRISE;
     }
 
     public boolean isEnabled() {

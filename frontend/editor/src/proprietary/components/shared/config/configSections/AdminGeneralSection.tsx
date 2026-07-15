@@ -923,18 +923,6 @@ export default function AdminGeneralSection() {
                   "Custom Metadata",
                 )}
               </Text>
-              <Badge
-                color="grape"
-                size="sm"
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate("/settings/adminPlan")}
-                title={t(
-                  "admin.settings.badge.clickToUpgrade",
-                  "Click to view plan details",
-                )}
-              >
-                PRO
-              </Badge>
             </Group>
 
             <div

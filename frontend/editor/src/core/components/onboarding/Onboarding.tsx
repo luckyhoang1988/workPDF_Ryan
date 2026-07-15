@@ -192,7 +192,6 @@ export default function Onboarding() {
           break;
         case "see-plans":
           actions.complete();
-          navigate("/settings/adminPlan");
           break;
         case "enable-analytics":
           await handleAnalyticsChoice(true);
@@ -466,12 +465,7 @@ export default function Onboarding() {
         }}
         onSkip={closeLicenseSlide}
         onAction={(action) => {
-          if (action === "see-plans") {
-            closeLicenseSlide();
-            navigate("/settings/adminPlan");
-          } else {
-            closeLicenseSlide();
-          }
+          closeLicenseSlide();
         }}
       />
     );

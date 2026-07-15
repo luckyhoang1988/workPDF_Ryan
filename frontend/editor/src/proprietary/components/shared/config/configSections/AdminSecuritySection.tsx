@@ -744,18 +744,6 @@ export default function AdminSecuritySection() {
               <Text fw={600} size="sm">
                 {t("admin.settings.security.audit.label", "Audit Logging")}
               </Text>
-              <Badge
-                color="grape"
-                size="sm"
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate("/settings/adminPlan")}
-                title={t(
-                  "admin.settings.badge.clickToUpgrade",
-                  "Click to view plan details",
-                )}
-              >
-                ENTERPRISE
-              </Badge>
             </Group>
 
             <div

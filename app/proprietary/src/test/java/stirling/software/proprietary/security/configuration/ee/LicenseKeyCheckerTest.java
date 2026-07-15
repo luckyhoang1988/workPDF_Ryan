@@ -9,13 +9,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import stirling.software.common.model.ApplicationProperties;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
 import stirling.software.proprietary.service.UserLicenseSettingsService;
 
 @ExtendWith(MockitoExtension.class)
 class LicenseKeyCheckerTest {
 
-    @Mock private KeygenLicenseVerifier verifier;
     @Mock private UserLicenseSettingsService userLicenseSettingsService;
 
     @Test
@@ -23,18 +21,16 @@ class LicenseKeyCheckerTest {
         ApplicationProperties props = new ApplicationProperties();
         props.getPremium().setEnabled(false);
 
-        LicenseKeyChecker checker =
-                new LicenseKeyChecker(verifier, props, userLicenseSettingsService);
+        LicenseKeyChecker checker = new LicenseKeyChecker(props, userLicenseSettingsService);
         checker.init();
 
-        assertEquals(License.ENTERPRISE, checker.getPremiumLicenseEnabledResult());
+        assertEquals(PremiumLicenseTier.ENTERPRISE, checker.getPremiumLicenseEnabledResult());
     }
 
     @Test
     void requireProOrEnterprise_isNoOpInFullMitBuild() {
         ApplicationProperties props = new ApplicationProperties();
-        LicenseKeyChecker checker =
-                new LicenseKeyChecker(verifier, props, userLicenseSettingsService);
+        LicenseKeyChecker checker = new LicenseKeyChecker(props, userLicenseSettingsService);
         checker.init();
 
         assertThatCode(() -> checker.requireProOrEnterprise("storage.provider=s3"))

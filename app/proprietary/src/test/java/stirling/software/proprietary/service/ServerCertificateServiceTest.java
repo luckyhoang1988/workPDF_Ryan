@@ -26,8 +26,8 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import stirling.software.common.configuration.InstallationPathConfig;
 import stirling.software.common.model.ApplicationProperties;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
 import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
+import stirling.software.proprietary.security.configuration.ee.PremiumLicenseTier;
 
 /**
  * Tests for {@link ServerCertificateService}. Uses a {@link TempDir} for the keystore location
@@ -67,13 +67,13 @@ class ServerCertificateServiceTest {
     private void grantProLicense() {
         lenient()
                 .when(licenseKeyChecker.getPremiumLicenseEnabledResult())
-                .thenReturn(License.SERVER);
+                .thenReturn(PremiumLicenseTier.SERVER);
     }
 
     private void denyLicense() {
         lenient()
                 .when(licenseKeyChecker.getPremiumLicenseEnabledResult())
-                .thenReturn(License.NORMAL);
+                .thenReturn(PremiumLicenseTier.NORMAL);
     }
 
     // -------------------------------------------------------------------------
@@ -91,7 +91,8 @@ class ServerCertificateServiceTest {
         @Test
         @DisplayName("true when feature flag on and license is ENTERPRISE")
         void enabledWithEnterpriseLicense() {
-            when(licenseKeyChecker.getPremiumLicenseEnabledResult()).thenReturn(License.ENTERPRISE);
+            when(licenseKeyChecker.getPremiumLicenseEnabledResult())
+                    .thenReturn(PremiumLicenseTier.ENTERPRISE);
             assertThat(service.isEnabled()).isTrue();
         }
 

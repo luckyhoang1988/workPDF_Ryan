@@ -1,20 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { Button, Card } from "@app/ui";
-import { useView } from "@portal/contexts/ViewContext";
+import { Card } from "@app/ui";
 
 interface Props {
   /** Render without the Card wrapper, to embed inside another card's column. */
   bare?: boolean;
 }
 
-/**
- * Volume-discount / Enterprise upsell, shared by the free and subscribed billing
- * views. The CTA opens the procurement journey (/procurement auto-opens the quote
- * builder in the takeover modal).
- */
+/** Enterprise upsell copy without a procurement/checkout CTA. */
 export function EnterpriseUpsell({ bare = false }: Props) {
   const { t } = useTranslation();
-  const { setActiveView } = useView();
   const body = (
     <>
       <span className="portal-billing__eyebrow">
@@ -35,9 +29,6 @@ export function EnterpriseUpsell({ bare = false }: Props) {
             )}
           </p>
         </div>
-        <Button size="sm" onClick={() => setActiveView("procurement")}>
-          {t("portal.billing.enterpriseUpsell.cta", "Explore Enterprise")}
-        </Button>
       </div>
     </>
   );

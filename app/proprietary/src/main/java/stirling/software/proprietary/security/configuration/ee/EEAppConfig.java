@@ -1,6 +1,6 @@
 package stirling.software.proprietary.security.configuration.ee;
 
-import static stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
+import static stirling.software.proprietary.security.configuration.ee.PremiumLicenseTier.ENTERPRISE;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +32,7 @@ public class EEAppConfig {
     @Profile("security & !saas")
     @Bean(name = "license")
     public String licenseType() {
-        return License.ENTERPRISE.name();
+        return ENTERPRISE.name();
     }
 
     @Profile("security & !saas")

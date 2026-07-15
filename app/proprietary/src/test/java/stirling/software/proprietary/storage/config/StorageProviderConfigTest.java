@@ -12,8 +12,8 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 
 import stirling.software.common.model.ApplicationProperties;
-import stirling.software.proprietary.security.configuration.ee.KeygenLicenseVerifier.License;
 import stirling.software.proprietary.security.configuration.ee.LicenseKeyChecker;
+import stirling.software.proprietary.security.configuration.ee.PremiumLicenseTier;
 import stirling.software.proprietary.storage.provider.LocalStorageProvider;
 import stirling.software.proprietary.storage.provider.StorageProvider;
 import stirling.software.proprietary.storage.repository.StoredFileBlobRepository;
@@ -27,7 +27,7 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_local_normalLicense_buildsLocalProviderWithoutLicenseCheck() {
-        StorageProviderConfig cfg = newConfig("local", License.NORMAL);
+        StorageProviderConfig cfg = newConfig("local", PremiumLicenseTier.NORMAL);
 
         StorageProvider provider = cfg.storageProvider();
         assertThat(provider).isInstanceOf(LocalStorageProvider.class);
@@ -35,7 +35,7 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_s3_normalLicense_throwsBeforeBuildingClient() {
-        StorageProviderConfig cfg = newConfig("s3", License.NORMAL);
+        StorageProviderConfig cfg = newConfig("s3", PremiumLicenseTier.NORMAL);
 
         // License check must throw BEFORE S3Clients.build tries to validate endpoint / bucket.
         // Otherwise an empty config would surface as a confusing "bucket must be set" error.
@@ -46,7 +46,7 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_database_normalLicense_throws() {
-        StorageProviderConfig cfg = newConfig("database", License.NORMAL);
+        StorageProviderConfig cfg = newConfig("database", PremiumLicenseTier.NORMAL);
 
         assertThatThrownBy(cfg::storageProvider)
                 .isInstanceOf(IllegalStateException.class)
@@ -56,13 +56,13 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_database_serverLicense_buildsDatabaseProvider() {
-        StorageProviderConfig cfg = newConfig("database", License.SERVER);
+        StorageProviderConfig cfg = newConfig("database", PremiumLicenseTier.SERVER);
         assertThatCode(cfg::storageProvider).doesNotThrowAnyException();
     }
 
     @Test
     void provider_s3_serverLicense_passesLicenseCheck_thenFailsOnEmptyConfig() {
-        StorageProviderConfig cfg = newConfig("s3", License.SERVER);
+        StorageProviderConfig cfg = newConfig("s3", PremiumLicenseTier.SERVER);
 
         // Valid license, but no bucket/endpoint configured - so we expect a CONFIG error,
         // not a license error. The error message must not mention the license.
@@ -73,7 +73,7 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_s3_enterpriseLicense_passesLicenseCheck_thenFailsOnEmptyConfig() {
-        StorageProviderConfig cfg = newConfig("s3", License.ENTERPRISE);
+        StorageProviderConfig cfg = newConfig("s3", PremiumLicenseTier.ENTERPRISE);
 
         assertThatThrownBy(cfg::storageProvider)
                 .isInstanceOf(IllegalStateException.class)
@@ -82,7 +82,7 @@ class StorageProviderConfigTest {
 
     @Test
     void provider_unknown_normalLicense_throwsUnsupportedProvider_notLicense() {
-        StorageProviderConfig cfg = newConfig("magic", License.NORMAL);
+        StorageProviderConfig cfg = newConfig("magic", PremiumLicenseTier.NORMAL);
 
         assertThatThrownBy(cfg::storageProvider)
                 .isInstanceOf(IllegalStateException.class)
@@ -90,7 +90,7 @@ class StorageProviderConfigTest {
                 .hasMessageNotContaining("license");
     }
 
-    private static StorageProviderConfig newConfig(String provider, License license) {
+    private static StorageProviderConfig newConfig(String provider, PremiumLicenseTier license) {
         ApplicationProperties props = new ApplicationProperties();
         props.getStorage().setProvider(provider);
         props.getStorage()
@@ -98,7 +98,7 @@ class StorageProviderConfigTest {
         StoredFileBlobRepository repo = mock(StoredFileBlobRepository.class);
         LicenseKeyChecker checker = mock(LicenseKeyChecker.class);
         when(checker.getPremiumLicenseEnabledResult()).thenReturn(license);
-        if (license == License.SERVER || license == License.ENTERPRISE) {
+        if (license == PremiumLicenseTier.SERVER || license == PremiumLicenseTier.ENTERPRISE) {
             doNothing().when(checker).requireProOrEnterprise(anyString());
         } else {
             // Mirror real LicenseKeyChecker.requireProOrEnterprise so message assertions match.

@@ -296,10 +296,7 @@ const AppConfigModalInner: React.FC<AppConfigModalProps> = ({
                       ? colors.navItemActive
                       : colors.navItem;
                     const iconSize = isMobile ? 28 : 18;
-                    const showPlanWarning =
-                      item.key === "adminPlan" &&
-                      licenseAlert.active &&
-                      licenseAlert.audience === "admin";
+                    const showPlanWarning = false;
 
                     const navItemContent = (
                       <div

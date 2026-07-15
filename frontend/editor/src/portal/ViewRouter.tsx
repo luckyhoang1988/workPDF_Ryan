@@ -12,7 +12,6 @@ import { EditorAdmin } from "@portal/views/EditorAdmin";
 import { Infrastructure } from "@portal/views/Infrastructure";
 import { PortalBillingGate } from "@portal/components/billing/PortalBillingGate";
 import { DeveloperDocs } from "@portal/views/DeveloperDocs";
-import { Procurement } from "@portal/views/Procurement";
 import { VIEW_PATHS, toPortalPath } from "@portal/contexts/ViewContext";
 
 // The portal mounts as a route-set under /processor/* in the editor app, so these
@@ -49,7 +48,6 @@ export function ViewRouter() {
         element={<Infrastructure />}
       />
       <Route path={rel(VIEW_PATHS.usage)} element={<PortalBillingGate />} />
-      <Route path={rel(VIEW_PATHS.procurement)} element={<Procurement />} />
       <Route path={rel(VIEW_PATHS.docs)} element={<DeveloperDocs />} />
       {/* Account-link is now a Settings panel; redirect legacy bookmarks home. */}
       <Route

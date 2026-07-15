@@ -84,7 +84,6 @@ export default function PeopleSection() {
       return;
     }
     if (hasNoSlots) {
-      navigate("/settings/adminPlan");
       return;
     }
     setInviteModalOpened(true);
@@ -710,13 +709,6 @@ export default function PeopleSection() {
                   },
                 )}
               </Badge>
-              <Button
-                size="sm"
-                variant="secondary"
-                onClick={() => navigate("/settings/adminPlan")}
-              >
-                {t("workspace.people.actions.upgrade", "Upgrade")}
-              </Button>
             </Group>
           )}
 
