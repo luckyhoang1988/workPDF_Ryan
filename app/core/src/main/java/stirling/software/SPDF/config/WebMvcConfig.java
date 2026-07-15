@@ -76,6 +76,31 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         // 4. Branding and stable non-fingerprinted assets (1 day + SWR)
         // Use stale-while-revalidate to improve perceived performance.
+        CacheControl brandingCache =
+                CacheControl.maxAge(Duration.ofDays(1))
+                        .cachePublic()
+                        .staleWhileRevalidate(Duration.ofDays(7));
+
+        // 4a. modern-logo/classic-logo get their own handler scoped to their own
+        // subdirectory only. They must NOT share location roots with the legacy
+        // "/favicon.*" handler below: a shared root location list would let a
+        // request like "/modern-logo/favicon.ico" resolve (via the stripped
+        // "favicon.ico" lookup) against the unrelated legacy static/favicon.ico
+        // instead of static/modern-logo/favicon.ico.
+        registry.addResourceHandler("/modern-logo/**")
+                .addResourceLocations(
+                        staticPath + "modern-logo/", "classpath:/static/modern-logo/")
+                .setCacheControl(brandingCache)
+                .resourceChain(true)
+                .addResolver(new EncodedResourceResolver());
+
+        registry.addResourceHandler("/classic-logo/**")
+                .addResourceLocations(
+                        staticPath + "classic-logo/", "classpath:/static/classic-logo/")
+                .setCacheControl(brandingCache)
+                .resourceChain(true)
+                .addResolver(new EncodedResourceResolver());
+
         registry.addResourceHandler(
                         "/favicon.*",
                         "/apple-touch-icon.png",
@@ -83,8 +108,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/mstile-*.png",
                         "/safari-pinned-tab.svg",
                         "/icons/**",
-                        "/modern-logo/**",
-                        "/classic-logo/**",
                         "/3rdPartyLicenses.json",
                         "/pdfjs/**",
                         "/pdfjs-legacy/**",
@@ -121,15 +144,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         staticPath + "Login/",
                         "classpath:/static/Login/",
                         staticPath + "icons/",
-                        "classpath:/static/icons/",
-                        staticPath + "modern-logo/",
-                        "classpath:/static/modern-logo/",
-                        staticPath + "classic-logo/",
-                        "classpath:/static/classic-logo/")
-                .setCacheControl(
-                        CacheControl.maxAge(Duration.ofDays(1))
-                                .cachePublic()
-                                .staleWhileRevalidate(Duration.ofDays(7)))
+                        "classpath:/static/icons/")
+                .setCacheControl(brandingCache)
                 .resourceChain(true)
                 .addResolver(new EncodedResourceResolver());
 
