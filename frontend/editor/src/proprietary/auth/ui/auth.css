@@ -644,7 +644,7 @@
 }
 
 .auth-cta-button:hover:not(:disabled) {
-  background-color: #9a2e2e !important;
+  background-color: #097148 !important;
 }
 
 .auth-cta-button:disabled {
