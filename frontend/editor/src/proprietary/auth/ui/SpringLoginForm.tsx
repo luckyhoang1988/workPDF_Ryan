@@ -112,7 +112,7 @@ export default function SpringLoginForm({
         />
       )}
 
-      {hasProviders && isUserPassAllowed && (
+      {hasProviders && isUserPassAllowed && (renderEmailForm || beforeEmailForm) && (
         <div className="auth-or-divider">
           <span className="auth-or-divider__rule" aria-hidden />
           <span className="auth-or-divider__label">{t("signup.or", "or")}</span>
