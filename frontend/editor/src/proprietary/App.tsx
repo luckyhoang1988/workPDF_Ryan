@@ -86,6 +86,10 @@ export default function App() {
                 <LoginRequiredBootstrap />
                 <Routes>
                   <Route path="/login" element={<Login />} />
+                  {/* Dedicated admin sign-in URL: same Login component, but it
+                      reveals the username/password form (hidden on the public
+                      /login page now that signup is Google-only). */}
+                  <Route path="/admin" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/forgot-password" element={<ForgotPassword />} />
                   <Route path="/reset-password" element={<ResetPassword />} />

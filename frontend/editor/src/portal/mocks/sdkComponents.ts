@@ -37,14 +37,14 @@ const CATALOGUE: SdkComponent[] = [
     maturity: "ga",
     frameworks: ["React", "Vue", "Vanilla"],
     pricing: { pricePerAction: 0.01, unit: "render", freeQuota: 1000 },
-    install: "npm install @stirling/viewer",
-    usage: `import { Viewer } from "@stirling/viewer";
+    install: "npm install @ryanpdf/viewer",
+    usage: `import { Viewer } from "@ryanpdf/viewer";
 
 export function DocumentPage({ fileUrl }: { fileUrl: string }) {
   return (
     <Viewer
       src={fileUrl}
-      apiKey={process.env.STIRLING_KEY}
+      apiKey={process.env.RYANPDF_KEY}
       onRender={(p) => console.log("rendered page", p.page)}
     />
   );
@@ -87,15 +87,15 @@ export function DocumentPage({ fileUrl }: { fileUrl: string }) {
     maturity: "ga",
     frameworks: ["React", "Vue"],
     pricing: { pricePerAction: 0.04, unit: "review", freeQuota: 50 },
-    install: "npm install @stirling/review",
-    usage: `import { Review } from "@stirling/review";
+    install: "npm install @ryanpdf/review",
+    usage: `import { Review } from "@ryanpdf/review";
 
 export function ReviewPane({ docId }: { docId: string }) {
   return (
     <Review
       documentId={docId}
       pipeline="invoice-v3"
-      apiKey={process.env.STIRLING_KEY}
+      apiKey={process.env.RYANPDF_KEY}
       onComplete={(r) => save(r.fields)}
     />
   );
@@ -132,8 +132,8 @@ export function ReviewPane({ docId }: { docId: string }) {
     maturity: "ga",
     frameworks: ["React", "Vue", "Vanilla"],
     pricing: { pricePerAction: 0.02, unit: "check", freeQuota: 200 },
-    install: "npm install @stirling/confidence",
-    usage: `import { Confidence } from "@stirling/confidence";
+    install: "npm install @ryanpdf/confidence",
+    usage: `import { Confidence } from "@ryanpdf/confidence";
 
 export function FieldOverlay({ result }: { result: ExtractResult }) {
   return <Confidence fields={result.fields} threshold={0.85} />;
@@ -164,8 +164,8 @@ export function FieldOverlay({ result }: { result: ExtractResult }) {
     maturity: "ga",
     frameworks: ["React", "Vue"],
     pricing: { pricePerAction: 0.1, unit: "approval", freeQuota: 0 },
-    install: "npm install @stirling/approval",
-    usage: `import { Approval } from "@stirling/approval";
+    install: "npm install @ryanpdf/approval",
+    usage: `import { Approval } from "@ryanpdf/approval";
 
 export function ApprovalGate({ docId }: { docId: string }) {
   return (
@@ -209,8 +209,8 @@ export function ApprovalGate({ docId }: { docId: string }) {
     maturity: "ga",
     frameworks: ["React", "Vue", "Vanilla"],
     pricing: { pricePerAction: 0.35, unit: "signature", freeQuota: 0 },
-    install: "npm install @stirling/esign",
-    usage: `import { ESign } from "@stirling/esign";
+    install: "npm install @ryanpdf/esign",
+    usage: `import { ESign } from "@ryanpdf/esign";
 
 export function SignFlow({ docId }: { docId: string }) {
   return (
@@ -253,8 +253,8 @@ export function SignFlow({ docId }: { docId: string }) {
     maturity: "ga",
     frameworks: ["React", "Vue"],
     pricing: { pricePerAction: 0.01, unit: "event", freeQuota: 500 },
-    install: "npm install @stirling/audit-trail",
-    usage: `import { AuditTrail } from "@stirling/audit-trail";
+    install: "npm install @ryanpdf/audit-trail",
+    usage: `import { AuditTrail } from "@ryanpdf/audit-trail";
 
 export function History({ docId }: { docId: string }) {
   return <AuditTrail documentId={docId} export="pdf" />;
@@ -285,8 +285,8 @@ export function History({ docId }: { docId: string }) {
     maturity: "beta",
     frameworks: ["React", "Vue"],
     pricing: { pricePerAction: 0.03, unit: "session", freeQuota: 25 },
-    install: "npm install @stirling/markup@beta",
-    usage: `import { Markup } from "@stirling/markup";
+    install: "npm install @ryanpdf/markup@beta",
+    usage: `import { Markup } from "@ryanpdf/markup";
 
 export function AnnotateLayer({ docId }: { docId: string }) {
   return (
@@ -329,11 +329,11 @@ export function AnnotateLayer({ docId }: { docId: string }) {
     maturity: "beta",
     frameworks: ["React", "Vue", "Vanilla"],
     pricing: { pricePerAction: 0.05, unit: "event", freeQuota: 0 },
-    install: "npm install @stirling/toolkit@beta",
-    usage: `import { useToolkit } from "@stirling/toolkit";
+    install: "npm install @ryanpdf/toolkit@beta",
+    usage: `import { useToolkit } from "@ryanpdf/toolkit";
 
 export function MergeButton({ files }: { files: File[] }) {
-  const { merge } = useToolkit({ apiKey: process.env.STIRLING_KEY });
+  const { merge } = useToolkit({ apiKey: process.env.RYANPDF_KEY });
   return <button onClick={() => merge(files)}>Merge</button>;
 }`,
     props: [

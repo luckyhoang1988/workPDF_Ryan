@@ -14,7 +14,7 @@ export const ASSISTANT_ROUTES: AssistantRoute[] = [
   {
     patterns: [/mcp/i, /\bagent\b/i, /connect.*agent/i],
     reply:
-      "MCP wiring lives under Sources → Add → Agent. You'll get an MCP URL of the shape mcp://stirling.com/agents/{id} plus scoped credentials. Scenarios drive the eval set the agent must pass before it can take real traffic.",
+      "MCP wiring lives under Sources → Add → Agent. You'll get an MCP URL of the shape mcp://ryanpdf.com/agents/{id} plus scoped credentials. Scenarios drive the eval set the agent must pass before it can take real traffic.",
   },
   {
     patterns: [/redact/i, /pii/i],
@@ -34,7 +34,7 @@ export const ASSISTANT_ROUTES: AssistantRoute[] = [
   {
     patterns: [/webhook/i, /callback/i],
     reply:
-      "Outbound webhooks deliver via 3× exponential backoff. We sign every payload with HMAC-SHA256 — verify via the X-Stirling-Signature header. Inbound webhooks support Bearer, HMAC, or mTLS auth.",
+      "Outbound webhooks deliver via 3× exponential backoff. We sign every payload with HMAC-SHA256 — verify via the X-RyanPDF-Signature header. Inbound webhooks support Bearer, HMAC, or mTLS auth.",
   },
 ];
 

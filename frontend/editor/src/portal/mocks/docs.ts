@@ -87,17 +87,17 @@ const QUICKSTART_SAMPLES: CodeSample[] = [
     key: "curl",
     label: "cURL",
     lang: "bash",
-    code: `curl https://api.stirlingpdf.com/v1/invoice \\
-  -H "Authorization: Bearer $STIRLING_API_KEY" \\
+    code: `curl https://api.ryanpdf.com/v1/invoice \\
+  -H "Authorization: Bearer $RYANPDF_API_KEY" \\
   -F "file=@invoice.pdf"`,
   },
   {
     key: "python",
     label: "Python",
     lang: "python",
-    code: `from stirling import Stirling
+    code: `from ryanpdf import RyanPDF
 
-client = Stirling(api_key="sk_live_...")
+client = RyanPDF(api_key="sk_live_...")
 
 result = client.extract(
     endpoint="/v1/invoice",
@@ -109,9 +109,9 @@ print(result.fields["total"])`,
     key: "node",
     label: "Node",
     lang: "typescript",
-    code: `import { Stirling } from "@stirling/sdk";
+    code: `import { RyanPDF } from "@ryanpdf/sdk";
 
-const client = new Stirling({ apiKey: process.env.STIRLING_API_KEY });
+const client = new RyanPDF({ apiKey: process.env.RYANPDF_API_KEY });
 
 const result = await client.extract({
   endpoint: "/v1/invoice",
@@ -166,42 +166,42 @@ const SDKS: Sdk[] = [
   {
     name: "Python",
     icon: "🐍",
-    install: "pip install stirling",
+    install: "pip install ryanpdf",
     lang: "bash",
     status: "ga",
   },
   {
     name: "Node / TypeScript",
     icon: "⬢",
-    install: "npm install @stirling/sdk",
+    install: "npm install @ryanpdf/sdk",
     lang: "bash",
     status: "ga",
   },
   {
     name: "Go",
     icon: "◉",
-    install: "go get github.com/stirling/stirling-go",
+    install: "go get github.com/ryanpdf/ryanpdf-go",
     lang: "bash",
     status: "ga",
   },
   {
     name: "Ruby",
     icon: "◆",
-    install: "gem install stirling",
+    install: "gem install ryanpdf",
     lang: "bash",
     status: "ga",
   },
   {
     name: "Java",
     icon: "☕",
-    install: "implementation 'com.stirling:sdk:1.x'",
+    install: "implementation 'com.ryanpdf:sdk:1.x'",
     lang: "bash",
     status: "ga",
   },
   {
     name: ".NET",
     icon: "◈",
-    install: "dotnet add package Stirling",
+    install: "dotnet add package RyanPDF",
     lang: "bash",
     status: "beta",
   },
@@ -209,7 +209,7 @@ const SDKS: Sdk[] = [
   {
     name: "PHP",
     icon: "🐘",
-    install: "composer require stirling/stirling-php:^0.9",
+    install: "composer require ryanpdf/ryanpdf-php:^0.9",
     lang: "bash",
     status: "deprecated",
   },
@@ -235,7 +235,7 @@ const COMPONENTS: EmbedComponent[] = [
   },
   {
     name: "Web component",
-    blurb: "<stirling-viewer> custom element for non-React stacks.",
+    blurb: "<ryanpdf-viewer> custom element for non-React stacks.",
     tag: "Web",
   },
 ];

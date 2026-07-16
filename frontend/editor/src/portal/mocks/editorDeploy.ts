@@ -1,7 +1,7 @@
 /**
  * Editor deployment fixtures and the types api/editorDeploy.ts shares with them.
  *
- * This surface manages the org's deployment of the Stirling PDF *Editor* product
+ * This surface manages the org's deployment of the RyanPDF *Editor* product
  * from the portal — where it runs (Managed Cloud / Docker / Kubernetes), how
  * self-hosted instances pair back to the org, the health of each running
  * instance, and the service credential / offline-activation lifecycle.
@@ -25,23 +25,23 @@ import type {
 /*  Snippet builders                                                         */
 /* ──────────────────────────────────────────────────────────────────────── */
 
-const DOCKER_SNIPPET = `docker run -d --name stirling-editor \\
+const DOCKER_SNIPPET = `docker run -d --name ryanpdf-editor \\
   -p 8080:8080 \\
-  -e STIRLING_ORG_PAIRING_TOKEN="$PAIRING_TOKEN" \\
-  -e STIRLING_REGION="us-east-1" \\
-  -v stirling-data:/var/lib/stirling \\
-  stirlingpdf/editor:3.2.1`;
+  -e RYANPDF_ORG_PAIRING_TOKEN="$PAIRING_TOKEN" \\
+  -e RYANPDF_REGION="us-east-1" \\
+  -v ryanpdf-data:/var/lib/ryanpdf \\
+  ryanpdftools/editor:3.2.1`;
 
-const HELM_SNIPPET = `helm repo add stirling https://charts.stirlingpdf.com
-helm install editor stirling/editor \\
-  --namespace stirling --create-namespace \\
+const HELM_SNIPPET = `helm repo add ryanpdf https://charts.ryanpdf.com
+helm install editor ryanpdf/editor \\
+  --namespace ryanpdf --create-namespace \\
   --set org.pairingToken="$PAIRING_TOKEN" \\
   --set image.tag=3.2.1 \\
   --set replicaCount=3`;
 
 const CLOUD_SNIPPET = `# Managed Cloud is provisioned for you — no install step.
 # Point your users at the org workspace URL:
-https://app.stirlingpdf.com/o/acme/editor`;
+https://app.ryanpdf.com/o/acme/editor`;
 
 /* ──────────────────────────────────────────────────────────────────────── */
 /*  Tier-aware fixture assembly                                              */
@@ -51,7 +51,7 @@ function targetsFor(tier: Tier): DeploymentTarget[] {
   const cloud: DeploymentTarget = {
     kind: "cloud",
     label: "Managed Cloud",
-    tagline: "Stirling-hosted, zero-ops. Available on every plan.",
+    tagline: "RyanPDF-hosted, zero-ops. Available on every plan.",
     state: "running",
     requiresTier: "free",
     snippet: CLOUD_SNIPPET,
@@ -102,7 +102,7 @@ function pairingsFor(tier: Tier): PairingOption[] {
       method: "token",
       label: "Pairing token",
       description:
-        "Long-lived secret injected as STIRLING_ORG_PAIRING_TOKEN. Rotate if it leaks.",
+        "Long-lived secret injected as RYANPDF_ORG_PAIRING_TOKEN. Rotate if it leaks.",
       requiresTier: "free",
       value: "pair_live_••••••••••••••3f9a",
       expires: "Rotates manually",
@@ -125,7 +125,7 @@ function pairingsFor(tier: Tier): PairingOption[] {
         "Terraform / Pulumi module input so instances pair on apply — no manual token handling.",
       requiresTier: "enterprise",
       value: iacUnlocked
-        ? 'module "stirling_editor" { org_id = "acme" }'
+        ? 'module "ryanpdf_editor" { org_id = "acme" }'
         : "Enterprise only",
       locked: !iacUnlocked,
     },
@@ -249,7 +249,7 @@ function summaryFor(
       lastRotated: tier === "enterprise" ? "11 days ago" : "34 days ago",
     },
     offlineActivationAvailable: tier === "enterprise",
-    workspaceUrl: "https://app.stirlingpdf.com/o/acme/editor",
+    workspaceUrl: "https://app.ryanpdf.com/o/acme/editor",
   };
 }
 

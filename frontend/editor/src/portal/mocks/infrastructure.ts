@@ -420,7 +420,7 @@ const ATTESTATIONS_FREE: ComplianceAttestation[] = [
 export function securityFor(tier: Tier): SecurityConfig {
   if (tier === "free") {
     return {
-      accessPolicy: "stirling",
+      accessPolicy: "ryanpdf",
       dataResidency: "us",
       certs: CERTS_FREE,
       ipAllowlist: [],
@@ -455,9 +455,9 @@ export function securityFor(tier: Tier): SecurityConfig {
 
 const PROVIDERS_FULL: StorageProvider[] = [
   {
-    id: "stirling",
-    name: "Stirling Cloud",
-    kind: "stirling",
+    id: "ryanpdf",
+    name: "RyanPDF Cloud",
+    kind: "ryanpdf",
     connected: true,
     detail: "Primary vault · us-east-1",
     usedGb: 612,
@@ -703,8 +703,8 @@ const AUDIT_EVENTS_ALL: AuditEvent[] = [
 const MODELS_ALL: ModelEntry[] = [
   {
     id: "m-extract-v3",
-    name: "Stirling Extract",
-    provider: "stirling",
+    name: "RyanPDF Extract",
+    provider: "ryanpdf",
     type: "extraction",
     status: "active",
     latencyMs: 142,
@@ -716,8 +716,8 @@ const MODELS_ALL: ModelEntry[] = [
   },
   {
     id: "m-classify-v2",
-    name: "Stirling Classify",
-    provider: "stirling",
+    name: "RyanPDF Classify",
+    provider: "ryanpdf",
     type: "classification",
     status: "active",
     latencyMs: 61,
@@ -729,8 +729,8 @@ const MODELS_ALL: ModelEntry[] = [
   },
   {
     id: "m-ocr-tess",
-    name: "Stirling OCR",
-    provider: "stirling",
+    name: "RyanPDF OCR",
+    provider: "ryanpdf",
     type: "ocr",
     status: "active",
     latencyMs: 318,
@@ -812,7 +812,7 @@ const ROUTING_ALL: RoutingRule[] = [
     operation: "Field extraction",
     docType: "Invoices",
     modelId: "m-extract-v3",
-    modelName: "Stirling Extract",
+    modelName: "RyanPDF Extract",
     isDefault: false,
   },
   {
@@ -820,7 +820,7 @@ const ROUTING_ALL: RoutingRule[] = [
     operation: "Document classification",
     docType: "All document types",
     modelId: "m-classify-v2",
-    modelName: "Stirling Classify",
+    modelName: "RyanPDF Classify",
     isDefault: false,
   },
   {
@@ -828,7 +828,7 @@ const ROUTING_ALL: RoutingRule[] = [
     operation: "Text recognition",
     docType: "Scanned PDFs",
     modelId: "m-ocr-tess",
-    modelName: "Stirling OCR",
+    modelName: "RyanPDF OCR",
     isDefault: false,
   },
   {
@@ -845,7 +845,7 @@ const ROUTING_ALL: RoutingRule[] = [
     operation: "Default",
     docType: "All document types",
     modelId: "m-extract-v3",
-    modelName: "Stirling Extract",
+    modelName: "RyanPDF Extract",
     isDefault: true,
   },
 ];

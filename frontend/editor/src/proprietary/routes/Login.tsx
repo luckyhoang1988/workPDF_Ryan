@@ -170,7 +170,13 @@ export default function Login() {
   });
 
   const isUserPassAllowed = login.isUserPassAllowed;
-  const isSsoOnlyMode = !login.isUserPassAllowed;
+  // Password login is no longer offered to the public - only Google sign-in.
+  // The username/password form still works server-side (so the existing admin
+  // account keeps working) but is only revealed on the dedicated /admin route,
+  // never advertised on the public /login page.
+  const isAdminRoute = location.pathname === "/admin";
+  const showPasswordUI = isUserPassAllowed && isAdminRoute;
+  const isSsoOnlyMode = !showPasswordUI;
 
   // Periodically probe while backend isn't up so the screen can auto-advance when it comes online
   useEffect(() => {
@@ -498,7 +504,7 @@ export default function Login() {
           ) : undefined
         }
         beforeEmailForm={
-          hasSSOProviders && !showEmailForm && isUserPassAllowed ? (
+          hasSSOProviders && !showEmailForm && showPasswordUI ? (
             <div className="auth-section">
               <Button
                 type="button"
@@ -513,35 +519,9 @@ export default function Login() {
             </div>
           ) : undefined
         }
-        afterEmailForm={
-          isUserPassAllowed ? (
-            <Button
-              type="button"
-              variant="tertiary"
-              onClick={() => navigate("/forgot-password")}
-              className="auth-link-black"
-              style={{ fontSize: "0.8125rem", marginTop: "0.25rem" }}
-            >
-              {t("login.forgotPassword", "Forgot your password?")}
-            </Button>
-          ) : undefined
-        }
         footer={
           <>
-            {isUserPassAllowed && (
-              <div style={{ textAlign: "center", marginTop: "1rem" }}>
-                <Button
-                  type="button"
-                  variant="tertiary"
-                  onClick={() => navigate("/signup")}
-                  className="auth-link-black"
-                  style={{ fontSize: "0.875rem" }}
-                >
-                  {t("login.createAccount", "Create an account")}
-                </Button>
-              </div>
-            )}
-            {isFirstTimeSetup && showDefaultCredentials && isUserPassAllowed && (
+            {isFirstTimeSetup && showDefaultCredentials && showPasswordUI && (
             <Alert color="blue" variant="light" radius="md" mt="xl">
               <Stack gap="xs" align="center">
                 <Text

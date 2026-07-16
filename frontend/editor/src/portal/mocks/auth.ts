@@ -18,7 +18,7 @@ export interface MockUser {
 
 export const MOCK_ADMIN: MockUser = {
   id: "mock-admin",
-  email: "admin@stirling.local",
+  email: "admin@ryanpdf.local",
   username: "admin",
   role: "ROLE_ADMIN",
   enabled: true,

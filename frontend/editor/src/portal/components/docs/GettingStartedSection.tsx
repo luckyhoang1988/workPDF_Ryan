@@ -27,7 +27,7 @@ export function GettingStartedSection({
             <p>{t("portal.docs.quickstart.step1.body")}</p>
             <CodeBlock
               lang="bash"
-              code={`export STIRLING_API_KEY="sk_live_8f2c...e10"`}
+              code={`export RYANPDF_API_KEY="sk_live_8f2c...e10"`}
             />
           </div>
         </li>

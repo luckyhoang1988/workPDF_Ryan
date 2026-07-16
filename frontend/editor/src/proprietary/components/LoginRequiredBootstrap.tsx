@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Modal, Text } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@app/auth/UseSession";
@@ -25,7 +24,6 @@ const PENDING_TOOL_KEY = "ryanpdf_login_required_pending_tool";
  */
 export default function LoginRequiredBootstrap() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { session } = useAuth();
   const { handleToolSelectForced } = useToolWorkflow();
   const [opened, setOpened] = useState(false);
@@ -93,7 +91,7 @@ export default function LoginRequiredBootstrap() {
       <Text size="sm" c="dimmed" mb="md">
         {t(
           "loginRequiredModal.body",
-          "This tool needs a free RyanPDF account. Sign in (or create one) to continue - no payment required.",
+          "This tool needs a free RyanPDF account. Sign in with Google to continue - no payment required.",
         )}
       </Text>
       <SpringLoginForm
@@ -101,23 +99,7 @@ export default function LoginRequiredBootstrap() {
         logoSrc={loginHeaderLight}
         logoDarkSrc={loginHeaderDark}
         logoAlt="RyanPDF"
-        footer={
-          <Text size="sm" ta="center" mt="md">
-            <a
-              href="/signup"
-              onClick={(e) => {
-                e.preventDefault();
-                setOpened(false);
-                navigate("/signup");
-              }}
-            >
-              {t(
-                "loginRequiredModal.createAccount",
-                "Don't have an account? Create one for free",
-              )}
-            </a>
-          </Text>
-        }
+        showEmailForm={false}
       />
     </Modal>
   );
