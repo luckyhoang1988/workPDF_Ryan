@@ -587,7 +587,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--mantine-color-blue-6, #3b82f6);
+  background-color: var(--color-primary-500, #00c375);
   color: #fff;
   font-size: 12px;
   font-weight: 600;
