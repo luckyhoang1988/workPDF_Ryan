@@ -10,7 +10,7 @@ export function useConfigButtonIcon(): React.ReactNode {
   // the same identity badge while the picture URL is unavailable.
   const initial = user?.email?.trim()?.charAt(0)?.toUpperCase();
   return initial ? (
-    <Avatar radius="xl" size={24} color="blue">
+    <Avatar radius="xl" size={24} color="primary">
       {initial}
     </Avatar>
   ) : null;

@@ -412,7 +412,7 @@ const Overview: React.FC<OverviewProps> = ({ onLogoutClick }) => {
               src={profilePictureUrl || undefined}
               radius="xl"
               size={72}
-              color="blue"
+              color="primary"
             >
               {profileInitial}
             </Avatar>
@@ -452,7 +452,7 @@ const Overview: React.FC<OverviewProps> = ({ onLogoutClick }) => {
               src={profilePictureUrl || undefined}
               radius="xl"
               size={72}
-              color="blue"
+              color="primary"
             >
               {profileInitial}
             </Avatar>
