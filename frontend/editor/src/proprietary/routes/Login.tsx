@@ -252,14 +252,22 @@ export default function Login() {
     const userPassAllowed =
       login.loginMethod === "all" || login.loginMethod === "normal";
 
-    // Show email form if no SSO providers exist AND username/password is allowed
-    if (!hasProviders && userPassAllowed) {
+    // Password UI is only ever allowed on the /admin route. Force it off on
+    // the public /login page regardless of provider/loginMethod state - this
+    // also covers the initial render, where providers is still [] and
+    // loginMethod defaults to "all", which would otherwise flip showEmailForm
+    // to true before the real config loads and it would never get reset once
+    // SSO providers arrive.
+    if (!showPasswordUI) {
+      setShowEmailForm(false);
+    } else if (!hasProviders && userPassAllowed) {
+      // Show email form if no SSO providers exist AND username/password is allowed
       setShowEmailForm(true);
     } else if (!userPassAllowed) {
       // Hide email form if username/password auth is not allowed
       setShowEmailForm(false);
     }
-  }, [login.providers, login.loginMethod]);
+  }, [login.providers, login.loginMethod, showPasswordUI]);
 
   // Auto-login to SSO when enabled and only one SSO option exists
   useEffect(() => {
