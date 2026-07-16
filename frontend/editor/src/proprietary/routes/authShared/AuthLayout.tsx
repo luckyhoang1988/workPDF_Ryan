@@ -4,7 +4,6 @@ import { AuthShell } from "@app/auth/ui/AuthShell";
 import LoginRightCarousel from "@app/auth/ui/LoginRightCarousel";
 import buildLoginSlides from "@app/components/shared/loginSlides";
 import { useLogoVariant } from "@app/hooks/useLogoVariant";
-import Footer from "@app/components/shared/Footer";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -32,7 +31,6 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           slideSeconds={8}
         />
       }
-      footer={<Footer />}
     >
       {children}
     </AuthShell>
